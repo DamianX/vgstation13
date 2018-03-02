@@ -454,7 +454,7 @@
 			var/movedelay = ETHEREAL_MOVEDELAY
 			mob.set_glide_size(DELAY2GLIDESIZE(movedelay))
 			var/turf/newLoc = get_step(mob,direct)
-			if(!(newLoc.turf_flags & NOJAUNT))
+			if(!(newLoc.turf_flags & NOJAUNT) && !newLoc.holy)
 				mob.forceEnter(newLoc)
 				mob.dir = direct
 			else

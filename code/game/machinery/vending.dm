@@ -85,9 +85,12 @@ var/global/num_vending_terminals = 1
 
 	var/machine_id = "#"
 
-	machine_flags = SCREWTOGGLE | WRENCHMOVE | FIXED2WORK | CROWDESTROY | EJECTNOTDEL | PURCHASER | WIREJACK | SECUREDPANEL
+	machine_flags = SCREWTOGGLE | WRENCHMOVE | FIXED2WORK | CROWDESTROY | EJECTNOTDEL | PURCHASER | WIREJACK
 
-	var/account_first_linked = 0
+	var/account_first_linked = 1
+	var/inserting_mode = FALSE // insert items directly into the machine (used for custom vending machines)
+	var/is_custom_machine = FALSE // true if this vendor supports editing the prices
+	var/edit_mode = FALSE // Used for editing prices
 	var/is_being_filled = FALSE // `in_use` from /obj is already used for tracking users of this machine's UI
 
 /obj/machinery/vending/cultify()
@@ -128,6 +131,7 @@ var/global/num_vending_terminals = 1
 
 	if(ticker)
 		initialize()
+		link_to_account()
 
 	return
 
@@ -138,6 +142,9 @@ var/global/num_vending_terminals = 1
 	build_inventory(contraband, 1)
 	build_inventory(premium, 0, 1)
 	build_inventory(vouched, 0, 0, 1)
+
+/obj/machinery/vending/proc/link_to_account()
+	linked_account = department_accounts["Cargo"]
 
 /obj/machinery/vending/RefreshParts()
 	var/manipcount = 0
@@ -365,12 +372,12 @@ var/global/num_vending_terminals = 1
 //		to_chat(world, "Added: [R.product_name]] - [R.amount] - [R.product_path]")
 
 /obj/machinery/vending/emag(mob/user)
-	if(!emagged)
+	if(!emagged || !extended_inventory || scan_id)
 		emagged = 1
-		if(user)
-			to_chat(user, "You short out the product lock on \the [src]")
+		extended_inventory = 1
+		scan_id = 0
 		return 1
-	return -1 //Fucking gross
+	return 0 //Fucking gross
 
 /obj/machinery/vending/npc_tamper_act(mob/living/L)
 	if(!panel_open)
@@ -413,14 +420,14 @@ var/global/num_vending_terminals = 1
 	return 1
 
 /obj/machinery/vending/attackby(obj/item/W, mob/user)
-	if(stat & (BROKEN))
+	if(stat & (BROKEN) && !iswrench(W))
 		if(istype(W, /obj/item/stack/sheet/glass/rglass))
 			var/obj/item/stack/sheet/glass/rglass/G = W
 			to_chat(user, "<span class='notice'>You replace the broken glass.</span>")
 			G.use(1)
 			stat &= ~BROKEN
 			src.health = 100
-			src.update_vicon()
+			power_change()
 			getFromPool(/obj/item/weapon/shard, loc)
 		else
 			to_chat(user, "<span class='notice'>The glass in \the [src] is broken! Fix it first.</span>")
@@ -482,7 +489,19 @@ var/global/num_vending_terminals = 1
 		if(user.drop_item(W, src))
 			add_item(W)
 			src.updateUsrDialog()
+	else if(istype(W, /obj/item/weapon/card/emag))
+		visible_message("<span class='info'>[usr] swipes a card through [src].</span>")
+		to_chat(user, "<span class='notice'>You swipe \the [W] through [src]</span>")
+		if (emag())
+			to_chat(user, "<span class='info'>[src] responds with a soft beep.</span>")
+		else
+			to_chat(user, "<span class='info'>Nothing happens.</span>")
+
 	else if(istype(W, /obj/item/weapon/card))
+		if(currently_vending) //We're trying to pay, not set the account
+			connect_account(user, W)
+			src.updateUsrDialog()
+			return
 		//attempt to connect to a new db, and if that doesn't work then fail
 		if(linked_account)
 			if(account_first_linked)
@@ -504,13 +523,26 @@ var/global/num_vending_terminals = 1
 					linked_account = D
 					if(!account_first_linked)
 						account_first_linked = 1
-					playsound(get_turf(src), 'sound/machines/twobeep.ogg', 50, 0)
+					playsound(src, 'sound/machines/twobeep.ogg', 50, 0)
 					to_chat(user, "[bicon(src)]<span class='notice'>New connection established: [D.owner_name].</span>")
 					return
 			to_chat(user, "[bicon(src)]<span class='warning'>The specified account doesn't exist.</span>")
 
 		else
 			to_chat(usr, "[bicon(src)]<span class='warning'>Unable to connect to linked account. Please contact a god.</span>")
+	else if(istype(W, /obj/item/) && inserting_mode)
+		if(user.drop_item(W, src))
+			for(var/datum/data/vending_product/VP in product_records)
+				if(VP.product_path == W)
+					VP.amount += 1
+					return
+			var/datum/data/vending_product/R = new()
+			R.product_name = W.name
+			R.mini_icon = costly_bicon(W)
+			R.display_color = pick("red", "blue", "green")
+			R.product_path = W
+			product_records += R
+			products += W
 
 //H.wear_id
 
@@ -626,6 +658,8 @@ var/global/num_vending_terminals = 1
 	if (P.amount > 0)
 		var/idx=GetProductIndex(P)
 		dat += " <a href='byond://?src=\ref[src];vend=[idx];cat=[P.category]'>(Vend)</A>"
+		if (edit_mode)
+			dat += " <a href='byond://?src=\ref[src];set_price=[idx];cat=[P.category]'>(Set Price)</A>"
 	else
 		dat += " <span class='warning'>SOLD OUT</span>"
 	dat += "<br>"
@@ -667,9 +701,7 @@ var/global/num_vending_terminals = 1
 
 	spawn(ticks)
 
-	if(stat & (NOPOWER)) //Make another check just in case something goes weird
-		stat &= ~NOPOWER
-		src.update_vicon()
+	power_change()
 
 /obj/machinery/vending/proc/update_vicon()
 	if(stat & (BROKEN))
@@ -801,6 +833,14 @@ var/global/num_vending_terminals = 1
 
 		if(product_slogans != "")
 			dat += "The speaker switch is [shut_up ? "off" : "on"]. <a href='?src=\ref[src];togglevoice=[1]'>Toggle</a>"
+			dat += "<br>"
+
+		if(is_custom_machine)
+			dat += "Insert items mode is [inserting_mode ? "on" : "off"]. <a href='?src=\ref[src];toggle_insert_mode=[1]'>Toggle</a>"
+			dat += "<br>"
+			dat += "The prices edit mode is [edit_mode ? "on" : "off"]. <a href='?src=\ref[src];toggle_edit_mode=[1]'>Toggle</a>"
+			dat += "<br><br>"
+			dat += "<i>Note: Remember to slide your ID on this machine if you don't want random people to change your prices.</i>"
 
 	user << browse(dat, "window=vending;size=400x[vertical]")
 	onclose(user, "vending")
@@ -876,20 +916,48 @@ var/global/num_vending_terminals = 1
 
 		return
 
+	else if (href_list["set_price"] && src.vend_ready && !currently_vending)
+		//testing("vend: [href]")
+
+		if (!allowed(usr) && !emagged && scan_id) //For SECURE VENDING MACHINES YEAH
+			to_chat(usr, "<span class='warning'>Access denied.</span>")//Unless emagged of course
+
+			flick(src.icon_deny,src)
+			return
+
+		var/idx=text2num(href_list["set_price"])
+		var/cat=text2num(href_list["cat"])
+
+		var/datum/data/vending_product/R = GetProductByID(idx,cat)
+		if (!R || !istype(R) || !R.product_path || R.amount <= 0)
+			message_admins("Invalid vend request by [formatJumpTo(src.loc)]: [href]")
+			return
+
+		var/new_price = input("Enter a price", "Change price", R.price) as null|num
+		if(new_price == null || new_price < 0)
+			new_price = R.price
+		R.price = new_price
+
 	else if (href_list["cancel_buying"])
 		src.currently_vending = null
-		src.updateUsrDialog()
-		return
 
 	else if (href_list["buy"])
 		var/obj/item/weapon/card/card = usr.get_id_card()
 		if(card)
 			connect_account(usr, card)
-		src.updateUsrDialog()
-		return
+		else
+			to_chat(usr, "<span class='warning'>Please present a valid ID.</span>")
 
 	else if ((href_list["togglevoice"]) && (src.panel_open))
 		src.shut_up = !src.shut_up
+
+	else if ((href_list["toggle_edit_mode"]))
+		if(is_custom_machine)
+			edit_mode = !edit_mode
+
+	else if ((href_list["toggle_insert_mode"]))
+		if(is_custom_machine)
+			inserting_mode = !inserting_mode
 
 	src.add_fingerprint(usr)
 	src.updateUsrDialog()
@@ -1506,6 +1574,11 @@ var/global/num_vending_terminals = 1
 
 	pack = /obj/structure/vendomatpack/medical
 
+/obj/machinery/vending/medical/New()
+	..()
+	if(map.nameShort == "deff")
+		icon = 'maps/defficiency/medbay.dmi'
+
 //This one's from bay12
 /obj/machinery/vending/plasmaresearch
 	name = "\improper Toximate 3000"
@@ -1590,7 +1663,7 @@ var/global/num_vending_terminals = 1
 	if(do_after(user, src, 40))
 		user.visible_message(	"[user] detaches the NanoMed from the wall.",
 								"You detach the NanoMed from the wall.")
-		playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
+		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
 		new /obj/item/mounted/frame/wallmed(src.loc)
 
 		for(var/obj/I in src)
@@ -1608,7 +1681,7 @@ var/global/num_vending_terminals = 1
 	if(do_after(user, src, 40))
 		user.visible_message(	"[user] detaches the NanoMed from the wall.",
 								"You detach the NanoMed from the wall.")
-		playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
+		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
 		new /obj/item/mounted/frame/wallmed(src.loc)
 
 		for(var/obj/I in src)
@@ -1651,7 +1724,7 @@ var/global/num_vending_terminals = 1
 				to_chat(usr, "You begin removing screws from \the [src] backplate...")
 				if(do_after(user, src, 50))
 					to_chat(usr, "<span class='notice'>You unscrew \the [src] from the wall.</span>")
-					playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
+					playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
 					new /obj/item/mounted/frame/wallmed(get_turf(src))
 					qdel(src)
 				return 1
@@ -1665,7 +1738,7 @@ var/global/num_vending_terminals = 1
 					if(user.drop_item(C, src))
 						to_chat(usr, "<span class='notice'>You secure \the [C]!</span>")
 						_circuitboard=C
-						playsound(get_turf(src), 'sound/effects/pop.ogg', 50, 0)
+						playsound(src, 'sound/effects/pop.ogg', 50, 0)
 						build++
 						update_icon()
 				return 1
@@ -1673,7 +1746,7 @@ var/global/num_vending_terminals = 1
 			if(iscrowbar(W))
 				to_chat(usr, "You begin to pry out \the [W] into \the [src].")
 				if(do_after(user, src, 10))
-					playsound(get_turf(src), 'sound/effects/pop.ogg', 50, 0)
+					playsound(src, 'sound/effects/pop.ogg', 50, 0)
 					build--
 					update_icon()
 					var/obj/item/weapon/circuitboard/C
@@ -1690,7 +1763,7 @@ var/global/num_vending_terminals = 1
 			if(istype(W, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/C=W
 				to_chat(user, "You start adding cables to \the [src]...")
-				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
+				playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
 				if(do_after(user, src, 20) && C.amount >= 5)
 					C.use(5)
 					build++
@@ -1711,7 +1784,7 @@ var/global/num_vending_terminals = 1
 				return 1
 			if(isscrewdriver(W))
 				to_chat(user, "You begin to complete \the [src]...")
-				playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
+				playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
 				if(do_after(user, src, 20))
 					if(!_circuitboard)
 						_circuitboard=new boardtype(src)
@@ -1724,7 +1797,7 @@ var/global/num_vending_terminals = 1
 		if(3) // Waiting for a recharge pack
 			if(isscrewdriver(W))
 				to_chat(user, "You begin to unscrew \the [src]...")
-				playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
+				playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
 				if(do_after(user, src, 30))
 					build--
 					update_icon()
@@ -1786,7 +1859,7 @@ var/global/num_vending_terminals = 1
 		/obj/item/weapon/legcuffs/bolas = 8,
 		)
 	contraband = list(
-		/obj/item/clothing/glasses/sunglasses = 2,
+		/obj/item/clothing/glasses/sunglasses/security = 2,
 		/obj/item/weapon/storage/fancy/donut_box = 2,
 		)
 	premium = list(
@@ -2128,7 +2201,6 @@ var/global/num_vending_terminals = 1
 		/obj/item/device/holomap = 2,
 		/obj/item/weapon/reagent_containers/glass/bottle/sacid = 3,
 		/obj/item/blueprints/construction_permit = 4, // permits
-		/obj/item/vaporizer = 2,
 		)
 	contraband = list(
 		/obj/item/weapon/cell/potato = 3,
@@ -2178,28 +2250,6 @@ var/global/num_vending_terminals = 1
 	)
 
 	pack = /obj/structure/vendomatpack/building
-
-/obj/item/stack/sheet/metal/bigstack/New()
-	getFromPool(/obj/item/stack/sheet/metal, loc, 20)
-	qdel(src)
-/obj/item/stack/sheet/glass/glass/bigstack/New()
-	getFromPool(/obj/item/stack/sheet/glass/glass, loc, 20)
-	qdel(src)
-/obj/item/stack/sheet/glass/plasmaglass/bigstack/New()
-	getFromPool(/obj/item/stack/sheet/glass/plasmaglass, loc, 20)
-	qdel(src)
-/obj/item/stack/sheet/wood/bigstack/New()
-	getFromPool(/obj/item/stack/sheet/wood, loc, 20)
-	qdel(src)
-/obj/item/stack/tile/carpet/bigstack/New()
-	getFromPool(/obj/item/stack/tile/carpet, loc, 20)
-	qdel(src)
-/obj/item/stack/tile/arcade/bigstack/New()
-	getFromPool(/obj/item/stack/tile/arcade, loc, 20)
-	qdel(src)
-/obj/item/stack/sheet/mineral/plastic/bigstack/New()
-	getFromPool(/obj/item/stack/sheet/mineral/plastic, loc, 20)
-	qdel(src)
 
 //This one's from bay12
 /obj/machinery/vending/engineering
@@ -2427,6 +2477,7 @@ var/global/num_vending_terminals = 1
 		/obj/item/clothing/suit/wizrobe/magician/fake = 3,
 		/obj/item/clothing/head/wizard/magician = 3,
 		/obj/item/clothing/suit/sakura_kimono = 3,
+		/obj/item/clothing/gloves/white = 3,
 		)
 
 	pack = /obj/structure/vendomatpack/autodrobe
@@ -2891,35 +2942,38 @@ var/global/num_vending_terminals = 1
 		/obj/item/weapon/storage/fancy/donut_box = 2,
 		/obj/item/clothing/suit/storage/trader = 3,
 		/obj/item/device/pda/trader = 3,
-		/obj/item/weapon/capsule = 60
+		/obj/item/weapon/capsule = 60,
+		/obj/item/vaporizer = 1,
 		)
 	prices = list(
 		/obj/item/clothing/suit/storage/trader = 100,
 		/obj/item/device/pda/trader = 100,
-		/obj/item/weapon/capsule = 10
+		/obj/item/weapon/capsule = 10,
+		/obj/item/vaporizer = 100
 		)
 
 	accepted_coins = list(/obj/item/weapon/coin/trader)
 
 	premium = list(
-		/obj/item/weapon/storage/trader_marauder,
-		//obj/item/weapon/storage/backpack/holding, //Players did exactly what you would expect and bought them for their own use.  Keep in mind that an obj should be good but not so good they want it for themselves
+		/obj/item/weapon/storage/trader_chemistry,
+		/obj/structure/closet/secure_closet/wonderful,
+		/obj/item/weapon/disk/shuttle_coords/vault/mecha_graveyard,
 		/obj/item/weapon/reagent_containers/glass/beaker/bluespace,
 		/obj/item/weapon/storage/bluespace_crystal,
-		//obj/item/clothing/shoes/magboots/elite,
 		/obj/item/weapon/reagent_containers/food/snacks/borer_egg,
-		/obj/item/weapon/reagent_containers/glass/bottle/peridaxon,
-		/obj/item/weapon/reagent_containers/glass/bottle/rezadone,
-		/obj/item/weapon/reagent_containers/glass/bottle/nanobotssmall,
 		/obj/item/clothing/shoes/clown_shoes/advanced,
+		/obj/item/fish_eggs/seadevil,
+		/obj/machinery/power/antiquesynth,
 		)
 
 /obj/machinery/vending/trader/New()
 
-	premium.Add(pick(existing_typesof(/obj/item/borg/upgrade) - /obj/item/borg/upgrade/magnetic_gripper)) //A random borg upgrade minus the magnetic gripper. Time to jew the silicons!
-
 	for(var/random_items = 1 to premium.len - 5)
 		premium.Remove(pick(premium))
+	if(premium.Find(/obj/item/weapon/disk/shuttle_coords/vault/mecha_graveyard))
+		load_dungeon(/datum/map_element/dungeon/mecha_graveyard)
+	premium.Add(pick(existing_typesof(/obj/item/borg/upgrade) - /obj/item/borg/upgrade/magnetic_gripper)) //A random borg upgrade minus the magnetic gripper. Time to jew the silicons!
+
 	..()
 
 /obj/machinery/vending/barber
@@ -3045,12 +3099,18 @@ var/global/num_vending_terminals = 1
 	name = "Sales"
 	desc = "Buy, sell, repeat."
 	icon_state = "sale"
+	is_custom_machine = TRUE
 	//vend_reply = "Insert another joke here"
 	//product_ads = "Another joke here"
 	//product_slogans = "Jokes"
+	account_first_linked = 0
+	machine_flags = SCREWTOGGLE | WRENCHMOVE | FIXED2WORK | CROWDESTROY | EJECTNOTDEL | PURCHASER | WIREJACK | SECUREDPANEL
 	products = list()
 
 	pack = /obj/structure/vendomatpack/custom
+
+/obj/machinery/vending/sale/link_to_account()
+	return
 
 /obj/machinery/vending/toggleSecuredPanelOpen(var/obj/toggleitem, var/mob/user)
 	if(!account_first_linked)
@@ -3126,15 +3186,3 @@ var/global/num_vending_terminals = 1
 		)
 
 	pack = /obj/structure/vendomatpack/mining
-
-//Note : Snowflake, but I don't care. Rework the fucking economy
-/obj/machinery/vending/mining/New()
-	..()
-
-	if(ticker)
-		initialize()
-
-/obj/machinery/vending/mining/initialize()
-	..()
-
-	linked_account = department_accounts["Cargo"]
