@@ -103,7 +103,7 @@
 	station_holomap = new(src)
 	radio = new /obj/item/device/radio/borg(src)
 	aicamera = new/obj/item/device/camera/silicon/robot_camera(src)
-	
+
 	if(AIlink)
 		connected_ai = select_active_ai_with_fewest_borgs()
 
@@ -246,7 +246,7 @@
 /mob/living/silicon/robot/proc/set_module_sprites(var/list/new_sprites)
 	if(new_sprites && new_sprites.len)
 		module_sprites = new_sprites.Copy()
-	
+
 	if(module_sprites.len)
 		var/picked = pick(module_sprites)
 		icon_state = module_sprites[picked]
@@ -1031,6 +1031,10 @@
 			icon_state = "[base_icon]-roll"
 		else
 			icon_state = base_icon
+		if(check_icon(icon, "[icon_state]-welder"))
+			var/obj/item/weapon/weldingtool/welder = module_active
+			if(istype(welder) && welder.isOn())
+				overlays += image(icon = icon, icon_state = "[icon_state]-welder")
 
 //Call when target overlay should be added/removed
 /mob/living/silicon/robot/update_targeted()
