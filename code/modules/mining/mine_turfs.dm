@@ -627,6 +627,19 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 		"Phazon"  = 10
 	)
 
+/turf/unsimulated/mineral/random/meteor
+	mineralChance = 40
+	mineralSpawnChanceList = list(
+		"Uranium" = 12,
+		"Iron" = 12,
+		"Diamond" = 12,
+		"Gold" = 12,
+		"Silver" = 12,
+		"Plasma" = 12,
+		"Clown" = 12,
+		"Phazon" = 12
+	)
+
 /turf/unsimulated/mineral/random/Destroy()
 	return
 

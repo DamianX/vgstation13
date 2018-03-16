@@ -542,3 +542,19 @@ var/list/blob_candidates = list()
 	animate(src, transform = M, alpha = 0, time = 12)
 	spawn(12)
 		qdel(src)
+
+/obj/item/projectile/meteor/mineral
+	name = "mineral-rich meteor"
+	desc = "Oooh! Shiny!"
+	icon_state = "medium"
+
+/obj/item/projectile/meteor/mineral/to_bump(atom/A)
+	if(!loc)
+		return
+
+	explosion(src, 2, 4, 6, 8, 0, 1, 0)
+	for(var/turf/T in range(src, 2))
+		if(prob(25))
+			continue
+		T.ChangeTurf(/turf/unsimulated/mineral/random/meteor)
+	qdel(src)
