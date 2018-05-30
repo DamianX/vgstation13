@@ -213,7 +213,7 @@ var/global/list/cryo_health_indicator = list(	"full" = image("icon" = 'icons/obj
 
 /obj/machinery/atmospherics/unary/cryo_cell/attack_hand(mob/user)
 	if(panel_open)
-		to_chat(usr, "<span class='bnotice'>Close the maintenance panel first.</span>")
+		to_chat(user, "<span class='bnotice'>Close the maintenance panel first.</span>")
 		return
 	ui_interact(user)
 
