@@ -26,7 +26,7 @@
 	harvest = 0
 	age = mature_time // Since we don't die of old age, there's no need to keep an accurate age count.
 	update_icon()
-	plant_controller.add_plant(src)
+	processing_plants |= src
 
 /obj/effect/plantsegment/proc/do_thorns(var/mob/living/carbon/human/victim, var/chance)
 	if(!seed || !seed.thorny)

@@ -112,7 +112,7 @@
 	check_health()
 	// Keep processing us until we've done all there is for us to do in life.
 	if(neighbors.len || health != max_health || !harvest || is_locking(/datum/locking_category/plantsegment))
-		plant_controller.add_plant(src)
+		processing_plants |= src
 
 /obj/effect/plantsegment/proc/die_off()
 	if(seed && harvest)
@@ -124,9 +124,8 @@
 			continue
 		for(var/obj/effect/plantsegment/neighbor in check_turf.contents)
 			neighbor.neighbors |= check_turf
-			plant_controller.add_plant(neighbor)
+			processing_plants |= neighbor
 	spawn(1)
-		if(src)
-			qdel(src)
+		qdel(src)
 
 #undef NEIGHBOR_REFRESH_TIME

@@ -78,10 +78,10 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 		S.use(1)
 		new /obj/item/seeds/grassseed(loc)
 		return
-	
+
 	if(seedify(O, src, user))
 		to_chat(user, "<span class='notice'>You extract some seeds from [O].</span>")
-		return		
+		return
 
 	..()
 
@@ -167,7 +167,7 @@ obj/machinery/seed_extractor/Topic(var/href, var/list/href_list)
 	usr.set_machine(src)
 
 	var/amt = text2num(href_list["amt"])
-	var/datum/seed/S = plant_controller.seeds[href_list["seed"]]
+	var/datum/seed/S = SSplant.seeds[href_list["seed"]]
 
 	for(var/datum/seed_pile/P in piles)
 		if(P.seed == S)
