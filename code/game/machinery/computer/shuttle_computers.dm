@@ -106,7 +106,7 @@
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "shuttle"
 	req_access = null
-	circuit = "/obj/item/weapon/circuitboard/shuttle_control"
+	circuit = /obj/item/weapon/circuitboard/shuttle_control
 
 	machine_flags = EMAGGABLE | SCREWTOGGLE
 

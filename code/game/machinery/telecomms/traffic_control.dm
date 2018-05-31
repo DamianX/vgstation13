@@ -2,7 +2,7 @@
 	name = "telecommunications traffic control console"
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "traffic_control"
-	circuit = "/obj/item/weapon/circuitboard/comm_traffic"
+	circuit = /obj/item/weapon/circuitboard/comm_traffic
 
 	var/screen = 0				// the screen number:
 	var/list/servers = list()	// the servers located by the computer

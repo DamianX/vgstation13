@@ -7,7 +7,7 @@
 //	brightnessblue = 2
 	var/curing
 	var/virusing
-	circuit = "/obj/item/weapon/circuitboard/mining"
+	circuit = /obj/item/weapon/circuitboard/mining
 
 	var/obj/item/weapon/virusdish/dish = null
 

@@ -2,7 +2,7 @@
 	name = "\improper PDA Terminal"
 	desc = "It can be used to download Apps on your PDA."
 	icon_state = "pdaterm"
-	circuit = "/obj/item/weapon/circuitboard/pda_terminal"
+	circuit = /obj/item/weapon/circuitboard/pda_terminal
 	light_color = LIGHT_COLOR_ORANGE
 
 	var/obj/item/device/pda/pda_device = null

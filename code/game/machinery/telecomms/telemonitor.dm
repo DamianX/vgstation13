@@ -11,7 +11,7 @@
 	name = "telecommunications network monitoring console"
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "network_monitor"
-	circuit = "/obj/item/weapon/circuitboard/comm_monitor"
+	circuit = /obj/item/weapon/circuitboard/comm_monitor
 
 	var/screen = 0				// the screen number:
 	var/list/machinelist = list()	// the machines located by the computer

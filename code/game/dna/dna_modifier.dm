@@ -391,7 +391,7 @@
 	anchored = 1
 	idle_power_usage = 200
 	active_power_usage = 400
-	circuit = "/obj/item/weapon/circuitboard/scan_consolenew"
+	circuit = /obj/item/weapon/circuitboard/scan_consolenew
 
 	var/selected_ui_block = 1.0
 	var/selected_ui_subblock = 1.0

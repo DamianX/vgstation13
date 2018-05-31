@@ -79,7 +79,7 @@ proc/move_research_shuttle()
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "shuttle"
 	req_access = list(access_science)
-	circuit = "/obj/item/weapon/circuitboard/research_shuttle"
+	circuit = /obj/item/weapon/circuitboard/research_shuttle
 	var/location = 0 //0 = station, 1 = research base
 	machine_flags = EMAGGABLE | SCREWTOGGLE
 	light_color = LIGHT_COLOR_CYAN

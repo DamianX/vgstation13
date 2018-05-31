@@ -35,7 +35,7 @@
 			category = "Computers"
 			var/obj/machinery/computer/C = M
 			if(C.circuit)
-				var/obj/item/weapon/circuitboard/CB = text2path(C.circuit)
+				var/obj/item/weapon/circuitboard/CB = C.circuit
 				req_tech = ConvertReqString2List(initial(CB.origin_tech)) //have to use initial because it's a path
 				var/datum/design/circuit_design = FindTypeDesign(CB)
 				if(circuit_design)

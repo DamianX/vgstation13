@@ -13,7 +13,7 @@
 	name = "telepad control console"
 	desc = "Used to teleport objects to and from the telescience telepad."
 	icon_state = "teleport"
-	circuit = "/obj/item/weapon/circuitboard/telesci_computer"
+	circuit = /obj/item/weapon/circuitboard/telesci_computer
 	var/obj/machinery/telepad/telepad = null
 
 	// VARIABLES //

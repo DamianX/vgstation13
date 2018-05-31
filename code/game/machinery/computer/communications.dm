@@ -44,7 +44,7 @@ var/global/ports_open = TRUE
 	desc = "A console that is used for various important Command functions."
 	icon_state = "comm"
 	req_access = list(access_heads)
-	circuit = "/obj/item/weapon/circuitboard/communications"
+	circuit = /obj/item/weapon/circuitboard/communications
 	var/prints_intercept = 1
 	var/authenticated = UNAUTH //1 = normal login, 2 = emagged or had access_captain, 0 = logged out. Gremlins can set to 1 or 0.
 	var/list/messagetitle = list()

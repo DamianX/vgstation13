@@ -34,7 +34,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 /obj/machinery/computer/rdconsole
 	name = "R&D Console"
 	icon_state = "rdcomp"
-	circuit = "/obj/item/weapon/circuitboard/rdconsole"
+	circuit = /obj/item/weapon/circuitboard/rdconsole
 	var/datum/research/files							//Stores all the collected research data.
 	var/obj/item/weapon/disk/tech_disk/t_disk = null	//Stores the technology disk.
 	var/obj/item/weapon/disk/design_disk/d_disk = null	//Stores the design disk.
@@ -1033,30 +1033,30 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	name = "MoMMI R&D Console"
 	id = 3
 	req_access = list(access_rnd)
-	circuit = "/obj/item/weapon/circuitboard/rdconsole/mommi"
+	circuit = /obj/item/weapon/circuitboard/rdconsole/mommi
 
 /obj/machinery/computer/rdconsole/robotics
 	name = "Robotics R&D Console"
 	id = 2
 	req_one_access = list(access_robotics)
 	req_access=list()
-	circuit = "/obj/item/weapon/circuitboard/rdconsole/robotics"
+	circuit = /obj/item/weapon/circuitboard/rdconsole/robotics
 
 /obj/machinery/computer/rdconsole/mechanic
 	name = "Mechanics R&D Console"
 	id = 4
 	req_one_access = list(access_mechanic)
 	req_access=list()
-	circuit = "/obj/item/weapon/circuitboard/rdconsole/mechanic"
+	circuit = /obj/item/weapon/circuitboard/rdconsole/mechanic
 
 /obj/machinery/computer/rdconsole/core
 	name = "Core R&D Console"
 	id = 1
 	req_access = list(access_rnd)
-	circuit = "/obj/item/weapon/circuitboard/rdconsole"
+	circuit = /obj/item/weapon/circuitboard/rdconsole
 
 /obj/machinery/computer/rdconsole/pod
 	name = "Pod Bay R&D Console"
 	id = 5
 	req_access=list()
-	circuit = "/obj/item/weapon/circuitboard/rdconsole/pod"
+	circuit = /obj/item/weapon/circuitboard/rdconsole/pod

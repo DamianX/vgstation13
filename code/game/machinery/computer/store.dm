@@ -2,7 +2,7 @@
 	name = "Merch Computer"
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "store"
-	circuit = "/obj/item/weapon/circuitboard/merch"
+	circuit = /obj/item/weapon/circuitboard/merch
 	var/datum/html_interface/interface
 	var/tmp/next_process = 0
 	var/machine_id = ""

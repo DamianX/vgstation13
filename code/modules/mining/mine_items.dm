@@ -117,7 +117,7 @@ proc/move_mining_shuttle()
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "shuttle"
 	req_access = list(access_mining)
-	circuit = "/obj/item/weapon/circuitboard/mining_shuttle"
+	circuit = /obj/item/weapon/circuitboard/mining_shuttle
 	var/location = 0 //0 = station, 1 = mining base
 	machine_flags = EMAGGABLE | SCREWTOGGLE
 	light_color = LIGHT_COLOR_CYAN

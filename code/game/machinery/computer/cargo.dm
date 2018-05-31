@@ -36,7 +36,7 @@ For vending packs, see vending_packs.dm*/
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "supply"
 	req_access = list(access_cargo)
-	circuit = "/obj/item/weapon/circuitboard/supplycomp"
+	circuit = /obj/item/weapon/circuitboard/supplycomp
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
 	var/hacked = 0
 	var/can_order_contraband = 0
@@ -379,7 +379,7 @@ For vending packs, see vending_packs.dm*/
 	name = "Supply ordering console"
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "request"
-	circuit = "/obj/item/weapon/circuitboard/ordercomp"
+	circuit = /obj/item/weapon/circuitboard/ordercomp
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
 	var/last_viewed_group = "Supplies" // not sure how to get around hard coding this
 	var/datum/money_account/current_acct

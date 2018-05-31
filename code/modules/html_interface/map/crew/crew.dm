@@ -5,7 +5,7 @@
 	use_power = 1
 	idle_power_usage = 250
 	active_power_usage = 500
-	circuit = "/obj/item/weapon/circuitboard/crew"
+	circuit = /obj/item/weapon/circuitboard/crew
 	var/list/tracked = list(  )
 	var/track_special_role
 

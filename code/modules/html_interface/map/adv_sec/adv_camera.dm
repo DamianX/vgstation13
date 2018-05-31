@@ -1,7 +1,7 @@
 /obj/machinery/computer/security/advanced
 	name = "Advanced Security Cameras"
 	desc = "Used to access the various cameras on the station with an interactive user interface."
-	circuit = "/obj/item/weapon/circuitboard/security/advanced"
+	circuit = /obj/item/weapon/circuitboard/security/advanced
 
 /obj/machinery/computer/security/advanced/New()
 	..()

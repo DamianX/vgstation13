@@ -100,7 +100,7 @@
 		else if(istype(M, /obj/machinery/computer))
 			var/obj/machinery/computer/C = M
 			if(C.circuit)
-				var/obj/item/weapon/circuitboard/comp_circuit = text2path(C.circuit)
+				var/obj/item/weapon/circuitboard/comp_circuit = C.circuit
 				techlist = ConvertReqString2List(initial(comp_circuit.origin_tech))
 
 	else if(istype(O, /obj/item))

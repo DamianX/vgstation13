@@ -4,7 +4,7 @@
 	desc = "A computer that takes DNA from a DNA scanner and uses it to clone an organism with a cloning pod."
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "cloning"
-	circuit = "/obj/item/weapon/circuitboard/cloning"
+	circuit = /obj/item/weapon/circuitboard/cloning
 	req_access = list(access_heads) //Only used for record deletion right now.
 	var/obj/machinery/dna_scannernew/scanner = null //Linked scanner. For scanning.
 	//var/obj/machinery/species_modifier/species_mod = null //linked Species Modifier. For handling species.

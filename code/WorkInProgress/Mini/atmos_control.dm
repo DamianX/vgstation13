@@ -19,7 +19,7 @@ var/global/list/atmos_controllers = list()
 	icon_state = "tank"
 	density = 1
 	anchored = 1.0
-	circuit = "/obj/item/weapon/circuitboard/atmoscontrol"
+	circuit = /obj/item/weapon/circuitboard/atmoscontrol
 	var/obj/machinery/alarm/current
 	var/list/filter=null
 	var/overridden = 0 //not set yet, can't think of a good way to do it

@@ -11,7 +11,7 @@
 	icon_state = "message_monitor"
 	var/hack_icon = "message_monitor_hacked"
 	var/normal_icon = "message_monitor"
-	circuit = "/obj/item/weapon/circuitboard/message_monitor"
+	circuit = /obj/item/weapon/circuitboard/message_monitor
 	//Server linked to.
 	var/obj/machinery/message_server/linkedServer = null
 	//Messages - Saves me time if I want to change something.

@@ -5,7 +5,7 @@
 	desc = "Terminal for programming Nanotrasen employee ID cards to access parts of the station."
 	icon_state = "id"
 	req_access = list(access_change_ids)
-	circuit = "/obj/item/weapon/circuitboard/card"
+	circuit = /obj/item/weapon/circuitboard/card
 	var/obj/item/weapon/card/id/modify = null
 	var/mode = 0.0
 	var/printing = null
@@ -352,7 +352,7 @@
 
 /obj/machinery/computer/card/centcom
 	name = "CentCom Identification Computer"
-	circuit = "/obj/item/weapon/circuitboard/card/centcom"
+	circuit = /obj/item/weapon/circuitboard/card/centcom
 	req_access = list(
 		access_cent_creed,
 		access_cent_captain,

@@ -6,7 +6,7 @@
 	icon_state = "computer_generic"//TODO
 	density = 1
 	anchored = 1
-	circuit = "/obj/item/weapon/circuitboard/smeltcomp"
+	circuit = /obj/item/weapon/circuitboard/smeltcomp
 	light_color = LIGHT_COLOR_GREEN
 
 	var/frequency = FREQ_DISPOSAL //Same as conveyors.

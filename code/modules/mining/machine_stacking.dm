@@ -5,7 +5,7 @@
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "stacking_machine_console"
 	light_color = LIGHT_COLOR_BLUE
-	circuit = "/obj/item/weapon/circuitboard/stacking_machine_console"
+	circuit = /obj/item/weapon/circuitboard/stacking_machine_console
 
 	var/stacker_tag//The ID of the stacker this console should control
 	var/frequency = FREQ_DISPOSAL

@@ -17,7 +17,7 @@
 
 	var/universal_translate = 0 // set to 1 if it can translate nonhuman speech
 
-	circuit = "/obj/item/weapon/circuitboard/comm_server"
+	circuit = /obj/item/weapon/circuitboard/comm_server
 
 	req_access = list(access_tcomsat)
 
