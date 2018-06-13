@@ -42,6 +42,7 @@
 		return
 	if(!parent_borer.channeling_bone_cocoon) //the borer has stopped sustaining the cocoon
 		qdel(src)
+		return
 	if(parent_borer.chemicals < 10) //the parent borer no longer has the chemicals required to sustain the cocoon
 		qdel(src)
 	else
