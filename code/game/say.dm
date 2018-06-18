@@ -272,13 +272,6 @@ var/global/image/ghostimg = image("icon"='icons/mob/mob.dmi',"icon_state"="ghost
 	return
 
 /**
- * Probably used for getting tracking coordinates?
- * TODO: verify
- */
-/atom/movable/proc/GetTrack()
-	return
-
-/**
  * What is speaking for us?  Usually src.
  */
 /atom/movable/proc/GetSource()
@@ -291,15 +284,11 @@ var/global/image/ghostimg = image("icon"='icons/mob/mob.dmi',"icon_state"="ghost
 
 /atom/movable/virtualspeaker
 	var/job
-	var/faketrack
 	var/atom/movable/source
 	var/obj/item/device/radio/radio
 
 /atom/movable/virtualspeaker/GetJob()
 	return job
-
-/atom/movable/virtualspeaker/GetTrack()
-	return faketrack
 
 /atom/movable/virtualspeaker/GetSource()
 	return source
@@ -309,11 +298,10 @@ var/global/image/ghostimg = image("icon"='icons/mob/mob.dmi',"icon_state"="ghost
 
 /atom/movable/virtualspeaker/resetVariables()
 	job = null
-	faketrack = null
 	source = null
 	radio = null
 
-	..("job", "faketrack", "source", "radio")
+	..("job", "source", "radio")
 
 proc/handle_render(var/mob,var/message,var/speaker)
 	if(istype(mob, /mob/new_player))

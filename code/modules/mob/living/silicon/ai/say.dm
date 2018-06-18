@@ -14,11 +14,7 @@
 		virt_speaker = src
 	if(speech.speaker != src && M != src)
 		if(M)
-			var/faketrack = "byond://?src=\ref[virt_speaker];track2=\ref[src];track=\ref[M]"
-			if(speech.speaker.GetTrack())
-				faketrack = "byond://?src=\ref[virt_speaker];track2=\ref[src];faketrack=\ref[M]"
-
-			return "<a href='byond://?src=\ref[virt_speaker];open2=\ref[src];open=\ref[M]'>\[OPEN\]</a> <a href='[faketrack]'>"
+			return "<a href='byond://?src=\ref[src];open=[M.name]'>\[OPEN\]</a> <a href='byond://?src=\ref[src];track=[M.name]'>"
 	return ""
 
 /mob/living/silicon/ai/render_speaker_track_end(var/datum/speech/speech)

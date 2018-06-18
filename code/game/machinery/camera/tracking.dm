@@ -76,7 +76,7 @@
 	for(var/obj/mecha/target_mecha in mechas_list)
 		if(!can_track_atom(target_mecha))
 			continue
-		
+
 		var/name = target_mecha.name
 		if(name in track.mecha_names)
 			track.mecha_namecounts[name]++
@@ -169,13 +169,13 @@
 
 		if(isalien(target))
 			return FALSE
-		
+
 		if(istype(target.loc, /obj/effect/dummy))
 			return FALSE
 
 		if(!near_camera(target))
 			return FALSE
-	
+
 	if(!near_camera(target))
 		return FALSE
 
@@ -247,3 +247,14 @@
 				if (sorttext(a.c_tag, b.c_tag) < 0)
 					L.Swap(j, j + 1)
 	return L
+
+// Returns either an atom with the specified name or null if none can be found
+/mob/living/silicon/ai/proc/find_target_with_name(var/name_to_look_for)
+	var/list/trackables = trackable_atoms()
+	var/list/targets = list()
+	for(var/thing_name in trackables)
+		if(name_to_look_for == thing_name)
+			targets.Add(trackables[thing_name])
+	if(!targets.len)
+		return null
+	return pick(targets)

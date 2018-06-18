@@ -522,34 +522,15 @@ var/list/ai_list = list()
 		statelaws()
 
 	if(href_list["track"])
-		var/mob/target = locate(href_list["track"]) in mob_list
-		var/mob/living/silicon/ai/A = locate(href_list["track2"]) in mob_list
-		if(A && target)
-			A.ai_actual_track(target)
-		return
-
-	else if(href_list["faketrack"])
-		var/mob/target = locate(href_list["track"]) in mob_list
-		var/mob/living/silicon/ai/A = locate(href_list["track2"]) in mob_list
-		if(A && target)
-
-			A.cameraFollow = target
-			to_chat(A, text("Now tracking [] on camera.", target.name))
-			if(usr.machine == null)
-				usr.machine = usr
-
-			while (src.cameraFollow == target)
-				to_chat(usr, "Target is not on or near any active cameras on the station. We'll check again in 5 seconds (unless you use the cancel-camera verb).")
-				sleep(40)
-				continue
-
+		var/name_to_look_for = href_list["track"]
+		var/target = find_target_with_name(name_to_look_for)
+		ai_actual_track(target)
 		return
 
 	if(href_list["open"])
-		var/mob/target = locate(href_list["open"])
-		var/mob/living/silicon/ai/A = locate(href_list["open2"])
-		if(A && target)
-			A.open_nearest_door(target)
+		var/name_to_look_for = href_list["open"]
+		var/target = find_target_with_name(name_to_look_for)
+		open_nearest_door(target)
 		return
 
 	return

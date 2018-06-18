@@ -323,7 +323,6 @@
 	var/atom/movable/virtualspeaker/virt = getFromPool(/atom/movable/virtualspeaker, null)
 	virt.name = source
 	virt.job = job
-	virt.faketrack = 1
 	//END SAY REWRITE RELATED CODE.
 
 

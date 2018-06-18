@@ -270,7 +270,7 @@ var/list/camera_messages = list()
 			if(U.name == "Unknown")
 				to_chat( O, "<span class='name'>[U]</span> holds a <a href='byond://?src=\ref[src];picturename=[html_encode(W.name)]'>[W]</a> up to one of your cameras ...")
 			else
-				to_chat(O, "<span class='name'><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></span> holds a <a href='byond://?src=\ref[src];picturename=[html_encode(W.name)]'>[W]</a> up to one of your cameras ...")
+				to_chat(O, "<span class='name'><a href='byond://?src=\ref[O];;track=[U.name]'>[U]</a></span> holds a <a href='byond://?src=\ref[src];picturename=[html_encode(W.name)]'>[W]</a> up to one of your cameras ...")
 
 		for(var/mob/O in player_list)
 			if (istype(O.machine, /obj/machinery/computer/security))
