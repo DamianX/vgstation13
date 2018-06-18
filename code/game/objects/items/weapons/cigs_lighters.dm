@@ -300,7 +300,7 @@ MATCHBOXES ARE ALSO IN FANCY.DM
 
 	if(reagents.get_reagent_amount(PLASMA)) //Plasma explodes when exposed to fire
 		var/datum/effect/effect/system/reagents_explosion/e = new()
-		e.set_up(round(reagents.get_reagent_amount(PLASMA)/2.5, 1), get_turf(src), 0, 0)
+		e.set_up(round(reagents.get_reagent_amount(PLASMA)/2.5, 1), get_turf(src))
 		e.start()
 		if(ismob(loc))
 			var/mob/M = loc
@@ -310,7 +310,7 @@ MATCHBOXES ARE ALSO IN FANCY.DM
 
 	if(reagents.get_reagent_amount(FUEL)) //Fuel explodes, too, but much less violently
 		var/datum/effect/effect/system/reagents_explosion/e = new()
-		e.set_up(round(reagents.get_reagent_amount(FUEL)/5, 1), get_turf(src), 0, 0)
+		e.set_up(round(reagents.get_reagent_amount(FUEL)/5, 1), get_turf(src))
 		e.start()
 		if(ismob(loc))
 			var/mob/M = loc
