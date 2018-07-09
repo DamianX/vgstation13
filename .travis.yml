@@ -2,6 +2,8 @@
 language: rust
 rust:
 - stable
+python:
+- "3.6"
 sudo: false
 
 env:
