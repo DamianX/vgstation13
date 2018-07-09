@@ -35,7 +35,7 @@ before_script:
 - tools/travis/install-byond.sh
 
 script:
-- $SCRIPT_TO_RUN
+- tools/travis/$SCRIPT_TO_RUN
 
 notifications:
   irc:
