@@ -28,7 +28,7 @@ addons:
     - libstdc++6:i386
 
 install:
-- pip install --user PyYaml beautifulsoup4 subprocess32 colorama -q
+- pip install PyYaml beautifulsoup4 subprocess32 colorama -q
 
 before_script:
 - tools/travis/install-byond.sh
