@@ -1,4 +1,4 @@
-#pretending we're C because otherwise ruby/rvm will initialize, even with "language: dm".
+#pretending we're Rust because otherwise ruby/rvm will initialize, even with "language: dm".
 language: rust
 rust:
 - stable
@@ -9,12 +9,10 @@ env:
   - BYOND_MAJOR="512"
   - BYOND_MINOR="1413"
   - ALL_MAPS="tgstation metaclub defficiency packedstation test_box test_tiny"
-  - PROJECT_NAME="vgstation13"
-  - RUST_BACKTRACE="1"
-  - RUST_TEST_THREADS=1
   matrix:
-  - DM_UNIT_TESTS="1"
-  - DM_UNIT_TESTS="0"
+  - SCRIPT_TO_RUN="build_and_test_libvg.sh"
+  - SCRIPT_TO_RUN="build_and_check_all_maps.sh"
+  - SCRIPT_TO_RUN="build_and_test_dm.py"
 
 cache:
   directories:
@@ -37,18 +35,7 @@ before_script:
 - tools/travis/install-byond.sh
 
 script:
-# Has to use Python 2 instead of 3 because else it won't find colorama.
-- python tools/travis/check_map_files.py maps/
-- find -name '*.dme' -exec cat {} \; | awk '/maps\\test.*/ { exit 1 }'
-- python tools/changelog/ss13_genchangelog.py html/changelog.html html/changelogs --dry-run
-- source $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}/byond/bin/byondsetup
-- cd libvg
-# --jobs 1 to prevent threading problems with the BYOND crate.
-- cargo test --jobs 1 --verbose
-- cd -
-- tools/travis/build.py
-- cp tools/travis/config/config.txt config/
-- (! tools/travis/run_tests.py | grep -zq "UNIT TEST FAIL")
+- $SCRIPT_TO_RUN
 
 notifications:
   irc:

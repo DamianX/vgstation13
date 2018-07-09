@@ -10,11 +10,7 @@ import travis_utils
 MAP_INCLUDE_RE = re.compile(r"#include \"maps\\[a-zA-Z0-9][a-zA-Z0-9_]*\.dm\"")
 
 def main():
-    dme = os.environ.get("PROJECT_NAME") # The DME file to compile.
-    if not dme:
-        print("No project name specified.")
-        exit(1)
-    dme += ".dme"
+    dme = "vgstation13.dme"
     mapfiles = os.environ.get("ALL_MAPS") # Extra map files to replace the regular map file in the DME with.
     build_tests = os.environ.get("DM_UNIT_TESTS") == "1" # Whether to build unit tests or not.
 
