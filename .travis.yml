@@ -1,7 +1,4 @@
-#pretending we're Rust because otherwise ruby/rvm will initialize, even with "language: dm".
-language: rust
-rust:
-- stable
+language: python
 python:
 - "3.6"
 sudo: false
