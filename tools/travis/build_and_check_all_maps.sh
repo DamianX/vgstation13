@@ -5,4 +5,4 @@ python tools/travis/check_map_files.py maps/
 find -name '*.dme' -exec cat {} \; | awk '/maps\\test.*/ { exit 1 }'
 python tools/changelog/ss13_genchangelog.py html/changelog.html html/changelogs --dry-run
 source $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}/byond/bin/byondsetup
-python tools/travis/build.py
+tools/travis/build.py

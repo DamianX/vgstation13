@@ -12,7 +12,7 @@ env:
   matrix:
   - SCRIPT_TO_RUN="build_and_test_libvg.sh"
   - SCRIPT_TO_RUN="build_and_check_all_maps.sh"
-  - SCRIPT_TO_RUN="build_and_test_dm.py"
+  - SCRIPT_TO_RUN="build_and_test_dm.sh"
 
 cache:
   directories:
