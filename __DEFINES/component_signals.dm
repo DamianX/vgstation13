@@ -128,3 +128,8 @@
 
 #define COMSIG_GETDAMTYPE "get_dam_type"
 
+/** Sent when a movable atom changes area
+ * @param reference to new /area
+ * @param reference to old location
+ */
+#define COMSIG_AREA_CHANGE "area_change"

@@ -414,7 +414,7 @@ var/area/space_area
 
 /area/Entered(atom/movable/Obj, atom/OldLoc)
 	var/area/oldArea = get_area(OldLoc)
-
+	SEND_SIGNAL(Obj, COMSIG_AREA_CHANGE, src, OldLoc)
 	if(project_shadows)
 		Obj.update_shadow()
 	else if(istype(oldArea) && oldArea.project_shadows)
