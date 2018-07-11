@@ -50,7 +50,7 @@
 
 
 	// ... which is used to silence an error if it occurs too often, too fast
-	if (cooldown > configured_error_cooldown * configured_error_limit)
+	/*if (cooldown > configured_error_cooldown * configured_error_limit)
 		cooldown = -1
 		silencing = 1
 		spawn (0)
@@ -60,7 +60,7 @@
 			global.error_cooldown[erroruid] = 0
 			if (skipcount > 0)
 				world.log << "\[[time_stamp()]] Skipped [skipcount] runtimes in [e.file],[e.line]: [e]"
-				error_cache.log_error(e, skip_count = skipcount)
+				error_cache.log_error(e, skip_count = skipcount)*/
 
 	global.error_last_seen[erroruid] = world.time
 	global.error_cooldown[erroruid] = cooldown

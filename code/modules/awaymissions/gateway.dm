@@ -11,10 +11,12 @@ var/list/gateways = list() //List containing the gateways on away missions
 
 /obj/machinery/gateway/initialize()
 	. = ..()
+	update_icon_and_density()
+
+/obj/machinery/gateway/proc/update_icon_and_density()
 	update_icon()
 	if(dir == 2)
 		setDensity(FALSE)
-
 
 /obj/machinery/gateway/update_icon()
 	if(active)

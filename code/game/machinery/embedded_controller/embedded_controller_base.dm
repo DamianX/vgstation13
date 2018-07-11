@@ -178,8 +178,7 @@
 /obj/machinery/embedded_controller/radio/acidable()
 	return 0
 
-/obj/machinery/embedded_controller/radio/initialize()
-	. = ..()
+/obj/machinery/embedded_controller/radio/proc/set_frequency_and_update_program()
 	set_frequency(frequency)
 	var/datum/computer/file/embedded_program/new_prog = new
 
@@ -198,6 +197,10 @@
 	spawn(10)
 		program.signalDoor(tag_exterior_door, "update")		//signals connected doors to update their status
 		program.signalDoor(tag_interior_door, "update")
+
+/obj/machinery/embedded_controller/radio/initialize()
+	. = ..()
+	set_frequency_and_update_program()
 
 /obj/machinery/embedded_controller/radio/update_icon()
 	if(on && program)
@@ -298,7 +301,7 @@
 			re_init=1
 
 		if(re_init)
-			initialize()
+			set_frequency_and_update_program()
 		if(update_mt_menu)
 			//usr.set_machine(src)
 			update_multitool_menu(usr)

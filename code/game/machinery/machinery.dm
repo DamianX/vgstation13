@@ -167,11 +167,14 @@ Class Procs:
 	machines += src
 	..()
 
-/obj/machinery/initialize()
-	. = ..()
+/obj/machinery/proc/reinitialize()
 	if(machine_flags & PURCHASER)
 		reconnect_database()
 		linked_account = vendor_account
+
+/obj/machinery/initialize()
+	. = ..()
+	reinitialize()
 
 /obj/machinery/examine(mob/user)
 	..()
@@ -355,7 +358,7 @@ Class Procs:
 			re_init=1
 
 		if(re_init)
-			initialize()
+			reinitialize()
 		if(update_mt_menu)
 			//usr.set_machine(src)
 			update_multitool_menu(usr)

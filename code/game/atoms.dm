@@ -176,7 +176,7 @@ var/global/list/ghdel_profiling = list()
 	on_density_change = new("owner"=src)
 	. = ..()
 	AddToProfiler()
-	if(world.has_round_started())
+	if(SS_READY(SSobj))
 		initialize()
 
 /atom/proc/assume_air(datum/gas_mixture/giver)
@@ -913,8 +913,9 @@ its easier to just keep the beam vertical.
 			return C.mob
 
 /atom/proc/initialize()
+	//testing("\ref[src] ([type]) flags: [flags] - times initialized: [times_initialized] - location: [x] [y] [z] loc: [loc] (\ref[loc]) [(get_turf(src))?.type] - area: [get_area(src)?.type]")
 	if(flags & INITIALIZED)
-		stack_trace("[src][type] initialized multiple times!")
+		stack_trace("[src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
 	ComponentInitialize()
 

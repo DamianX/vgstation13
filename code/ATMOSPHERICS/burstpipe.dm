@@ -32,7 +32,7 @@
 	initialize_directions = dir
 	var/turf/T = loc
 	level = T.intact ? 2 : 1
-	initialize()
+	update_icon()
 	build_network()
 	if (node)
 		node.initialize()

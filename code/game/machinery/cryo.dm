@@ -50,7 +50,6 @@ var/global/list/cryo_health_indicator = list(	"full" = image("icon" = 'icons/obj
 	RefreshParts()
 
 	initialize_directions = dir
-	initialize()
 	build_network()
 	if (node)
 		node.initialize()

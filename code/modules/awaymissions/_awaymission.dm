@@ -57,7 +57,7 @@ Example of the second method:
 			location = get_turf(L)
 
 	for(var/obj/machinery/gateway/G in objects)
-		G.initialize()
+		G.update_icon_and_density()
 
 /datum/map_element/away_mission/empty_space
 	name = "empty space"

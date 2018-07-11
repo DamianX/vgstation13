@@ -116,13 +116,6 @@ obj/machinery/door/airlock/initialize()
 
 	update_icon()
 
-
-obj/machinery/door/airlock/New()
-	..()
-
-	if(radio_controller)
-		set_frequency(frequency)
-
 obj/machinery/airlock_sensor
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_sensor_off"
@@ -194,12 +187,6 @@ obj/machinery/airlock_sensor/initialize()
 	. = ..()
 	set_frequency(frequency)
 
-obj/machinery/airlock_sensor/New()
-	..()
-
-	if(radio_controller)
-		set_frequency(frequency)
-
 obj/machinery/airlock_sensor/airlock_interior
 	command = "cycle_interior"
 
@@ -251,7 +238,7 @@ obj/machinery/airlock_sensor/Topic(href,href_list)
 				newfreq *= 10 // shift the decimal one place
 			if(newfreq < 10000)
 				frequency = newfreq
-				initialize()
+				set_frequency(frequency)
 	update_multitool_menu(usr)
 
 
@@ -395,6 +382,6 @@ obj/machinery/access_button/Topic(href,href_list)
 					newfreq *= 10 // shift the decimal one place
 				if(newfreq < 10000)
 					frequency = newfreq
-					initialize()
+					set_frequency(frequency)
 
 		update_multitool_menu(usr)

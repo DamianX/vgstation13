@@ -137,8 +137,7 @@
 	if(lever && lever.id_tag)
 		id_tag = lever.id_tag
 		frequency = lever.frequency
-		spawn(5) // Need to wait for the radio_controller to wake up.
-			updateConfig()
+		updateConfig()
 		return
 	//We didn't find any levers close so let's just try to copy any conveyors nearby
 	for(var/direction in cardinal)
@@ -146,8 +145,7 @@
 		if(domino && domino.id_tag)
 			id_tag = domino.id_tag
 			frequency = domino.frequency
-			spawn(5) // Yeah I copied this twice so what
-				updateConfig()
+			updateConfig()
 			return
 
 /obj/machinery/conveyor/proc/update_nearby_conveyors()
@@ -205,9 +203,6 @@
 	var/list/dirs = conveyor_directions(dir, in_reverse)
 	forwards = dirs[1]
 	backwards = dirs[2]
-
-	if(!startup) // Need to wait for the radio_controller to wake up.
-		initialize()
 
 /obj/machinery/conveyor/proc/setmove()
 	if(operating == 1)
@@ -462,11 +457,6 @@
 		id_tag = "[rand(9999)]"
 		set_frequency(frequency) //I tried just assigning the ID tag during initialize(), but that didn't work somehow, probably because it makes TOO MUCH SENSE
 	update()
-	spawn(5)		// allow map load
-		updateConfig()
-
-/obj/machinery/conveyor_switch/proc/updateConfig()
-	//initialize()
 
 // update the icon depending on the position
 
@@ -568,7 +558,7 @@
 		return
 	if("setconvdir" in href_list)
 		convdir = text2num(href_list["setconvdir"])
-		updateConfig()
+		update()
 		return MT_UPDATE
 
 /obj/machinery/conveyor_switch/npc_tamper_act(mob/living/L)

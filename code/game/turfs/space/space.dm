@@ -36,9 +36,6 @@
 			overlays.Cut()
 	appearance = parallax_appearances["[((x + y) ^ ~(x * y) + z) % 26]"]
 
-/turf/space/spawned_by_map_element(var/datum/map_element/ME, var/list/objects)
-	initialize()
-
 /turf/space/attack_paw(mob/user as mob)
 	return src.attack_hand(user)
 
