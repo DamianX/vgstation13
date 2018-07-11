@@ -1,5 +1,7 @@
 #define SEND_SIGNAL(target, sigtype, arguments...) ( !target.comp_lookup || !target.comp_lookup[sigtype] ? NONE : target.SendSignal(sigtype, list(##arguments)) )
-#define SEND_GLOBAL_SIGNAL(sigtype, arguments...) ( SEND_SIGNAL(SSdcs, sigtype, ##arguments) )
+#define SEND_GLOBAL_SIGNAL(sigtype, arguments...) ( SEND_SIGNAL(global.signal_handler, sigtype, ##arguments) )
+#define REGISTER_GLOBAL_SIGNAL(arguments...) ( RegisterSignal(global.signal_handler, ##arguments) )
+#define UNREGISTER_GLOBAL_SIGNAL(arguments...) ( UnregisterSignal(global.signal_handler, ##arguments) )
 
 #define COMPONENT_INCOMPATIBLE 1
 
