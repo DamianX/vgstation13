@@ -263,7 +263,7 @@ datum/emergency_shuttle/proc/shuttle_phase(var/phase, var/casual = 1)
 				settimeleft(SHUTTLETRANSITTIME)
 
 				// Shuttle Radio
-				CallHook("EmergencyShuttleDeparture", list())
+				SEND_GLOBAL_SIGNAL(COMSIG_GLOB_SHUTTLE_DEPARTED, args)
 
 				captain_announce("The Emergency Shuttle has left the station. Estimate [round(timeleft()/60,1)] minutes until the shuttle docks at Central Command.")
 				vote_preload()

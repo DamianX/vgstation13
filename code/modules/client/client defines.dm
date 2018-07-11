@@ -51,11 +51,6 @@
 	// Used by html_interface module.
 	var/hi_last_pos
 
-	/////////////////////////////////////////////
-	// /vg/: MEDIAAAAAAAA
-	// Set on login.
-	var/datum/media_manager/media = null
-
 	var/filling = 0 //SOME STUPID SHIT POMF IS DOING
 	var/haszoomed = 0
 	var/updating_colour = 0

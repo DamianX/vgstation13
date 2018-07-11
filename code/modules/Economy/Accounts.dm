@@ -185,11 +185,8 @@ var/global/datum/money_account/trader_account
 
 	account_DBs += src
 
-	if(ticker)
-		initialize()
-
 /obj/machinery/account_database/initialize()
-	..()
+	. = ..()
 
 	if(z == CENTCOMM_Z && isnull(centcomm_account_db))
 		centcomm_account_db = src

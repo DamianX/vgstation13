@@ -25,11 +25,10 @@
 	machine_flags = EMAGGABLE | SCREWTOGGLE | CROWDESTROY | WRENCHMOVE | FIXED2WORK | EJECTNOTDEL | WELD_FIXED
 
 /obj/machinery/power/rust_fuel_injector/initialize()
+	. = ..()
 	if(!id_tag)
 		assign_uid()
 		id_tag = uid
-
-	. = ..()
 
 /obj/machinery/power/rust_fuel_injector/New()
 	. = ..()
@@ -42,9 +41,6 @@
 		/obj/item/weapon/stock_parts/matter_bin/adv/super,
 		/obj/item/weapon/stock_parts/console_screen,
 	)
-
-	if(ticker)
-		initialize()
 
 /obj/machinery/power/rust_fuel_injector/examine(var/mob/user)
 	..()

@@ -100,7 +100,7 @@
 			return
 		sleep(300)
 		log_game("Rebooting due to universal collapse")
-		CallHook("Reboot",list())
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_REBOOT)
 		world.Reboot()
 		return
 

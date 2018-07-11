@@ -44,9 +44,7 @@
 		return
 
 	// Send update to clients.
-	for(var/mob/M in mobs_in_area(master_area))
-		if(M && M.client)
-			M.update_music()
+	SEND_SIGNAL(master_area, COMSIG_AREA_MUSIC_UPDATE)
 
 /obj/machinery/media/proc/update_media_source()
 	var/area/A = get_area(src)
@@ -82,9 +80,7 @@
 	A.media_source=null
 
 	// Clients
-	for(var/mob/M in mobs_in_area(A))
-		if(M && M.client)
-			M.update_music()
+	SEND_SIGNAL(A, COMSIG_AREA_MUSIC_UPDATE)
 	master_area=null
 
 /obj/machinery/media/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)

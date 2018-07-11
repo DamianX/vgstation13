@@ -46,12 +46,9 @@
 	var/frequency = 1419
 	var/code = null
 	var/datum/radio_frequency/radio_connection
-	New()
-		..()
-		if(radio_controller)
-			initialize()
 
 	initialize()
+		. = ..()
 		set_frequency(frequency)
 
 	proc

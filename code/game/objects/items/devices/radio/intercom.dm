@@ -15,11 +15,9 @@
 /obj/item/device/radio/intercom/supports_holomap()
 	return TRUE
 
-/obj/item/device/radio/intercom/universe/New()
-	return ..()
-
+/obj/item/device/radio/intercom/universe
 /obj/item/device/radio/intercom/initialize()
-	..()
+	. = ..()
 	add_self_to_holomap()
 
 /obj/item/device/radio/intercom/New(turf/loc, var/ndir = 0, var/building = 3)

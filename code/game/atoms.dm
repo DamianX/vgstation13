@@ -176,6 +176,8 @@ var/global/list/ghdel_profiling = list()
 	on_density_change = new("owner"=src)
 	. = ..()
 	AddToProfiler()
+	if(world.has_round_started())
+		initialize()
 
 /atom/proc/assume_air(datum/gas_mixture/giver)
 	return null
@@ -911,4 +913,10 @@ its easier to just keep the beam vertical.
 			return C.mob
 
 /atom/proc/initialize()
+	if(flags & INITIALIZED)
+		stack_trace("[src][type] initialized multiple times!")
+	flags |= INITIALIZED
+	ComponentInitialize()
+
+/atom/proc/ComponentInitialize()
 	return

@@ -626,9 +626,9 @@ var/list/apiary_reservation = list()
 	reagents.add_reagent(NUTRIMENT, 4)
 	reagents.add_reagent(SUGAR, 16)
 	update_icon()
-	initialize()
 
 /obj/machinery/apiary/wild/angry/initialize()
+	. = ..()
 	species = bees_species[BEESPECIES_NORMAL]
 
 /obj/machinery/apiary/wild/angry/process()
@@ -685,6 +685,7 @@ var/list/apiary_reservation = list()
 	reagents.add_reagent(SUGAR, 21)
 
 /obj/machinery/apiary/wild/angry/hornet/initialize()
+	. = ..()
 	species = bees_species[BEESPECIES_HORNET]
 
 #undef MAX_BEES_PER_HIVE

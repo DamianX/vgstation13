@@ -57,6 +57,7 @@ var/global/list/cryo_health_indicator = list(	"full" = image("icon" = 'icons/obj
 		node.build_network()
 
 /obj/machinery/atmospherics/unary/cryo_cell/initialize()
+	. = ..()
 	if(node)
 		return
 	for(var/cdir in cardinal)

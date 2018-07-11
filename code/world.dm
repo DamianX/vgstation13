@@ -80,7 +80,6 @@ var/savefile/panicfile
 	jobban_updatelegacybans()
 	appearance_loadbanfile()
 	LoadBans()
-	SetupHooks() // /vg/
 
 	library_catalog.initialize()
 

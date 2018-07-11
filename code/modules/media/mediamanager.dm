@@ -67,60 +67,17 @@ function SetMusic(url, time, volume) {
 }
 	</script>"}
 
-/proc/stop_all_media()
-	for(var/mob/M in mob_list)
-		if(M && M.client)
-			M.stop_all_music()
-
-// Hook into the events we desire.
-/hook_handler/soundmanager
-	// Set up player on login
-	proc/OnLogin(var/list/args)
-		//testing("Received OnLogin.")
-		var/client/C = args["client"]
-		C.media = new /datum/media_manager(args["mob"])
-		C.media.open()
-		C.media.update_music()
-
-	proc/OnReboot(var/list/args)
-		//testing("Received OnReboot.")
-		log_startup_progress("Stopping all playing media...")
-		// Stop all music.
-		stop_all_media()
-		//  SHITTY HACK TO AVOID RACE CONDITION WITH SERVER REBOOT.
-		sleep(10)
-
-	// Update when moving between areas.
-	proc/OnMobAreaChange(var/list/args)
-		var/mob/M = args["mob"]
-		//if(istype(M, /mob/living/carbon/human)||istype(M, /mob/dead/observer))
-		//	testing("Received OnMobAreaChange for [M.type] [M] (M.client=[M.client==null?"null":"/client"]).")
-		if(M.client && M.client.media && !M.client.media.forced)
-			M.update_music()
-
-
-/hook_handler/shuttlejukes
-	proc/OnEmergencyShuttleDeparture(var/list/args)
-		for(var/obj/machinery/media/jukebox/superjuke/shuttle/SJ in machines)
-			SJ.playing=1
-			SJ.update_music()
-			SJ.update_icon()
-
-/mob/proc/update_music()
-	if (client && client.media && !client.media.forced)
-		client.media.update_music()
-
 /mob/proc/stop_all_music()
-	if (client && client.media)
-		client.media.push_music("",0,1)
+	var/datum/component/media_manager/MM = GetComponent(/datum/component/media_manager)
+	MM.stop_music()
 
 /mob/proc/force_music(var/url,var/start,var/volume=1)
-	if (client && client.media)
-		client.media.forced=(url!="")
-		if(client.media.forced)
-			client.media.push_music(url,start,volume)
-		else
-			client.media.update_music()
+	var/datum/component/media_manager/MM = GetComponent(/datum/component/media_manager)
+	MM.forced = (url != "")
+	if(MM.forced)
+		MM.push_music(url, start, volume)
+	else
+		MM.update_music()
 
 /area
 	// One media source per area.
@@ -133,14 +90,13 @@ to_chat(#define MP_DEBUG(x) owner, x)
 #define MP_DEBUG(x)
 #endif
 
-/datum/media_manager
+/datum/component/media_manager
+	var/mob/mob
 	var/url = ""
 	var/start_time = 0
 	var/source_volume = 1 // volume * source_volume
 
 	var/volume = 50
-	var/client/owner
-	var/mob/mob
 
 	var/forced=0
 
@@ -148,69 +104,83 @@ to_chat(#define MP_DEBUG(x) owner, x)
 	//var/const/window = "mediaplayer" // For debugging.
 	var/playerstyle
 
-	New(var/mob/holder)
-		src.mob=holder
-		owner=src.mob.client
-		if(owner.prefs)
-			if(!isnull(owner.prefs.volume))
-				volume = owner.prefs.volume
-			if(owner.prefs.usewmp)
-				playerstyle = PLAYER_OLD_HTML
-			else
-				playerstyle = PLAYER_HTML
+/datum/component/media_manager/Initialize()
+	if(!istype(parent))
+		return COMPONENT_INCOMPATIBLE
+	mob = parent
+	var/client/_client = mob.client
+	REGISTER_GLOBAL_SIGNAL(list(COMSIG_GLOB_STOP_ALL_MEDIA, COMSIG_GLOB_REBOOT), .proc/stop_music)
+	RegisterSignal(mob, COMSIG_AREA_CHANGE, .proc/on_area_entered)
+	open()
+	update_music()
+	if(_client.prefs)
+		if(!isnull(_client.prefs.volume))
+			volume = _client.prefs.volume
+		if(_client.prefs.usewmp)
+			playerstyle = PLAYER_OLD_HTML
+		else
+			playerstyle = PLAYER_HTML
 
-	// Actually pop open the player in the background.
-	proc/open()
-		owner << browse(null, "window=[window]")
-		owner << browse(playerstyle, "window=[window]")
+/datum/component/media_manager/Destroy()
+	mob = null
+	..()
+
+/datum/component/media_manager/proc/on_area_entered()
+	RegisterSignal(mob, COMSIG_AREA_MUSIC_UPDATE, .proc/on_area_music_update)
+	if(!forced)
+		update_music()
+
+/datum/component/media_manager/proc/on_area_music_update()
+	if(!forced)
+		update_music()
+
+// Actually pop open the player in the background.
+/datum/component/media_manager/proc/open()
+	mob << browse(null, "window=[window]")
+	mob << browse(playerstyle, "window=[window]")
+	send_update()
+
+/datum/component/media_manager/proc/update_music()
+	var/targetURL = ""
+	var/targetStartTime = 0
+	var/targetVolume = 0
+
+	if (forced || !mob)
+		return
+
+	var/area/A = get_area(mob)
+	if(!A)
+		stop_music()
+		return
+	var/obj/machinery/media/M = A.media_source // TODO: turn into a list, then only play the first one that's playing.
+	if(M && M.playing)
+		targetURL = M.media_url
+		targetStartTime = M.media_start_time
+		targetVolume = M.volume
+	push_music(targetURL,targetStartTime,targetVolume)
+
+/datum/component/media_manager/proc/update_volume(var/value)
+	volume = value
+	send_update()
+
+/datum/component/media_manager/proc/stop_music()
+	push_music("", 0, 1)
+
+/datum/component/media_manager/proc/push_music(var/targetURL,var/targetStartTime,var/targetVolume)
+	if (url != targetURL || abs(targetStartTime - start_time) > 1 || abs(targetVolume - source_volume) > 0.1 /* 10% */)
+		url = targetURL
+		start_time = targetStartTime
+		source_volume = Clamp(targetVolume, 0, 1)
 		send_update()
 
-	// Tell the player to play something via JS.
-	proc/send_update()
-		if(!(owner.prefs))
-			return
-		if(!(owner.prefs.toggles & SOUND_STREAMING) && url != "")
-			return // Nope.
-		MP_DEBUG("<span class='good'>Sending update to VLC ([url])...</span>")
-		owner << output(list2params(list(url, (world.time - start_time) / 10, volume*source_volume)), "[window]:SetMusic")
-
-	proc/push_music(var/targetURL,var/targetStartTime,var/targetVolume)
-		if (url != targetURL || abs(targetStartTime - start_time) > 1 || abs(targetVolume - source_volume) > 0.1 /* 10% */)
-			url = targetURL
-			start_time = targetStartTime
-			source_volume = Clamp(targetVolume, 0, 1)
-			send_update()
-
-	proc/stop_music()
-		push_music("",0,1)
-
-	// Scan for media sources and use them.
-	proc/update_music()
-		var/targetURL = ""
-		var/targetStartTime = 0
-		var/targetVolume = 0
-
-		if (forced || !owner)
-			return
-
-		var/area/A = get_area(mob)
-		if(!A)
-			//testing("[owner] in [mob.loc].  Aborting.")
-			stop_music()
-			return
-		var/obj/machinery/media/M = A.media_source // TODO: turn into a list, then only play the first one that's playing.
-		if(M && M.playing)
-			targetURL = M.media_url
-			targetStartTime = M.media_start_time
-			targetVolume = M.volume
-//			to_chat(owner, "Found audio source: [M.media_url] @ [(world.time - start_time) / 10]s.")
-		//else
-		//	testing("M is not playing or null.")
-		push_music(targetURL,targetStartTime,targetVolume)
-
-	proc/update_volume(var/value)
-		volume = value
-		send_update()
+// Tell the player to play something via JS.
+/datum/component/media_manager/proc/send_update()
+	if(!(mob.client.prefs))
+		return
+	if(!(mob.client.prefs.toggles & SOUND_STREAMING) && url != "")
+		return // Nope.
+	MP_DEBUG("<span class='good'>Sending update to VLC ([url])...</span>")
+	mob << output(list2params(list(url, (world.time - start_time) / 10, volume*source_volume)), "[window]:SetMusic")
 
 /client/verb/change_volume()
 	set name = "Set Volume"
@@ -218,13 +188,14 @@ to_chat(#define MP_DEBUG(x) owner, x)
 	set desc = "Set jukebox volume"
 
 /client/proc/set_new_volume()
-	if(!media || !istype(media))
-		to_chat(usr, "You have no media datum to change, if you're not in the lobby tell an admin.")
+	var/datum/component/media_manager/MM = mob.GetComponent(/datum/component/media_manager)
+	if(!istype(MM))
+		to_chat(usr, "You have no media_manager component. This is a bug, tell an admin.")
 		return
 	var/oldvolume = prefs.volume
-	var/value = input("Choose your Jukebox volume.", "Jukebox volume", media.volume)
+	var/value = input("Choose your Jukebox volume.", "Jukebox volume", MM.volume)
 	value = round(max(0, min(100, value)))
-	media.update_volume(value)
+	MM.update_volume(value)
 	if(prefs && (oldvolume != value))
 		prefs.volume = value
 		prefs.save_preferences_sqlite(src, ckey)

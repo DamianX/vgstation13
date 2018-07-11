@@ -179,6 +179,7 @@
 	return 0
 
 /obj/machinery/embedded_controller/radio/initialize()
+	. = ..()
 	set_frequency(frequency)
 	var/datum/computer/file/embedded_program/new_prog = new
 

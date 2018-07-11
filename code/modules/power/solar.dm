@@ -11,15 +11,12 @@ var/list/solars_list = list()
 	..(loc)
 	solars_list += src
 
-	if(ticker)
-		initialize()
-
 /obj/machinery/power/solar/Destroy()
 	solars_list -= src
 	..()
 
 /obj/machinery/power/solar/initialize()
-	..()
+	. = ..()
 	connect_to_network()
 
 // this is here because it is fucking here. If you found this, you're lucky !

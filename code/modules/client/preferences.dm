@@ -1450,13 +1450,12 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 
 				if("wmp")
 					usewmp = !usewmp
-					if(!user.client.media)
-						return
-					user.client.media.stop_music()
-					user.client.media.playerstyle = (usewmp ? PLAYER_OLD_HTML : PLAYER_HTML)
+					var/datum/component/media_manager/MM = GetComponent(/datum/component/media_manager)
+					MM.stop_music()
+					MM.playerstyle = (usewmp ? PLAYER_OLD_HTML : PLAYER_HTML)
 					if(toggles & SOUND_STREAMING)
-						user.client.media.open()
-						user.client.media.update_music()
+						MM.open()
+						MM.update_music()
 
 				if("tooltips")
 					tooltips = !tooltips

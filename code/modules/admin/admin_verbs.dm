@@ -1081,7 +1081,7 @@ var/list/admin_verbs_mod = list(
 
 	message_admins("[key_name_admin(usr)] has stopped all media.", 1)
 
-	stop_all_media()
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_STOP_ALL_MEDIA)
 
 /client/proc/SendCentcommFax()
 	set	category = "Fun"

@@ -87,18 +87,8 @@
 
 	var/nticks=0
 
-/obj/item/weapon/card/emag/New(var/loc, var/disable_tuning=0)
-	..(loc)
-
-	// For standardized subtypes, once they're established.
-	if(disable_tuning)
-		return
-
-	if(ticker)
-		initialize()
-		return
-
 /obj/item/weapon/card/emag/initialize()
+	. = ..()
 	// Tuning tools.
 	//////////////////
 	if(config.emag_energy != -1)

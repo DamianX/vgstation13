@@ -18,18 +18,13 @@
 	new /obj/structure/cult/tome(loc)
 	..()
 
-/obj/machinery/computer/New()
-	..()
-	if(ticker)
-		initialize()
-
 /obj/machinery/computer/Cross(atom/movable/mover, turf/target, height=1.5, air_group = 0)
 	if(istype(mover) && mover.checkpass(PASSMACHINE))
 		return 1
 	return ..()
 
 /obj/machinery/computer/initialize()
-	..()
+	. = ..()
 	power_change()
 
 /obj/machinery/computer/process()

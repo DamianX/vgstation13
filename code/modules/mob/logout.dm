@@ -35,5 +35,5 @@
 				send2admindiscord("[key_name(src)] logged out. **No more non-AFK admins online.** - **[admin_number_afk]** AFK", TRUE)
 
 	INVOKE_EVENT(on_logout, list())
-
+	qdel(GetComponent(/datum/component/media_manager))
 	..()

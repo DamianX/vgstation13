@@ -141,12 +141,8 @@ var/global/num_vending_terminals = 1
 
 	coinbox = new(src)
 
-	if(ticker)
-		initialize()
-
-	return
-
 /obj/machinery/vending/initialize()
+	. = ..()
 	build_inventories()
 	link_to_account()
 

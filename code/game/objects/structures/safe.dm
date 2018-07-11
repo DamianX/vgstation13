@@ -31,6 +31,7 @@ FLOOR SAFES
 
 
 /obj/structure/safe/initialize()
+	. = ..()
 	for(var/obj/item/I in loc)
 		if(space >= maxspace)
 			return
@@ -180,7 +181,7 @@ obj/structure/safe/ex_act(severity)
 
 
 /obj/structure/safe/floor/initialize()
-	..()
+	. = ..()
 	var/turf/T = loc
 	hide(T.intact)
 

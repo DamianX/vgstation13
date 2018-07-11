@@ -24,6 +24,7 @@
 	var/credits = 0
 
 /obj/machinery/mineral/ore_redemption/initialize()
+	. = ..()
 	for (var/dir in cardinal)
 		src.input = locate(/obj/machinery/mineral/input, get_step(src, dir))
 		if(src.input)

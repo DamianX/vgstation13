@@ -15,13 +15,8 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 	var/active = 0
 	var/job = null
 
-/obj/item/device/uplink/New()
-	..()
-	if(ticker)
-		initialize()
-		return
-
 /obj/item/device/uplink/initialize()
+	. = ..()
 	if(ticker.mode)
 		welcome = ticker.mode.uplink_welcome
 		uses = ticker.mode.uplink_uses

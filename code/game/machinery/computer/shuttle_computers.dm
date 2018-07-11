@@ -24,6 +24,7 @@
 
 ///obj/item/weapon/disk/shuttle_coords/vault/random -> leads to a random vault with a docking port!
 /obj/item/weapon/disk/shuttle_coords/vault/random/initialize()
+	. = ..()
 	var/list/L = list()
 	for(var/obj/docking_port/destination/vault/V in all_docking_ports)
 		if(!V.valid_random_destination)
@@ -40,14 +41,8 @@
 		desc = "A small disk containing nothing."
 
 //This disk will link to station's arrivals when spawned
-
-/obj/item/weapon/disk/shuttle_coords/New()
-	..()
-
-	if(ticker)
-		initialize()
-
 /obj/item/weapon/disk/shuttle_coords/initialize()
+	. = ..()
 	if(ispath(destination))
 		spawn()
 			destination = locate(destination) in all_docking_ports
@@ -81,12 +76,8 @@
 	var/obj/docking_port/destination/destination
 	var/allowed_shuttle
 
-/obj/item/weapon/card/shuttle_pass/New()
-	..()
-	if(ticker)
-		initialize()
-
 /obj/item/weapon/card/shuttle_pass/initialize()
+	. = ..()
 	if(ispath(destination))
 		spawn()
 			destination = locate(destination) in all_docking_ports

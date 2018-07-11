@@ -54,7 +54,7 @@ Rebooting world in 5 seconds."})
 
 			if(blackbox)
 				blackbox.save_all_data_to_sql()
-			CallHook("Reboot",list())
+			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_REBOOT)
 			if (watchdog.waiting)
 				to_chat(world, "<span class='notice'><B>Server will shut down for an automatic update in a few seconds.</B></span>")
 				watchdog.signal_ready()

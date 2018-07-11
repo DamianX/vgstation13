@@ -38,8 +38,6 @@ log transactions
 	..()
 	machine_id = "[station_name()] ATM #[multinum_display(num_financial_terminals,4)]"
 	num_financial_terminals++
-	if(ticker)
-		initialize()
 
 /obj/machinery/atm/Destroy()
 	if(scan)

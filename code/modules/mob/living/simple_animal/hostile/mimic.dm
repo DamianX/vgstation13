@@ -137,7 +137,6 @@ var/global/list/crate_mimic_disguises = list(\
 	..()
 
 	drop_meat(src) //Fill the mimic up with its own meat
-	initialize() //Collect all items from its turf!
 
 /mob/living/simple_animal/hostile/mimic/crate/Life()
 	if(!angry)
@@ -177,7 +176,7 @@ var/global/list/crate_mimic_disguises = list(\
 	..()
 
 /mob/living/simple_animal/hostile/mimic/crate/initialize()
-	..()
+	. = ..()
 	//Put all loot inside us!
 	for(var/obj/item/I in loc)
 		if(I.anchored || I.density)

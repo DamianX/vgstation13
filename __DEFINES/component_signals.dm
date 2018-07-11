@@ -1,5 +1,18 @@
+// global signals
+// These are signals which can be listened to by any component on any parent
+// start global signals with "!", this used to be necessary but now it's just a formatting choice
+#define COMSIG_GLOB_SHUTTLE_DEPARTED "!shuttle_departed"		// sent by the shuttle controller after the emergency shuttle has left the station: (no args)
+
+#define COMSIG_GLOB_REBOOT "!reboot"
+
+#define COMSIG_GLOB_STOP_ALL_MEDIA "!stop_all_media"
+
 // Component Signal names.
 // Avoids any mishaps caused by typos.
+
+#define COMSIG_AREA_MUSIC_UPDATE "music_update" // Sent when music in an area needs to be updated
+
+#define COMSIG_AREA_CHANGE "area_change" // Sent when a movable enters a new area (args: /area/new_area, /atom/old_loc = null)
 
 /** Sent when a mob AI component wants to set new machine state.
  * @param state mixed: The new machine state (HOSTILE_STANCE_IDLE, etc)
@@ -127,9 +140,3 @@
  */
 
 #define COMSIG_GETDAMTYPE "get_dam_type"
-
-/** Sent when a movable atom changes area
- * @param reference to new /area
- * @param reference to old location
- */
-#define COMSIG_AREA_CHANGE "area_change"

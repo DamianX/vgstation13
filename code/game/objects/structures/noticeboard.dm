@@ -9,6 +9,7 @@
 	var/notices = 0
 
 /obj/structure/noticeboard/initialize()
+	. = ..()
 	for(var/obj/item/I in loc)
 		if(notices > 4)
 			break

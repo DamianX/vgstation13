@@ -165,10 +165,10 @@ Class Procs:
 
 /obj/machinery/New()
 	machines += src
-	//if(ticker) initialize()
-	return ..()
+	..()
 
 /obj/machinery/initialize()
+	. = ..()
 	if(machine_flags & PURCHASER)
 		reconnect_database()
 		linked_account = vendor_account

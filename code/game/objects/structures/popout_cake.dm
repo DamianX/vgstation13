@@ -174,14 +174,8 @@
 
 	check_slices()
 
-//When spawned, stuffs the corpse underneath it inside
-/obj/structure/popout_cake/corpse_grabber/New()
-	..()
-
-	initialize()
-
 /obj/structure/popout_cake/corpse_grabber/initialize()
-	..()
+	. = ..()
 
 	spawn(40) //Search for a corpse after a slight delay, because corpse spawners are objects, and don't spawn the corpse immediately
 		for(var/mob/living/L in loc)

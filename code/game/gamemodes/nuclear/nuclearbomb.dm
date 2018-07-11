@@ -328,7 +328,7 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 				if(blackbox)
 					blackbox.save_all_data_to_sql()
 
-				CallHook("Reboot",list())
+				SEND_GLOBAL_SIGNAL(COMSIG_GLOB_REBOOT)
 
 				if (watchdog.waiting)
 					to_chat(world, "<span class='notice'><B>Server will shut down for an automatic update in a few seconds.</B></span>")
@@ -353,7 +353,7 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 
 /obj/machinery/nuclearbomb/isacidhardened() // Requires Aliens to channel acidspit on the nuke.
 	return TRUE
-	
+
 /obj/item/weapon/disk/nuclear
 	name = "nuclear authentication disk"
 	desc = "Better keep this safe."

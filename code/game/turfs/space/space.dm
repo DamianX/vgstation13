@@ -21,6 +21,7 @@
 		A.area_turfs += src
 
 /turf/space/initialize()
+	. = ..()
 	if(!parallax_appearances)
 		parallax_appearances = list()
 		for(var/i in 0 to 25)

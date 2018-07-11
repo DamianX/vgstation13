@@ -39,16 +39,13 @@ var/list/smes_list = list()
 
 	RefreshParts()
 
-	if(ticker)
-		initialize()
-
 
 /obj/machinery/power/battery/smes/Destroy()
 	smes_list -= src
 	..()
 
 /obj/machinery/power/battery/smes/initialize()
-	..()
+	. = ..()
 	connect_to_network()
 	spawn(5)
 		if(!terminal)

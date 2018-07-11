@@ -149,8 +149,6 @@
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -24 * PIXEL_MULTIPLIER : 24 * PIXEL_MULTIPLIER)
 		pixel_y = (dir & 3)? (dir ==1 ? -24 * PIXEL_MULTIPLIER: 24 * PIXEL_MULTIPLIER) : 0
 		update_icon()
-		if(ticker && ticker.current_state == 3)//if the game is running
-			src.initialize()
 		return
 
 	first_run()
@@ -185,6 +183,7 @@
 
 
 /obj/machinery/alarm/initialize()
+	. = ..()
 	add_self_to_holomap()
 	set_frequency(frequency)
 	if (!master_is_operating())
@@ -937,7 +936,7 @@ FIRE ALARM
 	return TRUE
 
 /obj/machinery/firealarm/initialize()
-	..()
+	. = ..()
 	add_self_to_holomap()
 
 /obj/machinery/firealarm/update_icon()

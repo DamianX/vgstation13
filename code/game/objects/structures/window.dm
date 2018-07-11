@@ -674,6 +674,7 @@ var/list/one_way_windows
 
 // Used on Packed ; smartglassified roundstart
 /obj/structure/window/reinforced/plasma/interogation_room/initialize()
+	. = ..()
 	smartwindow = new(src)
 	smartwindow.id_tag = "InterogationRoomIDTag"
 

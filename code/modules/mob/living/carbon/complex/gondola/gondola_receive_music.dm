@@ -15,11 +15,11 @@
 	connect_frequency()
 
 /mob/living/carbon/complex/gondola/death(var/gibbed = FALSE)
-	disconnect_media_source()
+	//disconnect_media_source()
 	..(gibbed)
 
 /mob/living/carbon/complex/gondola/area_entered()
-	update_music()
+	//update_music()
 
 /mob/living/carbon/complex/gondola/proc/connect_frequency()
 	// This is basically media_receivers["[media_frequency]"] += src
@@ -40,7 +40,7 @@
 /mob/living/carbon/complex/gondola/proc/receive_broadcast(var/url="", var/start_time=0)
 	media_url = url
 	media_start_time = start_time
-	update_music()
+	//update_music()
 
 /mob/living/carbon/complex/gondola/proc/disconnect_frequency()
 	var/list/receivers=list()
@@ -52,7 +52,7 @@
 
 	receive_broadcast()
 
-/mob/living/carbon/complex/gondola/update_music()
+/*/mob/living/carbon/complex/gondola/update_music()
 	if(isDead(src))
 		return
 	// Broadcasting shit
@@ -117,4 +117,4 @@
 	for(var/mob/M in mobs_in_area(A))
 		if(M && M.client)
 			M.update_music()
-	master_area=null
+	master_area=null*/

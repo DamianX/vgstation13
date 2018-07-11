@@ -811,6 +811,21 @@ var/global/list/loopModeNames=list(
 	playlist_id="shuttle"
 	id_tag="Shuttle" // For autolink
 
+/obj/machinery/media/jukebox/superjuke/shuttle/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/shuttle_jukebox)
+
+/datum/component/shuttle_jukebox/Initialize()
+	if(!istype(parent, /obj/machinery/media/jukebox/superjuke/shuttle))
+		return COMPONENT_INCOMPATIBLE
+
+	REGISTER_GLOBAL_SIGNAL(COMSIG_GLOB_SHUTTLE_DEPARTED, .proc/on_shuttle_departure)
+
+/datum/component/shuttle_jukebox/proc/on_shuttle_departure()
+	var/obj/machinery/media/jukebox/superjuke/shuttle/master = parent
+	master.playing = TRUE
+	master.update_music()
+	master.update_icon()
 
 /obj/machinery/media/jukebox/superjuke/thematic
 	playlist_id="endgame"

@@ -1,7 +1,3 @@
-/hook/startup/proc/createDatacore()
-	data_core = new /obj/effect/datacore()
-	return 1
-
 /obj/effect/datacore/proc/manifest(var/nosleep = 0)
 	spawn()
 		if(!nosleep)

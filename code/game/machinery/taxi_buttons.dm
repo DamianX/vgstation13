@@ -6,14 +6,8 @@
 	req_access = list(access_taxi)
 	var/obj/machinery/computer/taxi_shuttle/connected_computer
 
-/obj/machinery/door_control/taxi/New()
-	..()
-
-	if(ticker)
-		initialize()
-
 /obj/machinery/door_control/taxi/initialize()
-	..()
+	. = ..()
 	for(var/obj/machinery/computer/taxi_shuttle/TS in taxi_computers)
 		if(id_tag == TS.id_tag)
 			connected_computer = TS

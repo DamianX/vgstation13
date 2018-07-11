@@ -420,17 +420,12 @@ var/area/space_area
 	else if(istype(oldArea) && oldArea.project_shadows)
 		Obj.underlays -= Obj.shadow
 
-	Obj.area_entered(src)
+	SEND_SIGNAL(Obj, COMSIG_AREA_CHANGE, src, OldLoc)
 	for(var/atom/movable/thing in get_contents_in_object(Obj))
-		thing.area_entered(src)
-
-	for(var/mob/mob_in_obj in Obj.contents)
-
-		CallHook("MobAreaChange", list("mob" = mob_in_obj, "new" = src, "old" = oldArea))
+		SEND_SIGNAL(thing, COMSIG_AREA_CHANGE, src, OldLoc)
 
 	var/mob/M = Obj
 	if(istype(M))
-		CallHook("MobAreaChange", list("mob" = M, "new" = src, "old" = oldArea)) // /vg/ - EVENTS!
 		if(M.client && (M.client.prefs.toggles & SOUND_AMBIENCE) && isnull(media_source) && !M.client.ambience_playing)
 			M.client.ambience_playing = 1
 			var/sound = 'sound/ambience/shipambience.ogg'

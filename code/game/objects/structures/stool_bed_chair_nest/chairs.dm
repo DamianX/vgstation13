@@ -9,13 +9,8 @@
 
 	lock_type = /datum/locking_category/buckle/chair
 
-/obj/structure/bed/chair/New()
-	..()
-	if(ticker)
-		initialize()
-
 /obj/structure/bed/chair/initialize()
-	..()
+	. = ..()
 	handle_layer()
 
 /obj/structure/bed/chair/lock_atom(var/atom/movable/AM)
