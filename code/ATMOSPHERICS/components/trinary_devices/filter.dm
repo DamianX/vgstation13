@@ -32,11 +32,6 @@ obj/machinery/atmospherics/trinary/filter/proc/set_frequency(new_frequency)
 	if(frequency)
 		radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
 
-obj/machinery/atmospherics/trinary/filter/New()
-	if(radio_controller)
-		initialize()
-	..()
-
 obj/machinery/atmospherics/trinary/filter/update_icon()
 	if(stat & NOPOWER)
 		icon_state = "hintact_off"
@@ -132,8 +127,8 @@ obj/machinery/atmospherics/trinary/filter/process()
 	return 1
 
 obj/machinery/atmospherics/trinary/filter/initialize()
+	. = ..()
 	set_frequency(frequency)
-	..()
 
 
 obj/machinery/atmospherics/trinary/filter/attack_hand(user as mob) // -- TLE

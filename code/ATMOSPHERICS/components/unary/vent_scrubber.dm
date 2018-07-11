@@ -51,7 +51,6 @@
 		assign_uid()
 		id_tag = num2text(uid)
 	if(ticker && ticker.current_state == 3)//if the game is running
-		//src.initialize()
 		src.broadcast_status()
 
 /obj/machinery/atmospherics/unary/vent_scrubber/update_icon()

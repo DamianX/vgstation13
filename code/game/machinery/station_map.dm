@@ -22,6 +22,10 @@ var/list/station_holomaps = list()
 	layer = ABOVE_WINDOW_LAYER
 
 	var/mob/watching_mob = null
+
+	var/works_across_all_zlevels = FALSE
+	var/has_floor_markings = TRUE
+
 	var/image/small_station_map = null
 	var/image/floor_markings = null
 	var/image/panel = null
@@ -65,16 +69,16 @@ var/list/station_holomaps = list()
 		return 1
 	return -1
 
-/obj/machinery/station_map/initialize()
-	. = ..()
-	bogus = 0
+// Snowflake because it's not called by SSobj but by it's own SS
+/obj/machinery/station_map/proc/snowflake_initialize()
 	var/turf/T = get_turf(src)
-	original_zLevel = T.z
-	if(!(HOLOMAP_EXTRA_STATIONMAP+"_[original_zLevel]" in extraMiniMaps))
-		bogus = 1
-		holomap_datum.initialize_holomap_bogus()
-		update_icon()
-		return
+	if(!works_across_all_zlevels)
+		original_zLevel = T.z
+		if(!(HOLOMAP_EXTRA_STATIONMAP+"_[original_zLevel]" in extraMiniMaps))
+			bogus = 1
+			holomap_datum.initialize_holomap_bogus()
+			update_icon()
+			return
 
 	holomap_datum.initialize_holomap(T)
 
@@ -82,10 +86,11 @@ var/list/station_holomaps = list()
 	small_station_map.plane = LIGHTING_PLANE
 	small_station_map.layer = ABOVE_LIGHTING_LAYER
 
-	floor_markings = image('icons/turf/overlays.dmi', "station_map")
-	floor_markings.dir = dir
-	floor_markings.plane = ABOVE_TURF_PLANE
-	floor_markings.layer = DECAL_LAYER
+	if(has_floor_markings)
+		floor_markings = image('icons/turf/overlays.dmi', "station_map")
+		floor_markings.dir = dir
+		floor_markings.plane = ABOVE_TURF_PLANE
+		floor_markings.layer = DECAL_LAYER
 	update_icon()
 
 /obj/machinery/station_map/attack_hand(var/mob/user)
@@ -339,6 +344,9 @@ var/list/station_holomaps = list()
 	pixel_x = -1*WORLD_ICON_SIZE/2
 	pixel_y = -1*WORLD_ICON_SIZE/2
 
+	works_across_all_zlevels = TRUE
+	has_floor_markings = FALSE
+
 	var/list/watching_mobs = list()
 	var/list/watcher_maps = list()
 
@@ -346,16 +354,6 @@ var/list/station_holomaps = list()
 	..()
 	holomap_datum = new /datum/station_holomap/strategic()
 	original_zLevel = map.zMainStation
-
-/obj/machinery/station_map/strategic/initialize()
-	. = ..()
-	holomap_datum.initialize_holomap()
-
-	small_station_map = image(extraMiniMaps[HOLOMAP_EXTRA_STATIONMAPSMALL_NORTH+"_[map.zMainStation]"])
-	small_station_map.plane = LIGHTING_PLANE
-	small_station_map.layer = ABOVE_LIGHTING_LAYER
-
-	update_icon()
 
 /obj/machinery/station_map/strategic/attack_hand(var/mob/user)
 	if(isliving(user) && anchored && !(stat & (NOPOWER|BROKEN)))

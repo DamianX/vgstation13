@@ -147,6 +147,7 @@ var/global/list/ghdel_profiling = list()
 	..()
 
 /atom/Destroy()
+	flags &= ~INITIALIZED
 	if(reagents)
 		qdel(reagents)
 		reagents = null

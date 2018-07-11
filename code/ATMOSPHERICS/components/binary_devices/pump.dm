@@ -112,7 +112,7 @@ Thus, the two variables affect pump operation are set in New():
 	onclose(user, "atmo_pump")
 
 /obj/machinery/atmospherics/binary/pump/initialize()
-	..()
+	. = ..()
 	if(frequency)
 		set_frequency(frequency)
 
@@ -180,7 +180,7 @@ Thus, the two variables affect pump operation are set in New():
 		var/newid = copytext(reject_bad_text(input(usr, "Specify the new ID tag for this machine", src, id_tag) as null|text), 1, MAX_MESSAGE_LEN)
 		if(newid)
 			id_tag = newid
-			initialize()
+			set_frequency(frequency)
 		return MT_UPDATE
 
 	if("set_freq" in href_list)
@@ -194,7 +194,7 @@ Thus, the two variables affect pump operation are set in New():
 				newfreq *= 10 // shift the decimal one place
 			if(newfreq < 10000)
 				frequency = newfreq
-				initialize()
+				set_frequency(frequency)
 		return MT_UPDATE
 
 	return ..()

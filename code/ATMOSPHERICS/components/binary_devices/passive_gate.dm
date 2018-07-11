@@ -95,7 +95,7 @@
 	onclose(user, "atmo_pump")
 
 /obj/machinery/atmospherics/binary/passive_gate/initialize()
-	..()
+	. = ..()
 	if(frequency)
 		set_frequency(frequency)
 

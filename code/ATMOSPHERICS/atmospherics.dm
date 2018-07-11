@@ -396,3 +396,6 @@ Pipelines + Other Objects -> Pipe network
 
 	var/turf/T = loc
 	return !T.intact
+
+/obj/machinery/atmospherics/proc/atmos_init()
+	return
