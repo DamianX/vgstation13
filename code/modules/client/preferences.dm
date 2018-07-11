@@ -1450,7 +1450,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 
 				if("wmp")
 					usewmp = !usewmp
-					var/datum/component/media_manager/MM = GetComponent(/datum/component/media_manager)
+					var/datum/component/media_manager/MM = client.mob.GetComponent(/datum/component/media_manager)
 					MM.stop_music()
 					MM.playerstyle = (usewmp ? PLAYER_OLD_HTML : PLAYER_HTML)
 					if(toggles & SOUND_STREAMING)

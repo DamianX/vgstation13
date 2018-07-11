@@ -110,7 +110,7 @@ to_chat(#define MP_DEBUG(x) owner, x)
 	mob = parent
 	var/client/_client = mob.client
 	REGISTER_GLOBAL_SIGNAL(list(COMSIG_GLOB_STOP_ALL_MEDIA, COMSIG_GLOB_REBOOT), .proc/stop_music)
-	RegisterSignal(mob, COMSIG_AREA_CHANGE, .proc/on_area_entered)
+	RegisterSignal(get_area(mob), COMSIG_AREA_CHANGE, .proc/on_area_entered)
 	open()
 	update_music()
 	if(_client.prefs)
@@ -125,8 +125,9 @@ to_chat(#define MP_DEBUG(x) owner, x)
 	mob = null
 	..()
 
-/datum/component/media_manager/proc/on_area_entered()
-	RegisterSignal(mob, COMSIG_AREA_MUSIC_UPDATE, .proc/on_area_music_update)
+/datum/component/media_manager/proc/on_area_entered(var/area/new_area, var/atom/old_loc)
+	UnregisterSignal(get_area(old_loc), COMSIG_AREA_MUSIC_UPDATE)
+	RegisterSignal(new_area, COMSIG_AREA_MUSIC_UPDATE, .proc/on_area_music_update)
 	if(!forced)
 		update_music()
 
