@@ -110,17 +110,9 @@ obj/machinery/door/airlock/proc/set_frequency(new_frequency)
 
 
 obj/machinery/door/airlock/initialize()
-	if(frequency)
-		set_frequency(frequency)
-
+	. = ..()
+	set_frequency(frequency)
 	update_icon()
-
-
-obj/machinery/door/airlock/New()
-	..()
-
-	if(radio_controller)
-		set_frequency(frequency)
 
 obj/machinery/airlock_sensor
 	icon = 'icons/obj/airlock_machines.dmi'
@@ -190,13 +182,8 @@ obj/machinery/airlock_sensor/proc/set_frequency(new_frequency)
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_AIRLOCK)
 
 obj/machinery/airlock_sensor/initialize()
+	. = ..()
 	set_frequency(frequency)
-
-obj/machinery/airlock_sensor/New()
-	..()
-
-	if(radio_controller)
-		set_frequency(frequency)
 
 obj/machinery/airlock_sensor/airlock_interior
 	command = "cycle_interior"
@@ -248,8 +235,7 @@ obj/machinery/airlock_sensor/Topic(href,href_list)
 			if(findtext(num2text(newfreq), "."))
 				newfreq *= 10 // shift the decimal one place
 			if(newfreq < 10000)
-				frequency = newfreq
-				initialize()
+				set_frequency(newfreq)
 	update_multitool_menu(usr)
 
 
@@ -391,7 +377,6 @@ obj/machinery/access_button/Topic(href,href_list)
 				if(findtext(num2text(newfreq), "."))
 					newfreq *= 10 // shift the decimal one place
 				if(newfreq < 10000)
-					frequency = newfreq
-					initialize()
+					set_frequency(newfreq)
 
 		update_multitool_menu(usr)

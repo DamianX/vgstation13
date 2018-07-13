@@ -15,9 +15,6 @@
 	machine_id = "[station_name()] PDA Terminal #[multinum_display(num_pda_terminals,4)]"
 	num_pda_terminals++
 
-	if(ticker)
-		initialize()
-
 /obj/machinery/computer/pda_terminal/proc/format_apps(var/obj/item/device/pda/pda_hardware)//makes a list of all the apps that aren't yet installed on the PDA
 	if(!istype(pda_hardware))
 		return list()

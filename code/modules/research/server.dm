@@ -27,7 +27,6 @@
 	icon_state_open = icon_state // needs to be here to override what's done in the parent's New()
 
 	RefreshParts()
-	src.initialize(); //Agouri
 
 /obj/machinery/r_n_d/server/Destroy()
 	griefProtection()
@@ -40,6 +39,7 @@
 	heat_gen /= max(1, tot_rating)
 
 /obj/machinery/r_n_d/server/initialize()
+	. = ..()
 	if(!files)
 		files = new /datum/research(src)
 	var/list/temp_list

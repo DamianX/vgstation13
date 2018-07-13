@@ -6,14 +6,11 @@
 	req_access = list(access_taxi)
 	var/obj/machinery/computer/taxi_shuttle/connected_computer
 
-/obj/machinery/door_control/taxi/New()
-	..()
-
-	if(ticker)
-		initialize()
-
 /obj/machinery/door_control/taxi/initialize()
-	..()
+	. = ..()
+	find_connected_computer()
+
+/obj/machinery/door_control/taxi/proc/find_connected_computer()
 	for(var/obj/machinery/computer/taxi_shuttle/TS in taxi_computers)
 		if(id_tag == TS.id_tag)
 			connected_computer = TS
@@ -28,7 +25,7 @@
 
 	if(!connected_computer)
 		user.show_message("<span class='warning'>No request could be made to the Taxi Computer! Make contact with Centcomm to report them the issue!</span>", 2)
-		initialize() //Try connecting again
+		find_connected_computer() //Try connecting again
 		return
 
 	var/datum/shuttle/taxi/T = connected_computer.shuttle

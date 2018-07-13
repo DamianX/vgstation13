@@ -43,9 +43,6 @@ var/global/list/rnd_machines = list()
 	if(research_flags & TAKESMATIN && !materials)
 		materials = getFromPool(/datum/materials, src)
 
-	if(ticker)
-		initialize()
-
 // Define initial output.
 /obj/machinery/r_n_d/initialize()
 	..()

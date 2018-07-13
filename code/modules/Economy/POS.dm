@@ -144,12 +144,10 @@ var/const/POS_HEADER = {"<html>
 /obj/machinery/pos/New()
 	..()
 	id = current_pos_id++
-	if(ticker)
-		initialize()
 	update_icon()
 
 /obj/machinery/pos/initialize()
-	..()
+	. = ..()
 	if(department)
 		linked_account = department_accounts[department]
 	else

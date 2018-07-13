@@ -22,10 +22,6 @@
 	w_class = W_CLASS_TINY
 	var/datum/bee_species/species = null
 
-/obj/item/queen_bee/New()
-	..()
-	initialize()
-
 /obj/item/queen_bee/initialize()
 	species = bees_species[BEESPECIES_NORMAL]
 

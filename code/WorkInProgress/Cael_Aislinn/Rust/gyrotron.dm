@@ -21,17 +21,10 @@
 	active_power_usage = 100000 //Yes that is a shitton. No you're not running this engine on an SE/AME you SE/AME scrubs.
 
 /obj/machinery/rust/gyrotron/initialize()
+	. = ..()
 	if(!id_tag)
 		assign_uid()
 		id_tag = uid
-
-	. = ..()
-
-/obj/machinery/rust/gyrotron/New()
-	. = ..()
-
-	if(ticker)
-		initialize()
 
 /obj/machinery/rust/gyrotron/proc/stop_emitting()
 	emitting = 0

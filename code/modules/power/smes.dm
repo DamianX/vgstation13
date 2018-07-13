@@ -39,9 +39,6 @@ var/list/smes_list = list()
 
 	RefreshParts()
 
-	if(ticker)
-		initialize()
-
 
 /obj/machinery/power/battery/smes/Destroy()
 	smes_list -= src

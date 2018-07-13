@@ -174,17 +174,13 @@
 
 	check_slices()
 
-//When spawned, stuffs the corpse underneath it inside
-/obj/structure/popout_cake/corpse_grabber/New()
-	..()
-
-	initialize()
-
 /obj/structure/popout_cake/corpse_grabber/initialize()
 	..()
+	return INITIALIZE_HINT_LATELOAD
 
-	spawn(40) //Search for a corpse after a slight delay, because corpse spawners are objects, and don't spawn the corpse immediately
-		for(var/mob/living/L in loc)
-			if(L.isDead())
-				L.forceMove(src)
-				break
+//Search for a corpse after a slight delay, because corpse spawners are objects, and don't spawn the corpse immediately
+/obj/structure/popout_cake/corpse_grabber/late_initialize()
+	for(var/mob/living/L in loc)
+		if(L.isDead())
+			L.forceMove(src)
+			break

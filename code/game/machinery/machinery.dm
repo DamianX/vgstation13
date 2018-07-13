@@ -165,10 +165,10 @@ Class Procs:
 
 /obj/machinery/New()
 	machines += src
-	//if(ticker) initialize()
 	return ..()
 
 /obj/machinery/initialize()
+	. = ..()
 	if(machine_flags & PURCHASER)
 		reconnect_database()
 		linked_account = vendor_account
@@ -355,7 +355,9 @@ Class Procs:
 			re_init=1
 
 		if(re_init)
-			initialize()
+			// TODO fix this with components
+			if(hascall(src, "set_frequency"))
+				call(src, "set_frequency")(vars["frequency"])
 		if(update_mt_menu)
 			//usr.set_machine(src)
 			update_multitool_menu(usr)

@@ -149,8 +149,6 @@
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -24 * PIXEL_MULTIPLIER : 24 * PIXEL_MULTIPLIER)
 		pixel_y = (dir & 3)? (dir ==1 ? -24 * PIXEL_MULTIPLIER: 24 * PIXEL_MULTIPLIER) : 0
 		update_icon()
-		if(ticker && ticker.current_state == 3)//if the game is running
-			src.initialize()
 		return
 
 	first_run()

@@ -90,13 +90,8 @@ var/global/ingredientLimit = 10
 	new /obj/structure/cult/talisman(loc)
 	..()
 
-/obj/machinery/cooking/New()
-	if (ticker)
-		initialize()
-
-	return ..()
-
 /obj/machinery/cooking/initialize()
+	. = ..()
 	if (foodChoices)
 		var/obj/item/food
 

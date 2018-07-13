@@ -626,7 +626,6 @@ var/list/apiary_reservation = list()
 	reagents.add_reagent(NUTRIMENT, 4)
 	reagents.add_reagent(SUGAR, 16)
 	update_icon()
-	initialize()
 
 /obj/machinery/apiary/wild/angry/initialize()
 	species = bees_species[BEESPECIES_NORMAL]
