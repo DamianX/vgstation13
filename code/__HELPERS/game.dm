@@ -7,12 +7,14 @@
 	src:Topic(href, href_list)
 	return null
 
-/proc/get_area(const/atom/O)
+#define get_area(Atom) ((isarea(Atom)) ? (Atom) : ((get_turf(Atom))?.loc))
+
+/*/proc/get_area(const/atom/O)
 	if(isarea(O))
 		return O
 	var/turf/T = get_turf(O)
 	if(T)
-		return T.loc
+		return T.loc*/
 
 /proc/get_area_name(N) //get area by its name
 	for(var/area/A in areas)
