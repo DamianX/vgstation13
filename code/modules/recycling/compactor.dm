@@ -109,12 +109,12 @@
 	..()
 
 /obj/machinery/disposal/compactor/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)
-	..()
-	if(prob(2))
-		var/atom/movable/AM = pick(contents)
-		if(AM && istype(AM))
-			launch(AM)
-			visible_message("<span class='warning'>\The [AM] topples out of \the [src].</span>")
+	. = ..()
+	if(!prob(2) || !contents.len)
+		return
+	var/atom/movable/AM = pick(contents)
+	launch(AM)
+	visible_message("<span class='warning'>\The [AM] topples out of \the [src].</span>")
 
 /obj/machinery/disposal/compactor/unplugged
 	anchored = 0
