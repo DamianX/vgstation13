@@ -39,7 +39,7 @@
 	build_type = PROTOLATHE
 	materials = list(MAT_IRON = 50, MAT_GLASS = 50)
 	category = "Armor"
-	build_path = /obj/item/clothing/glasses/sunglasses/sechud
+	build_path = "/obj/item/clothing/glasses/sunglasses/sechud"
 	locked = 1
 	req_lock_access = list(access_security)
 

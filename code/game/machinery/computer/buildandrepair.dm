@@ -41,12 +41,12 @@
 /obj/item/weapon/circuitboard/message_monitor
 	name = "Circuit board (Message Monitor)"
 	desc = "A circuit board for running a computer used for telecommunications monitoring."
-	build_path = /obj/machinery/computer/message_monitor
+	build_path = "/obj/machinery/computer/message_monitor"
 	origin_tech = Tc_PROGRAMMING + "=3"
 /obj/item/weapon/circuitboard/security
 	name = "Circuit board (Security Cameras)"
 	desc = "A circuit board for running a computer used for viewing security cameras."
-	build_path = /obj/machinery/computer/security
+	build_path = "/obj/machinery/computer/security"
 /obj/item/weapon/circuitboard/security/engineering
 	name = "Circuit board (Engineering Cameras)"
 	desc = "A circuit board for running a computer used for viewing engineering cameras."
