@@ -36,7 +36,7 @@
 	build_type = PROTOLATHE
 	materials = list(MAT_IRON = 4000, MAT_GLASS = 700)
 	category = "Anomaly"
-	build_path = /obj/item/device/core_sampler
+	build_path = "/obj/item/device/core_sampler"
 
 /datum/design/phazon_glowstick
 	name = "Phazon Glowstick"
@@ -46,7 +46,7 @@
 	build_type = PROTOLATHE
 	materials = list(MAT_GLASS=1000, MAT_PHAZON=20)
 	category = "Anomaly"
-	build_path = /obj/item/clothing/accessory/glowstick/phazon
+	build_path = "/obj/item/clothing/accessory/glowstick/phazon"
 
 /*
 /datum/design/ano_scanner
