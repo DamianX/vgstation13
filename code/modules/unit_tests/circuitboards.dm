@@ -1,6 +1,16 @@
 /datum/unit_test/circuitboards/start()
+	var/list/board_by_description = list()
+
 	for(var/cb_type in subtypesof(/obj/item/weapon/circuitboard))
 		var/obj/item/weapon/circuitboard/instance = new cb_type
+
+		var/description = instance.desc
+		if(!description)
+			fail("[cb_type] has a null or emtpy description")
+		else if(!board_by_description[description])
+			board_by_description[description] = list(cb_type)
+		else
+			board_by_description[description] += list(cb_type)
 
 		var/req_components = instance.req_components
 		for(var/component in req_components)
@@ -28,3 +38,9 @@
 				fail("[cb_type] specified build_path as a text string")
 			else
 				fail("[cb_type] specified an invalid build_path")
+
+	for(var/description in board_by_description)
+		var/list/boards_with_this_description = board_by_description[description]
+		if(boards_with_this_description.len > 1)
+			fail("The following paths all share the same description: [english_list(boards_with_this_description)]")
+				
