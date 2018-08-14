@@ -1,5 +1,6 @@
 /datum/unit_test/circuitboards/start()
 	var/list/board_by_description = list()
+	var/obj/item/weapon/circuitboard/base_type = /obj/item/weapon/circuitboard
 
 	for(var/cb_type in subtypesof(/obj/item/weapon/circuitboard))
 		var/obj/item/weapon/circuitboard/instance = new cb_type
@@ -7,6 +8,8 @@
 		var/description = instance.desc
 		if(!description)
 			fail("[cb_type] has a null or emtpy description")
+		if(description == initial(base_type.desc))
+			fail("[cb_type] uses the default description")
 		else if(!board_by_description[description])
 			board_by_description[description] = list(cb_type)
 		else
