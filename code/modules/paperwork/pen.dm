@@ -167,6 +167,8 @@ var/paperwork_library
 	addReplacement(REG_BBTAG("/tiny"), "</span>")
 	addReplacement(REG_BBTAG("list"), "<ul>")
 	addReplacement(REG_BBTAG("/list"), "</ul>")
+	addReplacement(REG_BBTAG("ordlist"), "<ol>")
+	addReplacement(REG_BBTAG("/ordlist"), "</ol>")
 	addReplacement(REG_BBTAG("agency"),  	"<span style=\"font-family:Agency FB\">")
 	addReplacement(REG_BBTAG("/agency"), 	"</span>")
 	addReplacement(REG_BBTAG("algerian"),  	"<span style=\"font-family:Algerian\">")

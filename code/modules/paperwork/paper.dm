@@ -219,7 +219,8 @@
 		<b><center>Pen exclusive commands</center></b><br>
 		\[small\] - \[/small\] : Decreases the <span style=\"font-size:15px\">size</span> of the text.<br>
 		\[tiny\] - \[/tiny\] : Sharply decreases the <span style=\"font-size:10px\">size</span> of the text.<br>
-		\[list\] - \[/list\] : A list.<br>
+		\[list\] - \[/list\] : An unordered (bulleted) list.<br>
+		\[ordlist\] - \[/list\] : An ordered (numbered) list.<br>
 		\[*\] : A dot used for lists.<br>
 		\[hr\] : Adds a horizontal rule.<br>
 		\[img\]http://url\[/img\] : Add an image.<br>
