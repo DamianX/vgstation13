@@ -36,7 +36,7 @@ install:
 
 before_script:
 - tools/travis/install-byond.sh
-
+- cargo install --git https://github.com/SpaceManiac/SpacemanDMM cli
 script:
 # Has to use Python 2 instead of 3 because else it won't find colorama.
 - python tools/travis/check_map_files.py maps/
@@ -48,6 +48,7 @@ script:
 - cargo test --jobs 1 --verbose
 - cd -
 - tools/travis/build.py
+- dmm-tools check
 - cp tools/travis/config/config.txt config/
 - tools/travis/run_tests.py 2>&1 | tee /dev/stderr | sponge | awk '/UNIT TEST FAIL/ { exit 1 }'
 
