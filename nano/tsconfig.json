@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
+		"module": "none",
         "outDir": "./js",
-        "allowJs": true,
         "target": "es3"
     },
     "include": [

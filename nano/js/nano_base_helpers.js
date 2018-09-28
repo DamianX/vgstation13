@@ -1,6 +1,19 @@
+/// <reference path="./nano_utility.ts" />
 // NanoBaseHelpers is where the base template helpers (common to all templates) are stored
-NanoBaseHelpers = function () {
-    var _baseHelpers = {
+var NanoBaseHelpers = /** @class */ (function () {
+    function NanoBaseHelpers() {
+    }
+    NanoBaseHelpers.addHelpers = function () {
+        NanoTemplate.addHelpers(this._baseHelpers);
+    };
+    NanoBaseHelpers.removeHelpers = function () {
+        for (var helperKey in this._baseHelpers) {
+            if (this._baseHelpers.hasOwnProperty(helperKey)) {
+                NanoTemplate.removeHelper(helperKey);
+            }
+        }
+    };
+    NanoBaseHelpers._baseHelpers = {
         // change ui styling to "syndicate mode"
         syndicateMode: function () {
             $('body').css("background-color", "#8f1414");
@@ -44,7 +57,7 @@ NanoBaseHelpers = function () {
         },
         precisionRound: function (value, places) {
             if (places == 0)
-                return Math.round(number);
+                return Math.round(value);
             var multiplier = Math.pow(10, places);
             return (Math.round(value * multiplier) / multiplier);
         },
@@ -69,7 +82,7 @@ NanoBaseHelpers = function () {
                 return arguments[0];
             }
             else if (arguments.length > 1) {
-                stringArgs = [];
+                var stringArgs = [];
                 for (var i = 1; i < arguments.length; i++) {
                     stringArgs.push(arguments[i]);
                 }
@@ -152,7 +165,7 @@ NanoBaseHelpers = function () {
         },
         generateHref: function (parameters) {
             var body = $('body'); // We store data in the body tag, it's as good a place as any
-            _urlParameters = body.data('urlParameters');
+            var _urlParameters = body.data('urlParameters');
             var queryString = '?';
             for (var key in _urlParameters) {
                 if (_urlParameters.hasOwnProperty(key)) {
@@ -189,6 +202,7 @@ NanoBaseHelpers = function () {
                 html = '<div class="dnaBlock"><div class="link dnaBlockNumber">1</div>';
             }
             // And then all the actual block contents (i.e. DAC, starting from 1) and the rest of the block index numbers (starting from 2) are drawn in this loop.
+            var index;
             for (index in characters) {
                 if (!characters.hasOwnProperty(index) || typeof characters[index] === 'object') {
                     continue;
@@ -224,16 +238,5 @@ NanoBaseHelpers = function () {
             return html;
         }
     };
-    return {
-        addHelpers: function () {
-            NanoTemplate.addHelpers(_baseHelpers);
-        },
-        removeHelpers: function () {
-            for (var helperKey in _baseHelpers) {
-                if (_baseHelpers.hasOwnProperty(helperKey)) {
-                    NanoTemplate.removeHelper(helperKey);
-                }
-            }
-        }
-    };
-}();
+    return NanoBaseHelpers;
+}());
