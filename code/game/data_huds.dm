@@ -69,8 +69,6 @@ proc/process_med_hud(var/mob/M, var/mob/eye)
 				holder.icon_state = "huddead"
 			else if(patient.status_flags & XENO_HOST)
 				holder.icon_state = "hudxeno"
-			else if(has_any_recorded_disease(patient))
-				holder.icon_state = "hudill"
 			else
 				holder.icon_state = "hudhealthy"
 			C.images += holder

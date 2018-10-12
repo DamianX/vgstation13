@@ -71,9 +71,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/datum/reagent/blood/B = get_blood(H.vessel)
-		if(B && B.data && B.data["virus2"])
-			dat += "WARNING: Viral agent detected. Ineligible for blood donation.<BR>"
-		else if(!B)
+		if(!B)
 			dat += "WARNING: No blood detected. Ineligible for blood donation.<BR>"
 		else
 			dat += {"Welcome [H]! Your blood level is [round(B.volume/560*100)]%, and your blood type is [B.data["blood_type"]].<BR>

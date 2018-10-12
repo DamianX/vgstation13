@@ -42,8 +42,6 @@
 			dat += "<span class='notice'>\t Damage Specifics: [C.getOxyLoss() > 50 ? "<span class='bad'>" : "<span class='notice'>"][C.getOxyLoss()]-[C.getToxLoss() > 50 ? "<span class='bad'>" : "<span class='notice'>"][C.getToxLoss()]-[C.getFireLoss() > 50 ? "<span class='bad'>" : "<span class='notice'>"][C.getFireLoss()]-[C.getBruteLoss() > 50 ? "<span class='bad'>" : "<span class='notice'>"][C.getBruteLoss()]\n</span>"
 			dat += "<span class='notice'>\t Key: Suffocation</span>/Toxin</span>/Burns</span>/Brute\n</span>"
 			dat += "<span class='notice'>\t Body Temperature: [C.bodytemperature-T0C]&deg;C ([C.bodytemperature*1.8-459.67]&deg;F)</span>"
-			if(C.virus)
-				dat += "<span class='danger'>\nWarning Virus Detected.\nName: [C.virus.name].\nType: [C.virus.spread].\nStage: [C.virus.stage]/[C.virus.max_stages].\nPossible Cure: [C.virus.cure]</span>"
 
 			return dat
 

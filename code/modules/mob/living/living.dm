@@ -610,8 +610,6 @@ Thanks.
 			IO.status = 0
 			IO.robotic = 0
 		H.updatehealth()
-	for(var/datum/disease/D in viruses)
-		D.cure(0)
 	if(stat == DEAD)
 		resurrect()
 		tod = null

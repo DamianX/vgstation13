@@ -33,11 +33,10 @@ var/list/uristrune_cache = list()//icon cache, so the whole blending process is 
 	//An image we'll show to the AI instead of the rune
 	var/image/blood_image
 
-	//When a rune is created, we see if there's any data to copy from the blood used (colour, DNA, viruses) for all 3 words
+	//When a rune is created, we see if there's any data to copy from the blood used (colour, DNA) for all 3 words
 	var/datum/reagent/blood/blood1
 	var/datum/reagent/blood/blood2
 	var/datum/reagent/blood/blood3
-	var/list/datum/disease2/disease/virus2 = list()
 
 	//Used when a nullrod is preventing a rune's activation TODO: REWORK NULL ROD INTERACTIONS
 	var/nullblock = 0
@@ -307,8 +306,6 @@ var/list/uristrune_cache = list()//icon cache, so the whole blending process is 
 			rune.blood1.data["blood_DNA"] = source.data["blood_type"]
 		else
 			rune.blood1.data["blood_DNA"] = "O+"
-		if (source.data["virus2"])
-			rune.blood1.data["virus2"] = virus_copylist(source.data["virus2"])
 
 	else if (!rune.word2)
 		rune.word2 = word
@@ -321,8 +318,6 @@ var/list/uristrune_cache = list()//icon cache, so the whole blending process is 
 			rune.blood2.data["blood_DNA"] = source.data["blood_type"]
 		else
 			rune.blood2.data["blood_DNA"] = "O+"
-		if (source.data["virus2"])
-			rune.blood2.data["virus2"] = virus_copylist(source.data["virus2"])
 
 	else if (!rune.word3)
 		rune.word3 = word
@@ -335,18 +330,11 @@ var/list/uristrune_cache = list()//icon cache, so the whole blending process is 
 			rune.blood3.data["blood_DNA"] = source.data["blood_type"]
 		else
 			rune.blood3.data["blood_DNA"] = "O+"
-		if (source.data["virus2"])
-			rune.blood3.data["virus2"] = virus_copylist(source.data["virus2"])
 
 	//think twice before touching runes made with contaminated blood
 	if (rune.blood3)
-		rune.virus2 = rune.blood1.data["virus2"] | rune.blood2.data["virus2"] | rune.blood3.data["virus2"]
 		rune.update_icon()
 		return 1//That rune now has 3 words, that's a wrap.
-	else if (rune.blood2)
-		rune.virus2 = rune.blood1.data["virus2"] | rune.blood2.data["virus2"]
-	else if (rune.blood1)
-		rune.virus2 = rune.blood1.data["virus2"]
 
 	rune.update_icon()
 	return 2//There's room for more words on this rune, let's immediately prompt the player to write another one.

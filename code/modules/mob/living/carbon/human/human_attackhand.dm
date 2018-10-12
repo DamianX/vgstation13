@@ -54,10 +54,6 @@
 	src.visible_message("<span class='danger'>\The [M] has bitten \the [src]!</span>", "<span class='userdanger'>You were bitten by \the [M]!</span>")
 	M.do_attack_animation(src, M)
 
-	for(var/datum/disease/D in M.viruses)
-		if(D.spread == "Bite")
-			contract_disease(D,1,0)
-
 	apply_damage(damage, BRUTE, affecting)
 
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>bit [src.name] ([src.ckey]) for [damage] damage</font>")
@@ -180,11 +176,6 @@
 	if((M != src) && check_shields(0, M.name))
 		visible_message("<span class='danger'>[M] attempts to touch [src]!</span>")
 		return 0
-
-
-	if(istype(M,/mob/living/carbon))
-//		log_debug("No gloves, [M] is truing to infect [src]")
-		spread_disease_to(M, src, "Contact")
 
 	// CHEATER CHECKS
 	if(M.mind)

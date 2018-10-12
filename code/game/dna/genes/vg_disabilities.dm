@@ -81,7 +81,6 @@
 		HONEY,
 		//Milk-based products
 		MILK,
-		VIRUSFOOD,
 		CREAM,
 		CAFE_LATTE,
 		MILKSHAKE,
@@ -133,7 +132,6 @@
 var/list/milk_reagents = list(
 	MILK,
 	CREAM,
-	VIRUSFOOD,
 	OFFCOLORCHEESE,
 	CHEESYGLOOP,
 	ALOE,

@@ -278,10 +278,6 @@
 	..()
 
 	var/inflamed = 0
-	for(var/datum/disease/appendicitis/appendicitis in target.viruses)
-		inflamed = 1
-		appendicitis.cure()
-		target.resistances += appendicitis
 
 	if(inflamed)
 		icon_state = "appendixinflamed"

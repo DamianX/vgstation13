@@ -110,16 +110,6 @@
 	category = "Medical"
 	build_path = /obj/item/clothing/mask/chemmask
 
-/datum/design/antibody_scanner
-	name = "Antibody Scanner"
-	desc = "Used to scan living beings for antibodies in their blood."
-	id = "antibody_scanner"
-	req_tech = list(Tc_MAGNETS = 2, Tc_BIOTECH = 2)
-	build_type = PROTOLATHE
-	materials = list (MAT_IRON = 1000, MAT_GLASS = 1000)
-	category = "Medical"
-	build_path = /obj/item/device/antibody_scanner
-
 /datum/design/plasmabeaker
 	name = "Plasma Beaker"
 	desc = "A beaker designed to act as a catalyst in some reactions."

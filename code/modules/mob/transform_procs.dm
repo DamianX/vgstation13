@@ -71,10 +71,6 @@
 		Mo.setToxLoss(L.getToxLoss())
 		Mo.setOxyLoss(L.getOxyLoss())
 		Mo.stat = L.stat
-		for(var/datum/disease/D in L.viruses)
-			Mo.viruses += D
-			D.affected_mob = Mo
-			L.viruses -= D //But why?
 	Mo.delayNextAttack(0)
 	Postmorph(Mo)
 	return Mo

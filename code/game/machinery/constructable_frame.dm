@@ -1138,38 +1138,6 @@ obj/item/weapon/circuitboard/rdserver
 							/obj/item/weapon/stock_parts/scanning_module = 2,
 							/obj/item/weapon/stock_parts/console_screen = 1)
 
-/obj/item/weapon/circuitboard/incubator
-	name = "Circuit Board (Pathogenic Incubator)"
-	desc = "A circuit board used to run a machine that incubates viruses."
-	build_path = /obj/machinery/disease2/incubator
-	board_type = MACHINE
-	origin_tech = Tc_MATERIALS + "=4;" + Tc_BIOTECH + "=5;" + Tc_MAGNETS + "=3"
-	req_components = list(
-							/obj/item/weapon/stock_parts/matter_bin = 1,
-							/obj/item/weapon/stock_parts/micro_laser = 2,
-							/obj/item/weapon/stock_parts/scanning_module = 2,
-							/obj/item/weapon/reagent_containers/glass/beaker = 1)
-
-/obj/item/weapon/circuitboard/diseaseanalyser
-	name = "Circuit Board (Disease Analyser)"
-	desc = "A circuit board used to run a machine that analyzes diseases."
-	build_path = /obj/machinery/disease2/diseaseanalyser
-	board_type = MACHINE
-	origin_tech = Tc_ENGINEERING + "=3;" + Tc_BIOTECH + "=3;" + Tc_PROGRAMMING + "=3"
-	req_components = list(
-							/obj/item/weapon/stock_parts/manipulator = 1,
-							/obj/item/weapon/stock_parts/micro_laser = 1,
-							/obj/item/weapon/stock_parts/scanning_module = 3)
-
-/obj/item/weapon/circuitboard/centrifuge
-	name = "Circuit Board (Isolation Centrifuge)"
-	desc = "A circuit board used to run a machine that isolates pathogens and antibodies."
-	build_path = /obj/machinery/centrifuge
-	board_type = MACHINE
-	origin_tech = Tc_BIOTECH + "=3"
-	req_components = list(
-							/obj/item/weapon/stock_parts/manipulator = 2)
-
 /obj/item/weapon/circuitboard/mech_bay_power_port
 	name = "Circuit Board (Power Port)"
 	desc = "A circuit board used to run a machine that supplies power to a recharge station."

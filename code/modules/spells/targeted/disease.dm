@@ -43,19 +43,6 @@
 
 	log_admin("[key_name(user)] has death-touched [key_name(target)]. The latter will die in moments.")
 	message_admins("[key_name(user)] has death-touched [key_name(target)] (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[target.x];Y=[target.y];Z=[target.z]'>JMP</A>). The latter will die in moments.")
-	var/datum/disease2/disease/shutdown = new /datum/disease2/disease("Created by vamp [key_name(target)].")
-	var/datum/disease2/effect/organs/vampire/O = new /datum/disease2/effect/organs/vampire
-	O.chance = 10
-	shutdown.infectionchance = 100
-	shutdown.antigen |= text2num(pick(ANTIGENS))
-	shutdown.antigen |= text2num(pick(ANTIGENS))
-	shutdown.spreadtype = "None"
-	shutdown.uniqueID = rand(0,10000)
-	shutdown.effects += O
-	shutdown.speed = 1
-	shutdown.stage = 2
-	shutdown.clicks = 185
-	infect_virus2(target,shutdown,0)
 
 	var/datum/role/vampire/V = isvampire(user)
 	if(!V)

@@ -271,13 +271,6 @@ Works together with spawning an observer, noted above.
 	var/client/C = M.client
 	var/image/holder
 	for(var/mob/living/carbon/human/patient in oview(M))
-		var/foundVirus = 0
-		if(patient && patient.virus2 && patient.virus2.len)
-			foundVirus = 1
-		else if (patient && patient.viruses && patient.viruses.len)
-			foundVirus = 1
-		if(!C)
-			return
 		holder = patient.hud_list[HEALTH_HUD]
 		if(holder)
 			if(patient.stat == 2)
@@ -292,8 +285,6 @@ Works together with spawning an observer, noted above.
 				holder.icon_state = "huddead"
 			else if(patient.status_flags & XENO_HOST)
 				holder.icon_state = "hudxeno"
-			else if(foundVirus)
-				holder.icon_state = "hudill"
 			else if(patient.has_brain_worms())
 				var/mob/living/simple_animal/borer/B = patient.has_brain_worms()
 				if(B.controlling)

@@ -26,7 +26,6 @@ var/global/list/blood_list = list()
 /obj/effect/decal/cleanable/blood/Destroy()
 	..()
 	blood_DNA = null
-	virus2 = null
 
 /obj/effect/decal/cleanable/blood/cultify()
 	return
@@ -130,24 +129,6 @@ var/global/list/blood_list = list()
 	playsound(src, get_sfx("gib"),50,1)
 
 
-
-
-/obj/effect/decal/cleanable/blood/viralsputum
-	name = "viral sputum"
-	desc = "It's black and nasty."
-	basecolor="#030303"
-	icon = 'icons/mob/robots.dmi'
-	icon_state = "floor1"
-	random_icon_states = list("floor1", "floor2", "floor3", "floor4", "floor5", "floor6", "floor7")
-
-/obj/effect/decal/cleanable/blood/viralsputum/Destroy()
-	for(var/datum/disease/D in viruses)
-		D.cure(0)
-	..()
-
-
-
-
 //We should really get directional blood streak sprites again --snx
 /obj/effect/decal/cleanable/blood/proc/streak(var/list/directions, spread_radius = 0)
 	spawn (0)
@@ -159,10 +140,6 @@ var/global/list/blood_list = list()
 				b.New(src.loc)
 				b.basecolor = src.basecolor
 				b.update_icon()
-				for(var/datum/disease/D in src.viruses)
-					var/datum/disease/ND = D.Copy(1)
-					b.viruses += ND
-					ND.holder = b
 
 			step_to(src, get_step(src, direction), 0)
 

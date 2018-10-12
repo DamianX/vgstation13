@@ -306,10 +306,6 @@
 	amount_per_transfer_from_this = 10
 	anchored = 1
 
-/obj/structure/reagent_dispensers/virusfood/New()
-	. = ..()
-	reagents.add_reagent(VIRUSFOOD, 1000)
-
 /obj/structure/reagent_dispensers/corn_oil_tank
 	name = "oil vat"
 	desc = "The greasiest place on the station, outside the captain's backroom."

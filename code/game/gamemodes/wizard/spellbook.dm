@@ -609,12 +609,6 @@
 	icon_state = "bookdisabletech"
 	desc = "This book was written with luddites in mind."
 
-/obj/item/weapon/spellbook/oneuse/disabletech/recoil(mob/living/carbon/user as mob)
-	if(istype(user, /mob/living/carbon/human))
-		user.contract_disease(new /datum/disease/robotic_transformation(0), 1)
-		to_chat(user, "<span class ='warning'>You feel a closer connection to technology...</span>")
-		qdel(src)
-
 /obj/item/weapon/spellbook/oneuse/magicmissle
 	spell = /spell/targeted/projectile/magic_missile
 	spellname = "magic missle"

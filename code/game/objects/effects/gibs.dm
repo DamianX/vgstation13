@@ -1,14 +1,14 @@
-/proc/gibs(atom/location, var/list/viruses, var/datum/dna/MobDNA)		//CARN MARKER
-	new /obj/effect/gibspawner/generic(get_turf(location),viruses,MobDNA)
+/proc/gibs(atom/location, var/datum/dna/MobDNA)
+	new /obj/effect/gibspawner/generic(get_turf(location),MobDNA)
 
-/proc/hgibs(atom/location, var/list/viruses, var/datum/dna/MobDNA, var/fleshcolor, var/bloodcolor, spread_radius)
-	new /obj/effect/gibspawner/human(get_turf(location),viruses,MobDNA,fleshcolor,bloodcolor, spread_radius)
+/proc/hgibs(atom/location, var/datum/dna/MobDNA, var/fleshcolor, var/bloodcolor, spread_radius)
+	new /obj/effect/gibspawner/human(get_turf(location),MobDNA,fleshcolor,bloodcolor, spread_radius)
 
-/proc/xgibs(atom/location, var/list/viruses)
-	new /obj/effect/gibspawner/xeno(get_turf(location),viruses)
+/proc/xgibs(atom/location)
+	new /obj/effect/gibspawner/xeno(get_turf(location))
 
-/proc/robogibs(atom/location, var/list/viruses)
-	new /obj/effect/gibspawner/robot(get_turf(location),viruses)
+/proc/robogibs(atom/location)
+	new /obj/effect/gibspawner/robot(get_turf(location))
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //The following procs were thought to be used in correlation with the amount of blood available, example:
 //a loop in [bloodpack.dm] that spawns      _______________________________________
@@ -17,22 +17,21 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Apparently no one has ever needed to do a blood mess, so I didn't bother making a generic proc.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/proc/bloodmess_splatter(atom/location, var/list/viruses, var/datum/dna/MobDNA, var/fleshcolor, var/bloodcolor, spread_radius)
-	new /obj/effect/gibspawner/blood(get_turf(location), viruses, MobDNA, fleshcolor, bloodcolor, spread_radius)
+/proc/bloodmess_splatter(atom/location, var/datum/dna/MobDNA, var/fleshcolor, var/bloodcolor, spread_radius)
+	new /obj/effect/gibspawner/blood(get_turf(location), MobDNA, fleshcolor, bloodcolor, spread_radius)
 
-/proc/bloodmess_drip(atom/location, var/list/viruses, var/datum/dna/MobDNA, var/fleshcolor, var/bloodcolor, spread_radius)
-	new /obj/effect/gibspawner/blood_drip(get_turf(location), viruses, MobDNA, fleshcolor, bloodcolor, spread_radius)
+/proc/bloodmess_drip(atom/location, var/datum/dna/MobDNA, var/fleshcolor, var/bloodcolor, spread_radius)
+	new /obj/effect/gibspawner/blood_drip(get_turf(location), MobDNA, fleshcolor, bloodcolor, spread_radius)
 
 /obj/effect/gibspawner
 	var/sparks = 0 //whether sparks spread on Gib()
-	var/virusProb = 20 //the chance for viruses to spread on the gibs
 	var/list/gibtypes = list()
 	var/list/gibamounts = list()
 	var/list/gibdirections = list() //of lists
 	var/fleshcolor //Used for gibbed humans.
 	var/bloodcolor //Used for gibbed humans.
 
-/obj/effect/gibspawner/New(location, var/list/viruses, var/datum/dna/MobDNA, var/fleshcolor, var/bloodcolor, spread_radius)
+/obj/effect/gibspawner/New(location, var/datum/dna/MobDNA, var/fleshcolor, var/bloodcolor, spread_radius)
 	..()
 
 	if(fleshcolor)
@@ -41,9 +40,9 @@
 		src.bloodcolor = bloodcolor
 
 	if(istype(loc,/turf)) //basically if a badmin spawns it
-		Gib(loc,viruses,MobDNA,spread_radius)
+		Gib(loc,MobDNA,spread_radius)
 
-/obj/effect/gibspawner/proc/Gib(atom/location, var/list/viruses = list(), var/datum/dna/MobDNA = null, spread_radius)
+/obj/effect/gibspawner/proc/Gib(atom/location, var/datum/dna/MobDNA = null, spread_radius)
 	if(gibtypes.len != gibamounts.len || gibamounts.len != gibdirections.len)
 		to_chat(world, "<span class='warning'>Gib list length mismatch!</span>")
 		return
@@ -67,9 +66,6 @@
 					gib.basecolor = bloodcolor
 
 				gib.update_icon()
-
-				if(viruses)
-					gib.virus2 |= virus_copylist(viruses)
 
 				gib.blood_DNA = list()
 				if(MobDNA)

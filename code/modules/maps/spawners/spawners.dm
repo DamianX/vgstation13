@@ -593,12 +593,6 @@
 	icon_state = "maint"
 	chance = 20
 	to_spawn = list(
-		/obj/item/weapon/reagent_containers/glass/bottle/epiglottis_virion,
-		/obj/item/weapon/reagent_containers/glass/bottle/flu_virion,
-		/obj/item/weapon/reagent_containers/glass/bottle/magnitis,
-		/obj/item/weapon/reagent_containers/glass/bottle/pierrot_throat,
-		/obj/item/weapon/reagent_containers/glass/bottle/chloralhydrate,
-		/obj/item/weapon/reagent_containers/glass/bottle/cold,
 		/obj/item/device/powersink,
 		/obj/item/device/powersink,
 		/obj/item/weapon/gun/projectile/flamethrower/full,
@@ -772,7 +766,6 @@
 		/obj/item/weapon/storage/firstaid/adv,
 		/obj/item/weapon/storage/firstaid/regular,
 		/obj/item/weapon/reagent_containers/pill/happy,
-		/obj/item/weapon/reagent_containers/glass/bottle/random,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
@@ -1101,7 +1094,6 @@
 		/obj/item/weapon/gun/syringe/rapidsyringe,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
 		/obj/item/weapon/shield/energy,
-		/obj/item/weapon/reagent_containers/glass/bottle/random,
 		/obj/item/weapon/dnainjector/nofail/randompower,
 		/obj/item/weapon/gun/projectile/russian,
 		/obj/item/weapon/bikehorn,
@@ -1145,7 +1137,6 @@
 	to_spawn = list(/obj/item/weapon/storage/pill_bottle/creatine,
 	/obj/item/weapon/storage/pill_bottle/nanobot,
 	/obj/item/weapon/storage/firstaid/adv,
-	/obj/item/weapon/reagent_containers/glass/bottle/random,
 	/obj/item/weapon/reagent_containers/glass/bottle/frostoil,
 	/obj/item/weapon/reagent_containers/glass/bottle/chloralhydrate,
 	/obj/item/weapon/dnainjector/nofail/randompower,

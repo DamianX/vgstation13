@@ -79,7 +79,6 @@
 	var/list/host_data = list(
 		"stat" = H.stat,
 		"health" = H.health,
-		"virus_present" = H.virus2.len,
 		"rads" = H.radiation,
 		"radtick" = H.rad_tick,
 		"radstage" = H.get_rad_stage(),
@@ -102,7 +101,6 @@
 		"all_chems" = H.reagents.reagent_list,
 		"btype" = H.dna.b_type,
 		"disabilities" = H.sdisabilities,
-		"tg_diseases_list" = H.viruses,
 		"lung_ruptured" = H.is_lung_ruptured(),
 		"external_organs" = H.organs.Copy(),
 		"internal_organs" = H.internal_organs.Copy()
@@ -121,8 +119,6 @@
 		else
 			aux = "Dead"
 	dat += text("[]\tHealth %: [] ([])</font><br>", (occ["health"] > 50 ? "<font color='blue'>" : "<font color='red'>"), occ["health"], aux)
-	if(occ["virus_present"])
-		dat += "<font color='red'>Viral pathogen detected in blood stream.</font><br>"
 	dat += text("[]\tRadiation Level %: []</font><br>", (occ["rads"] < 10 ?"<font color='blue'>" : "<font color='red'>"), occ["rads"])
 	if(occ["radtick"] > 0)
 		dat += text("<font color='red'>Radiation sickness progression: <b>[occ["radtick"]]</b> Stage: <b>[occ["radstage"]]</b></font><br>")
@@ -165,9 +161,6 @@
 			continue //no repeats
 		else
 			dat += text("<font color='black'>Detected</font> <font color='blue'>[R.volume]</font> <font color='black'>units of</font> <font color='blue'>[R.name]</font><BR>")
-	for(var/datum/disease/D in occ["tg_diseases_list"])
-		if(!D.hidden[SCANNER])
-			dat += text("<BR><font color='red'><B>Warning: [D.form] Detected</B>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]</FONT><BR>")
 
 	dat += "<HR><table border='1'>"
 	dat += "<tr>"

@@ -362,7 +362,7 @@
 		gib()
 		return
 	if (stat == DEAD && !client)
-		gibs(loc, viruses)
+		gibs(loc)
 		qdel(src)
 		return
 

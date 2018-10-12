@@ -91,22 +91,7 @@
 		add_logs(src, L, "instantly petrified", admin = L.ckey ? TRUE : FALSE)
 
 	else if(ishuman(L))
-		var/mob/living/carbon/human/H = L
-
 		add_logs(src, L, "petrified", admin = L.ckey ? TRUE : FALSE)
-
-		var/found_virus = FALSE
-		for(var/datum/disease/petrification/P in H.viruses) //If already petrifying, speed up the process!
-			P.stage = P.max_stages
-			P.stage_act()
-			found_virus = TRUE
-			break
-
-		if(!found_virus)
-			var/datum/disease/D = new /datum/disease/petrification
-			D.holder = H
-			D.affected_mob = H
-			H.viruses += D
 
 	var/msg = pick("\The [src] hisses at [L]!", "\The [src] hisses angrily at [L]!")
 	visible_message("<span class='userdanger'>[msg]</span>", "<span class='notice'>You touch [L].</span>", "<span class='sinister'>You hear an eerie hiss.</span>")

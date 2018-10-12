@@ -168,7 +168,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/callproc,
 	/client/proc/cmd_admin_dump_instances, // /vg/
 	/client/proc/cmd_admin_dump_machine_type_list, // /vg/
-	/client/proc/disable_bloodvirii,       // /vg
 	/client/proc/handle_paperwork, //this is completely experimental
 	/client/proc/reload_style_sheet,
 	/client/proc/reset_style_sheet,
@@ -181,7 +180,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/make_invulnerable,
 	/client/proc/cmd_admin_dump_delprofile,
 	/client/proc/mob_list,
-	/client/proc/cure_disease,
 	/client/proc/check_bomb,
 	/client/proc/set_teleport_pref,
 	/client/proc/check_convertables,
@@ -692,18 +690,6 @@ var/list/admin_verbs_mod = list(
 	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] gave [key_name(T)] the spell [S].")
 	message_admins("<span class='notice'>[key_name_admin(usr)] gave [key_name(T)] the spell [S].</span>", 1)
-
-/client/proc/give_disease(mob/T as mob in mob_list) // -- Giacom
-	set category = "Fun"
-	set name = "Give Disease"
-	set desc = "Gives a Disease to a mob."
-	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in diseases
-	if(!D)
-		return
-	T.contract_disease(new D, 1)
-	feedback_add_details("admin_verb","GD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	log_admin("[key_name(usr)] gave [key_name(T)] the disease [D].")
-	message_admins("<span class='notice'>[key_name_admin(usr)] gave [key_name(T)] the disease [D].</span>", 1)
 
 /client/proc/make_sound(var/obj/O in world) // -- TLE
 	set category = "Special Verbs"

@@ -26,8 +26,6 @@
 		else if(status_flags & XENO_HOST)
 			holder.icon_state = "hudxeno"
 			holder2.icon_state = "hudxeno"
-		else if(has_any_recorded_disease(src))
-			holder.icon_state = "hudill"
 		else if(has_brain_worms())
 			var/mob/living/simple_animal/borer/B = has_brain_worms()
 			if(B.controlling)
@@ -37,10 +35,6 @@
 			holder2.icon_state = "hudbrainworm"
 		else
 			holder.icon_state = "hudhealthy"
-			if(virus2.len)
-				holder2.icon_state = "hudill"
-			else
-				holder2.icon_state = "hudhealthy"
 
 		hud_list[STATUS_HUD] = holder
 		hud_list[STATUS_HUD_OOC] = holder2

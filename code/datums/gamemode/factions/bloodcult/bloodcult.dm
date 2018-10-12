@@ -291,7 +291,6 @@ var/veil_thickness = CULT_EPILOGUE//REMEMBER TO SET IT BACK TO CULT_PROLOGUE WHE
 			blood = new()
 			blood.data["blood_colour"] = B.basecolor
 			blood.data["blood_DNA"] = B.blood_DNA
-			blood.data["virus2"] = B.virus2
 			if (!tribute && previous_result != BLOODCOST_TARGET_SPLATTER)
 				user.visible_message("<span class='warning'>The blood on the floor bellow \the [user] starts moving!</span>",
 									"<span class='rose'>You redirect the flow of blood inside the splatters on the floor toward the pool of your summoning.</span>",

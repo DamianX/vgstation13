@@ -75,10 +75,6 @@
 		user.visible_message("<span class='notice'>[user] has removed [target]'s appendix with \the [tool].</span>", \
 		"<span class='notice'>You have removed [target]'s appendix with \the [tool].</span>")
 		var/app = 0
-		for(var/datum/disease/appendicitis/appendicitis in target.viruses)
-			app = 1
-			appendicitis.cure()
-			target.resistances += appendicitis
 		if (app)
 			new /obj/item/weapon/reagent_containers/food/snacks/appendix/inflamed(get_turf(target))
 		else

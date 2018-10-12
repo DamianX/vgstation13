@@ -160,7 +160,6 @@ var/global/list/organ_damage_overlays = list(
 		//??? debug_life("Handle organs", "Successfully handled organs")
 		//Random events (vomiting etc)
 		handle_random_events()
-		handle_virus_updates()
 		//Stuff in the stomach
 		handle_stomach()
 		handle_shock()

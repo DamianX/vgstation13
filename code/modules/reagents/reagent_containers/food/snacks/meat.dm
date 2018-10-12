@@ -295,9 +295,3 @@ var/global/list/valid_random_food_types = existing_typesof(/obj/item/weapon/reag
 /obj/item/weapon/reagent_containers/food/snacks/meat/wendigo/New()
 	..()
 	reagents.add_reagent(NUTRIMENT, rand(10,25))
-
-
-/obj/item/weapon/reagent_containers/food/snacks/meat/wendigo/consume(mob/living/carbon/eater, messages = 0)
-	. = ..()
-	if(ishuman(eater))
-		eater.contract_disease(new /datum/disease/wendigo_transformation)

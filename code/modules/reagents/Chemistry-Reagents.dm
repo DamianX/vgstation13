@@ -42,7 +42,6 @@
 	var/overdose_am = 0
 	var/overdose_tick = 0
 	var/tick
-	//var/list/viruses = list()
 	var/color = "#000000" //rgb: 0, 0, 0 (does not support alpha channels - yet!)
 	var/alpha = 255
 	var/dupeable = TRUE	//whether the reagent can be duplicated by standard reagent duplication methods such as a service borg shaker or odysseus
@@ -268,13 +267,11 @@
 
 	data = list(
 		"donor"= null,
-		"viruses" = null,
 		"blood_DNA" = null,
 		"blood_type" = null,
 		"blood_colour" = DEFAULT_BLOOD,
 		"resistances" = null,
 		"trace_chem" = null,
-		"virus2" = null,
 		"antibodies" = null,
 		)
 
@@ -284,25 +281,8 @@
 	if(..())
 		return 1
 
-	if(self.data && self.data["viruses"])
-		for(var/datum/disease/D in self.data["viruses"])
-			//var/datum/disease/virus = new D.type(0, D, 1)
-			if(D.spread_type == SPECIAL || D.spread_type == NON_CONTAGIOUS) //We don't spread
-				continue
-			if(method == TOUCH)
-				M.contract_disease(D)
-			else //Injected
-				M.contract_disease(D, 1, 0)
-
 	if(iscarbon(M)) //Those methods only work for carbons
 		var/mob/living/carbon/C = M
-		if(self.data && self.data["virus2"]) //Infecting
-			if(method == TOUCH)
-				infect_virus2(C, self.data["virus2"], notes = "(Contact with blood)")
-			else
-				infect_virus2(C, self.data["virus2"], 1, notes = "(INJECTED)") //Injected, force infection
-		if(self.data && self.data["antibodies"]) //And curing
-			C.antibodies |= self.data["antibodies"]
 
 		if(ishuman(C) && (method == TOUCH))
 			var/mob/living/carbon/human/H = C
@@ -336,20 +316,6 @@
 	if(volume < 3) //Hardcoded
 		return
 //	WHY WAS THIS MAKING 2 SPLATTERS? Awfully hardcoded, no need to exist, and this is completely broken colorwise
-//
-	//var/datum/disease/D = self.data["virus"]
-//	if(!self.data["donor"] || ishuman(self.data["donor"]))
-//		var/obj/effect/decal/cleanable/blood/blood_prop = locate() in T //Find some blood here
-//		if(!blood_prop) //First blood
-//			blood_prop = getFromPool(/obj/effect/decal/cleanable/blood, T)
-//			blood_prop.New(T)
-//			blood_prop.blood_DNA[self.data["blood_DNA"]] = self.data["blood_type"]
-//
-//		for(var/datum/disease/D in self.data["viruses"])
-//			var/datum/disease/newVirus = D.Copy(1)
-//			blood_prop.viruses += newVirus
-//
-
 	if(!self.data["donor"] || ishuman(self.data["donor"]))
 		blood_splatter(T, self, 1)
 	else if(ismonkey(self.data["donor"]))
@@ -382,33 +348,6 @@
 		var/obj/item/clothing/mask/stone/S = O
 		S.spikes()
 
-//Data must contain virus type
-/datum/reagent/vaccine
-	name = "Vaccine"
-	id = VACCINE
-	reagent_state = REAGENT_STATE_LIQUID
-	color = "#C81040" //rgb: 200, 16, 64
-	density = 1.05
-	specheatcap = 3.49
-
-/datum/reagent/vaccine/reaction_mob(var/mob/living/M, var/method = TOUCH, var/volume)
-
-	var/datum/reagent/vaccine/self = src
-	if(..())
-		return 1
-
-	if(self.data && method == INGEST)
-		for(var/datum/disease/D in M.viruses)
-			if(istype(D, /datum/disease/advance))
-				var/datum/disease/advance/A = D
-				if(A.GetDiseaseID() == self.data)
-					D.cure()
-			else
-				if(D.type == self.data)
-					D.cure()
-
-		M.resistances += self.data
-
 /datum/reagent/water
 	name = "Water"
 	id = WATER
@@ -438,12 +377,6 @@
 	//Put out fire
 	if(method == TOUCH)
 		M.ExtinguishMob()
-		if(iscarbon(M))
-			var/mob/living/carbon/C = M
-			var/datum/disease2/effect/E = C.has_active_symptom(/datum/disease2/effect/thick_skin)
-			if(E)
-				E.multiplier = max(E.multiplier - rand(1,3), 1)
-				to_chat(C, "<span class='notice'>The water quenches your dry skin.</span>")
 		if(ishuman(M) || ismonkey(M))
 			var/mob/living/carbon/C = M
 			if(C.body_alphas[INVISIBLESPRAY])
@@ -1674,17 +1607,6 @@
 		return 1
 
 	M.apply_radiation(2 * REM, RAD_INTERNAL)
-	//Radium may increase your chances to cure a disease
-	if(iscarbon(M)) //Make sure to only use it on carbon mobs
-		var/mob/living/carbon/C = M
-		if(C.virus2.len)
-			for(var/ID in C.virus2)
-				var/datum/disease2/disease/V = C.virus2[ID]
-				if(prob(5))
-					if(prob(50))
-						C.apply_radiation(50, RAD_INTERNAL) //Curing it that way may kill you instead
-						C.adjustToxLoss(100)
-					C.antibodies |= V.antigen
 
 /datum/reagent/radium/reaction_turf(var/turf/simulated/T, var/volume)
 
@@ -1876,23 +1798,6 @@
 							"<span class='numb'>You nod to yourself... it's nothing, it just feels good to nod a little...</span>", \
 							"<span class='numb'>Hello?... Is there anybody in there?...</span>", \
 							"<span class='numb'>You feel... comfortably numb.</span>"))
-
-/datum/reagent/virus_food
-	name = "Virus Food"
-	id = VIRUSFOOD
-	description = "A mixture of water, milk, and oxygen. Virus cells can use this mixture to reproduce."
-	reagent_state = REAGENT_STATE_LIQUID
-	nutriment_factor = 2 * REAGENTS_METABOLISM
-	color = "#899613" //rgb: 137, 150, 19
-	density = 0.67
-	specheatcap = 4.18
-
-/datum/reagent/virus_food/on_mob_life(var/mob/living/M)
-
-	if(..())
-		return 1
-
-	M.nutrition += nutriment_factor*REM
 
 /datum/reagent/sterilizine
 	name = "Sterilizine"
@@ -2550,11 +2455,6 @@
 	M.confused = 0
 	M.sleeping = 0
 	M.remove_jitter()
-	for(var/datum/disease/D in M.viruses)
-		D.spread = "Remissive"
-		D.stage--
-		if(D.stage < 1)
-			D.cure()
 
 /datum/reagent/synaptizine
 	name = "Synaptizine"
@@ -3268,19 +3168,10 @@
 	reagent_state = REAGENT_STATE_SOLID
 	dupeable = FALSE
 	color = "#535E66" //rgb: 83, 94, 102
-	var/diseasetype = /datum/disease/robotic_transformation
-/datum/reagent/nanites/reaction_mob(var/mob/living/M, var/method = TOUCH, var/volume)
-
-	if(..())
-		return 1
-
-	if((prob(10) && method == TOUCH) || method == INGEST)
-		M.contract_disease(new diseasetype, 1)
 
 /datum/reagent/nanites/autist
 	name = "Autist nanites"
 	id = AUTISTNANITES
-	diseasetype = /datum/disease/robotic_transformation/mommi
 
 /datum/reagent/xenomicrobes
 	name = "Xenomicrobes"
@@ -3288,14 +3179,6 @@
 	description = "Microbes with an entirely alien cellular structure."
 	reagent_state = REAGENT_STATE_LIQUID
 	color = "#535E66" //rgb: 83, 94, 102
-
-/datum/reagent/xenomicrobes/reaction_mob(var/mob/living/M, var/method = TOUCH, var/volume)
-
-	if(..())
-		return 1
-
-	if((prob(10) && method == TOUCH) || method == INGEST)
-		M.contract_disease(new /datum/disease/xeno_transformation(0), 1)
 
 /datum/reagent/nanobots
 	name = "Nanobots"
@@ -3349,11 +3232,6 @@
 				M.dizziness = max(0, M.dizziness - 15)
 			if(M.confused != 0)
 				M.confused = max(0, M.confused - 5)
-			for(var/datum/disease/D in M.viruses)
-				D.spread = "Remissive"
-				D.stage--
-				if(D.stage < 1)
-					D.cure()
 		if(5 to 20)		//Danger zone healing. Adds to a human mob's "percent machine" var, which is directly translated into the chance that it will turn horror each tick that the reagent is above 5u.
 			if(ishuman(M))
 				var/mob/living/carbon/human/H = M
@@ -3374,11 +3252,6 @@
 				M.dizziness = max(0, M.dizziness - 15)
 			if(M.confused != 0)
 				M.confused = max(0, M.confused - 5)
-			for(var/datum/disease/D in M.viruses)
-				D.spread = "Remissive"
-				D.stage--
-				if(D.stage < 1)
-					D.cure()
 			if(prob(percent_machine))
 				holder.add_reagent("mednanobots", 20)
 				to_chat(M, pick("<b><span class='warning'>Your body lurches!</b></span>"))
@@ -3948,9 +3821,9 @@
 					E.droplimb(1, 1)
 
 			if(H.species)
-				hgibs(H.loc, H.viruses, H.dna, H.species.flesh_color, H.species.blood_color)
+				hgibs(H.loc, H.dna, H.species.flesh_color, H.species.blood_color)
 			else
-				hgibs(H.loc, H.viruses, H.dna)
+				hgibs(H.loc, H.dna)
 
 		H.hulk_time = 0 //Just to be sure.
 		H.mutations.Remove(M_HULK)
@@ -6724,16 +6597,7 @@ var/global/list/tonio_doesnt_remove=list("tonio", "blood")
 		return 1
 
 	if(volume >= minimal_dosage && prob(30))
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(locate(/datum/disease/petrification) in H.viruses)
-				return
-
-			var/datum/disease/D = new /datum/disease/petrification
-			D.holder = H
-			D.affected_mob = H
-			H.viruses += D
-		else if(!issilicon(M))
+		if(!issilicon(M))
 			if(M.turn_into_statue(1)) //Statue forever
 				to_chat(M, "<span class='userdanger'>You have been turned to stone by ingesting petritricin.</span>")
 

@@ -193,22 +193,8 @@ Subject's pulse: ??? BPM"})
 		if(H.nutrition < STARVATION_MIN)
 			message += "<br><span class='danger'>Warning: Severe lack of essential nutriments detected in subject's blood.</span>"
 
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if(C.virus2.len)
-			for(var/ID in C.virus2)
-				if(ID in virusDB)
-					var/datum/data/record/V = virusDB[ID]
-					message += "<br><span class='warning'>Warning: Pathogen [V.fields["name"]] detected in subject's blood. Known antigen : [V.fields["antigen"]]</span>"
-				//Canned out to make viruses much harder to notice, I suppose. Too bad we can't port a single functional virus code with visibility stats already
-				//else
-					//user.show_message(text("<span class='warning'>Warning: Unknown pathogen detected in subject's blood.</span>"))
-
 	if(M.getCloneLoss())
 		message += "<br><span class='warning'>Subject appears to have been imperfectly cloned.</span>"
-	for(var/datum/disease/D in M.viruses)
-		if(!D.hidden[SCANNER])
-			message += "<br><span class='warning'><b>Warning: [D.form] Detected</b><br>Name: [D.name].<br>Type: [D.spread].<br>Stage: [D.stage]/[D.max_stages].<br>Possible Cure: [D.cure]</span>"
 	if(M.reagents && M.reagents.get_reagent_amount(INAPROVALINE))
 		message += "<br><span class='notice'>Bloodstream Analysis located [M.reagents:get_reagent_amount(INAPROVALINE)] units of rejuvenation chemicals.</span>"
 	if(M.has_brain_worms())

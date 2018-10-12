@@ -235,7 +235,7 @@
 
 #define isapprentice(H) (H.mind && H.mind.GetRole(WIZAPP))
 
-#define isbadmonkey(H) ((/datum/disease/jungle_fever in H.viruses) || (H.mind && H.mind.GetRole(MADMONKEY)))
+#define isbadmonkey(H) (H.mind && H.mind.GetRole(MADMONKEY))
 
 #define isdeathsquad(H) (H.mind && H.mind.GetRole(DEATHSQUAD))
 

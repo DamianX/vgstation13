@@ -322,13 +322,6 @@
 	required_reagents = list(SILICON = 1, CARBON = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/virus_food
-	name = "Virus Food"
-	id = VIRUSFOOD
-	result = VIRUSFOOD
-	required_reagents = list(WATER = 5, MILK = 5)
-	result_amount = 15
-
 /datum/chemical_reaction/leporazine
 	name = "Leporazine"
 	id = LEPORAZINE

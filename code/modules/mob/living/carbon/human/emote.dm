@@ -133,8 +133,6 @@
 					for(var/mob/living/M in view(location,aoe_range))
 						if (M.internal != null && M.wear_mask && (M.wear_mask.clothing_flags & MASKINTERNALS))
 							continue
-						if(!airborne_can_reach(location,get_turf(M),aoe_range))
-							continue
 						// Now, we don't have this:
 						//new /obj/effects/fart_cloud(T,L)
 						// But:
@@ -151,8 +149,6 @@
 					H.visible_message("<span class = 'warning'><b>[H]</b> unleashes a [pick("tremendous","gigantic","colossal")] fart!</span>","<span class = 'warning'>You hear a [pick("tremendous","gigantic","colossal")] fart.</span>")
 					playsound(location, 'sound/effects/superfart.ogg', 50, 0)
 					for(var/mob/living/V in oviewers(aoe_range, get_turf(H)))
-						if(!airborne_can_reach(location,get_turf(V),aoe_range))
-							continue
 						shake_camera(V,10,5)
 						if (V == src)
 							continue

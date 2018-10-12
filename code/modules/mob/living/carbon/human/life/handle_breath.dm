@@ -101,14 +101,6 @@
 	if(breath)
 		loc.assume_air(breath)
 
-		//Spread some viruses while we are at it
-		if(virus2 && virus2.len > 0)
-			if(prob(10) && get_infection_chance(src))
-//					log_debug("[src] : Exhaling some viruses")
-				for(var/mob/living/M in range(1,src))
-					if(can_be_infected(M))
-						spread_disease_to(src,M)
-
 /mob/living/carbon/human/proc/get_breath_from_internal(volume_needed)
 	if(internal)
 		if(!contents.Find(internal))

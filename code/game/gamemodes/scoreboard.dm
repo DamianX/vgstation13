@@ -67,10 +67,6 @@
 
 	//Run through humans for diseases, also the Clown
 	for(var/mob/living/carbon/human/I in mob_list)
-		if(I.viruses) //Do this guy have any viruses ?
-			for(var/datum/disease/D in I.viruses) //Alright, start looping through those viruses
-				score["disease"]++ //One point for every disease
-
 		if(I.job == "Clown")
 			for(var/thing in I.attack_log)
 				if(findtext(thing, "<font color='orange'>")) //I just dropped 10 IQ points from seeing this

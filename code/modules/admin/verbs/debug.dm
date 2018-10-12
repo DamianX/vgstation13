@@ -808,19 +808,6 @@ Pressure: [env.pressure]"}
 		return
 	dispense_cash(response, mob.loc)
 
-var/global/blood_virus_spreading_disabled = 0
-/client/proc/disable_bloodvirii()
-	set category = "Debug"
-	set name = "Disable Blood Virus Spreading"
-
-//	to_chat(usr, "<span class='warning'>Proc disabled.</span>")
-
-	blood_virus_spreading_disabled = !blood_virus_spreading_disabled
-	if(blood_virus_spreading_disabled)
-		message_admins("[src.ckey] disabled findAirborneVirii.")
-	else
-		message_admins("[src.ckey] enabled findAirborneVirii.")
-
 /client/proc/reload_style_sheet()
 	set category = "Server"
 	set name = "Reload Style Sheet"
@@ -1146,46 +1133,6 @@ client/proc/check_bomb()
 			flashy_level =  input("How much flashy do you want it to be? 0=no effect; 1=flash; 2=screen-shake; 3=global X HAS RISEN announcement","Flashy Preferences") as num
 		if("Stealthy")
 			stealthy_level = input("How long do you want the fade-in to last? (in tenth of seconds)","Stealthy Preferences") as num
-
-client/proc/cure_disease()
-	set name = "Cure Disease"
-	set category = "Debug"
-	if(!holder)
-		return
-
-	var/list/disease_by_name = list("-Cure All-" = null) + disease2_list + active_diseases
-
-	var/disease_name = input(src, "Disease to cure?") as null|anything in sortTim(disease_by_name, /proc/cmp_text_asc)
-	if(!disease_name)
-		return
-	var/count = 0
-	if(disease_name == "-Cure All-")
-		for(var/mob/living/carbon/C in mob_list)
-			for(var/ID in C.virus2)
-				if(ID && C.virus2[ID])
-					var/datum/disease2/disease/DD = C.virus2[ID]
-					DD.cure(C)
-					count++
-			for(var/datum/disease/D in C.viruses)
-				if(D)
-					D.cure(1)
-					count++
-					active_diseases -= D
-	else
-		for(var/mob/living/carbon/C in mob_list)
-			for(var/ID in C.virus2)
-				if(ID == disease_name)
-					var/datum/disease2/disease/DD = C.virus2[ID]
-					DD.cure(C)
-					count++
-			for(var/datum/disease/D in C.viruses)
-				if(D && D.name == disease_name)
-					D.cure(1)
-					count++
-					active_diseases -= D
-	to_chat(src, "<span class='notice'>Cured [count] mob\s of [disease_name == "-Cure All-" ? "all diseases." : "[disease_name]"]</span>")
-	log_admin("[src]/([ckey(src.key)] Cured all mobs of [disease_name == "-Cure All-" ? "all diseases." : "[disease_name]"]")
-	message_admins("[src]/([ckey(src.key)] Cured all mobs of [disease_name == "-Cure All-" ? "all diseases." : "[disease_name]"]")
 
 client/proc/check_convertables()
 	set name = "Check Convertables (Cult v2.0)"

@@ -31,31 +31,11 @@
 	if (src.slurring || (undergoing_hypothermia() == MODERATE_HYPOTHERMIA && prob(25)))
 		speech.message = slur(speech.message)
 
-	// Should be handled via a virus-specific proc.
-	if(viruses)
-		for(var/datum/disease/pierrot_throat/D in viruses)
-			var/list/temp_message = splittext(speech.message, " ") //List each word in the message
-			var/list/pick_list = list()
-			for(var/i = 1, i <= temp_message.len, i++) //Create a second list for excluding words down the line
-				pick_list += i
-			for(var/i=1, ((i <= D.stage) && (i <= temp_message.len)), i++) //Loop for each stage of the disease or until we run out of words
-				if(prob(3 * D.stage)) //Stage 1: 3% Stage 2: 6% Stage 3: 9% Stage 4: 12%
-					var/H = pick(pick_list)
-					if(findtext(temp_message[H], "*") || findtext(temp_message[H], ";") || findtext(temp_message[H], ":"))
-						continue
-					temp_message[H] = "HONK"
-					pick_list -= H //Make sure that you dont HONK the same word twice
-				speech.message = jointext(temp_message, " ")
 	if(isanycultist(src))
 		var/obj/effect/cult_ritual/cult_communication/comms = locate() in loc
 		if (comms && comms.caster == src)
 			speech.language = all_languages[LANGUAGE_CULT]
-	if(virus2.len)
-		for(var/ID in virus2)
-			var/datum/disease2/disease/V = virus2[ID]
-			for(var/datum/disease2/effect/e in V.effects)
-				if(e.affect_voice && e.affect_voice_active)
-					e.affect_mob_voice(speech)
+
 	..(speech)
 	if(dna)
 		species.handle_speech(speech,src)

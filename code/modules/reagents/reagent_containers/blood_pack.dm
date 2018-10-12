@@ -16,7 +16,7 @@
 	..()
 	if(blood_type != null)
 		name = "\improper[blood_type] bloodpack"
-	reagents.add_reagent(BLOOD, 200, list("donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"=blood_type,"resistances"=null,"trace_chem"=null, "virus2"=list()))
+	reagents.add_reagent(BLOOD, 200, list("donor"=null,"blood_DNA"=null,"blood_type"=blood_type,"resistances"=null,"trace_chem"=null))
 	update_icon()
 
 /obj/item/weapon/reagent_containers/blood/on_reagent_change()
@@ -156,14 +156,6 @@
 	if(mode == BLOODPACK_CUT)
 		return
 
-	if(istype(W, /obj/item/weapon/reagent_containers/syringe))
-		var/datum/reagent/blood/S = locate(/datum/reagent/blood) in W.reagents.reagent_list
-		//if a syringe with infected blood is used, it infects the blood inside the bloodpack.
-		if (S != null && S.data["virus2"] && reagents.has_reagent(BLOOD))
-			var/list/virus = B.data["virus2"]
-			virus |= virus_copylist(S.data["virus2"])
-		return //stops from punching holes
-
 	if (W.sharpness_flags & (SHARP_BLADE|SHARP_TIP|HOT_EDGE))
 
 		if(!holes)
@@ -181,15 +173,14 @@
 					playsound(T, 'sound/effects/splat.ogg', 50, 1)
 
 					if(reagents.has_reagent(BLOOD))
-						var/list/virus = B.data["virus2"]
 						var/color = B.data["blood_colour"]
 
 						for(var/i=reagents.get_reagent_amount(BLOOD), i>=21, i-=60)
-							bloodmess_splatter(T, virus, null, null, color)
+							bloodmess_splatter(T, null, null, color)
 							reagents.remove_reagent(BLOOD, 60)
 
 						while (reagents.get_reagent_amount(BLOOD)!=0 && reagents.get_reagent_amount(BLOOD)<=20)
-							bloodmess_drip(T, virus, null, null, color)
+							bloodmess_drip(T, null, null, color)
 							reagents.remove_reagent(BLOOD, 20)
 
 					//it will never have blood at this point

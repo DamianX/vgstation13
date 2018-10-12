@@ -64,13 +64,7 @@
 	..()
 
 /datum/game_mode/monkey/proc/is_important_monkey(var/mob/living/carbon/monkey/M as mob)
-	var/turf/T = get_turf(M)
-	var/area/A = get_area(M)
-	if(M.stat!=2)
-
-		for(var/datum/disease/D in M.viruses)
-			if(istype(D, /datum/disease/jungle_fever) && ( T.z==1 || is_type_in_list(A, centcom_areas)))
-				return 1
+	return 0
 
 
 /datum/game_mode/monkey/check_win()
@@ -119,11 +113,7 @@
 
 
 /datum/game_mode/proc/auto_declare_completion_monkey()
-	for(var/mob/living/carbon/monkey/monkey_player in mob_list)
-		for(var/datum/disease/D in monkey_player.viruses)
-			if (istype(D, /datum/disease/jungle_fever) && monkey_player.ckey)
-				to_chat(world, "<B>[monkey_player.ckey] was played infested [monkey_player]. [monkey_player.stat == 2 ? "(DEAD)" : ""]</B>")
-	return 1
+	return 0
 
 #undef MONKEY_MODE_RUNNING
 #undef MONKEY_MODE_NO_RABID_LEFT

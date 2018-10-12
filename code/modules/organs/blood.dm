@@ -46,13 +46,11 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 		if(B.id == BLOOD)
 			B.data = list(
 				"donor"=src,
-				"viruses"=null,
 				"blood_DNA"=dna.unique_enzymes,
 				"blood_colour"= species.blood_color,
 				"blood_type"=dna.b_type,
 				"resistances"=null,
 				"trace_chem"=null,
-				"virus2" = null,
 				"antibodies" = null,
 				)
 			B.color = B.data["blood_colour"]
@@ -218,9 +216,6 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 
 	//set reagent data
 	B.data["donor"] = src
-	if (!B.data["virus2"])
-		B.data["virus2"] = list()
-	B.data["virus2"] |= virus_copylist(src.virus2)
 	B.data["antibodies"] = src.antibodies
 	B.data["blood_DNA"] = copytext(src.dna.unique_enzymes,1,0)
 	if(src.resistances && src.resistances.len)
@@ -272,7 +267,6 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 	var/datum/reagent/blood/injected = get_blood(container.reagents)
 	if (!injected)
 		return
-	src.virus2 |= virus_copylist(injected.data["virus2"])
 	if (injected.data["antibodies"] && prob(5))
 		antibodies |= injected.data["antibodies"]
 	var/list/chems = list()
@@ -371,7 +365,6 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large)
 
 		// If we have too many drips, remove them and spawn a proper blood splatter.
 		if(drips.len >= 5)
-			//TODO: copy all virus data from drips to new splatter?
 			for(var/obj/effect/decal/cleanable/blood/drip/drop in drips)
 				returnToPool(drop)
 		else
@@ -401,13 +394,5 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large)
 			B.blood_DNA[source.data["blood_DNA"]] = source.data["blood_type"]
 		else
 			B.blood_DNA[source.data["blood_DNA"]] = "O+"
-
-	// Update virus information. //Looks like this is out of date.
-	//for(var/datum/disease/D in source.data["viruses"])
-	//	var/datum/disease/new_virus = D.Copy(1)
-	//	source.viruses += new_virus
-	//	new_virus.holder = B
-	if(source.data["virus2"])
-		B.virus2 = virus_copylist(source.data["virus2"])
 
 	return B

@@ -7,17 +7,6 @@
 	if(now_pushing)
 		return
 	..()
-	if(can_be_infected(AM) && prob(10))
-		spread_disease_to(src, AM, "Contact")
-	handle_symptom_on_touch(src, AM, BUMP)
-	if(istype(AM, /mob/living/carbon))
-		var/mob/living/carbon/C = AM
-		C.handle_symptom_on_touch(src, AM, BUMP)
-
-/mob/living/carbon/Bumped(var/atom/movable/AM)
-	..()
-	if(!istype(AM, /mob/living/carbon))
-		handle_symptom_on_touch(AM, src, BUMP)
 
 /mob/living/carbon/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)
 	. = ..()
@@ -77,14 +66,6 @@
 		visible_message("<span class='warning'>Something bursts from \the [src]'s stomach!</span>")
 	. = ..()
 
-/mob/living/carbon/proc/share_contact_diseases(var/mob/M)
-	for(var/datum/disease/D in viruses)
-		if(D.spread_by_touch())
-			M.contract_disease(D, 0, 1, CONTACT_HANDS)
-	for(var/datum/disease/D in M.viruses)
-		if(D.spread_by_touch())
-			contract_disease(D, 0, 1, CONTACT_HANDS)
-
 /mob/living/carbon/attack_hand(mob/M as mob)
 	if(!istype(M, /mob/living/carbon))
 		return
@@ -94,8 +75,6 @@
 		if(temp && !temp.is_usable())
 			to_chat(M, "<span class='warning'>You can't use your [temp.display_name]</span>")
 			return
-	share_contact_diseases(M)
-	handle_symptom_on_touch(M, src, HAND)
 
 /mob/living/carbon/electrocute_act(const/shock_damage, const/obj/source, const/siemens_coeff = 1.0)
 	var/damage = shock_damage * siemens_coeff
@@ -201,7 +180,7 @@
 
 			if(num_injuries == 0)
 				to_chat(src, "My legs are OK.")
-					
+
 			if((M_SKELETON in H.mutations) && (!H.w_uniform) && (!H.wear_suit))
 				H.play_xylophone()
 		else if(lying) // /vg/: For hugs. This is how update_icon figgers it out, anyway.  - N3X15
@@ -291,8 +270,6 @@
 					"<span class='notice'>You hug [src].</span>", \
 					)
 			reagents.add_reagent(PARACETAMOL, 1)
-
-			share_contact_diseases(M)
 
 // ++++ROCKDTBEN++++ MOB PROCS -- Ask me before touching.
 // Stop! ... Hammertime! ~Carn
@@ -582,26 +559,6 @@
 /mob/living/carbon/flash_eyes(intensity = 1, override_blindness_check = 0, affect_silicon = 0, visual = 0)
 	if(eyecheck() < intensity)
 		..()
-
-/mob/living/carbon/proc/has_active_symptom(var/symptom_type)	//returns true if the mob has a virus with the given symptom type AND the symptom has activated at least once
-	if(!symptom_type)
-		return
-	if(virus2.len)
-		for(var/I in virus2)
-			var/datum/disease2/disease/D = virus2[I]
-			if(D.effects.len)
-				for(var/datum/disease2/effect/E in D.effects)
-					if(istype(E, symptom_type))
-						if(E.count > 0)
-							return E
-
-/mob/living/carbon/proc/handle_symptom_on_touch(var/toucher, var/touched, var/touch_type)
-	if(virus2.len)
-		for(var/I in virus2)
-			var/datum/disease2/disease/D = virus2[I]
-			if(D.effects.len)
-				for(var/datum/disease2/effect/E in D.effects)
-					E.on_touch(src, toucher, touched, touch_type)
 
 /mob/living/carbon/proc/get_lowest_body_alpha()
 	if(!body_alphas.len)

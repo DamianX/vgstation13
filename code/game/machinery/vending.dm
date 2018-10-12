@@ -2077,9 +2077,6 @@ var/global/num_vending_terminals = 1
 		/obj/item/clothing/glasses/monocle = 5,
 		/obj/item/weapon/storage/bag/wiz_cards/full = 1,
 		)
-	contraband = list(
-		/obj/item/weapon/reagent_containers/glass/bottle/wizarditis = 1,
-		)	//No one can get to the machine to hack it anyways; for the lulz - Microwave
 	premium = list(
 		/obj/item/clothing/back/magiccape = 1,
 		)

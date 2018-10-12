@@ -383,7 +383,7 @@ emp_act
 				return
 
 			else if (stat == 2 && !client)
-				gibs(loc, viruses)
+				gibs(loc)
 				qdel(src)
 				return
 

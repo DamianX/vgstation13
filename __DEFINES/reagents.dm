@@ -50,7 +50,6 @@
 #define MUTAGEN 			"mutagen"
 #define TRAMADOL 			"tramadol"
 #define OXYCODONE 			"oxycodone"
-#define VIRUSFOOD 			"virusfood"
 #define STERILIZINE 			"sterilizine"
 #define IRON 			"iron"
 #define GOLD 			"gold"

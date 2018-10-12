@@ -1017,12 +1017,6 @@
 	icon_state = "clownburger"
 /obj/item/weapon/reagent_containers/food/snacks/clownburger/New()
 	..()
-/*
-		var/datum/disease/F = new /datum/disease/pierrot_throat(0)
-		var/list/data = list("viruses"= list(F))
-		reagents.add_reagent(BLOOD, 4, data)
-*/
-
 	reagents.add_reagent(NUTRIMENT, 6)
 	reagents.add_reagent(HONKSERUM, 6)
 	bitesize = 2
@@ -3015,19 +3009,13 @@
 	var/original_total_volume = reagents.total_volume
 	reagents.clear_reagents()
 
-	var/datum/disease2/disease/new_virus = new /datum/disease2/disease
-	new_virus.makerandom()
-
 	var/list/blood_data = list(
 		"donor" = null,
-		"viruses" = null,
 		"blood_DNA" = null,
 		"blood_type" = "AB+",
 		"resistances" = null,
 		"trace_chem" = null,
-		"virus2" = list()
 	)
-	blood_data["virus2"]["[new_virus.uniqueID]"] = new_virus
 	reagents.add_reagent(BLOOD, original_total_volume, blood_data)
 
 /obj/item/weapon/reagent_containers/food/snacks/meatpizzaslice

@@ -1609,11 +1609,6 @@
 				)
 	result = /obj/item/weapon/reagent_containers/food/snacks/pannacotta
 
-/datum/recipe/yogurt
-	reagents = list(CREAM = 10, VIRUSFOOD = 5)
-	items = list(/obj/item/weapon/reagent_containers/food/snacks/grown/greengrapes)
-	result = /obj/item/weapon/reagent_containers/food/snacks/yogurt
-
 /datum/recipe/gelatin
 	reagents = list(WATER = 10)
 	items = list(/obj/item/stack/teeth)
@@ -2581,7 +2576,7 @@
 	)
 
  result = /obj/item/weapon/reagent_containers/food/snacks/butterfingers_l/
- 
+
 /datum/recipe/butteredtoast
 	reagents = list(LIQUIDBUTTER = 2)
 	items = list(/obj/item/weapon/reagent_containers/food/snacks/breadslice,

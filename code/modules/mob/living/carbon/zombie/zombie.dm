@@ -42,9 +42,6 @@
 	zsay += "AAARRAAAGGGGHHHHHH"
 	zsay += "FFFFEEEEERRAAAAG"
 	zsay += "bbbb-bbb-ainnnnnns"
-
-	src.contract_disease(new/datum/disease/z_virus)
-
 	src.process()
 
 /mob/living/carbon/human/zombie/emote(var/act)
@@ -162,8 +159,6 @@
 						affecting = T.organs["head"]
 					affecting.take_damage(rand(1,7), 0)
 					playsound(src, 'sound/items/eatfood.ogg', 50, 1)
-					if(prob(25))
-						target.contract_disease(new/datum/disease/z_virus)
 					src.add_blood(src.target)
 					if (prob(33))
 						var/turf/location = src.target.loc
@@ -200,8 +195,6 @@
 					if(T.organs["head"])
 						affecting = T.organs["head"]
 					affecting.take_damage(rand(1,7), 0)
-					if(prob(12.5))
-						target.contract_disease(new/datum/disease/z_virus)
 					src.add_blood(src.target)
 					if (prob(33))
 						var/turf/location = src.target.loc
@@ -323,63 +316,6 @@
 
 //Zombies!
 
-/datum/disease/z_virus
-	name = "T-Virus"
-	max_stages = 5
-	spread = "Contact"
-	cure = "???"
-	spread_type = SPECIAL
-	cure_id = "zed"
-	affected_species = list("Human", "Human/Zombie")
-
-/datum/disease/z_virus/stage_act()
-	..()
-	if(istype(affected_mob, /mob/living/carbon/human/zombie) && !src.carrier)
-		src.carrier = 1
-		return
-	switch(stage)
-		if(1)
-			if (prob(8))
-				to_chat(affected_mob, pick("<span class='warning'>Something about you doesnt feel right.</span>","<span class='warning'>Your head starts to itch.</span>"))
-		if(2)
-			if (prob(8))
-				to_chat(affected_mob, "<span class='warning'>Your limbs feel numb.</span>")
-				affected_mob.bruteloss += 1
-				affected_mob.updatehealth()
-			if (prob(9))
-				to_chat(affected_mob, "<span class='warning'>You feel ill...</span>")
-			if (prob(9))
-				to_chat(affected_mob, "<span class='warning'>You feel a pain in your stomache...</span>")
-		if(3)
-			if (prob(8))
-				to_chat(affected_mob, text("<span class='warning'>[]</span>", pick("owww...","I want...","Please...")))
-				affected_mob.bruteloss += 1
-				affected_mob.updatehealth()
-			if (prob(10))
-				to_chat(affected_mob, "<span class='warning'>You feel very ill.</span>")
-				affected_mob.bruteloss += 5
-				affected_mob.updatehealth()
-			if (prob(4))
-				to_chat(affected_mob, "<span class='warning'>You feel a stabbing pain in your head.</span>")
-				affected_mob.paralysis += 2
-			if (prob(4))
-				to_chat(affected_mob, "<span class='warning'>Whats going to happen to me?</span>")
-		if(4)
-			if (prob(10))
-				to_chat(affected_mob, pick("<span class='warning'>You feel violently sick.</span>"))
-				affected_mob.bruteloss += 8
-				affected_mob.updatehealth()
-			if (prob(20))
-				affected_mob.say(pick("Mmmmm.", "Hey... You look...", "Hsssshhhhh!"))
-			if (prob(8))
-				to_chat(affected_mob, "<span class='warning'>You cant... feel...</span>")
-		if(5)
-			affected_mob.toxloss += 10
-			affected_mob.updatehealth()
-			to_chat(affected_mob, "You feel the life slowly slip away from you as you join the army of the undead..")
-			affected_mob:Zombify()
-
-
 /mob/living/carbon/human/proc/Zombify()
 	if (src.monkeyizing)
 		return
@@ -440,88 +376,6 @@
 	O.forceMove(src.loc)
 	qdel(src)
 	return
-
-/obj/item/weapon/reagent_containers/glass/bottle/t_virus
-	name = "Z-Virus culture bottle"
-	desc = "A small bottle. Contains Z-Virus virion in synthblood medium."
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = "bottle3"
-	amount_per_transfer_from_this = 5
-
-/obj/item/weapon/reagent_containers/glass/bottle/t_virus/New()
-	var/datum/reagents/R = new/datum/reagents(20)
-	reagents = R
-	R.my_atom = src
-	var/datum/disease/F = new /datum/disease/z_virus(0)
-	var/list/data = list("virus"= F)
-	R.add_reagent(BLOOD, 20, data)
-
-///////////////////////////CURE//////////////////////////////////////////
-
-datum/reagent/zed
-	name = "Zombie Elixer"
-	id = "zed"
-	description = "For treating the Z-Virus."
-	//reagent_state = REAGENT_STATE_LIQUID
-
-datum/reagent/zed/on_mob_life(var/mob/M)//no more mr. panacea
-	holder.remove_reagent(src.id, 0.2)
-	return
-
-
-
-/obj/item/weapon/zedpen
-	desc = "Small non-refillable auto-injector for curing the Z-Virus in early stages."
-	name = "Z.E.D. Pen."
-	icon = 'icons/obj/items.dmi'
-	icon_state = "zed_1"
-	flags = FPRINT | TABLEPASS/* | ONBELT*/
-	throwforce = 0
-	w_class = W_CLASS_TINY
-	throw_speed = 7
-	throw_range = 15
-	m_amt = 60
-
-/obj/item/weapon/zedpen/attack_paw(mob/user as mob)
-	return src.attack_hand(user)
-	return
-
-/obj/item/weapon/zedpen/New()
-	var/datum/reagents/R = new/datum/reagents(10)
-	reagents = R
-	R.my_atom = src
-	R.add_reagent("zed", 10)
-	..()
-	return
-
-/obj/item/weapon/zedpen/attack(mob/M as mob, mob/user as mob)
-	if (!( istype(M, /mob) ))
-		return
-	if (reagents.total_volume)
-		for(var/mob/O in viewers(M, null))
-			O.show_message(text("<span class='notice'>[] has been stabbed with [] by [].</span>", M, src, user), 1)
-//		to_chat(user, "<span class='warning'>You stab [M] with the pen.</span>")
-//		to_chat(M, "<span class='warning'>You feel a tiny prick!</span>")
-		if(M.reagents)
-			reagents.trans_to(M, 10)
-		icon_state = "zed_0"
-	return
-
-
-
-
-/obj/item/weapon/storage/firstaid/zed
-	name = "Zed-Kit"
-	icon_state = "zedkit"
-	item_state = "firstaid-zed"
-
-/obj/item/weapon/storage/firstaid/zed/New()
-	..()
-	for(var/i = 1 to 6)
-	new /obj/item/weapon/zedpen(src)
-	new /obj/item/device/healthanalyzer(src)
-	return
-
 
 ////////////////////////////////////////////event code/////////////////////////////////////////
 

@@ -222,9 +222,6 @@
 //Changlings, but can be used in other modes
 //	var/obj/effect/proc_holder/changpower/list/power_list = list()
 
-//List of active diseases
-
-	var/list/datum/disease/viruses = list() // replaces var/datum/disease/virus
 	var/list/resistances = list()
 
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
@@ -294,7 +291,7 @@
 	var/mob/transmogged_to		//holds a reference to the mob which holds a reference to this mob in its transmogged_from var
 
 /mob/resetVariables()
-	..("callOnFace", "pinned", "embedded", "abilities", "grabbed_by", "requests", "mapobjs", "mutations", "spell_list", "viruses", "resistances", "radar_blips", "active_genes", \
+	..("callOnFace", "pinned", "embedded", "abilities", "grabbed_by", "requests", "mapobjs", "mutations", "spell_list", "resistances", "radar_blips", "active_genes", \
 	"attack_log", "speak_emote", "alphas", "heard_by", "control_object", "orient_object", "actions", "held_items", "click_delayer", "attack_delayer", "special_delayer", \
 	"clong_delayer", args)
 
@@ -307,7 +304,6 @@
 	mapobjs = list()
 	mutations = list()
 	spell_list = list()
-	viruses = list()
 	resistances = list()
 	radar_blips = list()
 	active_genes = list()

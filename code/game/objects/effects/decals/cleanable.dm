@@ -9,10 +9,8 @@
 	var/amount = 0 // 0 = don't track
 	var/counts_as_blood = 0 // Cult
 	var/transfers_dna = 0
-	var/list/viruses = list()
 	blood_DNA = list()
 	var/basecolor = DEFAULT_BLOOD // Color when wet.
-	var/list/datum/disease2/disease/virus2 = list()
 	var/list/absorbs_types = list() // Types to aggregate.
 
 	var/on_wall = 0 //Wall on which this decal is placed on
@@ -30,9 +28,6 @@
 
 /obj/effect/decal/cleanable/Destroy()
 	blood_list -= src
-	for(var/datum/disease/D in viruses)
-		D.cure(0)
-		D.holder = null
 
 	if(counts_as_blood)
 		var/datum/faction/cult/narsie/blood_cult = find_active_faction_by_type(/datum/faction/cult/narsie)
@@ -81,9 +76,7 @@
 //
 /obj/effect/decal/cleanable/resetVariables()
 	Destroy()
-	..("viruses","virus2", "blood_DNA", "random_icon_states", args)
-	viruses = list()
-	virus2 = list()
+	..("blood_DNA", "random_icon_states", args)
 	blood_DNA = list()
 
 /obj/effect/decal/cleanable/New()

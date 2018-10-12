@@ -43,7 +43,6 @@
 	var/can_chew_wires = 0
 	var/disease_carrier = 0
 
-	var/list/datum/disease2/disease/virus2 = list() //For disease carrying
 	var/antibodies = 0
 
 /mob/living/simple_animal/mouse/Life()
@@ -117,20 +116,6 @@
 						else
 							step_towards(src, C)
 							break
-				if(disease_carrier && virus2.len)
-					for(var/mob/living/carbon/human/H in can_see)
-						if(Adjacent(H))
-//							visible_message("[src] bites [H]")
-							H.attack_animal(src)
-							break
-						else
-							step_towards(src, H)
-							break
-			if(disease_carrier && virus2.len)
-				for(var/mob/living/M in view(1,src))
-//					visible_message("[src] breaths on [M]")
-					spread_disease_to(src,M, "Airborne") //Spreads it to humans, mice, and monkeys
-
 
 		nutrition = max(0, nutrition - MOUSESTANDCOST)
 
@@ -158,11 +143,6 @@
 	add_language(LANGUAGE_MOUSE)
 	default_language = all_languages[LANGUAGE_MOUSE]
 
-/mob/living/simple_animal/mouse/unarmed_attack_mob(mob/living/target)
-	..()
-	if(can_be_infected(target))
-		spread_disease_to(src, target, "Contact")
-
 /mob/living/simple_animal/mouse/proc/nutrstats()
 	stat(null, "Nutrition level - [nutrition]")
 
@@ -178,8 +158,6 @@
 			to_chat(user, "<span class='info'>It seems well fed.</span>")
 		if(can_chew_wires)
 			to_chat(user, "<span class='notice'>It seems a bit frazzled.</span>")
-		if(disease_carrier && virus2.len)
-			to_chat(user, "<span class='blob'>It seems unwell.</span>") //Blob class is snot green
 		if(nutrition <= MOUSEHUNGRY)
 			to_chat(user, "<span class = 'danger'>It seems a bit hungry.</span>")
 
