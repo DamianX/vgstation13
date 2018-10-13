@@ -150,7 +150,6 @@
 	if(ismob(D))
 
 		body += {"<option value='?_src_=vars;give_spell=\ref[D]'>Give Spell</option>
-			<option value='?_src_=vars;give_disease=\ref[D]'>Give Disease</option>
 			<option value='?_src_=vars;addcancer=\ref[D]'>Inflict Cancer</option>
 			<option value='?_src_=vars;godmode=\ref[D]'>Toggle Godmode</option>
 			<option value='?_src_=vars;build_mode=\ref[D]'>Toggle Build Mode</option>

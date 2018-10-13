@@ -230,7 +230,6 @@ var/list/score=list(
 	"mess"           = 0, //How much messes on the floor went uncleaned
 	"litter"		 = 0, //How much trash is laying on the station floor
 	"meals"          = 0, //How much food was actively cooked that day
-	"disease"        = 0, //How many disease vectors in the world (one disease on one person is one)
 
 	//These ones are mainly for the stat panel
 	"powerbonus"    = 0, //If all APCs on the station are running optimally, big bonus

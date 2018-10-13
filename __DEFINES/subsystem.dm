@@ -38,7 +38,6 @@
 #define SS_PRIORITY_PIPENET        85
 #define SS_PRIORITY_AIR            70
 #define SS_PRIORITY_EVENT          65
-#define SS_PRIORITY_DISEASE        60
 #define SS_PRIORITY_FAST_MACHINERY 55
 #define SS_PRIORITY_PLANT          40
 #define SS_PRIORITY_UNSPECIFIED    30

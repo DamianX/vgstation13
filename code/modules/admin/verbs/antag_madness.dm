@@ -570,9 +570,6 @@ client/proc/antag_madness(var/mob/M in mob_list)
 			to_chat(M, "<span class='danger'>YOU WERE A MONKEY ALL ALONG! JUNGLE NAITO FEEVAH!</span>")
 			if (istype(H))
 				K = H.monkeyize()
-				K.contract_disease(new /datum/disease/jungle_fever,1,0)
-			else if (istype(K))
-				M.contract_disease(new /datum/disease/jungle_fever,1,0)
 
 			return 1
 	return 0

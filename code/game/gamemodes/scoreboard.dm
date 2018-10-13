@@ -238,7 +238,6 @@
 		messpoints = score["mess"] //If there are any messes, let's count them
 	//if(score["airloss"] != 0)
 		//atmos = score["airloss"] * 20 //Air issues are bad, but since it's space, don't stress it too much
-	var/plaguepoints = score["disease"] * 50 //A diseased crewman is half-dead, as they say, and a double diseased is double half-dead
 
 	/*//Mode Specific
 	if(ticker.mode.config_tag == "nuclear")
@@ -453,7 +452,6 @@
 	<B>Uncleaned Messes:</B> [score["mess"]] (-[score["mess"]] Points)<BR>
 	<B>Trash on Station:</B> [score["litter"]] (-[score["litter"]] Points)<BR>
 	<B>Station Power Issues:</B> [score["powerloss"]] (-[score["powerloss"] * 50] Points)<BR>
-	<B>Unique Disease Vectors:</B> [score["disease"]] (-[score["disease"] * 50] Points)<BR><BR>
 
 	<U>THE WEIRD</U><BR>"}
 /*	<B>Final Station Budget:</B> $[num2text(totalfunds,50)]<BR>"}
