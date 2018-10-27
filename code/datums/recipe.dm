@@ -41,7 +41,7 @@
 
 	var/list/reagents //List of reagents needed and their amount, reagents = list(BERRYJUICE = 5)
 	var/list/reagents_forbidden //List of reagents that will not be transfered to the cooked item under any circumstance, use smartly and sparringly. reagents_forbidden = list(TOXIN, WATER)
-	var/list/items //List of items needed, items = list(/obj/item/weapon/crowbar, /obj/item/weapon/welder)
+	var/list/items //List of items needed, items = list(/obj/item/weapon/crowbar, /obj/item/weapon/welder) - Optionally, the associated value can specify variables that need to match: `list(/obj/item/seeds = list("seed_type" = "poppies"))`
 	var/result //Well gee, what we output, result = /obj/item/weapon/reagent_containers/food/snacks/donut/normal
 	var/time = 100 //In tenths of a second, this is how long it takes for the magic to happen. The machine producing the recipe handles this value, but the recipe defines it
 
@@ -81,10 +81,12 @@
 	for(var/obj/O in container) //Let's loop through all the objects in our recipe machine
 		var/found = 0 //For once we use an actual variable
 		for(var/type in checklist) //At every object we find, stop to take a look at our entire checklist
+			var/list/variables_that_need_to_match = checklist[type]
 			if(istype(O, type)) //Is that what we are looking for yet
-				checklist -= type //Good, strike it out of our checklist
-				found = 1 //WE FOUND IT MA
-				break //Break that loop, continue downwards
+				if(!variables_that_need_to_match || O.compare_vars_to_list(variables_that_need_to_match)) // Does this item's vars match what we need?
+					checklist -= type //Good, strike it out of our checklist
+					found = 1 //WE FOUND IT MA
+					break //Break that loop, continue downwards
 		if(!found) //Did we not find the object in our recipe machine on the checklist ?
 			. = -1 //Something extra in our ingredients, notify the cops
 	//We start looping through the objects in the container again at this point, until we checked every single one of them

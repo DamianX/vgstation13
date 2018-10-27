@@ -393,3 +393,28 @@
 	for(var/path in subtypesof(prototype))
 		L += new path()
 	return L
+
+// Input: an associative list ("var name" = "var value")
+// Output: TRUE if all var key/value pairs contained in the list match this datum's vars
+/datum/proc/compare_vars_to_list(var/list/expected)
+	for(var/i in length(expected))
+		var/expected_name = expected[i]
+		var/expected_value = expected[expected_name]
+		if(vars[expected_name] != expected_value)
+			return FALSE
+	return TRUE
+
+#if UNIT_TESTS_ENABLED
+/datum/unit_test/compare_vars_to_list/start()
+	var/obj/object = new
+	object.name = "object"
+
+	assert_eq(object.compare_vars_to_list(null), TRUE)
+	assert_eq(object.compare_vars_to_list(list()), TRUE)
+
+	assert_eq(object.compare_vars_to_list(list("name" = "object")), TRUE)
+	assert_eq(object.compare_vars_to_list(list("name" = "not object")), FALSE)
+
+	assert_eq(object.compare_vars_to_list(list("a var name that cannot possibly exist")), TRUE)
+	assert_eq(object.compare_vars_to_list(list("a var name that cannot possibly exist" = "some random value")), TRUE)
+#endif

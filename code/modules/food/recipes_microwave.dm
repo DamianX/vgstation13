@@ -325,7 +325,7 @@
 /datum/recipe/poppypretzel
 	reagents = list(FLOUR = 5)
 	items = list(
-		/obj/item/seeds/poppyseed,
+		/obj/item/seeds = list("seed_type" = "poppies"),
 		/obj/item/weapon/reagent_containers/food/snacks/egg,
 		)
 	result = /obj/item/weapon/reagent_containers/food/snacks/poppypretzel
