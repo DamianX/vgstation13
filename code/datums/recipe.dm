@@ -83,7 +83,7 @@
 		for(var/type in checklist) //At every object we find, stop to take a look at our entire checklist
 			var/list/variables_that_need_to_match = checklist[type]
 			if(istype(O, type)) //Is that what we are looking for yet
-				if(!variables_that_need_to_match || O.compare_vars_to_list(variables_that_need_to_match)) // Does this item's vars match what we need?
+				if(!variables_that_need_to_match || O.compare_vars_to_list(variables_that_need_to_match)) // Do this item's vars match what we need?
 					checklist -= type //Good, strike it out of our checklist
 					found = 1 //WE FOUND IT MA
 					break //Break that loop, continue downwards
