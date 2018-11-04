@@ -1,5 +1,5 @@
 /obj/item/organ/internal/brain/mami
-	name = "Machine-Man Interface"
+	name = "\improper Machine-Man Interface"
 	desc = "A complex socket-system of electrodes and neurons intended to give silicon-based minds control of organic tissue."
 	origin_tech = Tc_BIOTECH + "=4;" + Tc_PROGRAMMING + "=4"
 	icon = 'icons/obj/assemblies.dmi'
@@ -9,14 +9,15 @@
 
 /obj/item/organ/internal/brain/mami/attackby(obj/item/O, mob/user)
 	if(istype(O,/obj/item/device/mmi/posibrain) && !brainmob)
-		posibrain = O
-		if(!posibrain.brainmob || !posibrain.brainmob.mind || !posibrain.brainmob.ckey)
+		if(!user.drop_item(O, src))
+			to_chat(user, "<span class='warning'>You can't let go of \the [src]!</span>")
+			return
+		var/obj/item/device/mmi/posibrain/brain_obj = O
+		if(!brain_obj.brainmob || !brain_obj.brainmob.mind || !brain_obj.brainmob.ckey)
 			to_chat(user, "<span class='warning'>You aren't sure where this brain came from, but you're pretty sure it's a useless brain.</span>")
-			posibrain = null
 			return
-		if(!user.drop_item(posibrain, src))
-			user << "<span class='warning'>You can't let go of \the [src]!</span>"
-			return
+
+		posibrain = brain_obj
 
 		src.visible_message("<span class='notice'>[user] sticks \a [O] into \the [src].</span>")
 
@@ -37,7 +38,8 @@
 /obj/item/organ/internal/brain/mami/attack_self(mob/user)
 	if(brainmob && !posibrain)
 		posibrain = new(src)
-		posibrain.reset_search()
+		posibrain.icon_state = "posibrain-occupied"
+		brainmob.stat = CONSCIOUS
 	if(posibrain)
 		to_chat(user, "You upend \the [src], dropping its contents onto the floor.")
 		posibrain.forceMove(user.loc)

@@ -1340,24 +1340,26 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 									organ_data[second_limb] = "amputated"
 
 				if("organs")
-					var/organ_name = input(user, "Which internal function do you want to change?") as null|anything in list("Heart", "Eyes", "Lungs", "Liver", "Kidneys")
-					if(!organ_name)
+					var/static/list/menu_entry_to_organ_name = list(
+						"Heart" = "heart",
+						"Eyes" = "eyes",
+						"Lungs" = "lungs",
+						"Liver" = "liver",
+						"Kidneys" = "kidneys",
+						"Brain" = "brain",
+					)
+					var/selected_organ = input(user, "Which internal organ do you want to change?") as null|anything in menu_entry_to_organ_name
+					if(!selected_organ)
 						return
 
-					var/organ = null
-					switch(organ_name)
-						if("Heart")
-							organ = "heart"
-						if("Eyes")
-							organ = "eyes"
-						if("Lungs")
-							organ = "lungs"
-						if("Liver")
-							organ = "liver"
-						if("Kidneys")
-							organ = "kidneys"
+					var/organ = menu_entry_to_organ_name[selected_organ]
+					ASSERT(organ)
 
-					var/new_state = input(user, "What state do you wish the organ to be in?") as null|anything in list("Normal","Assisted","Mechanical")
+					var/list/possible_organ_states = list("Normal", "Assisted", "Mechanical")
+					if(organ == "brain")
+						possible_organ_states = list("Normal", "Positronic")
+
+					var/new_state = input(user, "What state do you wish the organ to be in?") as null|anything in possible_organ_states
 					if(!new_state)
 						return
 
@@ -1366,7 +1368,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 							organ_data[organ] = null
 						if("Assisted")
 							organ_data[organ] = "assisted"
-						if("Mechanical")
+						if("Mechanical", "Positronic")
 							organ_data[organ] = "mechanical"
 
 				if("skin_style")

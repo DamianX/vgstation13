@@ -54,15 +54,12 @@
 			to_chat(user, "<span class='deadsay'>This one seems unresponsive.</span>")// Should probably make this more realistic, but this message ties it in with MMI errors.
 			return
 
-/obj/item/organ/internal/brain/removed(var/mob/living/target,var/mob/living/user)
-
+/obj/item/organ/internal/brain/removed(var/mob/living/carbon/human/target, var/mob/living/user)
 	..()
-
-	var/mob/living/carbon/human/H = target
-	H.dropBorers()
-	var/obj/item/organ/internal/brain/B = src
-	if(istype(B) && istype(H))
-		B.transfer_identity(target)
+	if(!istype(target))
+		return
+	target.dropBorers()
+	transfer_identity(target)
 
 /obj/item/organ/internal/brain/replaced(var/mob/living/target)
 

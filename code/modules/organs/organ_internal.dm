@@ -213,6 +213,14 @@
 	removed_type = /obj/item/organ/internal/brain
 	vital = 1
 
+/datum/organ/internal/brain/mechanize()
+	..()
+	if(istype(removed_type, /obj/item/organ/internal/brain/mami))
+		return
+	var/obj/item/organ/internal/brain/mami/new_mami = new
+	new_mami.icon_state = "mami_full"
+	removed_type = new_mami
+
 /datum/organ/internal/brain/ash
 	removed_type = /obj/item/organ/internal/brain/ash
 
