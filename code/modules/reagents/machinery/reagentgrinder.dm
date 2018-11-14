@@ -284,7 +284,7 @@ var/global/list/juice_items = list (
 		var/event/menu_event = new(owner = usr)
 		menu_event.Add(src, "radial_check_handler")
 
-		var/task = show_radial_menu(usr,loc,choices,custom_check = menu_event)
+		var/task = show_radial_menu(usr,loc,choices,custom_check = menu_event,max_distance=1)
 		if(!radial_check(usr))
 			return
 

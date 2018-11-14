@@ -53,6 +53,7 @@
 	var/list/obj/screen/elements = list()
 	var/obj/screen/radial/center/close_button
 	var/client/current_user
+	var/user_on_moved_key
 	var/atom/anchor
 	var/image/menu_holder
 	var/finished = FALSE
@@ -73,6 +74,7 @@
 	var/hudfix_method = TRUE //TRUE to change anchor to user, FALSE to shift by py_shift
 	var/py_shift = 0
 	var/entry_animation = TRUE
+	var/max_distance // If the user moves more than `max_distance` tiles away from the anchor, the menu is closed.
 
 //If we swap to vis_contens inventory these will need a redo
 /datum/radial_menu/proc/check_screen_border(mob/user)
@@ -199,7 +201,7 @@
 		if(choices_tooltips[choice_id])
 			E.tooltip_desc = choices_tooltips[choice_id]
 
-/datum/radial_menu/New(var/icon_file, var/tooltip_theme, var/radius, var/min_angle)
+/datum/radial_menu/New(var/icon_file, var/tooltip_theme, var/radius, var/min_angle, var/max_distance)
 	if(icon_file)
 		src.icon_file = icon_file
 	if(tooltip_theme)
@@ -208,6 +210,8 @@
 		src.radius = radius
 	if(min_angle)
 		src.min_angle = min_angle
+	if(max_distance)
+		src.max_distance = max_distance
 
 	close_button = new
 	close_button.parent = src
@@ -291,9 +295,19 @@
 				next_check = world.time + check_delay
 		stoplag(1)
 
+/datum/radial_menu/proc/user_moved(var/list/params, var/mob/user)
+	if(get_dist(user, anchor) > max_distance)
+		qdel(src)
+
 /datum/radial_menu/Destroy()
 	Reset()
 	hide()
+	if(current_user)
+		current_user.radial_menus -= anchor
+		if(user_on_moved_key)
+			var/event/on_moved = current_user.mob?.on_moved
+			if(on_moved)
+				on_moved.Remove(user_on_moved_key)
 	if(istype(custom_check))
 		custom_check.holder = null
 		custom_check = null
@@ -303,7 +317,7 @@
 	Choices should be a list where list keys are movables or text used for element names and return value
 	and list values are movables/icons/images used for element icons
 */
-/proc/show_radial_menu(mob/user,atom/anchor,list/choices,var/icon_file,var/tooltip_theme,var/event/custom_check,var/uniqueid,var/radius,var/min_angle)
+/proc/show_radial_menu(mob/user,atom/anchor,list/choices,var/icon_file,var/tooltip_theme,var/event/custom_check,var/uniqueid,var/radius,var/min_angle,var/max_distance)
 	if(!user || !anchor || !length(choices))
 		return
 
@@ -312,11 +326,13 @@
 		return
 	current_user.radial_menus += anchor //This should probably be done in the menu's New()
 
-	var/datum/radial_menu/menu = new(icon_file, tooltip_theme, radius, min_angle)
+	var/datum/radial_menu/menu = new(icon_file, tooltip_theme, radius, min_angle, max_distance)
 
 	if(istype(custom_check))
 		menu.custom_check = custom_check
 	menu.anchor = anchor
+	if(max_distance)
+		menu.user_on_moved_key = user.on_moved.Add(menu, "user_moved")
 	menu.check_screen_border(user) //Do what's needed to make it look good near borders or on hud
 	menu.set_choices(choices)
 	menu.show_to(user)
@@ -324,5 +340,4 @@
 	if(!menu.gcDestroyed)
 		var/answer = menu.selected_choice
 		qdel(menu)
-		current_user.radial_menus -= anchor
 		return answer
