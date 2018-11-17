@@ -31,7 +31,7 @@
 	if(!message_mommi)
 		message_mommi = message_robot
 
-/datum/emote/proc/run_emote(mob/user, params, type_override, ignore_status = FALSE)
+/datum/emote/proc/run_emote(mob/user, params, type_override, ignore_status = FALSE, spammy)
 	. = TRUE
 	if(!(type_override) && !(can_run_emote(user, !ignore_status))) // ignore_status == TRUE means that status_check should be FALSE and vise-versa
 		return FALSE
@@ -55,7 +55,9 @@
 		if(!M.client || isnewplayer(M))
 			continue
 		var/T = get_turf(user)
-		if(isobserver(M) && M.client && (M.client.prefs.toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T)))
+		if(isobserver(M) && M.client && (M.client.prefs.ghost_sight != GHOST_SIGHT_NEARBY_EMOTES) && !(M in viewers(T)))
+			if(spammy && M.client.prefs.ghost_sight == GHOST_SIGHT_NO_AUTOMATIC_EMOTES)
+				continue
 			M.show_message("<a href='?src=\ref[M];follow=\ref[user]'>(Follow)</a> " + msg)
 
 	if (emote_type == EMOTE_VISIBLE)

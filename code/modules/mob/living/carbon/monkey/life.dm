@@ -89,7 +89,7 @@
 
 
 /mob/living/carbon/monkey/proc/passive_emote()
-	emote(pick("scratch","jump","roll","tail"))
+	emote(pick("scratch","jump","roll","tail"), spammy=TRUE)
 
 /mob/living/carbon/monkey/calculate_affecting_pressure(var/pressure)
 	..()

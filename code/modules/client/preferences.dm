@@ -70,6 +70,17 @@ var/list/role_wiki=list(
 	ROLE_WIZARD			= "Wizard",
 )
 
+var/list/ghost_sight_options = list(
+	"All emotes" = GHOST_SIGHT_ALL_EMOTES,
+	"Ignore automatic emotes" = GHOST_SIGHT_NO_AUTOMATIC_EMOTES,
+	"Nearby emotes" = GHOST_SIGHT_NEARBY_EMOTES,
+)
+
+/proc/ghost_sight_num2text(var/num)
+	for(var/text in ghost_sight_options)
+		if(num == ghost_sight_options[text])
+			return text
+
 var/const/MAX_SAVE_SLOTS = 8
 
 #define POLLED_LIMIT	300
@@ -98,6 +109,7 @@ var/const/MAX_SAVE_SLOTS = 8
 	var/ooccolor = "#b82e00"
 	var/UI_style = "Midnight"
 	var/toggles = TOGGLES_DEFAULT
+	var/ghost_sight = GHOST_SIGHT_ALL_EMOTES
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/space_parallax = 1
@@ -360,7 +372,7 @@ var/const/MAX_SAVE_SLOTS = 8
 	<b>Ghost Hearing:</b>
 	<a href='?_src_=prefs;preference=ghost_ears'><b>[(toggles & CHAT_GHOSTEARS) ? "All Speech" : "Nearby Speech"]</b></a><br>
 	<b>Ghost Sight:</b>
-	<a href='?_src_=prefs;preference=ghost_sight'><b>[(toggles & CHAT_GHOSTSIGHT) ? "All Emotes" : "Nearby Emotes"]</b></a><br>
+	<a href='?_src_=prefs;preference=ghost_sight'><b>[ghost_sight_num2text(ghost_sight)]</b></a><br>
 	<b>Ghost Radio:</b>
 	<a href='?_src_=prefs;preference=ghost_radio'><b>[(toggles & CHAT_GHOSTRADIO) ? "All Chatter" : "Nearby Speakers"]</b></a><br>
 	<b>Ghost PDA:</b>
@@ -1393,7 +1405,10 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 					toggles ^= CHAT_GHOSTEARS
 
 				if("ghost_sight")
-					toggles ^= CHAT_GHOSTSIGHT
+					var/choice = input(user, "Choose which emotes you want to see:", "Preferences", ghost_sight_num2text(ghost_sight)) in null|ghost_sight_options
+					if(choice)
+						ASSERT(choice in ghost_sight_options)
+						ghost_sight = ghost_sight_options[choice]
 
 				if("ghost_radio")
 					toggles ^= CHAT_GHOSTRADIO

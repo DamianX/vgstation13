@@ -98,6 +98,7 @@ CREATE TABLE client (
     UI_style       TEXT,
     default_slot   INTEGER,
     toggles        INTEGER,
+	ghost_sight    INTEGER,
     UI_style_color TEXT,
     UI_style_alpha INTEGER,
     randomslot     INTEGER,

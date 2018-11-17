@@ -81,6 +81,7 @@
 	UI_style 		=	preference_list_client["UI_style"]
 	default_slot 	=	text2num(preference_list_client["default_slot"])
 	toggles 		=	text2num(preference_list_client["toggles"])
+	ghost_sight		=	text2num(preference_list_client["ghost_sight"])
 	UI_style_color	= 	preference_list_client["UI_style_color"]
 	UI_style_alpha 	= 	text2num(preference_list_client["UI_style_alpha"])
 	warns			=	text2num(preference_list_client["warns"])
@@ -105,6 +106,7 @@
 	//be_special		= 	sanitize_integer(be_special, 0, 65535, initial(be_special))
 	default_slot	= 	sanitize_integer(default_slot, 1, MAX_SAVE_SLOTS, initial(default_slot))
 	toggles			= 	sanitize_integer(toggles, 0, 65535, initial(toggles))
+	ghost_sight		=	sanitize_integer(ghost_sight, 0, 2, initial(ghost_sight))
 	UI_style_color	= 	sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= 	sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	randomslot		= 	sanitize_integer(randomslot, 0, 1, initial(randomslot))
@@ -161,6 +163,7 @@
 	//S["be_special"]			>> be_special
 	S["default_slot"]		>> default_slot
 	S["toggles"]			>> toggles
+	S["ghost_sight"]		>> ghost_sight
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
 	S["warns"]				>> warns
@@ -175,6 +178,7 @@
 	//be_special		= sanitize_integer(be_special, 0, 65535, initial(be_special))
 	default_slot	= sanitize_integer(default_slot, 1, MAX_SAVE_SLOTS, initial(default_slot))
 	toggles			= sanitize_integer(toggles, 0, 65535, initial(toggles))
+	ghost_sight		= sanitize_integer(ghost_sight, 0, 2, initial(ghost_sight))
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	randomslot		= sanitize_integer(randomslot, 0, 1, initial(randomslot))
@@ -197,15 +201,15 @@
 	check.Add("SELECT ckey FROM client WHERE ckey = ?", ckey)
 	if(check.Execute(db))
 		if(!check.NextRow())
-			q.Add("INSERT into client (ckey, ooc_color, lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble, attack_animation, pulltoggle) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",\
-			ckey, ooccolor, lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special_popup, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble, attack_animation, pulltoggle)
+			q.Add("INSERT into client (ckey, ooc_color, lastchangelog, UI_style, default_slot, toggles, ghost_sight, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble, attack_animation, pulltoggle) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",\
+			ckey, ooccolor, lastchangelog, UI_style, default_slot, toggles, ghost_sight, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special_popup, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble, attack_animation, pulltoggle)
 			if(!q.Execute(db))
 				message_admins("Error #: [q.Error()] - [q.ErrorMsg()]")
 				WARNING("Error #:[q.Error()] - [q.ErrorMsg()]")
 				return 0
 		else
-			q.Add("UPDATE client SET ooc_color=?,lastchangelog=?,UI_style=?,default_slot=?,toggles=?,UI_style_color=?,UI_style_alpha=?,warns=?,warnbans=?,randomslot=?,volume=?,usewmp=?,special=?,usenanoui=?,tooltips=?,progress_bars=?,space_parallax=?,space_dust=?,parallax_speed=?, stumble=?, attack_animation=?, pulltoggle=? WHERE ckey = ?",\
-			ooccolor, lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special_popup, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble, attack_animation, pulltoggle, ckey)
+			q.Add("UPDATE client SET ooc_color=?,lastchangelog=?,UI_style=?,default_slot=?,toggles=?,ghost_sight=?,UI_style_color=?,UI_style_alpha=?,warns=?,warnbans=?,randomslot=?,volume=?,usewmp=?,special=?,usenanoui=?,tooltips=?,progress_bars=?,space_parallax=?,space_dust=?,parallax_speed=?, stumble=?, attack_animation=?, pulltoggle=? WHERE ckey = ?",\
+			ooccolor, lastchangelog, UI_style, default_slot, toggles, ghost_sight, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special_popup, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble, attack_animation, pulltoggle, ckey)
 			if(!q.Execute(db))
 				message_admins("Error #: [q.Error()] - [q.ErrorMsg()]")
 				WARNING("Error #:[q.Error()] - [q.ErrorMsg()]")
@@ -235,6 +239,7 @@
 //	S["be_special"]     << be_special
 	S["default_slot"]   << default_slot
 	S["toggles"]        << toggles
+	S["ghost_sight"]	<< ghost_sight
 	S["UI_style_color"] << UI_style_color
 	S["UI_style_alpha"] << UI_style_alpha
 	S["warns"]          << warns
