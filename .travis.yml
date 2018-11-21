@@ -12,6 +12,7 @@ env:
   - RUST_BACKTRACE="1"
   - RUST_TEST_THREADS=1
   matrix:
+  - STATIC_CHECKS="1"
   - DM_UNIT_TESTS="1"
   - DM_UNIT_TESTS="0"
 
@@ -37,10 +38,7 @@ before_script:
 - tools/travis/install-byond.sh
 
 script:
-# Has to use Python 2 instead of 3 because else it won't find colorama.
-- python tools/travis/check_map_files.py maps/
-- find -name '*.dme' -exec cat {} \; | awk '/maps\\test.*/ { exit 1 }'
-- python tools/changelog/ss13_genchangelog.py html/changelog.html html/changelogs --dry-run
+- tools/travis/static_checks.sh
 - source $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}/byond/bin/byondsetup
 - cd libvg
 # --jobs 1 to prevent threading problems with the BYOND crate.
