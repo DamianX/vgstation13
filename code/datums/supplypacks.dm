@@ -686,6 +686,33 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	containername = "contacts crate"
 	group = "Clothing"
 
+/datum/supply_packs/bedsheet_collection
+	contains = list(/obj/item/weapon/bedsheet/blue,
+					/obj/item/weapon/bedsheet/green,
+					/obj/item/weapon/bedsheet/orange,
+					/obj/item/weapon/bedsheet/purple,
+					/obj/item/weapon/bedsheet/rainbow,
+					/obj/item/weapon/bedsheet/red/redcoat,
+					/obj/item/weapon/bedsheet/red,
+					/obj/item/weapon/bedsheet/yellow,
+					/obj/item/weapon/bedsheet/mime,
+					/obj/item/weapon/bedsheet/clown,
+					/obj/item/weapon/bedsheet/black,
+					/obj/item/weapon/bedsheet/captain,
+					/obj/item/weapon/bedsheet/rd,
+					/obj/item/weapon/bedsheet/medical,
+					/obj/item/weapon/bedsheet/hos,
+					/obj/item/weapon/bedsheet/hop,
+					/obj/item/weapon/bedsheet/ce,
+					/obj/item/weapon/bedsheet/brown/cargo,
+					/obj/item/weapon/bedsheet/brown,
+					/obj/item/weapon/bedsheet)
+	name = "Premium bedsheet collection"
+	cost = 150
+	containertype = /obj/structure/largecrate
+	containername = "premium bedsheet collection crate"
+	group = "Clothing"
+
 //////SECURITY//////
 
 /datum/supply_packs/specialops
