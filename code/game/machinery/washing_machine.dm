@@ -79,7 +79,8 @@
 		else if(istype(crayon,/obj/item/weapon/stamp))
 			var/obj/item/weapon/stamp/ST = crayon
 			color = ST._color
-
+		else if(istype(crayon, /obj/item/weapon/talisman) || istype(crayon, /obj/item/weapon/tome))
+			color = "cult"
 		if(color)
 			var/new_jumpsuit_icon_state = ""
 			var/new_jumpsuit_item_state = ""
@@ -249,10 +250,16 @@
 	icon_state = "wm_[wash_state][panel_open]"
 
 /obj/machinery/washing_machine/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	var/static/list/things_that_act_like_crayons = list(
+		/obj/item/toy/crayon,
+		/obj/item/weapon/stamp,
+		/obj/item/weapon/talisman,
+		/obj/item/weapon/tome,
+	)
 	if(..())
 		update_icon()
 		return 1
-	else if(istype(W,/obj/item/toy/crayon) ||istype(W,/obj/item/weapon/stamp))
+	else if(is_type_in_list(W, things_that_act_like_crayons))
 		if( wash_state in list(	1, 3, 6 ) )
 			if(!crayon)
 				if(user.drop_item(W, src))
