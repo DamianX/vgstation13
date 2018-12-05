@@ -739,3 +739,12 @@
 	icon_state = "uni-church"
 	item_state = "uni-church"
 	_color = "uni-church"
+
+/obj/item/clothing/under/tourist
+	name = "tourist suit"
+	desc = "A brightly-colored old-fashioned suit."
+	icon_state = "tourist"
+	_color = "tourist"
+	clothing_flags = ONESIZEFITSALL
+	item_state = "tourist_suit"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/clothing.dmi', "right_hand" = 'icons/mob/in-hand/right/clothing.dmi')
