@@ -7,6 +7,7 @@
 	var/male_adept = "Chaplain"
 	var/female_adept = "Chaplain"
 	var/convert_method = "splashing them with holy water, holding a bible in hand."
+	var/holy_reagent_id = HOLYWATER
 
 	var/bible_type = /obj/item/weapon/storage/bible
 	var/obj/item/weapon/storage/bible/holy_book
@@ -69,21 +70,21 @@
 
  // This is the default ceremony, for Christianity/Space Jesus
 /datum/religion/proc/convertCeremony(var/mob/living/preacher, var/mob/living/subject)
-	var/held_beaker = preacher.find_held_item_by_type(/obj/item/weapon/reagent_containers)
-	if (!held_beaker)
-		to_chat(preacher, "<span class='warning'>You need to hold Holy Water to begin the conversion.</span>")
-		return FALSE
-	var/obj/item/weapon/reagent_containers/B = preacher.held_items[held_beaker]
-	if (B.reagents.get_master_reagent_name() != "Holy Water")
-		to_chat(preacher, "<span class='warning'>You need to hold Holy Water to begin the conversion.</span>")
-		return FALSE
+	var/obj/item/weapon/reagent_containers/held_beaker
+	if(holy_reagent_id)
+		held_beaker = locate(/obj/item/weapon/reagent_containers) in preacher.held_items
+		if (!held_beaker || held_beaker.reagents.get_master_reagent_id() != holy_reagent_id)
+			var/datum/reagent/holy_reagent = chemical_reagents_list[holy_reagent_id]
+			to_chat(preacher, "<span class='warning'>You need to hold some [holy_reagent.name] to begin the conversion.</span>")
+			return FALSE
 	subject.visible_message("<span class='notice'>\The [preacher] attempts to convert \the [subject] to [name].</span>")
 	if(!convertCheck(subject))
 		subject.visible_message("<span class='warning'>\The [subject] refuses conversion.</span>")
 		return FALSE
 
 	// Everything is ok : begin the conversion
-	splash_sub(B.reagents, subject, 5, preacher)
+	if(holy_reagent_id && preacher.is_holding_item(held_beaker))
+		splash_sub(held_beaker.reagents, subject, 5, preacher)
 	subject.visible_message("<span class='notice'>\The [subject] is blessed by \the [preacher] and embraces [name]. Praise [deity_name]!</span>")
 	convert(subject, preacher)
 	return TRUE
@@ -1029,6 +1030,8 @@
 	male_adept = "Janitor"
 	female_adept = "Janitor"
 	keys = list("clean","cleaning","Mr. Clean","janitor")
+	holy_reagent_id = CLEANER
+	convert_method = "spraying them with space cleaner, holding a bar of soap in hand."
 
 /datum/religion/clean/equip_chaplain(var/mob/living/carbon/human/H)
 	H.put_in_hands(new /obj/item/weapon/mop)
