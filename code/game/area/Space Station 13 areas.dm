@@ -91,6 +91,16 @@ proc/process_teleport_locs()
 
 var/list/ghostteleportlocs = list()
 
+// Returns TRUE if `some_area` is a pre-defined area on the station's z-level
+/proc/is_station_area(var/area/some_area)
+	if(!some_area)
+		return FALSE
+	for(var/name in teleportlocs)
+		var/area/A = teleportlocs[name]
+		if(A == some_area)
+			return TRUE
+	return FALSE
+
 proc/process_ghost_teleport_locs()
 	for(var/area/AR in areas)
 		if(ghostteleportlocs.Find(AR.name))

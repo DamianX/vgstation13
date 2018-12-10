@@ -259,7 +259,7 @@
 
 	var/mob/living/user = activator
 
-	if (user.z != map.zMainStation)
+	if(!is_station_area(get_area(user)))
 		abort(RITUALABORT_OUTPOST)
 		return FALSE
 
