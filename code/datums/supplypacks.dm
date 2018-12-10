@@ -5,7 +5,7 @@
 //BIG NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 //NEW NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 
-var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality","Engineering","Medical","Science","Hydroponics","Vending Machine packs")
+var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality","Engineering","Medical","Science","Hydroponics","Vending Machines")
 
 /datum/supply_packs
 	var/name = null
@@ -2090,7 +2090,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 30
 	containertype = /obj/structure/stackopacks
 	containername = "\improper Snacks n Cigs stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 
 /datum/supply_packs/snackmachinesalt
 	name = "Groans n Dan stack of packs"
@@ -2101,7 +2101,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 20
 	containertype = /obj/structure/stackopacks
 	containername = "\improper Groans n Dan stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 
 /datum/supply_packs/hospitalitymachines
 	name = "Theatre, Bar, Kitchen stack of packs"
@@ -2111,7 +2111,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 15
 	containertype = /obj/structure/stackopacks
 	containername = "\improper Theatre, Bar, Kitchen stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 
 /datum/supply_packs/securitymachines
 	name = "Security stack of packs"
@@ -2120,7 +2120,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 10
 	containertype = /obj/structure/stackopacks
 	containername = "security stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 
 /datum/supply_packs/medbaymachines
 	name = "Medical stack of packs"
@@ -2129,7 +2129,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 10
 	containertype = /obj/structure/stackopacks
 	containername = "medical stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 
 /datum/supply_packs/botanymachines
 	name = "Hydroponics stack of packs"
@@ -2138,7 +2138,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 10
 	containertype = /obj/structure/stackopacks
 	containername = "hydroponics stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 
 /datum/supply_packs/toolsmachines
 	name = "Tools n Engineering stack of packs"
@@ -2149,7 +2149,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 20
 	containertype = /obj/structure/stackopacks
 	containername = "\improper Tools n Engineering stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 
 /datum/supply_packs/clothesmachines
 	name = "Clothing stack of packs"
@@ -2159,7 +2159,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 15
 	containertype = /obj/structure/stackopacks
 	containername = "clothing stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 
 /datum/supply_packs/barbermachines
 	name = "Barber packs"
@@ -2168,7 +2168,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 15
 	containertype = /obj/structure/stackopacks
 	containername = "\improper Barber stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 
 /datum/supply_packs/makeupmachines
 	name = "Cosmetics packs"
@@ -2177,7 +2177,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 15
 	containertype = /obj/structure/stackopacks
 	containername = "\improper Cosmetics stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 
 /datum/supply_packs/offlicencemachines
 	name = "Off-Licence packs"
@@ -2186,7 +2186,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 15
 	containertype = /obj/structure/stackopacks
 	containername = "\improper Off-Licence stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 
 /datum/supply_packs/circus
 	name = "Toy packs"
@@ -2195,7 +2195,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 15
 	containertype = /obj/structure/stackopacks
 	containername = "\improper Toy stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 
 
 /*
@@ -2208,7 +2208,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 20
 	containertype = /obj/structure/stackopacks
 	containername = "Old and Forgotten stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 	hidden = 1
 */
 
@@ -2218,7 +2218,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 80
 	containertype = /obj/structure/stackopacks
 	containername = "\improper Strange and Bright stack of packs"
-	group = "Vending Machine packs"
+	group = "Vending Machines"
 	hidden = 1
 
 /datum/supply_packs/miningmachines
@@ -2228,6 +2228,4 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	cost = 10
 	containertype = /obj/structure/stackopacks
 	containername = "\improper Mining stack of packs"
-	group = "Vending Machine packs"
-
-
+	group = "Vending Machines"
