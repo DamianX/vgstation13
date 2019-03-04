@@ -512,8 +512,8 @@
 /*
  * Syndie stealthy smokebombs!
  */
- /obj/item/toy/snappop/smokebomb
- 	origin_tech = Tc_COMBAT + "=1;" + Tc_SYNDICATE + "=1"
+/obj/item/toy/snappop/smokebomb
+	origin_tech = Tc_COMBAT + "=1;" + Tc_SYNDICATE + "=1"
 	flags = FPRINT | NO_THROW_MSG
 
 /obj/item/toy/snappop/smokebomb/pop()
@@ -1106,17 +1106,17 @@
 	name = "fingerbox"
 	desc = "A high quality fingerbox."
 	icon_state = "fingerbox"
-	
+
 /obj/item/toy/gasha/bangerboy
 	name = "toy Bangerboy"
 	icon_state = "bangerboy"
 	desc = "<B>BANG</B>"
-	
+
 /obj/item/toy/gasha/femsec
 	name = "toy femsec"
 	icon_state = "femsec"
 	desc = "bodybag accessory not included"
-	
+
 /obj/item/toy/gasha/hoptard
 	name = "toy HoPtard"
 	icon_state = "hoptard"
@@ -1776,4 +1776,3 @@ var/list/living_balloons = list()
 	name = "\improper Trader action figure"
 	icon_state = "trader"
 	toysay = "Shiny rock for nuke, good trade yes?"
-	

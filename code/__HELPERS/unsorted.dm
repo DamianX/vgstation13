@@ -1307,7 +1307,8 @@ proc/rotate_icon(file, state, step = 1, aa = FALSE)
 		h = base.Height()
 		h2 = h * aa
 
-	var icon{result = icon(base); temp}
+	var/icon/result = icon(base)
+	var/icon/temp
 
 	for(var/angle in 0 to 360 step step)
 		if(angle == 0  )
