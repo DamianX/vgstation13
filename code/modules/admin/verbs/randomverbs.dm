@@ -912,7 +912,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		else
 			return
 
-	var/justification = stripped_input(usr, "Please input a reason for the shuttle call. You may leave it blank to not have one.", "Justification") as text|null
+	var/justification = stripped_input(usr, "Please input a reason for the shuttle call. You may leave it blank to not have one.", "Justification")
 	var/confirm = alert(src, "Are you sure you want to call the shuttle?", "Confirm", "Yes", "Cancel")
 	if(confirm != "Yes")
 		return
