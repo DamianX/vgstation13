@@ -453,6 +453,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 		return
 	if(!isturf(loc))
 		return
+	set_glide_size(DELAY2GLIDESIZE(getpAIMovementDelay()))
 	step(src, dir)
 
 /obj/machinery/bot/cleanbot/on_integrated_pai_click(mob/living/silicon/pai/user, atom/target)

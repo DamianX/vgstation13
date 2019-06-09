@@ -730,6 +730,7 @@
 		return
 	if(!isturf(loc))
 		return
+	set_glide_size(DELAY2GLIDESIZE(getpAIMovementDelay()))
 	step(src, dir)
 
 /obj/machinery/bot/medbot/on_integrated_pai_click(mob/living/silicon/pai/user, mob/living/carbon/A)

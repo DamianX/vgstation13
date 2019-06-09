@@ -956,6 +956,7 @@ var/global/mulebot_count = 0
 	var/turf/T = loc
 	if(!T.has_gravity())
 		return
+	set_glide_size(DELAY2GLIDESIZE(getpAIMovementDelay()))
 	step(src, dir)
 
 /obj/machinery/bot/mulebot/on_integrated_pai_click(mob/living/silicon/pai/user, var/atom/movable/A)
