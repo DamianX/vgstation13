@@ -141,6 +141,7 @@
 #include "code\_onclick\hud\radial.dm"
 #include "code\_onclick\hud\robot.dm"
 #include "code\_onclick\hud\screen_objects.dm"
+#include "code\_onclick\hud\spare_bear.dm"
 #include "code\_onclick\hud\spell_screen_objects.dm"
 #include "code\ATMOSPHERICS\atmospherics.dm"
 #include "code\ATMOSPHERICS\burstpipe.dm"

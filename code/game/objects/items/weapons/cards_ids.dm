@@ -573,6 +573,9 @@
 	access = J.get_access()
 	..()
 
+/obj/item/weapon/card/id/captains_spare/mob_can_pickup(mob/living/user)
+	return is_spare_bear(user) || ..()
+
 /obj/item/weapon/card/id/admin
 	name = "Admin ID"
 	icon_state = "admin"

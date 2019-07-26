@@ -84,6 +84,8 @@
 
 #define isbear(A) istype(A, /mob/living/simple_animal/hostile/bear)
 
+#define is_spare_bear(A) istype(A, /mob/living/simple_animal/hostile/bear/spare)
+
 #define iscarp(A) istype(A, /mob/living/simple_animal/hostile/carp)
 
 #define isclown(A) istype(A, /mob/living/simple_animal/hostile/retaliate/clown)

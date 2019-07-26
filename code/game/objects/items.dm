@@ -843,6 +843,11 @@
 		return CANNOT_EQUIP //Unsupported slot
 		//END GRINCH
 
+/obj/item/proc/mob_can_pickup(mob/living/user)
+	if((!iscarbon(user) && !isMoMMI(user)) && !ishologram(user) && !isgrinch(user) || isbrain(user))
+		return FALSE
+	return TRUE
+
 /obj/item/can_pickup(mob/living/user)
 	if(!(user) || !isliving(user)) //BS12 EDIT
 		return FALSE
@@ -850,7 +855,7 @@
 		return FALSE
 	if(user.incapacitated() || !Adjacent(user))
 		return FALSE
-	if((!iscarbon(user) && !isMoMMI(user)) && !ishologram(user) && !isgrinch(user) || isbrain(user)) //Is not a carbon being, MoMMI, advanced hologram, or is a brain
+	if(!mob_can_pickup(user))
 		to_chat(user, "You can't pick things up!")
 		return FALSE
 	if(anchored) //Object isn't anchored

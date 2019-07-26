@@ -152,11 +152,16 @@
 /mob/living/simple_animal/hostile/bear/Process_Spacemove(var/check_drift = 0)
 	return 1	//No drifting in space for space bears!
 
-/mob/living/simple_animal/hostile/bear/CanAttack(var/atom/the_target)
-	. = ..()
+/mob/living/simple_animal/hostile/bear/proc/crayon_check(var/atom/the_target)
 	for(var/obj/effect/decal/cleanable/crayon/C in get_turf(the_target))
 		if(!C.on_wall && C.name == "o") //drawing a circle around yourself is the only way to ward off space bears!
-			return 0
+			return TRUE
+	return FALSE
+
+/mob/living/simple_animal/hostile/bear/CanAttack(var/atom/the_target)
+	. = ..()
+	if(crayon_check(the_target))
+		return FALSE
 
 /mob/living/simple_animal/hostile/bear/FindTarget()
 	. = ..()
@@ -169,3 +174,163 @@
 
 /mob/living/simple_animal/hostile/bear/attack_icon()
 	return image(icon = 'icons/mob/attackanims.dmi', icon_state = "bear")
+
+
+/mob/living/simple_animal/hostile/bear/spare
+	name = "spare bear"
+	desc = "A trained space bear wearing a command hat and a golden collar."
+	icon_state = "sparebear"
+	default_icon_space = "sparebear"
+	default_icon_floor = "sparebear"
+	icon_dead = "sparebear_dead"
+	health = 120
+	maxHealth = 120
+	search_objects = 1
+	wanted_objects = list(
+		/obj/item/weapon/card/id/captains_spare,
+	)
+	held_items = list(null, null)
+	var/datum/fuzzy_ruling/head_of_staff_filter/mob_rule_path = /datum/fuzzy_ruling/head_of_staff_filter/mind
+	var/list/obj/abstract/Overlays/obj_overlays[TOTAL_LAYERS]
+
+/mob/living/simple_animal/hostile/bear/spare/id
+	mob_rule_path = /datum/fuzzy_ruling/head_of_staff_filter/id
+
+/mob/living/simple_animal/hostile/bear/spare/Destroy()
+	drop_hands(force_drop = TRUE)
+	..()
+
+/mob/living/simple_animal/hostile/bear/spare/death(var/gibbed = FALSE)
+	drop_hands(force_drop = TRUE)
+	..()
+
+/mob/living/simple_animal/hostile/bear/spare/update_inv_hand(index, var/update_icons = 1)
+	if(!obj_overlays)
+		return
+	var/obj/abstract/Overlays/hand_layer/O = obj_overlays["[HAND_LAYER]-[index]"]
+	if(!O)
+		O = getFromPool(/obj/abstract/Overlays/hand_layer)
+		obj_overlays["[HAND_LAYER]-[index]"] = O
+	else
+		overlays.Remove(O)
+		O.overlays.len = 0
+	var/obj/item/I = get_held_item_by_index(index)
+	if(I && I.is_visible())
+		var/t_state = I.item_state
+		var/t_inhand_state = I.inhand_states[get_direction_by_index(index)]
+		var/icon/check_dimensions = new(t_inhand_state)
+		if(!t_state)
+			t_state = I.icon_state
+		O.name = "[index]"
+		O.icon = t_inhand_state
+		O.icon_state = t_state
+		O.color = I.color
+		O.pixel_x = (-1*(check_dimensions.Width() - WORLD_ICON_SIZE)/2)
+		#define MAGICAL_BEAR_HAND_Y_OFFSET 5
+		O.pixel_y = (-1*(check_dimensions.Height() - WORLD_ICON_SIZE)/2)+MAGICAL_BEAR_HAND_Y_OFFSET
+		#undef MAGICAL_BEAR_HAND_Y_OFFSET
+		O.layer = O.layer
+		if(I.dynamic_overlay && I.dynamic_overlay["[HAND_LAYER]-[index]"])
+			var/image/dyn_overlay = I.dynamic_overlay["[HAND_LAYER]-[index]"]
+			O.overlays.Add(dyn_overlay)
+		I.screen_loc = get_held_item_ui_location(index)
+		overlays.Add(O)
+	if(update_icons)
+		update_icons()
+
+/mob/living/simple_animal/hostile/bear/spare/UnarmedAttack(var/atom/A)
+	if(istype(A, /obj/item/weapon/card/id/captains_spare))
+		A.attack_hand(src)
+		return
+	return ..()
+
+/mob/living/simple_animal/hostile/bear/spare/proc/is_allowed(atom/thing)
+	if(istype(thing, /obj/item/weapon/card/id/captains_spare))
+		return FALSE
+	var/datum/fuzzy_ruling/head_of_staff_filter/mob_filter = locate() in target_rules
+	return !mob_filter.evaluate(thing)
+
+/mob/living/simple_animal/hostile/bear/spare/crayon_check(var/atom/the_target)
+	return FALSE
+
+/datum/fuzzy_ruling/head_of_staff_filter
+	var/list/allowed_ranks = list(
+		"Captain",
+		"Head of Personnel",
+		"Head of Security",
+		"Chief Engineer",
+		"Research Director",
+		"Chief Medical Officer",
+	)
+
+/datum/fuzzy_ruling/head_of_staff_filter/evaluate(var/datum/D)
+	CRASH("not implemented")
+
+/datum/fuzzy_ruling/head_of_staff_filter/id/evaluate(var/datum/D)
+	var/mob/living/carbon/human/dude = D
+	if(!ishuman(dude))
+		return ismob(dude)
+	var/obj/item/weapon/card/id/passport = dude.get_item_by_slot(slot_wear_id)
+	if(isnull(passport))
+		return 1
+	if(!istype(passport)) // It's a PDA or wallet
+		passport = passport.GetID()
+	if(!istype(passport))
+		return 1
+	if(!(passport.rank in allowed_ranks))
+		return 1
+	return 0
+
+/datum/fuzzy_ruling/head_of_staff_filter/mind/evaluate(var/datum/D)
+	var/mob/living/carbon/human/dude = D
+	if(!ishuman(dude))
+		return ismob(dude)
+	var/datum/mind/dude_mind = dude.mind
+	if(!istype(dude_mind))
+		return 1
+	if(!(dude_mind.assigned_role in allowed_ranks))
+		return 1
+	return 0
+
+// Prioritize the spare ID, never attack heads of staff based on their ID or mind
+/mob/living/simple_animal/hostile/bear/spare/initialize_rules()
+	target_rules.Add(new mob_rule_path)
+	target_rules.Add(new /datum/fuzzy_ruling/is_obj{weighting = 0.5})
+	var/datum/fuzzy_ruling/distance/D = new /datum/fuzzy_ruling/distance
+	D.set_source(src)
+	target_rules.Add(D)
+
+/mob/living/simple_animal/hostile/bear/spare/CanAttack(atom/new_target)
+	if(is_allowed(new_target))
+		return FALSE
+	return ..()
+
+/mob/living/simple_animal/hostile/bear/spare/AttackingTarget()
+	. = ..()
+	var/obj/item/weapon/card/id/captains_spare/spare_id = target
+	if(!istype(spare_id))
+		return
+	if(!find_empty_hand_index())
+		return
+	emote("me",,"grasps \the [spare_id]!")
+	spare_id.attack_hand(src)
+
+/mob/living/simple_animal/hostile/bear/spare/attack_hand(mob/living/carbon/human/M)
+	var/obj/item/weapon/card/id/captains_spare/held_spare_id = get_held_item_by_index(1)
+	if(!held_spare_id)
+		return ..()
+	if(M.a_intent != I_HELP || !is_allowed(M))
+		return ..()
+	drop_item(held_spare_id, force_drop = TRUE)
+	M.put_in_hands(held_spare_id)
+	emote("me",,"hands \the [held_spare_id] to [M].")
+
+/mob/living/simple_animal/hostile/bear/spare/attackby(obj/item/O, mob/user)
+	var/obj/item/weapon/card/id/captains_spare/spare_id = O
+	if(!istype(spare_id))
+		return ..()
+	if(!user.drop_item(spare_id))
+		to_chat(user, "<span class='warning'>You can't let go of \the [spare_id]!</span>")
+		return
+	put_in_hands(spare_id)
+	user.emote("me",,"hands \the [spare_id] to \the [src].")
