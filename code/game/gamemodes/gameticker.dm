@@ -200,7 +200,7 @@ var/datum/controller/gameticker/ticker
 	current_state = GAME_STATE_PLAYING
 
 	// Update new player panels so they say join instead of ready up.
-	for(var/mob/new_player/player in player_list)
+	for(var/mob/new_player/player in new_player_list)
 		player.new_player_panel_proc()
 
 
@@ -378,7 +378,7 @@ var/datum/controller/gameticker/ticker
 
 
 /datum/controller/gameticker/proc/create_characters()
-	for(var/mob/new_player/player in player_list)
+	for(var/mob/new_player/player in new_player_list)
 		if(player.ready && player.mind)
 			if(player.mind.assigned_role=="AI")
 				player.close_spawn_windows()

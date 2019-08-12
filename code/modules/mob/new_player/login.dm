@@ -14,7 +14,7 @@
 		loc = locate(1,1,1)
 
 	change_sight(adding = SEE_TURFS)
-	player_list |= src
+	new_player_list |= src
 
 /*
 	var/list/watch_locations = list()
