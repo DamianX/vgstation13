@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - Bleeding-Edge
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Compile and test
+      env:
+        BYOND_MAJOR: "512"
+        BYOND_MINOR: "1453"
+        ALL_MAPS: "tgstation metaclub defficiency packedstation roidstation bagelstation test_box test_tiny"
+      run: |
+        tools/travis/install-byond.sh
+        tools/travis/build.py
+        cp tools/travis/config/config.txt config/
+        tools/travis/run_tests.py 2>&1 | tee /dev/stderr | sponge | awk '/UNIT TEST FAIL/ { exit 1 }'
