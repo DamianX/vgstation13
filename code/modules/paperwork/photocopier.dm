@@ -47,6 +47,9 @@
 /obj/machinery/photocopier/attack_paw(mob/user)
 	return attack_hand(user)
 
+/obj/machinery/photocopier/proc/make_noise()
+	playsound(src, pick('sound/machines/photocopier1.ogg','sound/machines/photocopier2.ogg','sound/machines/photocopier3.ogg'), 100)
+
 /obj/machinery/photocopier/proc/make_copy(mob/living/user)
 	if(copying)
 		to_chat(user, "<span class='warning'>\The [src] is busy with another print job.</span>")
@@ -60,6 +63,7 @@
 				if(!copying)
 					break
 				if(toner > 0)
+					make_noise()
 					var/obj/item/weapon/paper/paper_type = copy.type
 					var/obj/item/weapon/paper/c = new paper_type(loc)
 					if(toner > 10)	//lots of toner, make it dark
@@ -89,6 +93,7 @@
 				if(!copying)
 					break
 				if(toner >= 5)  //Was set to = 0, but if there was say 3 toner left and this ran, you would get -2 which would be weird for ink
+					make_noise()
 					var/obj/item/weapon/photo/p = new /obj/item/weapon/photo (loc)
 					var/icon/I = icon(photocopy.icon, photocopy.icon_state)
 					var/icon/img = icon(photocopy.img)
@@ -142,6 +147,7 @@
 							temp_img = icon("icons/ass/assmale.png")
 					else
 						break
+					make_noise()
 					var/obj/item/weapon/photo/p = new /obj/item/weapon/photo (loc)
 					p.info = "You see [ass]'s ass on the photo."
 					p.pixel_x = rand(-10, 10) * PIXEL_MULTIPLIER
