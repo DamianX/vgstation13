@@ -15,14 +15,6 @@
 	key = "blink_r"
 	message = "blinks rapidly."
 
-/datum/emote/living/carbon/clap
-	key = "clap"
-	key_third_person = "claps"
-	message = "claps."
-	muzzle_ignore = TRUE
-	restraint_check = TRUE
-	emote_type = EMOTE_AUDIBLE
-
 /datum/emote/living/carbon/gnarl
 	key = "gnarl"
 	key_third_person = "gnarls"
@@ -246,6 +238,19 @@
 	var/list/insect_sounds = null
 	var/sound_message = null
 
+/datum/emote/living/carbon/sound/clap
+	key = "clap"
+	key_third_person = "claps"
+	message = "claps."
+	muzzle_ignore = TRUE
+	restraint_check = TRUE
+	emote_type = EMOTE_AUDIBLE
+	male_sounds = list('sound/emotes/clap1.ogg','sound/emotes/clap2.ogg',
+	'sound/emotes/clap3.ogg','sound/emotes/clap4.ogg',
+	'sound/emotes/clap5.ogg')
+	female_sounds = list('sound/emotes/clap1.ogg','sound/emotes/clap2.ogg',
+	'sound/emotes/clap3.ogg','sound/emotes/clap4.ogg',
+	'sound/emotes/clap5.ogg')
 
 /datum/emote/living/carbon/sound/scream
 	key = "scream"
