@@ -254,6 +254,13 @@ var/paperwork_library
 	to_chat(viewers(user), "<span class='danger'>[user] is jamming the [src.name] into \his ear! It looks like \he's trying to commit suicide.</span>")
 	return(SUICIDE_ACT_OXYLOSS)
 
+/obj/item/weapon/pen/attack_self(mob/user)
+	if(user.attack_delayer.blocked())
+		return
+	user.visible_message("<span class='notice'>[user] clicks \the [src].</span>")
+	playsound(src, pick('sound/items/pen_click1.ogg','sound/items/pen_click2.ogg','sound/items/pen_click3.ogg'), 100)
+	user.delayNextAttack(1 SECONDS)
+
 /obj/item/weapon/pen/blue
 	desc = "It's a normal blue ink pen."
 	icon_state = "pen_blue"
