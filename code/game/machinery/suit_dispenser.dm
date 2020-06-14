@@ -304,3 +304,112 @@ var/list/dispenser_presets = list()
 	desc = "An industrial U-Tak-It Dispenser unit designed to fetch a specific mass produced suit."
 	dispenser_flags = SD_ONESUIT|SD_NOGREED|SD_UNLIMITED
 	one_suit = /datum/suit/dorf/standard
+
+/datum/suit/nukeops/ballistics
+	name = "Ballistics"
+	to_spawn = list(
+		/obj/item/clothing/glasses/sunglasses/prescription,
+		/obj/item/weapon/gun/projectile/automatic/c20r,
+		/obj/item/ammo_storage/magazine/a12mm/ops,
+		/obj/item/ammo_storage/magazine/a12mm/ops,
+		/obj/item/weapon/gun/projectile/beretta,
+		/obj/item/ammo_storage/magazine/beretta,
+		/obj/item/ammo_storage/magazine/beretta
+	)
+
+/datum/suit/nukeops/energy
+	name = "Energy"
+	to_spawn = list(
+		/obj/item/clothing/glasses/sunglasses/prescription,
+		/obj/item/weapon/gun/energy/laser,
+		/obj/item/weapon/gun/energy/ionrifle/ioncarbine,
+		/obj/item/weapon/grenade/empgrenade,
+		/obj/item/weapon/grenade/empgrenade,
+	)
+
+/datum/suit/nukeops/demolition
+	name = "Demolition"
+	to_spawn = list(
+		/obj/item/clothing/glasses/sunglasses/prescription,
+		/obj/item/weapon/gun/projectile/rocketlauncher,
+		/obj/item/weapon/gun/grenadelauncher/syndicate,
+		/obj/item/ammo_casing/rocket_rpg,
+		/obj/item/ammo_casing/rocket_rpg,
+		/obj/item/ammo_casing/rocket_rpg,
+		/obj/item/weapon/storage/box/syndigrenades,
+		/obj/item/weapon/storage/box/syndigrenades,
+	)
+
+/datum/suit/nukeops/melee
+	name = "Melee"
+	to_spawn = list(
+		/obj/item/clothing/glasses/sunglasses/prescription,
+		/obj/item/weapon/grenade/spawnergrenade/manhacks,
+		/obj/item/weapon/melee/energy/sword/dualsaber,
+		/obj/item/weapon/melee/energy/hfmachete,
+		/obj/item/weapon/shield/energy,
+	)
+
+/datum/suit/nukeops/medical
+	name = "Medical"
+	to_spawn = list(
+		/obj/item/clothing/glasses/hud/health/prescription,
+		/obj/item/weapon/gun/syringe/rapidsyringe,
+		/obj/item/weapon/storage/box/syndisyringes,
+		/obj/item/weapon/storage/firstaid/adv,
+		/obj/item/weapon/reagent_containers/hypospray,
+		/obj/item/weapon/storage/pill_bottle/hyperzine,
+		/obj/item/weapon/storage/pill_bottle/inaprovaline,
+		/obj/item/roller/surgery,
+	)
+
+/datum/suit/nukeops/engineering
+	name = "Engineering"
+	to_spawn = list(
+		/obj/item/clothing/glasses/scanner/meson/prescription,
+		/obj/item/weapon/gun/projectile/shotgun/pump/combat,
+		/obj/item/weapon/storage/belt/utility/complete,
+		/obj/item/weapon/storage/box/lethalshells,
+		/obj/item/weapon/melee/energy/sword,
+		/obj/item/weapon/c4,
+		/obj/item/weapon/c4,
+		/obj/item/weapon/c4,
+		/obj/item/clothing/glasses/welding/superior,
+		/obj/item/clothing/shoes/magboots/syndie/elite,
+	)
+
+/datum/suit/nukeops/stealth
+	name = "Stealth"
+	to_spawn = list(
+		/obj/item/clothing/glasses/thermal/syndi,
+		/obj/item/clothing/mask/gas/voice,
+		/obj/item/weapon/gun/projectile/silenced,
+		/obj/item/ammo_storage/magazine/c45,
+		/obj/item/weapon/card/emag,
+		/obj/item/weapon/pen/paralysis,
+		/obj/item/weapon/gun/energy/crossbow,
+	)
+
+/datum/suit/nukeops/ship_and_cameras
+	name = "Ship and Cameras"
+	to_spawn = list(
+		/obj/item/clothing/glasses/thermal/syndi,
+		/obj/item/device/encryptionkey/binary,
+		/obj/item/device/megaphone/madscientist,
+		/obj/item/weapon/circuitboard/teleporter,
+	)
+
+/obj/machinery/suit_dispenser/nukeops
+	desc = "A stolen U-Tak-It Dispenser unit."
+	suits = list(
+		/datum/suit/nukeops/ballistics,
+		/datum/suit/nukeops/energy,
+		/datum/suit/nukeops/demolition,
+		/datum/suit/nukeops/melee,
+		/datum/suit/nukeops/medical,
+		/datum/suit/nukeops/engineering,
+		/datum/suit/nukeops/stealth,
+		/datum/suit/nukeops/ship_and_cameras,
+	)
+	machine_flags = NONE // not emaggable
+	dispenser_flags = SD_NOGREED

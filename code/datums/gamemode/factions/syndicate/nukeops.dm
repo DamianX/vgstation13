@@ -291,8 +291,8 @@
 /obj/machinery/computer/syndicate_planning/Topic(href, href_list)
 	if(..())
 		return
-	var/datum/role/nuclear_operative/usr_nukie_role = isnukeop(usr)
-	if(!isnukeop(usr) && !isnukeopleader(usr) && !isAdminGhost(usr))
+	var/datum/role/nuclear_operative/usr_nukie_role = isnukeop(usr) || isnukeopleader(usr)
+	if(!usr_nukie_role && !isAdminGhost(usr))
 		return
 
 	if(href_list["set_individual_name"])
