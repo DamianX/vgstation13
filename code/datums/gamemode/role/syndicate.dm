@@ -194,6 +194,13 @@
 	disallow_job = TRUE
 	logo_state = "nuke-logo"
 
+// Prevents changing identity once the operatives have left the base
+// which is not super-important but it's not intended
+/datum/role/nuclear_operative/proc/identity_can_be_changed()
+	if(!antag.current)
+		return FALSE
+	return antag.current.z == CENTCOMM_Z
+
 /datum/role/nuclear_operative/leader
 	name = NUKE_OP_LEADER
 	id = NUKE_OP_LEADER
@@ -207,7 +214,7 @@
 		go_loud.linkedfaction = faction
 		go_loud.Grant(antag.current)
 	..()
-	
+
 /datum/action/play_ops_music
 	name = "Go Loud"
 	desc = "For the operative who prefers style over subtlety."

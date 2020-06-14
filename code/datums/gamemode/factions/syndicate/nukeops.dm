@@ -93,14 +93,6 @@
 
 	update_faction_icons()
 
-/datum/faction/syndicate/nuke_op/proc/nuke_name_assign(var/last_name, var/title = "", var/list/syndicates)
-	for(var/datum/role/R in syndicates)
-		switch(R.antag.current.gender)
-			if(MALE)
-				R.antag.current.fully_replace_character_name(R.antag.current.real_name, "[leader == R ? "[title] ":""][pick(first_names_male)] [last_name ? "[last_name]":"[pick(last_names)]"]")
-			if(FEMALE)
-				R.antag.current.fully_replace_character_name(R.antag.current.real_name, "[leader == R ? "[title] ":""][pick(first_names_female)] [last_name ? "[last_name]":"[pick(last_names)]"]")
-
 /datum/faction/syndicate/nuke_op/proc/equip_nuke_op(mob/living/carbon/human/synd_mob)
 	var/radio_freq = SYND_FREQ
 
@@ -237,31 +229,20 @@
 			synd_mob.equip_to_slot_or_drop(new /obj/item/device/megaphone/madscientist(synd_mob), slot_in_backpack)
 			synd_mob.equip_to_slot_or_drop(new /obj/item/weapon/circuitboard/teleporter(synd_mob), slot_l_store)
 
-/datum/faction/syndicate/nuke_op/proc/prepare_syndicate_leader(var/datum/mind/synd_mind, var/nuke_code)
+/datum/faction/syndicate/nuke_op/proc/prepare_syndicate_leader(var/datum/mind/synd_mind, var/nuke_code = "Code will be provided later, complain to Syndicate Command.")
 
 	leader = synd_mind.GetRole(NUKE_OP_LEADER)
-	spawn()
-		var/title = copytext(sanitize(input(synd_mind.current, "Pick a glorious title for yourself. Leave blank to tolerate equality with your teammates and avoid giving yourself away when talking undercover", "Honorifics", "")), 1, MAX_NAME_LEN)
-		nuke_name_assign(nuke_last_name(synd_mind.current), title, members) //Allows time for the rest of the syndies to be chosen
+	//spawn()
+	//	var/title = copytext(sanitize(input(synd_mind.current, "Pick a glorious title for yourself. Leave blank to tolerate equality with your teammates and avoid giving yourself away when talking undercover", "Honorifics", "")), 1, MAX_NAME_LEN)
+	//	nuke_name_assign(nuke_last_name(synd_mind.current), title, members) //Allows time for the rest of the syndies to be chosen
 
-	if(nuke_code)
-		synd_mind.store_memory("<B>Syndicate Nuclear Bomb Code</B>: [nuke_code]", 0, 0)
-		to_chat(synd_mind.current, "The nuclear authorization code is: <B>[nuke_code]</B><br>Make sure to share it with your subordinates.")
-		var/obj/item/weapon/paper/P = new
-		P.info = "The nuclear authorization code is: <b>[nuke_code]</b>"
-		P.name = "nuclear bomb code"
-		var/mob/living/carbon/human/H = synd_mind.current
-		P.forceMove(H.loc)
-		H.equip_to_slot_or_drop(P, slot_r_store)
-		H.update_icons()
-	else
-		nuke_code = "Code will be provided later, complain to Syndicate Command"
-
-/datum/faction/syndicate/nuke_op/proc/nuke_last_name(var/mob/M as mob)
-
-	var/newname = copytext(sanitize(input(M, "Pick a static last name for all the members of your team. Leave blank to preserve everyone's unique last names", "Family Name", "")), 1, MAX_NAME_LEN)
-
-	return newname
+	synd_mind.store_memory("<B>Syndicate Nuclear Bomb Code</B>: [nuke_code]", 0, 0)
+	var/mob/living/carbon/human/leader_mob = synd_mind.current
+	var/obj/item/weapon/paper/nuke_paper = new(leader_mob.loc)
+	to_chat(leader_mob, "The nuclear authorization code is: <B>[nuke_code]</B><br>Make sure to share it with your subordinates.")
+	nuke_paper.info = "The nuclear authorization code is: <b>[nuke_code]</b>"
+	nuke_paper.name = "nuclear bomb code"
+	leader_mob.equip_to_slot_or_drop(nuke_paper, slot_r_store)
 
 /datum/faction/syndicate/nuke_op/process()
 	var/livingmembers
@@ -274,3 +255,89 @@
 					livingmembers++
 		if(!livingmembers && ticker.IsThematic(playlist))
 			ticker.StopThematic()
+
+/obj/machinery/computer/syndicate_planning
+	name = "\improper Syndicate planning computer"
+	desc = "A sturdy and ominous-looking computer."
+	icon_state = "id"
+	light_color = LIGHT_COLOR_RED
+
+/obj/machinery/computer/syndicate_planning/attack_hand(mob/user)
+	if(..())
+		return
+	interact(user)
+
+/obj/machinery/computer/syndicate_planning/proc/ui_html(mob/user)
+	var/datum/role/nuclear_operative/nukie_role = user.mind.GetRole(NUKE_OP) || user.mind.GetRole(NUKE_OP_LEADER)
+	var/datum/faction/syndicate/nuke_op/nukie_faction = nukie_role.faction
+	if(!nukie_role && !isAdminGhost(user))
+		return "<h1><span class='bad'>ACCESS DENIED.</span></h1>"
+	var/list/output = list()
+	for(var/datum/role/nuclear_operative/team_member in nukie_faction.members)
+		output += team_member.antag?.current.real_name
+		if(team_member == nukie_role)
+			output += " (You)"
+		else if(!team_member.identity_can_be_changed())
+			output += " (UNAVAILABLE)"
+		output += "<a href='?src=\ref[src];set_individual_name=\ref[team_member]'>Edit</a><br>"
+	output += "<a href='?src=\ref[src];set_general_last_name=1'>Set last name for everyone</a><br>"
+	return jointext(output, null)
+
+/obj/machinery/computer/syndicate_planning/interact(mob/user)
+	var/datum/browser/popup = new(user, "\ref[src]", name, 500, 300, src)
+	popup.set_content(ui_html(user))
+	popup.open()
+
+/obj/machinery/computer/syndicate_planning/Topic(href, href_list)
+	if(..())
+		return
+	var/datum/role/nuclear_operative/usr_nukie_role = isnukeop(usr) || isnukeopleader(usr)
+	if(!usr_nukie_role && !isAdminGhost(usr))
+		return
+
+	if(href_list["set_individual_name"])
+		var/datum/role/nuclear_operative/target_nukie_role = locate(href_list["set_individual_name"])
+		if(!istype(target_nukie_role))
+			return
+
+		var/current_name = target_nukie_role.antag.current.real_name
+		var/new_name = stripped_input(usr,
+			"Enter the new full name for [current_name].",
+			"Set team member name",
+			current_name)
+
+		if(isnull(new_name))
+			return
+
+		if(..()) // if usr is not still able to do this
+			return
+
+		target_nukie_role.antag.current.fully_replace_character_name(target_nukie_role.antag.current.real_name, new_name)
+		updateUsrDialog()
+	if(href_list["set_general_last_name"])
+		var/datum/faction/syndicate/nuke_op/usr_nukie_faction = usr_nukie_role.faction
+		var/list/usr_split_name = splittext(usr.mind.current.real_name, " ")
+		var/usr_last_name = usr_split_name[usr_split_name.len]
+
+		var/new_last_name = stripped_input(usr,
+			"Enter a last name for all members of your team or cancel.",
+			"Set last name for everyone",
+			usr_last_name)
+
+		if(isnull(new_last_name))
+			return
+
+		if(..()) // if usr is not still able to do this
+			return
+
+		for(var/datum/role/nuclear_operative/nukie in usr_nukie_faction.members)
+			if(!nukie.identity_can_be_changed())
+				continue
+			var/current_name = nukie.antag.current.real_name
+			var/list/name_split = splittext(current_name, " ")
+			if(length(name_split) == 0)
+				name_split += new_last_name
+			else
+				name_split[name_split.len] = new_last_name
+			nukie.antag.current.fully_replace_character_name(nukie.antag.current.real_name, jointext(name_split, " "))
+		updateUsrDialog()
