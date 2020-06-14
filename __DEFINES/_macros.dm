@@ -273,6 +273,8 @@
 
 #define isnukeop(H) (H.mind && H.mind.GetRole(NUKE_OP))
 
+#define isnukeopleader(H) (H.mind && H.mind.GetRole(NUKE_OP_LEADER))
+
 #define iswizard(H) (H.mind && H.mind.GetRole(WIZARD))
 
 #define isapprentice(H) (H.mind && H.mind.GetRole(WIZAPP))
