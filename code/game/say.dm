@@ -183,21 +183,6 @@ var/global/lastDecTalkUse = 0
 		return returntext
 	return "[copytext("[freq]", 1, 4)].[copytext("[freq]", 4, 5)]"
 
-/* NO YOU FOOL
-/proc/attach_spans(input, list/spans)
-	return "[message_spans(spans)][input]</span>"
-
-/proc/message_spans(list/spans)
-	var/output = "<SPAN CLASS='"
-
-	for(var/span in spans)
-		output = "[output][span] "
-
-	output = "[output]'>"
-	return output
-*/
-
-
 /**
  * The "voice" of the thing that's speaking.  Shows up as name.
  */
