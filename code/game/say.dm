@@ -171,63 +171,6 @@ var/global/lastDecTalkUse = 0
 
 	return "says, [text]"
 
-
-var/global/image/ghostimg = image("icon"='icons/mob/mob.dmi',"icon_state"="ghost")
-/atom/movable/proc/render_lang(var/datum/speech/speech)
-	var/raw_message=speech.message
-	if(speech.language)
-		//var/overRadio = (istype(speech.speaker, /obj/item/device/radio) || istype(speech.speaker.GetSource(), /obj/item/device/radio))
-		var/atom/movable/AM = speech.speaker.GetSource()
-		if(say_understands((istype(AM) ? AM : speech.speaker),speech.language))
-			return render_speech(speech)
-			//if(overRadio)
-			//	return speech.language.format_message_radio(speech.speaker, raw_message)
-			//return speech.language.format_message(speech.speaker, raw_message)
-		else
-			return render_speech(speech.scramble())
-			//if(overRadio)
-			//	return speech.language.format_message_radio(speech.speaker, speech.language.scramble(raw_message))
-			//return speech.language.format_message(speech.speaker, speech.language.scramble(raw_message))
-
-	else
-		var/atom/movable/AM = speech.speaker.GetSource()
-		var/atom/movable/source = istype(AM) ? AM : speech.speaker
-
-		var/rendered = raw_message
-
-		say_testing(speech.speaker, "Checking if [src]([type]) understands [source]([source.type])")
-		if(!say_understands(source))
-			say_testing(speech.speaker," We don't understand this fuck, adding stars().")
-			rendered = stars(rendered)
-		else
-			say_testing(speech.speaker," We <i>do</i> understand this gentle\[wo\]man.")
-
-		rendered="[speech.lquote][html_encode(rendered)][speech.rquote]"
-
-		if(AM)
-			return AM.say_quote(rendered)
-		else
-			return speech.speaker.say_quote(rendered)
-	/*else if(message_langs & SPOOKY)
-		return "[bicon(ghostimg)] <span class='sinister'>Too spooky...</span> [bicon(ghostimg)]"
-	else if(message_langs & MONKEY)
-		return "chimpers."
-	else if(message_langs & ALIEN)
-		return "hisses."
-	else if(message_langs & ROBOT)
-		return "beeps rapidly."
-	else if(message_langs & SIMPLE_ANIMAL)
-		var/mob/living/simple_animal/SA = speaker.GetSource()
-		if(!SA || !istype(SA))
-			SA = speaker
-		if(istype(SA))
-			return "[pick(SA.speak_emote)]."
-		else
-			return "makes a strange sound."
-	else
-		return "makes a strange sound."*/
-
-
 /proc/get_radio_span(freq)
 	var/returntext = freqtospan["[freq]"]
 	if(returntext)
