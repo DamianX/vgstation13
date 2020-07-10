@@ -13,11 +13,14 @@ var/world_startup_time
 
 #define RECOMMENDED_VERSION 513
 
+/proc/dump_memory_profile(file_name)
+	return call(extools_path, "dump_memory_usage")(file_name)
+
+var/extools_path = world.system_type == MS_WINDOWS ? "byond-extools.dll" : "libbyond-extools.so"
 
 var/savefile/panicfile
 /world/New()
 	world_startup_time = world.timeofday
-	var/extools_path = system_type == MS_WINDOWS ? "byond-extools.dll" : "libbyond-extools.so"
 	if(fexists(extools_path))
 		call(extools_path, "maptick_initialize")()
 		#if EXTOOLS_REFERENCE_TRACKING
