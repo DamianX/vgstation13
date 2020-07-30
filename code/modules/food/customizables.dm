@@ -124,24 +124,33 @@
 	src.updateName()
 	return
 
+/obj/item/weapon/reagent_containers/food/snacks/customizable/proc/can_add(obj/item/weapon/reagent_containers/food/snacks/I, user)
+	var/obj/item/weapon/reagent_containers/food/snacks/S = I
+	if(istype(S,/obj/item/weapon/reagent_containers/food/snacks/customizable))
+		var/obj/item/weapon/reagent_containers/food/snacks/customizable/SC = S
+		if(src.fullyCustom && SC.fullyCustom)
+			to_chat(user, "<span class='warning'>You slap yourself on the back of the head for thinking that stacking plates is an interesting dish.</span>")
+			return FALSE
+
+	if(!recursiveFood && istype(I, /obj/item/weapon/reagent_containers/food/snacks/customizable))
+		to_chat(user, "<span class='warning'>[pick("As uniquely original as that idea is, you can't figure out how to perform it.","That would be a straining topological exercise.","This world just isn't ready for your cooking genius.","It's possible that you may have a problem.","It won't fit.","You don't think that would taste very good.","Quit goofin' around.")]</span>")
+		return FALSE
+	return TRUE
+
 /obj/item/weapon/reagent_containers/food/snacks/customizable/attackby(obj/item/I, mob/user, params)
 	if(istype(I,/obj/item/weapon/reagent_containers/food/snacks))
 		if((src.contents.len >= src.ingMax) || (src.contents.len >= ingredientLimit))
 			to_chat(user, "<span class='warning'>That's already looking pretty stuffed.</span>")
 			return
 
-		var/obj/item/weapon/reagent_containers/food/snacks/S = I
-		if(istype(S,/obj/item/weapon/reagent_containers/food/snacks/customizable))
-			var/obj/item/weapon/reagent_containers/food/snacks/customizable/SC = S
-			if(src.fullyCustom && SC.fullyCustom)
-				to_chat(user, "<span class='warning'>You slap yourself on the back of the head for thinking that stacking plates is an interesting dish.</span>")
-				return
-		if(!recursiveFood && istype(I, /obj/item/weapon/reagent_containers/food/snacks/customizable))
-			to_chat(user, "<span class='warning'>[pick("As uniquely original as that idea is, you can't figure out how to perform it.","That would be a straining topological exercise.","This world just isn't ready for your cooking genius.","It's possible that you may have a problem.","It won't fit.","You don't think that would taste very good.","Quit goofin' around.")]</span>")
+		if(!can_add(I, user))
 			return
+
 		if(!user.drop_item(I, src))
 			user << "<span class='warning'>\The [I] is stuck to your hands!</span>"
 			return
+
+		var/obj/item/weapon/reagent_containers/food/snacks/S = I
 
 		S.reagents.trans_to(src,S.reagents.total_volume)
 		src.ingredients += S
@@ -240,6 +249,50 @@
 	var/image/I = src.topping
 	I.pixel_y = (src.ingredients.len+1)*2 * PIXEL_MULTIPLIER
 	src.overlays += I
+
+/obj/item/weapon/reagent_containers/food/snacks/customizable/selfstack
+	fullyCustom = TRUE
+	stackIngredients = TRUE
+
+/obj/item/weapon/reagent_containers/food/snacks/customizable/selfstack/updateName()
+	switch(length(ingredients))
+		if(0)
+			name = initial(name)
+		if(1 to 20)
+			name = "stack of [initial(name)]s"
+		if(21 to 50)
+			name = "pile of [initial(name)]s"
+		if(51 to 99)
+			name = "tower of [initial(name)]s"
+		if(100 to INFINITY)
+			name = "skyscraper of [initial(name)]s"
+
+/obj/item/weapon/reagent_containers/food/snacks/customizable/selfstack/pancake
+	name = "pancake"
+	desc = "INSERT DESCRIPTION HERE"
+	icon_state = "c_pancake"
+
+/obj/item/weapon/reagent_containers/food/snacks/customizable/selfstack/generateFilling(var/obj/item/weapon/reagent_containers/food/snacks/S, params)
+	var/image/I
+	var/icon/C = getFlatIcon(S, S.dir, 0)
+	I = image(C)
+	I.pixel_y = src.ingredients.len * 2 * PIXEL_MULTIPLIER
+	return I
+
+/obj/item/weapon/reagent_containers/food/snacks/customizable/selfstack/pancake/examine(mob/user)
+	..()
+	if(length(ingredients))
+		to_chat(user, "It is made of [length(ingredients)] [initial(name)].")
+
+/obj/item/weapon/reagent_containers/food/snacks/customizable/selfstack/can_add(obj/item/weapon/reagent_containers/food/snacks/I, user)
+	if(!istype(I, type))
+		to_chat(user, "<span class='warning'>There's absolutely no way you could possibly put that there.</span>")
+		return FALSE
+	var/obj/item/weapon/reagent_containers/food/snacks/customizable/selfstack/other_selfstack = I
+	if(length(other_selfstack.ingredients))
+		to_chat(user, "<span class='warning'>\The [other_selfstack] is too tall.</span>")
+		return FALSE
+	return TRUE
 
 /obj/item/weapon/reagent_containers/food/snacks/customizable/burger
 	name = "burger"
