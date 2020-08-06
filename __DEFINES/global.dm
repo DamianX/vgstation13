@@ -505,3 +505,9 @@ var/global_poltergeist_cooldown = 300 //30s by default, badmins can var-edit thi
 
 var/list/all_machines = list()
 var/list/machinery_rating_cache = list() // list of type path -> number
+
+var/list/viral_cleanable_types = list(
+	/obj/effect/decal/cleanable/blood,
+	/obj/effect/decal/cleanable/mucus,
+	/obj/effect/decal/cleanable/vomit,
+)

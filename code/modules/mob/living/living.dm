@@ -1954,12 +1954,6 @@ Thanks.
 		block = check_contact_sterility(FEET)
 		bleeding = check_bodypart_bleeding(FEET)
 
-	var/list/viral_cleanable_types = list(
-		/obj/effect/decal/cleanable/blood,
-		/obj/effect/decal/cleanable/mucus,
-		/obj/effect/decal/cleanable/vomit,
-		)
-
 	for(var/obj/effect/decal/cleanable/C in T)
 		if (is_type_in_list(C,viral_cleanable_types))
 			assume_contact_diseases(C.virus2,C,block,bleeding)
@@ -1990,14 +1984,9 @@ Thanks.
 							infect_disease2(V, notes="(Airborne, from a pathogenic cloud[cloud.source ? " created by [key_name(cloud.source)]" : ""])")
 
 		var/turf/T = get_turf(src)
-		var/list/breathable_cleanable_types = list(
-			/obj/effect/decal/cleanable/blood,
-			/obj/effect/decal/cleanable/mucus,
-			/obj/effect/decal/cleanable/vomit,
-			)
 
 		for(var/obj/effect/decal/cleanable/C in T)
-			if (is_type_in_list(C,breathable_cleanable_types))
+			if (is_type_in_list(C,viral_cleanable_types))
 				if(istype(C.virus2,/list) && C.virus2.len > 0)
 					for(var/ID in C.virus2)
 						var/datum/disease2/disease/V = C.virus2[ID]
