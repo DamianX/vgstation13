@@ -166,14 +166,21 @@ obj/item/asteroid/basilisk_hide/New()
 	throw_message = "sinks in slowly, before being pushed out of "
 	status_flags = CANPUSH
 	search_objects = 1
-	wanted_objects = list(/obj/item/stack/ore/diamond, /obj/item/stack/ore/gold, /obj/item/stack/ore/silver,
-						  /obj/item/stack/ore/uranium)
 
 	environment_smash_flags = SMASH_LIGHT_STRUCTURES | SMASH_CONTAINERS | SMASH_WALLS | SMASH_ASTEROID
 	var/list/ore_types_eaten = list()
 	var/alerted = 0
 	var/ore_eaten = 1
 	var/chase_time = 100
+
+/mob/living/simple_animal/hostile/asteroid/goldgrub/wanted_objects()
+	var/static/list/wanted_objects = list(
+		/obj/item/stack/ore/diamond,
+		/obj/item/stack/ore/gold,
+		/obj/item/stack/ore/silver,
+		/obj/item/stack/ore/uranium
+	)
+	return wanted_objects
 
 /mob/living/simple_animal/hostile/asteroid/goldgrub/GiveTarget(var/new_target)
 	target = new_target

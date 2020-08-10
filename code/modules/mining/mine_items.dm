@@ -629,9 +629,12 @@ proc/move_mining_shuttle()
 	ranged_cooldown_cap = 3
 	projectiletype = /obj/item/projectile/beam
 	projectilesound = 'sound/weapons/Laser.ogg'
-	wanted_objects = list(/obj/item/stack/ore)
 	meat_type = null
 	mob_property_flags = MOB_ROBOTIC
+
+/mob/living/simple_animal/hostile/mining_drone/wanted_objects()
+	var/static/list/wanted_objects = list(/obj/item/stack/ore)
+	return wanted_objects
 
 /mob/living/simple_animal/hostile/mining_drone/attackby(obj/item/I as obj, mob/user as mob)
 	if(iswelder(I))

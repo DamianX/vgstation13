@@ -23,7 +23,6 @@
 	var/retreat_distance = null //If our mob runs from players when they're too close, set in tile distance. By default, mobs do not retreat.
 	var/minimum_distance = 1 //Minimum approach distance, so ranged mobs chase targets down, but still keep their distance set in tiles to the target, set higher to make mobs keep distance
 	var/search_objects = 0 //If we want to consider objects when searching around, set this to 1. If you want to search for objects while also ignoring mobs until hurt, set it to 2. To completely ignore mobs, even when attacked, set it to 3
-	var/list/wanted_objects = list() //A list of objects that will be checked against to attack, should we have search_objects enabled
 	var/stat_attack = 0 //Mobs with stat_attack to 1 will attempt to attack things that are unconscious, Mobs with stat_attack set to 2 will attempt to attack the dead.
 	var/stat_exclusive = 0 //Mobs with this set to 1 will exclusively attack things defined by stat_attack, stat_attack 2 means they will only attack corpses
 	var/attack_faction = null //Put a faction string here to have a mob only ever attack a specific faction
@@ -41,6 +40,10 @@
 		qdel(D)
 	target_rules = null
 	..()
+
+// Returns null or a list of objects that will be checked against to attack, should we have search_objects enabled
+/mob/living/simple_animal/hostile/proc/wanted_objects()
+	RETURN_TYPE(/list)
 
 /mob/living/simple_animal/hostile/proc/initialize_rules()
 	target_rules.Add(new /datum/fuzzy_ruling/is_mob)
@@ -175,8 +178,7 @@
 			return 0
 		return 1
 	if(isobj(the_target))
-		//if(the_target.type in wanted_objects)
-		if(is_type_in_list(the_target,wanted_objects))
+		if(is_type_in_list(the_target, wanted_objects()))
 			return 1
 		if(istype(the_target, /obj/mecha) && search_objects < 2)
 			var/obj/mecha/M = the_target

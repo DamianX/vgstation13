@@ -35,10 +35,6 @@
 	attack_sound = 'sound/weapons/spiderlunge.ogg'
 
 	species_type = /mob/living/simple_animal/hostile/giant_spider
-	wanted_objects = list(
-		/obj/machinery/bot,          // Beepsky and friends
-		/obj/machinery/light,        // Bust out lights
-	)
 	search_objects = 1 // Consider objects when searching.  Set to 0 when attacked
 	wander = 1
 	ranged = 0
@@ -62,6 +58,13 @@
 	max_n2 = 0
 	minbodytemp = 0
 	held_items = list()
+
+/mob/living/simple_animal/hostile/giant_spider/wanted_objects()
+	var/static/list/wanted_objects = list(
+		/obj/machinery/bot,          // Beepsky and friends
+		/obj/machinery/light,        // Bust out lights
+	)
+	return wanted_objects
 
 /mob/living/simple_animal/hostile/giant_spider/update_icons()
 	.=..()

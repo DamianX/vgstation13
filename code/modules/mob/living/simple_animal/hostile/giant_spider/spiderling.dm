@@ -36,10 +36,12 @@
 	//throw_message = "sinks in slowly, before being pushed out of "
 	//status_flags = CANPUSH
 	search_objects = 0
-	wanted_objects = list(/obj/machinery/atmospherics/unary/vent_pump)
-
 	environment_smash_flags = 0//spiderlings cannot smash tables and windows anymore when getting stomped
 	var/static/list/spider_types = list(/mob/living/simple_animal/hostile/giant_spider, /mob/living/simple_animal/hostile/giant_spider/nurse, /mob/living/simple_animal/hostile/giant_spider/hunter)
+
+/mob/living/simple_animal/hostile/giant_spider/spiderling/wanted_objects()
+	var/static/list/wanted_objects = list(/obj/machinery/atmospherics/unary/vent_pump)
+	return wanted_objects
 
 /mob/living/simple_animal/hostile/giant_spider/spiderling/New()
 	..()

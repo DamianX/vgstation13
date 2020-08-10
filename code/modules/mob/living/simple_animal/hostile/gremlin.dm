@@ -19,17 +19,6 @@ var/list/bad_gremlin_items = list()
 	size = SIZE_SMALL
 	search_objects = 3 //Completely ignore mobs
 
-	//Tampering is handled by the 'npc_tamper()' obj proc
-	wanted_objects = list(
-		/obj/machinery,
-		/obj/structure/sink,
-		/obj/structure/displaycase
-	)
-
-	//List of objects that we don't even want to try to tamper with
-	//Subtypes of these are calculated too
-	var/list/unwanted_objects = list(/obj/machinery/atmospherics/pipe)
-
 	//Amount of ticks spent pathing to the target. If it gets above a certain amount, assume that the target is unreachable and stop
 	var/time_chasing_target = 0
 
@@ -39,6 +28,21 @@ var/list/bad_gremlin_items = list()
 	//Last 20 heard messages are remembered by gremlins, and will be used to generate messages for comms console tampering, etc...
 	var/list/hear_memory = list()
 	var/const/max_hear_memory = 20
+
+//Tampering is handled by the 'npc_tamper()' obj proc
+/mob/living/simple_animal/hostile/gremlin/wanted_objects()
+	var/static/list/wanted_objects = list(
+		/obj/machinery,
+		/obj/structure/sink,
+		/obj/structure/displaycase
+	)
+	return wanted_objects
+
+//List of objects that we don't even want to try to tamper with
+//Subtypes of these are calculated too
+/mob/living/simple_animal/hostile/gremlin/proc/unwanted_objects()
+	var/static/list/unwanted_objects = list(/obj/machinery/atmospherics/pipe)
+	return unwanted_objects
 
 /mob/living/simple_animal/hostile/gremlin/AttackingTarget()
 	if(istype(target, /obj))
@@ -101,7 +105,7 @@ var/list/bad_gremlin_items = list()
 /mob/living/simple_animal/hostile/gremlin/CanAttack(atom/new_target)
 	if(bad_gremlin_items.Find(new_target.type))
 		return FALSE
-	if(is_type_in_list(new_target, unwanted_objects))
+	if(is_type_in_list(new_target, unwanted_objects()))
 		return FALSE
 	if(istype(new_target, /obj/machinery))
 		var/obj/machinery/M = new_target

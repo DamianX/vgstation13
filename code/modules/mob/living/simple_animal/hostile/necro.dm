@@ -128,12 +128,15 @@
 
 	var/health_cap = 250 //Maximum possible health it can have. Because screw having a 1000 health mob
 	var/busy = FALSE //Stop spamming the damn doorsmash
-	wanted_objects = list(
-		/obj/machinery/light,
-	)
 	search_objects = 1
 
 	var/list/clothing = list() //If the previous corpse had clothing, it 'wears' it
+
+/mob/living/simple_animal/hostile/necro/zombie/wanted_objects()
+	var/static/list/wanted_objects = list(
+		/obj/machinery/light,
+	)
+	return wanted_objects
 
 /mob/living/simple_animal/hostile/necro/zombie/New() //(mob/living/L)
 	..()
