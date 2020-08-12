@@ -20,11 +20,10 @@
 
 /obj/machinery/portable_atmospherics/initialize()
 	. = ..()
-	spawn()
-		var/obj/machinery/atmospherics/unary/portables_connector/port = locate() in loc
-		if(port)
-			connect(port)
-			update_icon()
+	var/obj/machinery/atmospherics/unary/portables_connector/port = locate() in loc
+	if(port)
+		connect(port)
+		update_icon()
 
 /obj/machinery/portable_atmospherics/process()
 	if(!connected_port) //only react when pipe_network will not it do it for you
