@@ -157,8 +157,8 @@ var/datum/configuration/config = null
 var/hoboamount = 0
 var/suspend_alert = 0
 
-var/Debug = 0	// global debug switch
-var/Debug2 = 0
+var/Debug = 1	// global debug switch
+var/Debug2 = 1
 
 var/datum/debug/debugobj
 
