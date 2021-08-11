@@ -165,7 +165,7 @@
 		if (isnull(obj_type))
 			continue
 		slot = text2num(slot)
-		H.equip_to_slot_if_possible(new obj_type(get_turf(H)), slot, TRUE)
+		H.equip_to_slot_if_possible(new obj_type(get_turf(H)), slot, EQUIP_FAILACTION_DELETE, TRUE, FALSE)
 
 // -- Give out backbag and items to be collected in the backpack
 /datum/outfit/proc/equip_backbag(var/mob/living/carbon/human/H, var/species)
@@ -245,7 +245,7 @@
 		if (special_items)
 			for (var/item_type in special_items)
 				var/chosen_slot = special_items[item_type]
-				H.equip_to_slot_if_possible(new item_type(get_turf(H)), chosen_slot)
+				H.equip_to_slot_if_possible(new item_type(get_turf(H)), chosen_slot, redraw_mob = FALSE)
 
 // -- Implant the dude
 /datum/outfit/proc/give_implants(var/mob/living/carbon/human/H)
