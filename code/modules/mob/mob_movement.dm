@@ -249,7 +249,7 @@
 		C.Orient_object(direct)
 
 /client/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)
-	if(move_delayer.next_allowed > world.time)
+	if(move_delayer.blocked())
 		return 0
 
 	// /vg/ - Deny clients from moving certain mobs. (Like cluwnes :^)
@@ -586,7 +586,10 @@
 	target.add_fingerprint(src)
 
 /mob/proc/movement_delay()
-	return (base_movement_tally() * movement_tally_multiplier())
+	var/base = base_movement_tally()
+	var/mult = movement_tally_multiplier()
+	to_chat(src, "base: [base] mult: [mult]")
+	return (base * mult)
 
 /mob/proc/base_movement_tally()
 	switch(m_intent)

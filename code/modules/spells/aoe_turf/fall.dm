@@ -119,7 +119,7 @@ var/global/list/falltempoverlays = list()
 	//var/oursound = (invocation == "ZA WARUDO" ? 'sound/effects/theworld.ogg' :'sound/effects/fall.ogg')
 	//playsound(user, oursound, 100, 0, 0, 0, 0)
 
-	sleepfor = world.time + sleeptime
+	sleepfor = world.timeofday + sleeptime
 	for(var/turf/T in targets)
 
 		oureffects += new /obj/effect/stop/sleeping(T, sleepfor, user.mind, src, invocation == "ZA WARUDO", ignore_path)

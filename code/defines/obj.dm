@@ -524,7 +524,7 @@ var/global/list/PDA_Manifest = list()
 		ignored_type = ignored
 
 /obj/effect/stop/sleeping/Crossed(atom/movable/A)
-	if(!(A.flags & TIMELESS) && sleeptime > world.time)
+	if(!(A.flags & TIMELESS) && sleeptime > world.timeofday)
 		if(!ignored_type || !istype(A,ignored_type))
 			if(ismob(A))
 				var/mob/living/L = A

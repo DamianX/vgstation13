@@ -15,10 +15,10 @@
 	max_delay=max
 
 /datum/delay_controller/proc/setDelay(var/delay)
-	next_allowed = world.time + clamp(delay,min_delay,max_delay)
+	next_allowed = world.timeofday + clamp(delay,min_delay,max_delay)
 
 /datum/delay_controller/proc/addDelay(var/delay)
-	var/current_delay = max(0,next_allowed - world.time)
+	var/current_delay = max(0,next_allowed - world.timeofday)
 	setDelay(current_delay+delay)
 
 // Proxy for delayNext*(), to reduce duplicated code.
@@ -29,7 +29,7 @@
 		setDelay(delay)
 
 /datum/delay_controller/proc/blocked()
-	return next_allowed > world.time
+	return next_allowed > world.timeofday
 
 // Constructor args are currently all the same, but placed here for ease of tuning.
 /client // Yep, clients are snowflakes.
