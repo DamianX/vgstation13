@@ -12279,10 +12279,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 28
-	},
 /turf/simulated/floor{
 	dir = 4;
 	icon_state = "redcorner"
@@ -129664,6 +129660,17 @@
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/transport1/centcom)
+"fSV" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 28
+	},
+/turf/simulated/floor{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/security/brig)
 "gtJ" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -130019,6 +130026,10 @@
 	},
 /turf/simulated/floor,
 /area/research_outpost/gearstore)
+"qDC" = (
+/obj/machinery/photobooth/security,
+/turf/simulated/floor,
+/area/security/brig)
 "qRa" = (
 /turf/simulated/wall,
 /area/research_outpost/maint)
@@ -237882,7 +237893,7 @@ aor
 akh
 are
 asD
-akh
+fSV
 avs
 awA
 axK
@@ -238385,7 +238396,7 @@ ahG
 ahG
 asG
 ahG
-ahG
+qDC
 awC
 axN
 aza

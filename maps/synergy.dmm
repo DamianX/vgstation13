@@ -5747,6 +5747,7 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
 	},
+/obj/machinery/photobooth/security,
 /turf/simulated/floor{
 	dir = 5;
 	icon_state = "darkred";

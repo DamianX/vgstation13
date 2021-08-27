@@ -7552,9 +7552,12 @@
 	},
 /obj/item/weapon/storage/box/handcuffs{
 	pixel_x = 8;
-	pixel_y = 8
+	pixel_y = 15
 	},
-/obj/item/weapon/storage/box/holobadge,
+/obj/item/weapon/storage/box/holobadge{
+	pixel_x = -4;
+	pixel_y = 4
+	},
 /obj/machinery/recharger,
 /obj/machinery/light{
 	dir = 8
@@ -7562,6 +7565,17 @@
 /obj/machinery/media/receiver/boombox/wallmount/muzak{
 	pixel_x = -24
 	},
+/obj/structure/window/reinforced,
+/obj/item/device/radio{
+	pixel_x = 7
+	},
+/obj/item/tool/crowbar{
+	pixel_y = -3
+	},
+/obj/item/device/radio{
+	pixel_x = 4
+	},
+/obj/item/tool/crowbar,
 /turf/simulated/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -7933,18 +7947,10 @@
 	},
 /area/security/brig)
 "anN" = (
-/obj/structure/window/reinforced,
-/obj/structure/table/reinforced,
-/obj/effect/decal/warning_stripes{
-	icon_state = "bot"
-	},
-/obj/item/tool/crowbar,
-/obj/item/tool/crowbar,
-/obj/item/device/radio,
-/obj/item/device/radio,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/photobooth/security,
 /turf/simulated/floor{
 	dir = 9;
 	icon_state = "redfull"

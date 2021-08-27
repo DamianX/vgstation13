@@ -101377,19 +101377,9 @@
 	},
 /area/security/brig)
 "dCi" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/status_display{
-	pixel_y = 32
-	},
+/obj/machinery/photobooth/security,
 /turf/simulated/floor{
-	dir = 1;
-	icon_state = "darkred";
-	tag = "icon-darkred (NORTH)"
+	icon_state = "dark"
 	},
 /area/security/brig)
 "dCj" = (
@@ -102218,6 +102208,9 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
+/obj/machinery/status_display{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "dDu" = (
@@ -148679,6 +148672,15 @@
 "pYQ" = (
 /turf/simulated/wall/r_rock/porous,
 /area/maintenance/virology_maint)
+"pZm" = (
+/obj/machinery/status_display{
+	pixel_y = -32
+	},
+/turf/simulated/floor{
+	icon_state = "darkred";
+	tag = "icon-darkred"
+	},
+/area/security/brig)
 "rye" = (
 /obj/machinery/status_display/supply,
 /turf/simulated/wall,
@@ -242554,8 +242556,8 @@ dyY
 dzC
 dzC
 dzC
-dzC
 dCi
+dyi
 dDb
 dDy
 azw
@@ -246573,7 +246575,7 @@ dzC
 dzC
 dCp
 dCR
-dDA
+pZm
 dEA
 dEA
 dEA

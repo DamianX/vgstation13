@@ -35827,6 +35827,9 @@
 /area/security/brig)
 "bDo" = (
 /obj/machinery/computer/security_alerts,
+/obj/machinery/camera{
+	c_tag = "Security Lobby North"
+	},
 /turf/simulated/floor{
 	dir = 9;
 	icon_state = "darkred";
@@ -36376,17 +36379,6 @@
 	},
 /area/security/lobby)
 "bEi" = (
-/obj/machinery/camera{
-	c_tag = "Security Lobby North"
-	},
-/obj/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
 /turf/simulated/floor{
 	dir = 1;
 	icon_state = "darkred";
@@ -37070,11 +37062,6 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
@@ -41004,6 +40991,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc{
+	pixel_y = -24
 	},
 /turf/simulated/floor{
 	icon_state = "darkred";
@@ -92097,6 +92091,12 @@
 /obj/machinery/r_n_d/fabricator/circuit_imprinter,
 /turf/simulated/floor/bluegrid,
 /area/science/lab)
+"fSj" = (
+/obj/machinery/photobooth/security,
+/turf/simulated/floor{
+	icon_state = "dark"
+	},
+/area/security/lobby)
 "fTC" = (
 /obj/machinery/space_heater/campfire/stove{
 	icon_state = "stove0"
@@ -148242,7 +148242,7 @@ bxU
 bxU
 bBM
 bxU
-bxU
+fSj
 bEi
 bFh
 bGq

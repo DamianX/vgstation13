@@ -92021,18 +92021,7 @@
 	},
 /area/security/toilet)
 "rvi" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layered{
-	dir = 4;
-	tag = "icon-intact (EAST)"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layered{
-	dir = 4;
-	tag = "icon-intact (EAST)"
-	},
-/obj/structure/sign/poster{
-	icon_state = "poster3";
-	pixel_y = 32
-	},
+/obj/machinery/photobooth/security,
 /turf/simulated/floor{
 	blocks_air = 0;
 	icon_state = "dark"
@@ -95352,6 +95341,10 @@
 	tag = "icon-map (NORTH)"
 	},
 /obj/machinery/camera/autoname,
+/obj/structure/sign/poster{
+	icon_state = "poster3";
+	pixel_y = 32
+	},
 /turf/simulated/floor{
 	blocks_air = 0;
 	icon_state = "dark"
@@ -276976,8 +276969,8 @@ elj
 wbL
 kUi
 elj
-elj
 rvi
+uIK
 qcZ
 mzo
 eKI

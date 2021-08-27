@@ -72041,19 +72041,9 @@
 	},
 /area/security/brig)
 "cIY" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for watching Prison Wing holding areas.";
-	name = "Prison Monitor";
-	network = list("Prison");
-	pixel_y = 30
-	},
+/obj/machinery/photobooth/security,
 /turf/simulated/floor{
-	dir = 1;
-	icon_state = "darkred";
-	tag = "icon-darkred (NORTH)"
+	icon_state = "dark"
 	},
 /area/security/brig)
 "cIZ" = (
@@ -249916,8 +249906,8 @@ ctl
 ctl
 ctl
 ctl
-ctl
 cIY
+cIU
 cKA
 cLZ
 cNp
