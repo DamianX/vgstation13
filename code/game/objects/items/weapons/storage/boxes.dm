@@ -263,6 +263,9 @@
 	icon_state = "syringe"
 	item_state = "syringe"
 
+/obj/item/weapon/storage/box/syringes/initialize()
+	return ..()
+
 /obj/item/weapon/storage/box/syringes/New()
 	..()
 	for(var/i = 1 to 6)

@@ -55,7 +55,8 @@
 		var/amount = to_spawn[path] || 1
 		for(var/i in 1 to amount)
 			var/atom/A = new path(src)
-			A.initialize()  // recursive
+			if(late_init_atoms)
+				late_init_atoms += A
 
 /obj/structure/closet/basic
 	has_lock_type = /obj/structure/closet/secure_closet/basic

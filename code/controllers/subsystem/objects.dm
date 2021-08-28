@@ -1,7 +1,7 @@
 var/datum/subsystem/obj/SSobj
 
 var/list/processing_objects = list()
-
+var/list/late_init_atoms = list()
 
 /datum/subsystem/obj
 	name          = "Objects"
@@ -29,6 +29,12 @@ var/list/processing_objects = list()
 		else
 			stack_trace("[object.type] initialized twice")
 		CHECK_TICK
+	for(var/atom/object in late_init_atoms)
+		if(!(object.flags & ATOM_INITIALIZED))
+			object.initialize()
+		else
+			stack_trace("[object.type] initialized twice")
+	late_init_atoms = null
 	for(var/area/place in areas)
 		var/obj/machinery/power/apc/place_apc = place.areaapc
 		if(place_apc)

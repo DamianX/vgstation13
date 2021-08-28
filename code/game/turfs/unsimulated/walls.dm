@@ -14,6 +14,17 @@
 	var/static/list/smoothables = list(/turf/unsimulated/wall)
 	return smoothables
 
+var/first
+
+/turf/unsimulated/wall/New()
+	..()
+	first = src
+
+/turf/unsimulated/wall/initialize()
+	if(first)
+		return ..()
+	return ..()
+
 /turf/unsimulated/wall/fakeglass
 	name = "window"
 	icon_state = "fakewindows"

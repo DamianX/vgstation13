@@ -19,7 +19,7 @@
 
 /obj/structure/bed/chair/New()
 	..()
-	if(ticker)
+	if(world.has_round_started())
 		initialize()
 
 /obj/structure/bed/chair/initialize()

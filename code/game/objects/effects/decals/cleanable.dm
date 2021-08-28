@@ -43,7 +43,7 @@ var/list/infected_cleanables = list()
 	if(pixel_y)
 		src.pixel_y = pixel_y
 
-	if(ticker)
+	if(world.has_round_started())
 		initialize()
 
 	fixDNA()

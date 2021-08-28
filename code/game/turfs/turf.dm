@@ -428,7 +428,8 @@
 		//		zone.SetStatus(ZONE_ACTIVE)
 
 		var/turf/W = new N(src)
-		W.initialize()
+		if(world.has_round_started())
+			W.initialize()
 
 		if(tell_universe)
 			universe.OnTurfChange(W)
