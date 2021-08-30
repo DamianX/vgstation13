@@ -1,73 +1,125 @@
-// Copyright (c) 2020 /vg/station coders
-// SPDX-License-Identifier: MIT
-
+import { map, sortBy } from 'common/collections';
+import { flow } from 'common/fp';
+import { clamp } from 'common/math';
+import { vecLength, vecSubtract } from 'common/vector';
 import { useBackend } from '../backend';
-import { Button, LabeledList, Section, Flex, Modal, Icon } from '../components';
+import { Box, Button, Icon, LabeledList, Section, Table } from '../components';
 import { Window } from '../layouts';
-import { ButtonCheckbox } from '../components/Button';
+
+const coordsToVec = coords => map(parseFloat)(coords.split(', '));
 
 export const Gps = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    emped,
-    transmitting,
-    gpstag,
-    autorefresh,
-    location_text,
-    devices,
+    currentArea,
+    currentCoords,
+    globalmode,
+    power,
+    tag,
+    updating,
   } = data;
+  const signals = flow([
+    map((signal, index) => {
+      // Calculate distance to the target. BYOND distance is capped to 127,
+      // that's why we roll our own calculations here.
+      const dist = signal.dist && (
+        Math.round(vecLength(vecSubtract(
+          coordsToVec(currentCoords),
+          coordsToVec(signal.coords))))
+      );
+      return { ...signal, dist, index };
+    }),
+    sortBy(
+      // Signals with distance metric go first
+      signal => signal.dist === undefined,
+      // Sort alphabetically
+      signal => signal.entrytag),
+  ])(data.signals || []);
   return (
-    <Window resizable>
-      {!!emped && (
-        <Modal>
-          <Flex align="center">
-            <Flex.Item mr={2}>
-              <Icon name="exclamation-triangle" />
-            </Flex.Item>
-            <Flex.Item minWidth={15}>
-              Bluespace module failure.<br />Attempting to recalibrate...
-            </Flex.Item>
-          </Flex>
-        </Modal>
-      )}
+    <Window
+      title="Global Positioning System"
+      width={470}
+      height={700}>
       <Window.Content scrollable>
-        {!transmitting && (
-          <Section title="Settings">
+        <Section
+          title="Control"
+          buttons={(
             <Button
               icon="power-off"
-              onClick={() => act("turn_on")}>
-              Turn on
-            </Button>
-          </Section>
-        ) || (
-          <Section title="Settings">
-            <ButtonCheckbox
-              checked={autorefresh}
-              onClick={() => act('toggle_refresh')}>
-              Auto-update
-            </ButtonCheckbox>
-            <Button.Input
-              content={"Set tag: "+gpstag}
-              currentValue={gpstag}
-              onCommit={(e, value) => act('set_tag', { 'new_tag': value })} />
-          </Section>
-        )}
-        {!emped && !!transmitting && (
-          <Section title="Signals">
-            <LabeledList>
-              <LabeledList.Item
-                label={gpstag}>
-                {location_text}
-              </LabeledList.Item>
-              {devices.map(device => (
-                <LabeledList.Item
-                  key={device.tag}
-                  label={device.tag}>
-                  {device.location_text}
-                </LabeledList.Item>
-              ))}
-            </LabeledList>
-          </Section>
+              content={power ? "On" : "Off"}
+              selected={power}
+              onClick={() => act('power')} />
+          )}>
+          <LabeledList>
+            <LabeledList.Item label="Tag">
+              <Button
+                icon="pencil-alt"
+                content={tag}
+                onClick={() => act('rename')} />
+            </LabeledList.Item>
+            <LabeledList.Item label="Scan Mode">
+              <Button
+                icon={updating ? "unlock" : "lock"}
+                content={updating ? "AUTO" : "MANUAL"}
+                color={!updating && "bad"}
+                onClick={() => act('updating')} />
+            </LabeledList.Item>
+            <LabeledList.Item label="Range">
+              <Button
+                icon="sync"
+                content={globalmode ? "MAXIMUM" : "LOCAL"}
+                selected={!globalmode}
+                onClick={() => act('globalmode')} />
+            </LabeledList.Item>
+          </LabeledList>
+        </Section>
+        {!!power && (
+          <>
+            <Section title="Current Location">
+              <Box fontSize="18px">
+                {currentArea} ({currentCoords})
+              </Box>
+            </Section>
+            <Section title="Detected Signals">
+              <Table>
+                <Table.Row bold>
+                  <Table.Cell content="Name" />
+                  <Table.Cell collapsing content="Direction" />
+                  <Table.Cell collapsing content="Coordinates" />
+                </Table.Row>
+                {signals.map(signal => (
+                  <Table.Row
+                    key={signal.entrytag + signal.coords + signal.index}
+                    className="candystripe">
+                    <Table.Cell bold color="label">
+                      {signal.entrytag}
+                    </Table.Cell>
+                    <Table.Cell
+                      collapsing
+                      opacity={signal.dist !== undefined && (
+                        clamp(
+                          1.2 / Math.log(Math.E + signal.dist / 20),
+                          0.4, 1)
+                      )}>
+                      {signal.degrees !== undefined && (
+                        <Icon
+                          mr={1}
+                          size={1.2}
+                          name="arrow-up"
+                          rotation={signal.degrees} />
+                      )}
+                      {signal.dist !== undefined && (
+                        signal.dist + 'm'
+                      )}
+                    </Table.Cell>
+                    <Table.Cell collapsing>
+                      {signal.coords}
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table>
+            </Section>
+          </>
         )}
       </Window.Content>
     </Window>
