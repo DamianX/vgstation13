@@ -204,6 +204,7 @@
 // newloc: atom it is entering
 /lazy_event/on_exited
 
+/lazy_event/on_ui_act
 
 /datum
 	/// Associative list of type path -> list(),
