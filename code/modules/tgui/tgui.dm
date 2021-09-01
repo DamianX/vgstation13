@@ -91,19 +91,14 @@
 	if(!window.is_ready())
 		window.initialize(
 			fancy = user.client.prefs.tgui_fancy,
-			inline_assets = list(
-				get_asset_datum(/datum/asset/simple/tgui),
-			))
+			inline_assets = list(/datum/asset/simple/tgui)
+		)
 	else
 		window.send_message("ping")
-	var/flush_queue = window.send_asset(get_asset_datum(
-		/datum/asset/simple/namespaced/fontawesome))
-	flush_queue |= window.send_asset(get_asset_datum(
-		/datum/asset/simple/namespaced/tgfont))
+	window.send_asset(/datum/asset/simple/fontawesome)
+	window.send_asset(/datum/asset/simple/tgfont)
 	for(var/datum/asset/asset in src_object.ui_assets(user))
-		flush_queue |= window.send_asset(asset)
-	if (flush_queue)
-		user.client.browse_queue_flush()
+		window.send_asset(asset)
 	window.send_message("update", get_payload(
 		with_data = TRUE,
 		with_static_data = TRUE))
@@ -219,7 +214,7 @@
 			"key" = window_key,
 			"size" = window_size,
 			"fancy" = user.client.prefs.tgui_fancy,
-			"locked" = user.client.prefs.tgui_lock,
+			"locked" = TRUE,
 		),
 		"client" = list(
 			"ckey" = user.client.ckey,
@@ -247,7 +242,7 @@
  * Run an update cycle for this UI. Called internally by SStgui
  * every second or so.
  */
-/datum/tgui/process(delta_time, force = FALSE)
+/datum/tgui/proc/process(delta_time, force = FALSE)
 	if(closing)
 		return
 	var/datum/host = src_object.ui_host(user)
@@ -315,6 +310,7 @@
 		if("setSharedState")
 			if(status != UI_INTERACTIVE)
 				return
-			LAZYINITLIST(src_object.tgui_shared_states)
+			if(!src_object.tgui_shared_states)
+				src_object.tgui_shared_states = list()
 			src_object.tgui_shared_states[href_list["key"]] = href_list["value"]
 			SStgui.update_uis(src_object)

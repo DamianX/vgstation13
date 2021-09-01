@@ -48,7 +48,8 @@ var/datum/ui_state/default/default_state = new
 
 /mob/living/silicon/pai/default_can_use_topic(src_object)
 	// pAIs can only use themselves and itself.
-	if((src_object == src || src_object.loc == src) && !stat)
+	var/atom/src_atom = src_object
+	if((src_object == src || istype(src_atom) && src_atom.loc == src) && !stat)
 		return UI_INTERACTIVE
 	else
 		return min(..(), UI_UPDATE)

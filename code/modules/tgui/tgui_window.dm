@@ -82,7 +82,7 @@
 				inline_assets_str += "Byond.loadCss('[url]', true);\n"
 			else if(copytext(name, -3) == ".js")
 				inline_assets_str += "Byond.loadJs('[url]', true);\n"
-		asset.send(client)
+		send_asset(asset, client)
 	if(length(inline_assets_str))
 		inline_assets_str = "<script>\n" + inline_assets_str + "</script>\n"
 	html = replacetextEx(html, "<!-- tgui:assets -->\n", inline_assets_str)
@@ -254,11 +254,12 @@
 	if(!client || !asset)
 		return
 	sent_assets |= list(asset)
-	. = asset.send(client)
-	if(istype(asset, /datum/asset/spritesheet))
-		var/datum/asset/spritesheet/spritesheet = asset
+	var/datum/asset/instance = new asset
+	instance.send(client)
+	if(istype(instance, /datum/asset/spritesheet))
+		var/datum/asset/spritesheet/spritesheet = instance
 		send_message("asset/stylesheet", spritesheet.css_filename())
-	send_raw_message(asset.get_serialized_url_mappings())
+	send_raw_message(TGUI_CREATE_MESSAGE("asset/mappings", instance.get_url_mappings()))
 
 /**
  * private

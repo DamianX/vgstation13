@@ -81,9 +81,9 @@ var/list/SPS_list = list()
 
 // Begin tgui
 /obj/item/device/gps/tgui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "Gps", name, 500, 500, master_ui, state)
+		ui = new(user, src, "Gps")
 		ui.open()
 	ui.set_autoupdate(autorefreshing)
 
@@ -106,7 +106,7 @@ var/list/SPS_list = list()
 	data["devices"] = devices
 	return data
 
-/obj/item/device/gps/ui_act(action, list/params)
+/obj/item/device/gps/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return
 	switch(action)

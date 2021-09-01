@@ -100,9 +100,10 @@
 	if (timeout)
 		src.timeout = timeout
 		start_time = world.time
-		QDEL_IN(src, timeout)
+		spawn(timeout)
+			qdel(src)
 
-/datum/tgui_list_input/Destroy(force, ...)
+/datum/tgui_list_input/Destroy()
 	SStgui.close_uis(src)
 	qdel(buttons)
 	buttons = null
@@ -127,7 +128,7 @@
 	closed = TRUE
 
 /datum/tgui_list_input/ui_state(mob/user)
-	return GLOB.always_state
+	return global.always_state
 
 /datum/tgui_list_input/ui_static_data(mob/user)
 	. = list(
@@ -167,7 +168,7 @@
  */
 /datum/tgui_list_input/async
 	/// The callback to be invoked by the tgui_list_input upon having a choice made.
-	var/datum/callback/callback
+	var/callback/callback
 
 /datum/tgui_list_input/async/New(mob/user, message, title, list/buttons, callback, timeout)
 	..(user, message, title, buttons, timeout)
@@ -181,7 +182,7 @@
 /datum/tgui_list_input/async/set_choice(choice)
 	. = ..()
 	if(!isnull(src.choice))
-		callback?.InvokeAsync(src.choice)
+		callback?.invoke_async(src.choice)
 
 /datum/tgui_list_input/async/wait()
 	return

@@ -146,7 +146,7 @@
  */
 /datum/tgui_modal/async
 	/// The callback to be invoked by the tgui_modal upon having a choice made.
-	var/datum/callback/callback
+	var/callback/callback
 
 /datum/tgui_modal/async/New(mob/user, message, title, list/buttons, callback, timeout, autofocus)
 	..(user, message, title, buttons, timeout, autofocus)
@@ -160,7 +160,7 @@
 /datum/tgui_modal/async/set_choice(choice)
 	. = ..()
 	if(!isnull(src.choice))
-		callback?.InvokeAsync(src.choice)
+		callback?.invoke_async(src.choice)
 
 /datum/tgui_modal/async/wait()
 	return
