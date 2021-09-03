@@ -3030,6 +3030,10 @@ var/list/the_station_areas = list (
 	icon_state = "vacstore"
 
 //Shuttles
+/area/shuttle/engineering
+	name = "\improper Engineering Shuttle"
+	icon_state = "engineeringshuttle"
+
 /area/shuttle/medical
 	name = "\improper Medical Shuttle"
 	icon_state = "medicalshuttle"
