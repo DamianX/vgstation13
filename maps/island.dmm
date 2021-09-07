@@ -20604,7 +20604,7 @@
 /area/maintenance/fore_port_struct)
 "enW" = (
 /obj/structure/table,
-/obj/structure/closet/fireaxecabinet{
+/obj/structure/fireaxecabinet{
 	pixel_y = 30
 	},
 /obj/item/toy/prize/fireripley{
@@ -39069,7 +39069,7 @@
 "hYx" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/storage/fancy/flares,
-/obj/structure/closet/fireaxecabinet{
+/obj/structure/fireaxecabinet{
 	pixel_y = 30
 	},
 /turf/simulated/floor,
@@ -44752,7 +44752,7 @@
 /area/engineering/atmos)
 "jiX" = (
 /obj/structure/table,
-/obj/structure/closet/fireaxecabinet{
+/obj/structure/fireaxecabinet{
 	pixel_y = 30
 	},
 /obj/item/clothing/gloves/fyellow,
@@ -107723,7 +107723,7 @@
 /turf/simulated/floor,
 /area/hallway/primary/aft)
 "vbj" = (
-/obj/structure/closet/fireaxecabinet{
+/obj/structure/fireaxecabinet{
 	pixel_y = -32
 	},
 /turf/simulated/floor/carpet,
