@@ -26974,12 +26974,6 @@
 	},
 /area/tdome/tdomeobserve)
 "fzD" = (
-/obj/machinery/door/window/brigdoor{
-	dir = 1;
-	id_tag = "Cell 2";
-	name = "Cell 2";
-	req_access_txt = "2"
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
@@ -26987,6 +26981,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layered,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/window/brigdoor{
+	dir = 1;
+	id_tag = "Cell 3";
+	name = "Cell 3";
+	req_access_txt = "2"
+	},
 /turf/simulated/floor,
 /area/security/brig)
 "fzF" = (
@@ -31623,9 +31623,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door_timer/cell_2{
-	pixel_y = 0
-	},
+/obj/machinery/door_timer/cell_2,
 /turf/simulated/floor{
 	icon_state = "red"
 	},
@@ -41776,6 +41774,9 @@
 	},
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/structure/closet/secure_closet/brig{
+	id_tag = "Cell 1"
 	},
 /turf/simulated/floor,
 /area/security/brig)
@@ -55932,7 +55933,7 @@
 	one_way = 1
 	},
 /obj/machinery/flasher{
-	id_tag = "Cell 1";
+	id_tag = "Cell 2";
 	pixel_y = 28
 	},
 /obj/machinery/light{
@@ -55940,6 +55941,9 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on/layered{
 	dir = 8
+	},
+/obj/structure/closet/secure_closet/brig{
+	id_tag = "Cell 2"
 	},
 /turf/simulated/floor,
 /area/security/brig)
@@ -61849,10 +61853,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door_timer/cell_1{
-	dir = 4;
-	pixel_y = 0
-	},
+/obj/machinery/door_timer/cell_1,
 /turf/simulated/floor{
 	icon_state = "red"
 	},
@@ -66258,10 +66259,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door_timer/cell_3{
-	dir = 8;
-	pixel_y = 0
-	},
+/obj/machinery/door_timer/cell_3,
 /turf/simulated/floor{
 	icon_state = "red"
 	},
@@ -70597,7 +70595,7 @@
 	dir = 8
 	},
 /obj/machinery/flasher{
-	id_tag = "Cell 2";
+	id_tag = "Cell 3";
 	pixel_y = 28
 	},
 /obj/machinery/light{
@@ -70605,6 +70603,9 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on/layered{
 	dir = 4
+	},
+/obj/structure/closet/secure_closet/brig{
+	id_tag = "Cell 3"
 	},
 /turf/simulated/floor,
 /area/security/brig)
@@ -89303,12 +89304,6 @@
 	},
 /area/hallway/central_starboard_hallway)
 "rLn" = (
-/obj/machinery/door/window/brigdoor{
-	dir = 1;
-	id_tag = "Cell 1";
-	name = "Cell 1";
-	req_access_txt = "2"
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
@@ -89316,6 +89311,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layered,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/window/brigdoor{
+	dir = 1;
+	id_tag = "Cell 2";
+	name = "Cell 2";
+	req_access_txt = "2"
+	},
 /turf/simulated/floor,
 /area/security/brig)
 "rLr" = (
@@ -123476,8 +123477,8 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layered,
 /obj/machinery/door/window/brigdoor{
 	dir = 1;
-	id_tag = "Cell 3";
-	name = "Cell 3";
+	id_tag = "Cell 1";
+	name = "Cell 1";
 	req_access_txt = "2"
 	},
 /turf/simulated/floor,
