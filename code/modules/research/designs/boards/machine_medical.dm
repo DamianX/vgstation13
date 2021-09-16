@@ -87,7 +87,7 @@
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 2000, SACID = 20)
 	build_path = /obj/item/weapon/circuitboard/sleeper
-	
+
 /datum/design/mancrowave
 	name = "Circuit Design (Thermal Homeostasis Regulator)"
 	desc = "Allows for the constuction of circuit boards used to build a Thermal Homeostasis Regulator."
@@ -191,3 +191,12 @@
 	category = "Machine Boards"
 	build_path = /obj/item/weapon/circuitboard/mind_machine_pod
 
+/datum/design/dialysis
+	name = "Circuit Design (Dialysis)"
+	desc = "Allows for the construction of a dialysis machine."
+	id = "dialysis"
+	req_tech = list(Tc_PROGRAMMING = 3, Tc_BIOTECH = 3, Tc_MAGNETS = 2)
+	build_type = IMPRINTER
+	materials = list(MAT_GLASS = 2000, SACID = 20)
+	category = "Machine Boards"
+	build_path = /obj/item/weapon/circuitboard/dialysis
