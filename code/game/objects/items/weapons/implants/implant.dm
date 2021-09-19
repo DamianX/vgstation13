@@ -2,12 +2,26 @@
 	name = "implant"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "implant"
-	var/implanted = null
-	var/mob/imp_in = null
-	var/datum/organ/external/part = null
 	_color = "b"
-	var/allow_reagents = 0
-	var/malfunction = 0
+	/// The mob this has been implanted into.
+	var/implanted
+	var/mob/imp_in
+	/// The limb of the mob this has been implanted into.
+	var/datum/organ/external/part
+	var/allow_reagents = FALSE
+	var/malfunction = NONE
+
+
+/obj/item/weapon/implant/proc/insert(mob/living/target, target_limb, mob/implanter)
+	var/datum/organ/external/organ = target.get_organ(target_limb)
+	if(!organ || organ.gcDestroyed || !organ.is_existing())
+		CRASH("Tried to implant invalid organ")
+	imp_in = target
+	organ.implants += src
+	part = organ
+	return TRUE
+
+/obj/item/weapon/implant/proc/remove(mob/user)
 
 /obj/item/weapon/implant/proc/trigger(emote, mob/source)
 	return
@@ -16,19 +30,19 @@
 	return
 
 // What does the implant do when it's removed?
-/obj/item/weapon/implant/proc/handle_removal(var/mob/remover)
+/obj/item/weapon/implant/proc/handle_removal(mob/remover)
 	return
 
 // What does the implant do upon injection?
 // return 0 if the implant fails (ex. Revhead and loyalty implant.)
 // return 1 if the implant succeeds (ex. Nonrevhead and loyalty implant.)
-/obj/item/weapon/implant/proc/implanted(var/mob/source)
+/obj/item/weapon/implant/proc/implanted(mob/source)
 	return 1
 
 /obj/item/weapon/implant/proc/get_data()
 	return "No information available"
 
-/obj/item/weapon/implant/proc/hear(message, source as mob)
+/obj/item/weapon/implant/proc/hear(message, mob/source)
 	return
 
 /obj/item/weapon/implant/proc/islegal()

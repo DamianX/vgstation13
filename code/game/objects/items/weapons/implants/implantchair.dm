@@ -139,7 +139,6 @@
 			if(imp.implanted(M))
 				imp.forceMove(M)
 				imp.imp_in = M
-				imp.implanted = 1
 			implant_list -= imp
 			break
 	return

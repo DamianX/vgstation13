@@ -27,10 +27,6 @@
 			user.show_message("<span class='warning'>You can't load a broken implant back into a case.</span>")
 			return 0
 		user.drop_item(timp, force_drop = 1)
-		if(timp.implanted) 
-			timp.implanted = null
-		if(timp.implanted) 
-			timp.imp_in = null
 		timp.forceMove(src)
 		user.show_message("<span class='warning'>You load \the [timp] into \the [src].</span>")
 		imp = timp
@@ -38,7 +34,7 @@
 	else if (istype(I, /obj/item/weapon/implanter))
 		var/obj/item/weapon/implanter/the_implanter = I
 		if (the_implanter.imp)
-			if (imp || the_implanter.imp.implanted)
+			if (imp)
 				return
 			the_implanter.imp.forceMove(src)
 			imp = the_implanter.imp

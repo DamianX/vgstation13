@@ -23,13 +23,11 @@
 	if(istype(target, /mob/living/carbon))
 		M = target
 	if(!imp)
-		if(istype(target, /obj/item/weapon/implant/))
+		if(istype(target, /obj/item/weapon/implant))
 			var/obj/item/weapon/implant/timp = target
 			timp.forceMove(src)
 			user.show_message("<span class='warning'>You load \the [timp] into \the [src].</span>")
 			imp = timp
-			imp.implanted = null
-			imp.imp_in = null
 			update()
 			return
 		if(ismob(target))
@@ -40,34 +38,26 @@
 			O.show_message("<span class='warning'>[user] is attempting to implant [M].</span>", 1)
 
 		var/turf/T1 = get_turf(M)
-		if(T1 && ((M == user) || do_after(user,M, 50)))
+		if(T1 && ((M == user) || do_after(user, M, 5 SECONDS)))
 			if(user && M && (get_turf(M) == T1) && src && imp)
-				for (var/mob/O in viewers(M, null))
-					O.show_message("<span class='warning'>[M] has been implanted by [user].</span>", 1)
+				M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
 
-				M.attack_log += text("\[[time_stamp()]\] <font color='orange'> Implanted with \the [name] ([imp.name]) by [key_name(user)]</font>")
-				user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used \the [name] ([imp.name]) to implant [key_name(M)]</font>")
+				M.attack_log += "\[[time_stamp()]\] <font color='orange'> Implanted with \the [name] ([imp.name]) by [key_name(user)]</font>"
+				user.attack_log += "\[[time_stamp()]\] <font color='red'>Used \the [name] ([imp.name]) to implant [key_name(M)]</font>"
 				msg_admin_attack("[key_name(user)] implanted [key_name(M)] with \the [name] ([imp.name]) (INTENT: [uppertext(user.a_intent)]) at [formatJumpTo(get_turf(user))]")
 
-				user.show_message("<span class='warning'>You implanted the implant into [M].</span>")
-				if(imp.implanted(M, user))
-					imp.forceMove(M)
-					imp.imp_in = M
-					imp.implanted = 1
-					if(ishuman(M))
-						var/mob/living/carbon/human/H = M
-						var/datum/organ/external/affected = H.get_organ(user.zone_sel.selecting)
-						affected.implants += imp
-						imp.part = affected
-				M:implanting = 0
+				if(imp.insert(M, user.zone_sel.selecting, user))
+					user.show_message("<span class='warning'>You implant \the [imp] into [M].</span>")
+				else
+					user.show_message("<span class='warning'>You fail to implant [M].</span>")
 				imp = null
 				update()
 
 
 /obj/item/weapon/implanter/New()
+	..()
 	if(imp_type)
 		imp = new imp_type(src)
-		..()
 		update()
 
 /obj/item/weapon/implanter/spesstv

@@ -17,7 +17,7 @@
 	return dat
 
 /obj/item/weapon/implant/death_alarm/process()
-	if (!implanted || timestopped)
+	if (!imp_in || timestopped)
 		return
 	var/mob/M = imp_in
 
