@@ -1,0 +1,35 @@
+/obj/item/weapon/implant/holy
+	name = "holy implant"
+	desc = "Subjects its user to the chants of a thousand chaplains."
+
+/obj/item/weapon/implant/holy/get_data()
+	var/dat = {"
+<b>Implant Specifications:</b><BR>
+<b>Name:</b> Holy Dogmatic Interference Implant<BR>
+<b>Life:</b> Anywhere from ten days to ten years depending on the strain placed upon the implant by the subject.<BR>
+<b>Important Notes:</b> This device was commissioned by Nanotrasen after it proved able to distract occult practitioners, making them unable to practice their dark arts.<BR>
+<HR>
+<b>Implant Details:</b><BR>
+<b>Function:</b> Submits its subject to the chants of a thousand chaplains.<BR>
+<b>Special Features:</b> Prevents cultists from using their runes and talismans, or from being the target of some of their peers' rituals.<BR>
+<b>Integrity:</b> Implant anchors itself against the subject's bones to prevent blood pressure induced ejections."}
+	return dat
+
+/obj/item/weapon/implant/holy/implanted(mob/M)
+	if(malfunction == IMPLANT_MALFUNCTION_PERMANENT)
+		return 0
+	if(!iscarbon(M))
+		return 0
+	var/mob/living/carbon/H = M
+	H << sound('sound/ambience/ambicha1.ogg')
+	H << sound('sound/ambience/ambicha2.ogg')
+	H << sound('sound/ambience/ambicha3.ogg')
+	H << sound('sound/ambience/ambicha4.ogg')
+	if(iscultist(H))
+		to_chat(H, "<span class='danger'>You feel uneasy as you suddenly start hearing a cacophony of religious chants. You find yourself unable to perform any ritual.</span>")
+	else
+		to_chat(H, "<span class = 'notice'>You hear the soothing millennia-old Gregorian chants of the clergy.</span>")
+	return 1
+
+/obj/item/weapon/implant/holy/handle_removal(var/mob/remover)
+	makeunusable(15)

@@ -1,5 +1,3 @@
-
-
 /obj/item/weapon/implant/freedom
 	name = "freedom"
 	desc = "Use this to escape from those evil Red Shirts."
@@ -32,11 +30,11 @@
 	to_chat(source, "The implanted freedom implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.")
 	return 1
 
-/obj/item/weapon/implant/freedom/handle_removal(var/mob/remover)
+/obj/item/weapon/implant/freedom/handle_removal(mob/remover)
 	makeunusable(75)
 
 /obj/item/weapon/implant/freedom/get_data()
-	var/dat = {"
+	return {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> Freedom Beacon<BR>
 <b>Life:</b> optimum 5 uses<BR>
@@ -50,4 +48,3 @@ mechanisms<BR>
 <b>Integrity:</b> The battery is extremely weak and commonly after injection its
 life can drive down to only 1 use.<HR>
 No Implant Specifics"}
-	return dat

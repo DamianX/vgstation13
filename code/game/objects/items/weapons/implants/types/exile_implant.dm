@@ -129,9 +129,8 @@
 
 
 /obj/item/weapon/implantcase/exile/New()
-	src.imp = new /obj/item/weapon/implant/exile( src )
+	imp = new /obj/item/weapon/implant/exile(src)
 	..()
-	return
 
 /obj/structure/closet/secure_closet/exile
 	name = "Exile Implants"
