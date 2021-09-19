@@ -16,12 +16,12 @@
 	if(imp)
 		desc += "<br>It is loaded with a [imp.name]."
 
-/obj/item/weapon/implanter/attack(var/atom/target, mob/user as mob)
+/obj/item/weapon/implanter/attack(atom/target, mob/user)
 	if(!user)
 		return
-	var/mob/living/carbon/M = null
-	if(istype(target, /mob/living/carbon))
-		M = target
+	var/mob/living/carbon/M = target
+	if(!istype(target))
+		return
 	if(!imp)
 		if(istype(target, /obj/item/weapon/implant))
 			var/obj/item/weapon/implant/timp = target
@@ -34,12 +34,9 @@
 			user.show_message("<span class='warning'>There is no implant in \the [src].</span>")
 			return
 	if(M)
-		for (var/mob/O in viewers(M, null))
-			O.show_message("<span class='warning'>[user] is attempting to implant [M].</span>", 1)
-
-		var/turf/T1 = get_turf(M)
-		if(T1 && ((M == user) || do_after(user, M, 5 SECONDS)))
-			if(user && M && (get_turf(M) == T1) && src && imp)
+		M.visible_message("<span class='warning'>[user] is attempting to implant [M].</span>", 1)
+		if(M == user || do_after(user, M, 5 SECONDS)))
+			if(imp)
 				M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
 
 				M.attack_log += "\[[time_stamp()]\] <font color='orange'> Implanted with \the [name] ([imp.name]) by [key_name(user)]</font>"
@@ -100,9 +97,7 @@
 	desc = "A small device used to apply implants to people. This one has a microphone and some circuitry attached for some reason."
 	imp_type = /obj/item/weapon/implant/compressed
 
-	var/list/forbidden_types=list(
-		// /obj/item/weapon/storage/bible // VG #11 - Recursion.
-	)
+	var/list/forbidden_types = list()
 
 /obj/item/weapon/implanter/compressed/update()
 	if(imp)
@@ -114,7 +109,7 @@
 	else
 		icon_state = "cimplanter0"
 
-/obj/item/weapon/implanter/compressed/attack(mob/M as mob, mob/user as mob)
+/obj/item/weapon/implanter/compressed/attack(mob/M, mob/user)
 	// Attacking things in your hands tends to make this fuck up.
 	if(!istype(M))
 		return
@@ -126,8 +121,8 @@
 		return
 	..()
 
-/obj/item/weapon/implanter/compressed/afterattack(var/obj/item/I, mob/user as mob)
-	if(is_type_in_list(I,forbidden_types))
+/obj/item/weapon/implanter/compressed/afterattack(obj/item/I, mob/user)
+	if(is_type_in_list(I, forbidden_types))
 		to_chat(user, "<span class='warning'>A red light flickers on the implanter.</span>")
 		return
 	if(istype(I) && imp)

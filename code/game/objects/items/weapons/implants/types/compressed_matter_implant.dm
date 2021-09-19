@@ -37,8 +37,8 @@
 		scanned.forceMove(t)
 	qdel (src)
 
-/obj/item/weapon/implant/compressed/implanted(mob/source as mob)
-	source.register_event(/event/emote, src, .proc/trigger)
+/obj/item/weapon/implant/compressed/implanted(mob/implanter)
+	imp_in.register_event(/event/emote, src, .proc/trigger)
 	src.activation_emote = input("Choose activation emote:") in list("blink", "blink_r", "eyebrow", "chuckle", "twitch_s", "frown", "nod", "blush", "giggle", "grin", "groan", "shrug", "smile", "pale", "sniff", "whimper", "wink")
 	usr.mind.store_memory("Compressed matter implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.", 0, 0)
 	to_chat(usr, "The implanted compressed matter implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.")

@@ -4,7 +4,7 @@
 	var/mobname = "Will Robinson"
 
 /obj/item/weapon/implant/death_alarm/get_data()
-	var/dat = {"
+	return {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> Nanotrasen \"Profit Margin\" Class Employee Lifesign Sensor<BR>
 <b>Life:</b> Activates upon death.<BR>
@@ -14,7 +14,6 @@
 <b>Function:</b> Contains a compact radio signaler that triggers when the host's lifesigns cease.<BR>
 <b>Special Features:</b> Alerts crew to crewmember death.<BR>
 <b>Integrity:</b> Implant will occasionally be degraded by the body's immune system and thus will occasionally malfunction."}
-	return dat
 
 /obj/item/weapon/implant/death_alarm/process()
 	if (!imp_in || timestopped)
@@ -76,8 +75,8 @@
 	spawn(20)
 		malfunction--
 
-/obj/item/weapon/implant/death_alarm/implanted(mob/source as mob)
-	mobname = source.real_name
+/obj/item/weapon/implant/death_alarm/implanted(mob/implanter)
+	mobname = imp_in.real_name
 	processing_objects.Add(src)
 	return 1
 

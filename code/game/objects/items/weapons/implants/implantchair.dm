@@ -1,5 +1,3 @@
-
-
 /obj/machinery/implantchair
 	name = "Loyalty Implanter"
 	desc = "Used to implant occupants with loyalty implants."

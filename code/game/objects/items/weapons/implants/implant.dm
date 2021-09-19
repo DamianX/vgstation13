@@ -21,6 +21,7 @@
 		part = organ
 	forceMove(target)
 	imp_in = target
+	implanted(implanter)
 	return TRUE
 
 /obj/item/weapon/implant/proc/remove(mob/user)
@@ -38,7 +39,7 @@
 // What does the implant do upon injection?
 // return 0 if the implant fails (ex. Revhead and loyalty implant.)
 // return 1 if the implant succeeds (ex. Nonrevhead and loyalty implant.)
-/obj/item/weapon/implant/proc/implanted(mob/source)
+/obj/item/weapon/implant/proc/implanted(mob/implanter)
 	return 1
 
 /obj/item/weapon/implant/proc/get_data()

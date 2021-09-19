@@ -62,7 +62,7 @@
 	return INJECTION_RESULT_SUCCESS_BUT_SKIP_REAGENT_TRANSFER
 
 /obj/item/weapon/implantcase/tracking
-	name = "Glass Case- 'Tracking'"
+	name = "glass case 'Tracking'"
 	desc = "A case containing a tracking implant."
 	icon_state = "implantcase-b"
 
@@ -71,7 +71,7 @@
 	..()
 
 /obj/item/weapon/implantcase/explosive
-	name = "Glass Case- 'Explosive'"
+	name = "glass case 'Explosive'"
 	desc = "A case containing an explosive implant."
 	icon_state = "implantcase-r"
 
@@ -81,7 +81,7 @@
 
 
 /obj/item/weapon/implantcase/chem
-	name = "Glass Case- 'Chem'"
+	name = "glass case 'Chem'"
 	desc = "A case containing a chemical implant."
 	icon_state = "implantcase-b"
 
@@ -90,7 +90,7 @@
 	..()
 
 /obj/item/weapon/implantcase/remote
-	name = "Glass Case- 'Chem'"
+	name = "glass case 'Chem'"
 	desc = "A case containing a \"chemical\" implant."
 	icon_state = "implantcase-b"
 
@@ -100,7 +100,7 @@
 
 
 /obj/item/weapon/implantcase/loyalty
-	name = "Glass Case- 'Loyalty'"
+	name = "glass case- 'Loyalty'"
 	desc = "A case containing a loyalty implant."
 	icon_state = "implantcase-r"
 
@@ -111,7 +111,7 @@
 
 
 /obj/item/weapon/implantcase/death_alarm
-	name = "Glass Case- 'Death Alarm'"
+	name = "glass case- 'Death Alarm'"
 	desc = "A case containing a death alarm implant."
 	icon_state = "implantcase-b"
 
@@ -120,7 +120,7 @@
 	..()
 
 /obj/item/weapon/implantcase/peace
-	name = "glass case- 'Pax'"
+	name = "glass case 'Pax'"
 	desc = "A case containing a peace-inducing implant."
 	icon_state = "implantcase-b"
 
@@ -130,7 +130,7 @@
 
 
 /obj/item/weapon/implantcase/holy
-	name = "Glass Case- 'Holy'"
+	name = "glass case 'Holy'"
 	desc = "A case containing a holy implant."
 	icon_state = "implantcase-o"
 

@@ -1,3 +1,8 @@
+/obj/item/weapon/implant/chem
+	name = "chem implant"
+	desc = "Injects chemicals."
+	allow_reagents = 1
+
 /obj/item/weapon/implant/chem/New()
 	..()
 	remote_implants.Add(src)
@@ -6,13 +11,8 @@
 	remote_implants.Remove(src)
 	..()
 
-/obj/item/weapon/implant/chem
-	name = "chem implant"
-	desc = "Injects chemicals."
-	allow_reagents = 1
-
 /obj/item/weapon/implant/chem/get_data()
-	var/dat = {"
+	return {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> Robust Corp MJ-420 Prisoner Management Implant<BR>
 <b>Life:</b> Deactivates upon death but remains within the body.<BR>
@@ -27,7 +27,6 @@ the implant releases the chemicals directly into the blood stream.<BR>
 Can only be loaded while still in its original case.<BR>
 <b>Integrity:</b> Implant will last so long as the subject is alive. However, if the subject suffers from malnutrition,<BR>
 the implant may become unstable and either pre-maturely inject the subject or simply break."}
-	return dat
 
 /obj/item/weapon/implant/chem/New()
 	..()
@@ -43,8 +42,8 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		src.activate(src.reagents.total_volume)
 	return
 
-/obj/item/weapon/implant/chem/implanted(mob/source)
-	source.register_event(/event/emote, src, .proc/trigger)
+/obj/item/weapon/implant/chem/implanted(mob/implanter)
+	imp_in.register_event(/event/emote, src, .proc/trigger)
 	return TRUE
 
 /obj/item/weapon/implant/explosive/handle_removal(mob/remover)

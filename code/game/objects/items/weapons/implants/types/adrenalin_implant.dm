@@ -4,7 +4,7 @@
 	var/uses
 
 /obj/item/weapon/implant/adrenalin/get_data()
-	var/dat = {"
+	return {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> Cybersun Industries Adrenalin Implant<BR>
 <b>Life:</b> Five days.<BR>
@@ -14,7 +14,6 @@
 <b>Function:</b> Contains nanobots to stimulate body to mass-produce Adrenalin.<BR>
 <b>Special Features:</b> Will prevent and cure most forms of brainwashing.<BR>
 <b>Integrity:</b> Implant can only be used three times before the nanobots are depleted."}
-	return dat
 
 /obj/item/weapon/implant/adrenalin/trigger(emote, mob/source as mob)
 	if(malfunction == IMPLANT_MALFUNCTION_PERMANENT)
@@ -30,7 +29,7 @@
 
 	return
 
-/obj/item/weapon/implant/adrenalin/implanted(mob/source)
+/obj/item/weapon/implant/adrenalin/implanted(mob/implanter)
 	source.register_event(/event/emote, src, .proc/trigger)
 	source.mind.store_memory("A implant can be activated by using the pale emote, <B>say *pale</B> to attempt to activate.", 0, 0)
 	to_chat(source, "The implanted freedom implant can be activated by using the pale emote, <B>say *pale</B> to attempt to activate.")
