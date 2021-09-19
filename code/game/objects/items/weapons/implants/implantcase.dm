@@ -1,5 +1,5 @@
 /obj/item/weapon/implantcase
-	name = "Glass Case"
+	name = "glass case"
 	desc = "A case containing an implant."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "implantcase-0"
@@ -7,17 +7,17 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = W_CLASS_TINY
-	var/obj/item/weapon/implant/imp = null
+	var/obj/item/weapon/implant/imp
 
 /obj/item/weapon/implantcase/proc/update()
 	desc = initial(desc)
 	if (imp)
-		icon_state = text("implantcase-[]", imp._color)
+		icon_state = "implantcase-[imp._color]"
 		desc += "<br>It is loaded with a [imp.name]."
 	else
 		icon_state = "implantcase-0"
 
-/obj/item/weapon/implantcase/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/weapon/implantcase/attackby(obj/item/I, mob/user)
 	..()
 	if (istype(I, /obj/item/weapon/pen))
 		set_tiny_label(user, " - '", "'")

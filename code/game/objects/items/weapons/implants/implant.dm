@@ -13,12 +13,14 @@
 
 
 /obj/item/weapon/implant/proc/insert(mob/living/target, target_limb, mob/implanter)
-	var/datum/organ/external/organ = target.get_organ(target_limb)
-	if(!organ || organ.gcDestroyed || !organ.is_existing())
-		CRASH("Tried to implant invalid organ")
+	if(ishuman(target))
+		var/datum/organ/external/organ = target.get_organ(target_limb)
+		if(!organ || organ.gcDestroyed || !organ.is_existing())
+			CRASH("Tried to implant invalid organ")
+		organ.implants += src
+		part = organ
+	forceMove(target)
 	imp_in = target
-	organ.implants += src
-	part = organ
 	return TRUE
 
 /obj/item/weapon/implant/proc/remove(mob/user)
@@ -49,7 +51,7 @@
 	return 0
 
 /obj/item/weapon/implant/proc/meltdown()	//breaks it down, making implant unrecongizible
-	to_chat(imp_in, "<span class = 'warning'>You feel something melting inside [part ? "your [part.display_name]" : "you"]!</span>")
+	to_chat(imp_in, "<span class='warning'>You feel something melting inside [part ? "your [part.display_name]" : "you"]!</span>")
 	if (part)
 		part.take_damage(burn = 15, used_weapon = "Electronics meltdown")
 	else
@@ -70,8 +72,9 @@
 
 /obj/item/weapon/implant/Destroy()
 	if(part)
-		part.implants.Remove(src)
+		part.implants -= src
 	imp_in = null
 	if(reagents)
 		qdel(reagents)
+		reagents = null
 	..()
