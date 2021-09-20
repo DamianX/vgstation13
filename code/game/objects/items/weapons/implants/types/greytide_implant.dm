@@ -4,7 +4,7 @@
 	icon_state = "implant_evil"
 
 /obj/item/weapon/implant/traitor/get_data()
-	var/dat = {"
+	return {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> Greytide Mind-Slave Implant<BR>
 <b>Life:</b> ??? <BR>
@@ -14,17 +14,17 @@
 <b>Function:</b> Contains a small pod of nanobots that manipulate the host's mental functions.<BR>
 <b>Special Features:</b> Glory to the Greytide!<BR>
 <b>Integrity:</b> Implant will last so long as the nanobots are inside the bloodstream."}
-	return dat
 
-/obj/item/weapon/implant/traitor/implanted(mob/M, mob/user)
-	if(malfunction == IMPLANT_MALFUNCTION_PERMANENT)
-		return 0
-	if(!iscarbon(M))
-		to_chat(user, "<span class='danger'>The implant doesn't seem to be compatible with [M]!</span>")
-		return 0
-	if(!M.mind)
-		to_chat(user, "<span class='danger'>[M] lacks a mind to affect!</span>")
-		return 0
+/obj/item/weapon/implant/traitor/insert(mob/living/target, target_limb, mob/implanter)
+	if(!iscarbon(target))
+		to_chat(implanter, "<span class='danger'>The implant doesn't seem to be compatible with [target]!</span>")
+		return FALSE
+	if(!target.mind)
+		to_chat(implanter, "<span class='danger'>[target] lacks a mind to affect!</span>")
+		return FALSE
+	return ..()
+
+/obj/item/weapon/implant/traitor/implanted(mob/implanter)
 	var/mob/living/carbon/H = M
 	if(M == user)
 		to_chat(user, "<span class='notice'>You feel quite stupid for doing that.</span>")

@@ -35,7 +35,7 @@
 			return
 	if(M)
 		M.visible_message("<span class='warning'>[user] is attempting to implant [M].</span>", 1)
-		if(M == user || do_after(user, M, 5 SECONDS)))
+		if(M == user || do_after(user, M, 5 SECONDS))
 			if(imp)
 				M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
 

@@ -204,7 +204,6 @@
 				target.release_control()
 			worm.detach()
 
-		obj.forceMove(get_turf(target))
 		if(istype(obj,/obj/item/weapon/implant))
 			var/obj/item/weapon/implant/imp = obj
 			imp.remove(user)

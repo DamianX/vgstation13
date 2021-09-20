@@ -70,7 +70,7 @@
 	..()
 	if (usr.incapacitated() || !in_range(src, usr))
 		return
-	user.set_machine(src)
+	usr.set_machine(src)
 	if (href_list["tracking_id"])
 		var/obj/item/weapon/implant/tracking/T = case.imp
 		T.id += text2num(href_list["tracking_id"])
@@ -78,11 +78,11 @@
 		T.id = max(1, T.id)
 
 	if (href_list["eject"])
-		if (case && (user.is_holding_item(src) || Adjacent(user)))
-			eject(user)
+		if (case && (usr.is_holding_item(src) || Adjacent(usr)))
+			eject(usr)
 
-		attack_self(user)
+		attack_self(usr)
 
-		add_fingerprint(user)
+		add_fingerprint(usr)
 	else
-		user << browse(null, "window=implantpad")
+		usr << browse(null, "window=implantpad")

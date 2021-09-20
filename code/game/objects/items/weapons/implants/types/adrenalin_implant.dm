@@ -15,7 +15,7 @@
 <b>Special Features:</b> Will prevent and cure most forms of brainwashing.<BR>
 <b>Integrity:</b> Implant can only be used three times before the nanobots are depleted."}
 
-/obj/item/weapon/implant/adrenalin/trigger(emote, mob/source as mob)
+/obj/item/weapon/implant/adrenalin/trigger(emote, mob/source)
 	if(malfunction == IMPLANT_MALFUNCTION_PERMANENT)
 		return 0
 	if (src.uses < 1)
@@ -30,11 +30,10 @@
 	return
 
 /obj/item/weapon/implant/adrenalin/implanted(mob/implanter)
-	source.register_event(/event/emote, src, .proc/trigger)
-	source.mind.store_memory("A implant can be activated by using the pale emote, <B>say *pale</B> to attempt to activate.", 0, 0)
-	to_chat(source, "The implanted freedom implant can be activated by using the pale emote, <B>say *pale</B> to attempt to activate.")
-	return 1
+	imp_in.register_event(/event/emote, src, .proc/trigger)
+	imp_in.mind.store_memory("The freedom implant can be activated by using the pale emote, <B>say *pale</B> to attempt to activate.", 0, 0)
+	to_chat(imp_in, "The implanted freedom implant can be activated by using the pale emote, <B>say *pale</B> to attempt to activate.")
 
-/obj/item/weapon/implant/adrenalin/handle_removal(var/mob/remover)
+/obj/item/weapon/implant/adrenalin/handle_removal(mob/remover)
 	imp_in?.unregister_event(/event/emote, src, .proc/trigger)
 	makeunusable(75)

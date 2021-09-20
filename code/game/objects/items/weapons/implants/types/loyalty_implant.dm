@@ -3,7 +3,7 @@
 	desc = "Induces constant thoughts of loyalty to Nanotrasen."
 
 /obj/item/weapon/implant/loyalty/get_data()
-	var/dat = {"
+	return {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> Nanotrasen Employee Management Implant<BR>
 <b>Life:</b> Ten years.<BR>
@@ -13,10 +13,9 @@
 <b>Function:</b> Contains a small pod of nanobots that manipulate the host's mental functions.<BR>
 <b>Special Features:</b> Will prevent and cure light forms of brainwashing.<BR>
 <b>Integrity:</b> Implant will last so long as the nanobots are inside the bloodstream."}
-	return dat
 
 
-/obj/item/weapon/implant/loyalty/implanted(mob/M)
+/obj/item/weapon/implant/loyalty/implanted(mob/implanter)
 	if(malfunction == IMPLANT_MALFUNCTION_PERMANENT)
 		return 0
 	if(!iscarbon(M))

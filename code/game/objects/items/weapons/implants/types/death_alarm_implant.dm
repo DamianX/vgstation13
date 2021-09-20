@@ -78,7 +78,6 @@
 /obj/item/weapon/implant/death_alarm/implanted(mob/implanter)
 	mobname = imp_in.real_name
 	processing_objects.Add(src)
-	return 1
 
 /obj/item/weapon/implant/death_alarm/handle_removal(var/mob/remover)
 	makeunusable(75)

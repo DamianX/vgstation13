@@ -6,7 +6,7 @@
 	var/obj/item/scanned = null
 
 /obj/item/weapon/implant/compressed/get_data()
-	var/dat = {"
+	return {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> Nanotrasen \"Profit Margin\" Class Employee Lifesign Sensor<BR>
 <b>Life:</b> Activates upon death.<BR>
@@ -16,7 +16,6 @@
 <b>Function:</b> Contains a compact radio signaler that triggers when the host's lifesigns cease.<BR>
 <b>Special Features:</b> Alerts crew to crewmember death.<BR>
 <b>Integrity:</b> Implant will occasionally be degraded by the body's immune system and thus will occasionally malfunction."}
-	return dat
 
 /obj/item/weapon/implant/compressed/trigger(emote, mob/source as mob)
 	if(malfunction == IMPLANT_MALFUNCTION_PERMANENT)
@@ -35,14 +34,13 @@
 		imp_in.put_in_hands(scanned)
 	else
 		scanned.forceMove(t)
-	qdel (src)
+	qdel(src)
 
 /obj/item/weapon/implant/compressed/implanted(mob/implanter)
 	imp_in.register_event(/event/emote, src, .proc/trigger)
 	src.activation_emote = input("Choose activation emote:") in list("blink", "blink_r", "eyebrow", "chuckle", "twitch_s", "frown", "nod", "blush", "giggle", "grin", "groan", "shrug", "smile", "pale", "sniff", "whimper", "wink")
 	usr.mind.store_memory("Compressed matter implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.", 0, 0)
 	to_chat(usr, "The implanted compressed matter implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.")
-	return 1
 
 /obj/item/weapon/implant/compressed/islegal()
 	return 0

@@ -22,8 +22,7 @@
 
 /obj/item/weapon/implant/exile/implanted(mob/implanter)
 	..()
-	imp_in = source
-	disablePhrase = stripped_input(user, "Choose a phrase that disables the implant:")
+	disablePhrase = stripped_input(implanter, "Choose a phrase that disables the implant:")
 	var/list/replacechars = list("'" = "", "\"" = "", ">" = "", "<" = "", "(" = "", ")" = "")
 	disablePhrase = sanitize_simple(disablePhrase, replacechars)
 	addHear()
@@ -32,7 +31,6 @@
 	zlevels -= illegalZ
 	to_chat(imp_in, "<span class='notice'>You shiver as you feel a weak, unsettling film surround you.</span>")
 	imp_in.register_event(/event/moved, src, .proc/zBan)
-	return 1
 
 /obj/item/weapon/implant/exile/proc/zBan(atom/movable/mover)
 	var/turf/T = get_turf(src)
@@ -95,27 +93,22 @@
 
 
 /obj/item/weapon/implant/exile/Hear(var/datum/speech/speech, var/rendered_speech="")
-	hear(speech.message)
-	return
-
-/obj/item/weapon/implant/exile/hear(var/msg)
-	var/list/replacechars = list("'" = "", "\"" = "", ">" = "", "<" = "", "(" = "", ")" = "")
-	msg = sanitize_simple(msg, replacechars)
 	if(!disablePhrase)
-		return 0
+		return
+	var/static/list/replacechars = list("'" = "", "\"" = "", ">" = "", "<" = "", "(" = "", ")" = "")
+	var/msg = sanitize_simple(speech.message, replacechars)
 	if(findtext(msg, disablePhrase))
 		freeFromExile()
 
 /obj/item/weapon/implant/exile/proc/freeFromExile()
 	playsound(imp_in, "sound/machines/notify.ogg", 100, 1)
 	to_chat(imp_in, "<span class='notice'>You feel a sudden shooting pain. The film-like sensation fades. Your implant has jaunted out of your body.</span>" )
-	imp_in = null
 	imp_in.unregister_event(/event/moved, src, .proc/zBan)
 	src.forceMove(siteOfImplant)
 	imp_in = null
 
 /obj/item/weapon/implantcase/exile
-	name = "Glass Case- 'Exile'"
+	name = "glass case 'Exile'"
 	desc = "A case containing an exile implant."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "implantcase-r"
@@ -126,7 +119,7 @@
 	..()
 
 /obj/structure/closet/secure_closet/exile
-	name = "Exile Implants"
+	name = "exile implants closet"
 	req_access = list(access_armory)
 
 /obj/structure/closet/secure_closet/exile/atoms_to_spawn()

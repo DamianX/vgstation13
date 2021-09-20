@@ -3,7 +3,7 @@
 	desc = "Subjects its user to the chants of a thousand chaplains."
 
 /obj/item/weapon/implant/holy/get_data()
-	var/dat = {"
+	return {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> Holy Dogmatic Interference Implant<BR>
 <b>Life:</b> Anywhere from ten days to ten years depending on the strain placed upon the implant by the subject.<BR>
@@ -13,9 +13,8 @@
 <b>Function:</b> Submits its subject to the chants of a thousand chaplains.<BR>
 <b>Special Features:</b> Prevents cultists from using their runes and talismans, or from being the target of some of their peers' rituals.<BR>
 <b>Integrity:</b> Implant anchors itself against the subject's bones to prevent blood pressure induced ejections."}
-	return dat
 
-/obj/item/weapon/implant/holy/implanted(mob/M)
+/obj/item/weapon/implant/holy/implanted(mob/implanter)
 	if(malfunction == IMPLANT_MALFUNCTION_PERMANENT)
 		return 0
 	if(!iscarbon(M))

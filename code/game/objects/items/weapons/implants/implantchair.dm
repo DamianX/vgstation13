@@ -134,9 +134,7 @@
 			for (var/mob/O in viewers(M, null))
 				O.show_message("<span class='warning'>[M] has been implanted by the [src.name].</span>", 1)
 
-			if(imp.implanted(M))
-				imp.forceMove(M)
-				imp.imp_in = M
+			imp.insert(M)
 			implant_list -= imp
 			break
 	return

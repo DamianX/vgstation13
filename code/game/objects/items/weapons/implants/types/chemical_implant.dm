@@ -37,14 +37,12 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	chemical_implants.Remove(src)
 	..()
 
-/obj/item/weapon/implant/chem/trigger(emote, source as mob)
+/obj/item/weapon/implant/chem/trigger(emote, mob/source)
 	if(emote == "deathgasp")
 		src.activate(src.reagents.total_volume)
-	return
 
 /obj/item/weapon/implant/chem/implanted(mob/implanter)
 	imp_in.register_event(/event/emote, src, .proc/trigger)
-	return TRUE
 
 /obj/item/weapon/implant/explosive/handle_removal(mob/remover)
 	imp_in?.unregister_event(/event/emote, src, .proc/trigger)
@@ -62,7 +60,6 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		to_chat(R, "You hear a faint click from your chest.")
 		spawn(0)
 			qdel(src)
-	return
 
 /obj/item/weapon/implant/chem/emp_act(severity)
 	if (malfunction)

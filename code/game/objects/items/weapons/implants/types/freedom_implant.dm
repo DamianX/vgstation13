@@ -9,10 +9,8 @@
 /obj/item/weapon/implant/freedom/New()
 	src.activation_emote = pick("blink", "blink_r", "eyebrow", "chuckle", "twitch_s", "frown", "nod", "blush", "giggle", "grin", "groan", "shrug", "smile", "pale", "sniff", "whimper", "wink")
 	..()
-	return
 
-
-/obj/item/weapon/implant/freedom/trigger(emote, mob/living/carbon/source as mob)
+/obj/item/weapon/implant/freedom/trigger(emote, mob/living/carbon/source)
 	if (src.uses < 1)
 		return 0
 	if (emote == src.activation_emote)
@@ -22,13 +20,10 @@
 			source.drop_from_inventory(source.handcuffed)
 		if (source.legcuffed)
 			source.drop_from_inventory(source.legcuffed)
-	return
 
-
-/obj/item/weapon/implant/freedom/implanted(mob/living/carbon/source)
-	source.mind.store_memory("Freedom implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.", 0, 0)
-	to_chat(source, "The implanted freedom implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.")
-	return 1
+/obj/item/weapon/implant/freedom/implanted(mob/implanter)
+	imp_in.mind.store_memory("Freedom implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.", 0, 0)
+	to_chat(imp_in, "The implanted freedom implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.")
 
 /obj/item/weapon/implant/freedom/handle_removal(mob/remover)
 	makeunusable(75)

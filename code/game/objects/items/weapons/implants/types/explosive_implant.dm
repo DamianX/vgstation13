@@ -5,7 +5,7 @@
 	icon_state = "implant_evil"
 
 /obj/item/weapon/implant/explosive/get_data()
-	var/dat = {"
+	return {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> Robust Corp RX-78 Intimidation Class Implant<BR>
 <b>Life:</b> Activates upon codephrase or detected death.<BR>
@@ -15,15 +15,10 @@
 <b>Function:</b> Contains a compact, electrically detonated explosive that detonates upon receiving a specially encoded signal or upon host death.<BR>
 <b>Special Features:</b> Explodes<BR>
 <b>Integrity:</b> Implant will occasionally be degraded by the body's immune system and thus will occasionally malfunction."}
-	return dat
 
 /obj/item/weapon/implant/explosive/Hear(var/datum/speech/speech, var/rendered_speech="")
-	hear(speech.message)
-	return
-
-/obj/item/weapon/implant/explosive/hear(var/msg)
-	var/list/replacechars = list("'" = "", "\"" = "", ">" = "", "<" = "", "(" = "", ")" = "")
-	msg = sanitize_simple(msg, replacechars)
+	var/static/list/replacechars = list("'" = "", "\"" = "", ">" = "", "<" = "", "(" = "", ")" = "")
+	var/msg = sanitize_simple(speech.message, replacechars)
 	if(findtext(msg, phrase))
 		activate()
 
@@ -52,7 +47,7 @@
 	if(malfunction == IMPLANT_MALFUNCTION_PERMANENT)
 		return 0
 	phrase = input("Choose activation phrase:") as text
-	var/list/replacechars = list("'" = "", "\"" = "", ">" = "", "<" = "", "(" = "", ")" = "")
+	var/static/list/replacechars = list("'" = "", "\"" = "", ">" = "", "<" = "", "(" = "", ")" = "")
 	phrase = sanitize_simple(phrase, replacechars)
 	usr.mind.store_memory("Explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.", 0, 0)
 	to_chat(usr, "The implanted explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.")
@@ -115,7 +110,7 @@
 	icon_state = "implant"
 
 /obj/item/weapon/implant/explosive/remote/get_data()
-	var/dat = {"
+	return {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> Robust Corp RX-78 Prisoner Intimidation Implant<BR>
 <b>Life:</b> Activates upon remote function.<BR>
@@ -126,12 +121,8 @@
 <b>Special Features:</b> Explodes<BR>
 <b>Integrity:</b> Implant will last so long as the subject is alive. However, if the subject suffers from malnutrition,<BR>
 the implant may become unstable and either pre-maturely inject the subject or simply break."}
-	return dat
 
 /obj/item/weapon/implant/explosive/remote/Hear()
-	return
-
-/obj/item/weapon/implant/explosive/remote/hear()
 	return
 
 /obj/item/weapon/implant/explosive/remote/activate()
@@ -153,7 +144,5 @@ the implant may become unstable and either pre-maturely inject the subject or si
 
 		qdel(src)
 
-/obj/item/weapon/implant/explosive/remote/implanted()
-	if(malfunction == IMPLANT_MALFUNCTION_PERMANENT)
-		return 0
-	return 1
+/obj/item/weapon/implant/explosive/remote/implanted(mob/implanter)
+	return

@@ -5,7 +5,7 @@
 	var/imp_msg_debounce = 0
 
 /obj/item/weapon/implant/peace/get_data()
-	var/dat = {"
+	return {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> Pax Implant<BR>
 <b>Manufacturer:</b> Ouroboros Medical<BR>
@@ -13,7 +13,6 @@
 <b>Important Notes:</b> Effect accomplished by paralyzing parts of the brain. This effect is neutralized by 15u or greater of Methylin.<BR>
 <b>Life:</b> Sustained as long as it remains within a host. Survives on the host's nutrition. Dies upon removal.<BR>
 "}
-	return dat
 
 /obj/item/weapon/implant/peace/meltdown()
 	visible_message("<span class='warning'>\The [src] releases a dying hiss as it denatures!</span>")
@@ -43,23 +42,24 @@
 
 	if (!imp_msg_debounce && malfunction == IMPLANT_MALFUNCTION_TEMPORARY)
 		imp_msg_debounce = 1
-		to_chat(host, "<span class = 'warning'>Your rage bubbles, \the [src] inside you is being suppressed!</span>")
+		to_chat(host, "<span class='warning'>Your rage bubbles, \the [src] inside you is being suppressed!</span>")
 
 	if (imp_msg_debounce && !malfunction)
 		imp_msg_debounce = 0
-		to_chat(host, "<span class = 'warning'>Your rage cools, \the [src] inside you is active!</span>")
+		to_chat(host, "<span class='warning'>Your rage cools, \the [src] inside you is active!</span>")
 
 	if (!malfunction)
 		host.nutrition = max(host.nutrition - 0.15,0)
 
 
-/obj/item/weapon/implant/peace/implanted(mob/host)
-	if (!imp_alive && !malfunction)
-		processing_objects.Add(src)
-		to_chat(host, "<span class = 'warning'>You feel your desire to harm anyone slowly drift away...</span>")
-		return 1
-	else
-		return 0
+/obj/item/weapon/implant/peace/insert(mob/living/target, target_limb, mob/implanter)
+	if(!imp_alive)
+		return FALSE
+	return ..()
 
-/obj/item/weapon/implant/peace/handle_removal(var/mob/remover)
+/obj/item/weapon/implant/peace/implanted(mob/implanter)
+	processing_objects += src
+	to_chat(host, "<span class='warning'>You feel your desire to harm anyone slowly drift away...</span>")
+
+/obj/item/weapon/implant/peace/handle_removal(mob/remover)
 	meltdown()

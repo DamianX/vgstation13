@@ -1048,9 +1048,8 @@ var/static/list/valid_cultpower_slots = list(
 		if (jobban_isbanned(src, CULTIST) || isantagbanned(src) || (acceptance == "Never"))
 			return CONVERTIBLE_NEVER
 
-		for(var/obj/item/weapon/implant/loyalty/I in src)
-			if(I.implanted)
-				return CONVERTIBLE_IMPLANT
+		if(is_loyalty_implanted())
+			return CONVERTIBLE_IMPLANT
 
 		if (acceptance == "Always" || acceptance == "Yes")
 			return CONVERTIBLE_ALWAYS

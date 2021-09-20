@@ -5,7 +5,7 @@
 	_color = "b"
 	/// The mob this has been implanted into.
 	var/implanted
-	var/mob/imp_in
+	var/mob/living/imp_in
 	/// The limb of the mob this has been implanted into.
 	var/datum/organ/external/part
 	var/allow_reagents = FALSE
@@ -13,6 +13,9 @@
 
 
 /obj/item/weapon/implant/proc/insert(mob/living/target, target_limb, mob/implanter)
+	SHOULD_CALL_PARENT(TRUE)
+	if(malfunction == IMPLANT_MALFUNCTION_PERMANENT)
+		return FALSE
 	if(ishuman(target))
 		var/datum/organ/external/organ = target.get_organ(target_limb)
 		if(!organ || organ.gcDestroyed || !organ.is_existing())
@@ -25,6 +28,13 @@
 	return TRUE
 
 /obj/item/weapon/implant/proc/remove(mob/user)
+	handle_removal(user)
+	if(part)
+		part.implants -= src
+		part = null
+	forceMove(get_turf(imp_in))
+	imp_in = null
+	return TRUE
 
 /obj/item/weapon/implant/proc/trigger(emote, mob/source)
 	return
@@ -44,9 +54,6 @@
 
 /obj/item/weapon/implant/proc/get_data()
 	return "No information available"
-
-/obj/item/weapon/implant/proc/hear(message, mob/source)
-	return
 
 /obj/item/weapon/implant/proc/islegal()
 	return 0
@@ -74,6 +81,7 @@
 /obj/item/weapon/implant/Destroy()
 	if(part)
 		part.implants -= src
+		part = null
 	imp_in = null
 	if(reagents)
 		qdel(reagents)
