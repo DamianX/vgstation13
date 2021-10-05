@@ -428,71 +428,163 @@
 		return 0
 	return is_on_ears(/obj/item/device/radio/headset/headset_earmuffs)
 
-/mob/living/carbon/human/show_inv(mob/user)
-	user.set_machine(src)
-	var/pickpocket = usr.isGoodPickpocket()
+
+/mob/living/carbon/human/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Inventory")
+		ui.open()
+	ui.set_autoupdate(autorefreshing)
+
+/mob/living/carbon/human/ui_data(mob/user)
+	var/list/data = list()
+	data["title"] = name
+	data["hands"] = list()
+
+	for(var/i in 1 to held_items.len)
+		var/obj/item/thing = held_items[i]
+		data["hands"] += list(list(
+			"handIndex" = i,
+			"handName" = get_index_limb_name(i),
+			"itemName" = thing && !thing.abstract ? thing.name : null
+		))
+
 	var/list/obscured = check_obscured_slots()
-	var/dat
+	var/slot_is_obscured // This var is reused by all slots that need to check `obscured`
+	data["slots"] = list()
 
-	for(var/i = 1 to held_items.len) //Hands
-		var/obj/item/I = held_items[i]
-		dat += "<B>[capitalize(get_index_limb_name(i))]</B> <A href='?src=\ref[src];hands=[i]'>[makeStrippingButton(I)]</A><BR>"
+	data["slots"] += list(list(
+		"slotName" = "Back",
+		"slotID" = slot_back,
+		"itemName" = back?.name
+	))
 
-	dat += "<BR><B>Back:</B> <A href='?src=\ref[src];item=[slot_back]'>[makeStrippingButton(back)]</A>"
-	dat += "<BR>"
-	dat += "<BR><B>Head:</B> <A href='?src=\ref[src];item=[slot_head]'>[makeStrippingButton(head)]</A>"
-	if(slot_wear_mask in obscured)
-		dat += "<BR><font color=grey><B>Mask:</B> Obscured by [head]</font>"
-	else
-		dat += "<BR><B>Mask:</B> <A href='?src=\ref[src];item=[slot_wear_mask]'>[makeStrippingButton(wear_mask)]</A>"
-	if(has_breathing_mask())
-		dat += "<BR>[HTMLTAB]&#8627;<B>Internals:</B> [src.internal ? "On" : "Off"]  <A href='?src=\ref[src];internals=1'>(Toggle)</A>"
-	if(slot_glasses in obscured)
-		dat += "<BR><font color=grey><B>Eyes:</B> Obscured by [head]</font>"
-	else
-		dat += "<BR><B>Eyes:</B> <A href='?src=\ref[src];item=[slot_glasses]'>[makeStrippingButton(glasses)]</A>"
-	if(slot_ears in obscured)
-		dat += "<BR><font color=grey><B>Ears:</B> Obscured by [head]</font>"
-	else
-		dat += "<BR><B>Ears:</B> <A href='?src=\ref[src];item=[slot_ears]'>[makeStrippingButton(ears)]</A>"
-	dat += "<BR>"
-	dat += "<BR><B>Exosuit:</B> <A href='?src=\ref[src];item=[slot_wear_suit]'>[makeStrippingButton(wear_suit)]</A>"
-	if(wear_suit)
-		dat += "<BR>[HTMLTAB]&#8627;<B>Suit Storage:</B> <A href='?src=\ref[src];item=[slot_s_store]'>[makeStrippingButton(s_store)]</A>"
-	if(slot_shoes in obscured)
-		dat += "<BR><font color=grey><B>Shoes:</B> Obscured by [wear_suit]</font>"
-	else
-		dat += "<BR><B>Shoes:</B> <A href='?src=\ref[src];item=[slot_shoes]'>[makeStrippingButton(shoes)]</A>"
-	if(slot_gloves in obscured)
-		dat += "<BR><font color=grey><B>Gloves:</B> Obscured by [wear_suit]</font>"
-	else
-		dat += "<BR><B>Gloves:</B> <A href='?src=\ref[src];item=[slot_gloves]'>[makeStrippingButton(gloves)]</A>"
-	dat += "<BR><B>Belt:</B> <A href='?src=\ref[src];item=[slot_belt]'>[makeStrippingButton(belt)]</A>"
-	if(slot_w_uniform in obscured)
-		dat += "<BR><font color=grey><B>Uniform:</B> Obscured by [wear_suit]</font>"
-	else
-		dat += "<BR><B>Uniform:</B> <A href='?src=\ref[src];item=[slot_w_uniform]'>[makeStrippingButton(w_uniform)]</A>"
-		if(w_uniform)
-			dat += "<BR>[HTMLTAB]&#8627;<B>Suit Sensors:</B> <A href='?src=\ref[src];sensors=1'>Set</A>"
-		if(pickpocket)
-			dat += "<BR>[HTMLTAB]&#8627;<B>Pockets:</B> <A href='?src=\ref[src];pockets=left'>[(l_store && !(src.l_store.abstract)) ? l_store : "<font color=grey>Left (Empty)</font>"]</A>"
-			dat += " <A href='?src=\ref[src];pockets=right'>[(r_store && !(src.r_store.abstract)) ? r_store : "<font color=grey>Right (Empty)</font>"]</A>"
-		else
-			dat += "<BR>[HTMLTAB]&#8627;<B>Pockets:</B> <A href='?src=\ref[src];pockets=left'>[(l_store && !(src.l_store.abstract)) ? "Left (Full)" : "<font color=grey>Left (Empty)</font>"]</A>"
-			dat += " <A href='?src=\ref[src];pockets=right'>[(r_store && !(src.r_store.abstract)) ? "Right (Full)" : "<font color=grey>Right (Empty)</font>"]</A>"
-	dat += "<BR>[HTMLTAB]&#8627;<B>ID:</B> <A href='?src=\ref[src];id=1'>[makeStrippingButton(wear_id)]</A>"
-	dat += "<BR>"
-	if(handcuffed || mutual_handcuffs)
-		dat += "<BR><B>Handcuffed:</B> <A href='?src=\ref[src];item=[slot_handcuffed]'>Remove</A>"
-	if(legcuffed)
-		dat += "<BR><B>Legcuffed:</B> <A href='?src=\ref[src];item=[slot_legcuffed]'>Remove</A>"
-	dat += {"
-	<BR>
-	<BR><A href='?src=\ref[user];mach_close=mob\ref[src]'>Close</A>
-	"}
-	var/datum/browser/popup = new(user, "mob\ref[src]", "[src]", 340, 500)
-	popup.set_content(dat)
-	popup.open()
+	data["slots"] += list(list(
+		"slotName" = "Head",
+		"slotID" = slot_head,
+		"itemName" = head?.name
+	))
+
+	slot_is_obscured = slot_wear_mask in obscured
+	data["slots"] += list(list(
+		"slotName" = "Mask",
+		"slotID" = slot_wear_mask,
+		"itemName" = slot_is_obscured ? "Obscured by [head]" : wear_mask?.name,
+		"obscured" = slot_is_obscured
+	))
+
+	slot_is_obscured = slot_glasses in obscured
+	data["slots"] += list(list(
+		"slotName" = "Eyes",
+		"slotID" = slot_glasses,
+		"itemName" = slot_is_obscured ? "Obscured by [head]" : glasses?.name,
+		"obscured" = slot_is_obscured
+	))
+
+	slot_is_obscured = slot_ears in obscured
+	data["slots"] += list(list(
+		"slotName" = "Ears",
+		"slotID" = slot_ears,
+		"itemName" = slot_is_obscured ? "Obscured by [head]" : ears?.name,
+		"obscured" = slot_is_obscured
+	))
+
+	data["slots"] += list(list(
+		"slotName" = "Exosuit",
+		"slotID" = slot_wear_suit,
+		"itemName" = wear_suit?.name,
+	))
+
+	data["slots"] += list(list(
+		"slotName" = "Suit storage",
+		"slotID" = slot_s_store,
+		"itemName" = s_store?.name,
+	))
+
+	slot_is_obscured = slot_shoes in obscured
+	data["slots"] += list(list(
+		"slotName" = "Shoes",
+		"slotID" = slot_shoes,
+		"itemName" = slot_is_obscured ? "Obscured by [wear_suit]" : shoes?.name,
+		"obscured" = slot_is_obscured
+	))
+
+	slot_is_obscured = slot_gloves in obscured
+	data["slots"] += list(list(
+		"slotName" = "Gloves",
+		"slotID" = slot_gloves,
+		"itemName" = slot_is_obscured ? "Obscured by [wear_suit]" : gloves?.name,
+		"obscured" = slot_is_obscured
+	))
+
+	data["slots"] += list(list(
+		"slotName" = "Belt",
+		"slotID" = slot_belt,
+		"itemName" = belt?.name,
+	))
+
+	slot_is_obscured = slot_w_uniform in obscured
+	data["slots"] += list(list(
+		"slotName" = "Uniform",
+		"slotID" = slot_w_uniform,
+		"itemName" = slot_is_obscured ? "Obscured by [wear_suit]" : w_uniform?.name,
+		"obscured" = slot_is_obscured
+	)) // TODO suit sensors
+
+	slot_is_obscured = slot_w_uniform in obscured
+	data["slots"] += list(list(
+		"slotName" = "Uniform",
+		"slotID" = slot_w_uniform,
+		"itemName" = slot_is_obscured ? "Obscured by [wear_suit]" : w_uniform?.name,
+		"obscured" = slot_is_obscured
+	)) // TODO suit sensors
+
+	var/pickpocket = user.isGoodPickpocket()
+	data["pockets"] = list(
+		list(
+			"pocketName" = "left",
+			"itemName" = l_store ? (pickpocket ? l_store.name : "Full") : "Empty"
+		)
+		list(
+			"pocketName" = "right",
+			"itemName" = r_store ? (pickpocket ? r_store.name : "Full") : "Empty"
+		)
+
+	if(handcuffed || mutual_handcuffs || legcuffed)
+		data["cuffs"] = list()
+
+		if(handcuffed || mutual_handcuffs)
+			data["cuffs"] += list(list(
+				"slotName" = "Handcuffs"
+				"slotID" = slot_handcuffed,
+				"itemName" = handcuffed?.name || mutual_handcuffs?.name))
+		if(legcuffs)
+			data["cuffs"] += list(list(
+				"slotName" = "Legcuffs"
+				"slotID" = slot_legcuffed,
+				"itemName" = legcuffed?.name))
+
+	return data
+
+/mob/living/carbon/human/show_inv(mob/user)
+	tgui_interact(user)
+
+/mob/living/carbon/human/ui_state()
+	return adjacent_state
+
+/mob/living/carbon/human/ui_act(action, list/params)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("strip")
+			switch(params["kind"])
+				if("hand")
+					handle_strip_hand(usr, params["slotID"])
+				if("slot")
+					handle_strip_slot(usr, params["slotID"])
+				if("pocket")
+					handle_strip_pocket(usr, params["slotID"])
 
 /mob/living/carbon/human/Topic(href, href_list)
 	..() //Slot stripping, hand stripping, and internals setting in /mob/living/carbon/Topic()
