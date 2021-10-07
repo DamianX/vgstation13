@@ -14,8 +14,11 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s10"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
+	},
+/turf/simulated/floor/shuttle{
+	icon_state = "floor3"
 	},
 /area/shuttle/arrival/station)
 "aaA" = (
@@ -139,10 +142,11 @@
 /turf/space,
 /area)
 "aci" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s5"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
 	},
-/area)
+/turf/space,
+/area/derelict/ship)
 "acw" = (
 /obj/machinery/door/window/brigdoor{
 	id_tag = "IDTagBoxArmoury";
@@ -527,7 +531,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/derelict/ship)
 "agm" = (
 /turf/simulated/wall,
@@ -1066,10 +1070,11 @@
 	name = "Upper Terminal"
 	})
 "amv" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall7"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
 	},
-/area/derelict/ship)
+/turf/space,
+/area)
 "amx" = (
 /obj/structure/cable/orange{
 	d1 = 4;
@@ -1327,10 +1332,10 @@
 /turf/simulated/floor/plating/vox,
 /area/vox_trading_post/eva)
 "apd" = (
-/turf/simulated/shuttle/wall{
-	dir = 8;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 8
 	},
+/turf/space,
 /area/shuttle/salvage/start)
 "ape" = (
 /obj/structure/grille,
@@ -1634,6 +1639,14 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/turret_protected/ai_upload)
+"asF" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
+	},
+/turf/simulated/floor/shuttle{
+	icon_state = "floor3"
+	},
+/area/derelict/ship)
 "asH" = (
 /obj/machinery/vending/mining,
 /obj/machinery/light_switch{
@@ -1684,7 +1697,7 @@
 /obj/structure/bed/chair/shuttle/yellow{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/mining/station)
 "atC" = (
 /obj/structure/window/reinforced{
@@ -2393,7 +2406,7 @@
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 9
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -2535,7 +2548,7 @@
 	dir = 4
 	},
 /obj/machinery/cell_charger,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -2677,11 +2690,6 @@
 /area/hallway/primary/central{
 	name = "\improper Lower Central Hallway"
 	})
-"aDK" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f9"
-	},
-/area/derelict/ship)
 "aEd" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -3410,11 +3418,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/science/lab)
-"aMI" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f5"
-	},
-/area)
 "aMU" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layered,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layered,
@@ -3946,7 +3949,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -4138,7 +4141,7 @@
 /area/crew_quarters/captain)
 "aUb" = (
 /obj/machinery/computer/med_data,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -4518,6 +4521,12 @@
 /area/engine/control{
 	name = "\improper Supermatter Control Room"
 	})
+"aZA" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
+	},
+/turf/space,
+/area/centcom/evac)
 "aZH" = (
 /obj/machinery/station_map,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -4877,7 +4886,7 @@
 /obj/item/clothing/suit/space/syndicate,
 /obj/item/clothing/head/helmet/space/syndicate,
 /obj/item/clothing/mask/breath,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -5000,9 +5009,10 @@
 /area/derelict/atmos)
 "bfO" = (
 /obj/structure/lattice,
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f9"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
 	},
+/turf/space,
 /area/shuttle/arrival/station)
 "bfV" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -5015,7 +5025,7 @@
 /obj/structure/bed/chair/shuttle/gamer{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/arrival/station)
@@ -5069,7 +5079,7 @@
 "bgp" = (
 /obj/structure/rack,
 /obj/item/weapon/storage/toolbox/syndicate,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -5289,7 +5299,7 @@
 	dir = 4
 	},
 /obj/machinery/computer/fluff/shuttle_engines,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/arrival/station)
@@ -5543,9 +5553,10 @@
 	name = "\improper Internal Affairs Office"
 	})
 "bkZ" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s9"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
 	},
+/turf/space,
 /area/derelict/ship)
 "blf" = (
 /obj/structure/bed/chair/office/dark{
@@ -5678,11 +5689,6 @@
 	},
 /obj/structure/catwalk,
 /turf/space,
-/area)
-"bmG" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall7"
-	},
 /area)
 "bmI" = (
 /obj/structure/grille,
@@ -6059,6 +6065,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor,
 /area/security/lobby)
+"bqx" = (
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/simulated/floor/shuttle/plating,
+/area/derelict/ship)
 "bqA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
@@ -6730,6 +6740,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/chapel/main)
+"byr" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
+	},
+/turf/simulated/floor/shuttle,
+/area/shuttle/transport1/centcom)
 "bys" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
@@ -7471,7 +7487,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/derelict/ship)
 "bHq" = (
 /turf/simulated/wall,
@@ -7765,11 +7781,6 @@
 "bKi" = (
 /turf/simulated/wall,
 /area/medical/paramedics)
-"bKA" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f10"
-	},
-/area/derelict/ship)
 "bKL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/vending,
@@ -7855,9 +7866,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "bLA" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f10"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
 	},
+/turf/space,
 /area/shuttle/escape_pod3)
 "bLE" = (
 /obj/machinery/light/small,
@@ -7921,7 +7933,7 @@
 	})
 "bMo" = (
 /obj/machinery/light/small,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -7982,6 +7994,12 @@
 	icon_state = "white"
 	},
 /area/medical/medbay)
+"bNc" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
+	},
+/turf/simulated/floor/shuttle,
+/area/shuttle/transport1/centcom)
 "bNf" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -8450,7 +8468,7 @@
 	dir = 8
 	},
 /obj/structure/table,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/mining/station)
 "bTi" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -8540,11 +8558,6 @@
 	icon_state = "redcorner"
 	},
 /area/security/main)
-"bUj" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s9"
-	},
-/area)
 "bUn" = (
 /obj/structure/closet/coffin,
 /obj/effect/decal/cleanable/cobweb2,
@@ -8641,7 +8654,7 @@
 "bVb" = (
 /obj/machinery/bodyscanner,
 /obj/item/tool/scalpel,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -8650,7 +8663,7 @@
 /obj/docking_port/shuttle{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape_pod3)
 "bVx" = (
 /obj/structure/bed/chair{
@@ -8678,7 +8691,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape_pod3)
 "bWd" = (
 /obj/machinery/status_display{
@@ -8690,7 +8703,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape_pod3)
 "bWh" = (
 /obj/machinery/door/firedoor/border_only{
@@ -8774,7 +8787,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/escape_pod3)
 "bWJ" = (
 /obj/structure/table/woodentable,
@@ -9256,9 +9269,10 @@
 	},
 /area/shuttle/trade/start)
 "cbu" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f9"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
 	},
+/turf/space,
 /area/shuttle/escape_pod3)
 "cbA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -10166,7 +10180,7 @@
 /obj/docking_port/shuttle{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/research/station)
 "cmr" = (
 /obj/structure/table,
@@ -10570,8 +10584,11 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s9"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
+	},
+/turf/simulated/floor/shuttle{
+	icon_state = "floor3"
 	},
 /area/shuttle/arrival/station)
 "cql" = (
@@ -11208,7 +11225,7 @@
 /area/chapel/office)
 "cxo" = (
 /obj/machinery/computer/shuttle_control/mining,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/mining/station)
 "cxt" = (
 /turf/simulated/wall,
@@ -11733,11 +11750,6 @@
 	icon_state = "cafeteria"
 	},
 /area/djstation)
-"cBX" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall3"
-	},
-/area/derelict/ship)
 "cCd" = (
 /obj/structure/bed/chair/wood/pew/left,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -12613,7 +12625,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -14772,11 +14784,6 @@
 /obj/machinery/status_display/supply,
 /turf/simulated/wall,
 /area/supply/office)
-"dmI" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall13"
-	},
-/area/shuttle/arrival/station)
 "dmS" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	canSpawnMice = 0;
@@ -17427,7 +17434,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/derelict/ship)
 "dRC" = (
 /obj/structure/closet/firecloset,
@@ -17743,8 +17750,11 @@
 	},
 /area/science/shuttlebay)
 "dVK" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s9"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
+	},
+/turf/simulated/floor/shuttle{
+	icon_state = "floor3"
 	},
 /area/shuttle/arrival/station)
 "dVO" = (
@@ -17988,7 +17998,7 @@
 /area/engineering/atmos)
 "dYH" = (
 /obj/structure/table,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -18413,7 +18423,7 @@
 	pixel_x = 5;
 	pixel_y = 28
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -18479,9 +18489,10 @@
 /turf/simulated/floor/carpet,
 /area/shuttle/salvage/start)
 "efy" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f6"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
 	},
+/turf/space,
 /area/shuttle/research/station)
 "efU" = (
 /obj/structure/bed/chair/office/light{
@@ -18507,17 +18518,6 @@
 	icon_state = "white"
 	},
 /area/research_outpost/anomaly)
-"efZ" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall12"
-	},
-/area/shuttle/research/station)
-"egf" = (
-/turf/simulated/shuttle/wall{
-	dir = 3;
-	icon_state = "swall_f10"
-	},
-/area/shuttle/research/station)
 "egs" = (
 /obj/structure/cable/green{
 	icon_state = "1-6"
@@ -18720,6 +18720,12 @@
 	},
 /turf/space,
 /area)
+"ejn" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
+	},
+/turf/simulated/floor/shuttle/plating,
+/area/derelict/ship)
 "ejo" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
@@ -18754,7 +18760,7 @@
 	name = "\improper Lower Central Hallway"
 	})
 "ejy" = (
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
 "ejH" = (
 /obj/structure/disposalpipe/trunk{
@@ -18863,9 +18869,7 @@
 	},
 /area/science/robotics)
 "ela" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall3"
-	},
+/turf/simulated/wall/shuttle,
 /area/shuttle/research/station)
 "elb" = (
 /obj/structure/grille,
@@ -18901,7 +18905,7 @@
 	dir = 8
 	},
 /obj/structure/table,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/research/station)
 "elm" = (
 /obj/machinery/door/window{
@@ -19182,7 +19186,7 @@
 	dir = 4
 	},
 /obj/machinery/computer/fluff/starmap,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/arrival/station)
@@ -19204,7 +19208,7 @@
 /obj/structure/bed/chair/shuttle/yellow{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/research/station)
 "enO" = (
 /turf/simulated/floor/airless{
@@ -19433,7 +19437,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
 "eqq" = (
 /obj/machinery/atmospherics/unary/vent_pump{
@@ -19499,7 +19503,7 @@
 	name = "\improper Lower Central Hallway"
 	})
 "erq" = (
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/research/station)
 "ert" = (
 /obj/structure/window/reinforced{
@@ -20003,7 +20007,7 @@
 	})
 "eym" = (
 /obj/effect/decal/remains/human,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -20060,7 +20064,7 @@
 /obj/structure/bed/chair/shuttle/yellow{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/research/station)
 "ezF" = (
 /obj/structure/table,
@@ -20098,7 +20102,7 @@
 /obj/structure/bed/chair/shuttle/yellow{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/research/station)
 "ezX" = (
 /obj/structure/grille,
@@ -20244,7 +20248,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -20352,10 +20356,10 @@
 	name = "Upper Backrooms"
 	})
 "eCz" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s5";
-	tag = "icon-swall_s5"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
 	},
+/turf/space,
 /area/shuttle/research/station)
 "eCJ" = (
 /obj/machinery/atmospherics/unary/vent_pump{
@@ -20458,10 +20462,10 @@
 /turf/simulated/floor,
 /area/science/chargebay)
 "eDG" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s9";
-	tag = "icon-swall_s9"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
 	},
+/turf/space,
 /area/shuttle/research/station)
 "eDJ" = (
 /obj/structure/grille,
@@ -20795,10 +20799,10 @@
 	name = "\improper Central Terminal"
 	})
 "eGl" = (
-/turf/simulated/shuttle/wall{
-	dir = 4;
-	icon_state = "wall_floor"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
 	},
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape/centcom)
 "eGq" = (
 /obj/structure/catwalk{
@@ -22226,6 +22230,12 @@
 /obj/structure/grille,
 /turf/simulated/floor/engine,
 /area/science/xenobiology)
+"eVY" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
+	},
+/turf/space,
+/area/shuttle/supply)
 "eVZ" = (
 /obj/effect/decal/warning_stripes{
 	dir = 5;
@@ -22528,7 +22538,7 @@
 	dir = 1
 	},
 /obj/effect/decal/remains/human,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -23647,11 +23657,6 @@
 	icon_state = "dark"
 	},
 /area/science/podbay)
-"fhe" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall14"
-	},
-/area)
 "fhv" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/bluegrid,
@@ -23701,6 +23706,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/derelictparts/diner)
+"fia" = (
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/simulated/floor/shuttle{
+	icon_state = "floor3"
+	},
+/area)
 "fib" = (
 /obj/machinery/newscaster{
 	pixel_x = -30
@@ -23769,7 +23780,7 @@
 	},
 /area/science/podbay)
 "fiW" = (
-/turf/simulated/shuttle/wall{
+/turf/simulated/wall/shuttle/unsmoothed{
 	dir = 1;
 	icon_state = "wall3"
 	},
@@ -24218,11 +24229,6 @@
 	},
 /turf/simulated/floor,
 /area/derelict/arrival)
-"foE" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s6"
-	},
-/area)
 "foS" = (
 /obj/machinery/door/airlock{
 	icon = 'icons/obj/doors/Doorsilver.dmi';
@@ -24287,6 +24293,14 @@
 /obj/structure/window/full/reinforced,
 /turf/simulated/floor/plating/vox,
 /area/vox_trading_post/solars)
+"fqh" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
+	},
+/turf/simulated/floor/shuttle{
+	icon_state = "floor3"
+	},
+/area/derelict/ship)
 "fqC" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -25288,12 +25302,12 @@
 /obj/machinery/door/airlock/glass{
 	name = "Hibernation Pods"
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
 "fEe" = (
-/turf/simulated/shuttle/wall{
+/turf/simulated/wall/shuttle/unsmoothed{
 	dir = 1;
 	icon_state = "wall3"
 	},
@@ -26157,10 +26171,10 @@
 /turf/space/transit/east,
 /area)
 "fNH" = (
-/turf/simulated/shuttle/wall{
-	dir = 8;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 8
 	},
+/turf/unsimulated/floor/mars,
 /area/shuttle/nuclearops)
 "fNL" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
@@ -26248,10 +26262,10 @@
 	name = "Outpost Research Dock"
 	})
 "fOT" = (
-/turf/simulated/shuttle/wall{
-	dir = 1;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 1
 	},
+/turf/unsimulated/floor/mars,
 /area/shuttle/nuclearops)
 "fPf" = (
 /turf/unsimulated/mineral/random/high_chance,
@@ -26393,13 +26407,14 @@
 /turf/unsimulated/wall,
 /area/wizard_station)
 "fQW" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/wall/shuttle/unsmoothed/black,
 /area/shuttle/nuclearops)
 "fRc" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s10"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
+	},
+/turf/simulated/floor/shuttle{
+	icon_state = "floor3"
 	},
 /area/shuttle/arrival/station)
 "fRj" = (
@@ -26535,7 +26550,7 @@
 /area/supply/office)
 "fSx" = (
 /obj/machinery/computer/shuttle_control/research,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/research/station)
 "fSA" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -27212,7 +27227,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating/vox,
+/turf/simulated/floor/shuttle/plating/vox,
 /area/shuttle/trade/start)
 "fZf" = (
 /obj/machinery/computer/atmos_alert,
@@ -28602,7 +28617,7 @@
 	pixel_y = 1
 	},
 /obj/item/weapon/tank/anesthetic,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -29195,11 +29210,6 @@
 /area/hallway/secondary/exit{
 	name = "\improper Central Terminal"
 	})
-"gst" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall15"
-	},
-/area/derelict/ship)
 "gsu" = (
 /obj/machinery/showcase,
 /turf/unsimulated/floor{
@@ -29345,9 +29355,8 @@
 	name = "Upper Terminal"
 	})
 "gue" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "diagonalWall3"
-	},
+/obj/structure/shuttle/diag_wall/black,
+/turf/unsimulated/floor/mars,
 /area/shuttle/nuclearops)
 "guh" = (
 /obj/structure/morgue,
@@ -29395,10 +29404,10 @@
 /turf/simulated/floor/carpet,
 /area/mine/living_quarters)
 "guI" = (
-/turf/simulated/shuttle/wall{
-	dir = 4;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 4
 	},
+/turf/unsimulated/floor/mars,
 /area/shuttle/nuclearops)
 "guU" = (
 /obj/structure/grille,
@@ -29467,10 +29476,10 @@
 	name = "Upper Terminal"
 	})
 "gvr" = (
-/turf/simulated/shuttle/wall{
-	dir = 8;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 8
 	},
+/turf/space,
 /area/syndicate_mothership)
 "gvv" = (
 /turf/simulated/floor/plating,
@@ -29511,9 +29520,7 @@
 /turf/unsimulated/wall/blastdoor,
 /area/syndicate_mothership)
 "gwj" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/wall/shuttle/unsmoothed/black,
 /area/syndicate_mothership)
 "gwA" = (
 /obj/structure/lattice,
@@ -29717,10 +29724,10 @@
 	name = "Thermoelectric Engine"
 	})
 "gzF" = (
-/turf/simulated/shuttle/wall{
-	dir = 8;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 8
 	},
+/turf/space,
 /area/shuttle/syndicate_elite/mothership)
 "gzI" = (
 /obj/structure/shuttle/engine/propulsion/right{
@@ -29797,10 +29804,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/apmaint2)
 "gAR" = (
-/turf/simulated/shuttle/wall{
-	dir = 1;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 1
 	},
+/turf/space,
 /area/shuttle/syndicate_elite/mothership)
 "gBA" = (
 /obj/effect/step_trigger/teleporter/random/shuttle_transit,
@@ -29895,9 +29902,7 @@
 /turf/unsimulated/floor/mars,
 /area/syndicate_mothership)
 "gCL" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/wall/shuttle/unsmoothed/black,
 /area/shuttle/syndicate_elite/mothership)
 "gCU" = (
 /obj/structure/window/reinforced,
@@ -29996,7 +30001,7 @@
 /obj/effect/landmark{
 	name = "Syndicate-Commando-Bomb"
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/syndicate_elite/mothership)
@@ -30156,7 +30161,7 @@
 /obj/structure/bed/chair/shuttle/red{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/syndicate_elite/mothership)
@@ -30198,7 +30203,7 @@
 	dir = 8
 	},
 /obj/effect/decal/remains/human,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -30217,7 +30222,7 @@
 /turf/simulated/floor/wood,
 /area/library)
 "gGT" = (
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/syndicate_elite/mothership)
@@ -30252,7 +30257,7 @@
 /obj/structure/bed/chair/shuttle/red{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/syndicate_elite/mothership)
@@ -30383,7 +30388,7 @@
 /obj/structure/bed/chair/shuttle/red{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/syndicate_elite/mothership)
@@ -30398,7 +30403,7 @@
 /obj/structure/bed/chair/shuttle/red{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/syndicate_elite/mothership)
@@ -30428,13 +30433,11 @@
 /turf/space,
 /area/syndicate_mothership/elite_squad)
 "gIQ" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/wall/shuttle/unsmoothed/black,
 /area/syndicate_mothership/elite_squad)
 "gIR" = (
 /obj/structure/punching_bag/captain,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/syndicate_mothership/elite_squad)
@@ -30884,9 +30887,7 @@
 	icon_state = "redalertonly";
 	name = "Status Display"
 	},
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/wall/shuttle/unsmoothed/black,
 /area/syndicate_mothership/elite_squad)
 "gNo" = (
 /turf/space/transit/north,
@@ -30952,7 +30953,7 @@
 	name = "Side Hull Door";
 	opacity = 0
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/syndicate_elite/mothership)
@@ -31003,12 +31004,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/vox_trading_post/trading_floor)
-"gOE" = (
-/obj/structure/lattice,
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s5"
-	},
-/area/shuttle/arrival/station)
 "gOJ" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -31159,7 +31154,7 @@
 /area/bridge)
 "gPW" = (
 /obj/structure/bed/chair/shuttle/red,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/syndicate_elite/mothership)
@@ -31175,7 +31170,7 @@
 "gQe" = (
 /obj/machinery/light,
 /obj/machinery/computer/shuttle_control/elite_syndie,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/syndicate_elite/mothership)
@@ -31185,7 +31180,7 @@
 	name = "Hull Door Control"
 	},
 /obj/machinery/light,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/syndicate_elite/mothership)
@@ -31199,9 +31194,8 @@
 	name = "Upper Terminal"
 	})
 "gQs" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "diagonalWall3"
-	},
+/obj/structure/shuttle/diag_wall/black,
+/turf/space,
 /area/shuttle/syndicate_elite/mothership)
 "gQu" = (
 /obj/machinery/smartfridge,
@@ -31222,7 +31216,7 @@
 	id_tag = "syndicate_elite";
 	name = "Front Hull Door"
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/syndicate_elite/mothership)
 "gQw" = (
 /obj/structure/bed/chair{
@@ -31240,10 +31234,10 @@
 /turf/simulated/floor,
 /area/engineering/engine)
 "gQE" = (
-/turf/simulated/shuttle/wall{
-	dir = 4;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 4
 	},
+/turf/space,
 /area/shuttle/syndicate_elite/mothership)
 "gQL" = (
 /obj/structure/window/reinforced{
@@ -31481,10 +31475,10 @@
 /turf/simulated/floor/plating,
 /area/derelict/arrival)
 "gTC" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s9";
-	tag = "icon-swall_s9"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
 	},
+/turf/space,
 /area/shuttle/mining/station)
 "gTW" = (
 /obj/structure/bed/chair/office/dark{
@@ -31546,7 +31540,7 @@
 /obj/item/weapon/tank/emergency_oxygen,
 /obj/item/weapon/tank/emergency_oxygen,
 /obj/item/weapon/tank/emergency_oxygen,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -32095,11 +32089,6 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine)
-"hbo" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s6"
-	},
-/area/shuttle/supply)
 "hbr" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -32116,17 +32105,12 @@
 /area/maintenance/apmaint{
 	name = "Arrivals Terminal Maintenance"
 	})
-"hbu" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall12"
-	},
-/area/shuttle/supply)
 "hbL" = (
 /obj/structure/shuttle/window{
 	icon_state = "14"
 	},
 /obj/structure/grille,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/supply)
 "hbV" = (
 /obj/structure/table/reinforced,
@@ -32219,7 +32203,7 @@
 	icon_state = "9"
 	},
 /obj/structure/grille,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/supply)
 "hdn" = (
 /obj/structure/toilet{
@@ -32241,7 +32225,7 @@
 	icon_state = "17"
 	},
 /obj/structure/grille,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/supply)
 "hdt" = (
 /obj/effect/decal/cleanable/campfire,
@@ -32251,11 +32235,6 @@
 /area/maintenance/maintcentral{
 	name = "Central Back Alley"
 	})
-"hdw" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall14"
-	},
-/area/shuttle/supply)
 "hdz" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -32283,9 +32262,10 @@
 /turf/simulated/floor/engine,
 /area/science/xenobiology)
 "hdD" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f10"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
 	},
+/turf/space,
 /area/shuttle/supply)
 "hdE" = (
 /turf/unsimulated/floor{
@@ -32306,7 +32286,7 @@
 /obj/machinery/door/airlock/glass{
 	name = "Living Module"
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -32561,11 +32541,6 @@
 	icon_state = "whitegreen"
 	},
 /area/medical/medbay)
-"hgH" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall3"
-	},
-/area/shuttle/supply)
 "hgK" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 4
@@ -32669,7 +32644,7 @@
 	name = "Outpost Medbay"
 	})
 "hhJ" = (
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/supply)
 "hhT" = (
 /obj/effect/decal/warning_stripes{
@@ -32689,7 +32664,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/supply)
 "hia" = (
 /obj/machinery/atmospherics/unary/vent_pump{
@@ -32709,14 +32684,13 @@
 /area/derelict/research)
 "hib" = (
 /obj/item/weapon/table_parts,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area)
 "hid" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f5"
-	},
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/space,
 /area/shuttle/supply)
 "hie" = (
 /obj/machinery/r_n_d/fabricator/mechanic_fab/autolathe,
@@ -32733,11 +32707,6 @@
 /area/hallway/primary/foreport{
 	name = "Upper Terminal"
 	})
-"hiu" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall15"
-	},
-/area/shuttle/supply)
 "hiv" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
@@ -32965,7 +32934,7 @@
 	icon_state = "16"
 	},
 /obj/structure/grille,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/supply)
 "hlI" = (
 /obj/structure/grille,
@@ -32988,7 +32957,7 @@
 /obj/structure/window/reinforced/plasma{
 	dir = 8
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/supply)
 "hlX" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
@@ -33106,7 +33075,7 @@
 	icon_state = "8"
 	},
 /obj/structure/grille,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/supply)
 "hnM" = (
 /obj/structure/grille,
@@ -33410,7 +33379,7 @@
 	icon_state = "15"
 	},
 /obj/structure/grille,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/supply)
 "hrk" = (
 /obj/structure/grille,
@@ -33529,7 +33498,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/derelict/ship)
 "hsx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -33603,7 +33572,7 @@
 	pixel_y = -24
 	},
 /obj/machinery/light,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/supply)
 "htc" = (
 /obj/structure/rack,
@@ -33774,14 +33743,14 @@
 	id_tag = "QMLoaddoor";
 	name = "Supply Shuttle Loading Door"
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/supply)
 "huw" = (
 /obj/machinery/door/unpowered/shuttle,
 /obj/docking_port/shuttle{
 	dir = 2
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/supply)
 "huA" = (
 /turf/simulated/floor/plating{
@@ -33793,7 +33762,7 @@
 	})
 "huB" = (
 /obj/machinery/door/unpowered/shuttle,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/supply)
 "huH" = (
 /obj/machinery/conveyor{
@@ -33803,7 +33772,7 @@
 	id_tag = "QMLoaddoor2";
 	name = "Supply Shuttle Loading Door"
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/supply)
 "huK" = (
 /obj/machinery/light/small/broken,
@@ -33814,9 +33783,7 @@
 	name = "Central Back Alley"
 	})
 "huN" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall13"
-	},
+/turf/simulated/wall/shuttle,
 /area/shuttle/supply)
 "huS" = (
 /obj/effect/decal/warning_stripes{
@@ -33838,14 +33805,15 @@
 /obj/item/tool/retractor{
 	pixel_y = 6
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
 "hvf" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s9"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
 	},
+/turf/space,
 /area/shuttle/supply)
 "hvj" = (
 /obj/machinery/light{
@@ -34113,9 +34081,8 @@
 	},
 /area/centcom/suppy)
 "hyM" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "diagonalWall3"
-	},
+/obj/structure/shuttle/diag_wall/black,
+/turf/space,
 /area/shuttle/salvage/start)
 "hyR" = (
 /obj/structure/grille,
@@ -34759,6 +34726,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/centcom/suppy)
+"hHj" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
+	},
+/turf/simulated/floor/shuttle/plating,
+/area/derelict/ship)
 "hHq" = (
 /obj/item/weapon/paper{
 	info = "Some stuff is missing...";
@@ -34995,11 +34968,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
-"hKg" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall12"
-	},
-/area/shuttle/mining/station)
 "hKo" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/carpet{
@@ -35343,7 +35311,7 @@
 	id_tag = "oldship_gun";
 	name = "Pod Bay Door"
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/derelict/ship)
 "hNp" = (
 /obj/effect/decal/warning_stripes{
@@ -35654,11 +35622,6 @@
 	},
 /turf/simulated/floor,
 /area/derelict/arrival)
-"hSC" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s5"
-	},
-/area/derelict/ship)
 "hSF" = (
 /obj/machinery/computer/arcade,
 /turf/unsimulated/floor{
@@ -36375,7 +36338,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/derelict/ship)
 "iae" = (
 /obj/machinery/firealarm{
@@ -36516,9 +36479,11 @@
 /turf/simulated/floor/plating/airless,
 /area/derelict/singularity_engine)
 "icl" = (
-/turf/simulated/shuttle/wall{
-	dir = 8;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 8
+	},
+/turf/unsimulated/floor{
+	name = "plating"
 	},
 /area/shuttle/administration/centcom)
 "icx" = (
@@ -36532,9 +36497,7 @@
 /turf/simulated/floor/plating/airless,
 /area/derelict/research)
 "icA" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/wall/shuttle/unsmoothed/black,
 /area/shuttle/administration/centcom)
 "icL" = (
 /obj/structure/cable/orange{
@@ -36676,9 +36639,11 @@
 /turf/simulated/floor/plating,
 /area/shuttle/administration/centcom)
 "iey" = (
-/turf/simulated/shuttle/wall{
-	dir = 1;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 1
+	},
+/turf/unsimulated/floor{
+	name = "plating"
 	},
 /area/shuttle/administration/centcom)
 "ieA" = (
@@ -36954,13 +36919,11 @@
 /area/centcom/striketeam)
 "ihP" = (
 /obj/machinery/vending/boozeomat,
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/wall/shuttle/unsmoothed/black,
 /area/shuttle/administration/centcom)
 "iib" = (
 /obj/machinery/vending/coffee,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -37004,14 +36967,14 @@
 /area/shuttle/salvage/start)
 "iiw" = (
 /obj/machinery/vending/cigarette,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
 "iiA" = (
 /obj/machinery/microwave,
 /obj/structure/table/reinforced,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -37078,14 +37041,14 @@
 /obj/item/device/multitool,
 /obj/item/weapon/reagent_containers/spray/cleaner,
 /obj/structure/table,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
 "ijx" = (
 /obj/item/weapon/storage/toolbox/mechanical,
 /obj/structure/table,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -37125,16 +37088,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/bridge/meeting_room)
-"ikv" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall14"
-	},
-/area/shuttle/striketeam/centcom)
-"ikx" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall12"
-	},
-/area/shuttle/striketeam/centcom)
 "iky" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -37158,7 +37111,7 @@
 	icon_state = "14"
 	},
 /obj/structure/grille,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/striketeam/centcom)
 "ikW" = (
 /obj/structure/sign/securearea{
@@ -37194,7 +37147,7 @@
 	icon_state = "9"
 	},
 /obj/structure/grille,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/striketeam/centcom)
 "ils" = (
 /obj/structure/cable/yellow{
@@ -37260,12 +37213,13 @@
 	icon_state = "17"
 	},
 /obj/structure/grille,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/striketeam/centcom)
 "imi" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s10"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
 	},
+/turf/space,
 /area/shuttle/striketeam/centcom)
 "imK" = (
 /obj/machinery/door/firedoor/border_only{
@@ -37401,7 +37355,7 @@
 /turf/simulated/floor/airless,
 /area/derelict/teleporter)
 "inE" = (
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -37422,7 +37376,7 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -37482,7 +37436,7 @@
 "ipi" = (
 /obj/machinery/cell_charger,
 /obj/structure/table,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -37599,7 +37553,7 @@
 /turf/unsimulated/floor,
 /area/shuttle/striketeam/centcom)
 "iqx" = (
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/striketeam/centcom)
@@ -37632,13 +37586,13 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/striketeam/centcom)
 "ira" = (
 /obj/structure/bed/chair/shuttle/red,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/striketeam/centcom)
@@ -37649,19 +37603,14 @@
 /obj/structure/bed/chair/shuttle/red{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/striketeam/centcom)
 "irc" = (
 /obj/machinery/computer/shuttle_control/striketeam,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
-	},
-/area/shuttle/striketeam/centcom)
-"irf" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swallc3"
 	},
 /area/shuttle/striketeam/centcom)
 "irl" = (
@@ -37963,13 +37912,13 @@
 	base_state = "right";
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
 "ivp" = (
 /obj/structure/table/reinforced,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -37986,7 +37935,7 @@
 "ivz" = (
 /obj/item/weapon/lighter/zippo,
 /obj/structure/table/reinforced,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -38058,7 +38007,7 @@
 "iwC" = (
 /obj/item/weapon/storage/fancy/cigarettes,
 /obj/structure/table/reinforced,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -38073,7 +38022,7 @@
 /area/security/lobby)
 "iwV" = (
 /obj/machinery/door/airlock/glass,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -38081,7 +38030,7 @@
 /obj/item/stack/sheet/glass/glass{
 	amount = 5000
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -38097,7 +38046,7 @@
 /obj/item/stack/sheet/metal{
 	amount = 50
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -38435,7 +38384,7 @@
 	},
 /area/vox_trading_post/docking)
 "iBH" = (
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/striketeam/centcom)
@@ -38444,7 +38393,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/striketeam/centcom)
 "iCe" = (
 /obj/machinery/atmospherics/pipe/simple/filtering/visible,
@@ -38461,7 +38410,7 @@
 /obj/docking_port/shuttle{
 	dir = 4
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/striketeam/centcom)
 "iCn" = (
 /obj/docking_port/destination/striketeam/base{
@@ -38559,9 +38508,7 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/wall/shuttle/unsmoothed/black,
 /area/shuttle/administration/centcom)
 "iDr" = (
 /obj/machinery/atmospherics/unary/portables_connector,
@@ -38615,7 +38562,7 @@
 /area/maintenance/aft)
 "iDJ" = (
 /obj/machinery/vending/snack,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -38653,7 +38600,7 @@
 /area/maintenance/aft)
 "iEj" = (
 /obj/item/weapon/stool,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -38689,19 +38636,19 @@
 /area/research_outpost/anomaly)
 "iER" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
 "iEX" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
 "iFm" = (
 /obj/machinery/recharge_station,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -38723,7 +38670,7 @@
 /area/vox_trading_post/hallway)
 "iFF" = (
 /obj/machinery/r_n_d/fabricator/mech,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -38763,7 +38710,7 @@
 	hacked = 1;
 	name = "Thunderdome Autolathe"
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -38779,7 +38726,7 @@
 	})
 "iGd" = (
 /obj/structure/dispenser,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -39057,7 +39004,7 @@
 /area/centcom/living)
 "iJT" = (
 /obj/machinery/light,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/striketeam/centcom)
@@ -39088,7 +39035,7 @@
 /obj/structure/bed/chair/shuttle/red{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/striketeam/centcom)
@@ -39129,11 +39076,6 @@
 /area/hallway/primary/foreport{
 	name = "Upper Terminal"
 	})
-"iKA" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swallc2"
-	},
-/area/shuttle/striketeam/centcom)
 "iKF" = (
 /obj/structure/closet/bombcloset,
 /obj/effect/decal/warning_stripes{
@@ -39229,9 +39171,10 @@
 	},
 /area/djstation)
 "iMd" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s9"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
 	},
+/turf/space,
 /area/shuttle/striketeam/centcom)
 "iMk" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -39246,7 +39189,7 @@
 /area/hallway/primary/aft)
 "iMo" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -39365,9 +39308,11 @@
 /turf/space,
 /area/shuttle/administration/centcom)
 "iNn" = (
-/turf/simulated/shuttle/wall{
-	dir = 4;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 4
+	},
+/turf/unsimulated/floor{
+	name = "plating"
 	},
 /area/shuttle/administration/centcom)
 "iNp" = (
@@ -39401,12 +39346,6 @@
 	tag = "icon-checker"
 	},
 /area/vox_trading_post/kitchen)
-"iNK" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s5";
-	tag = "icon-swall_s5"
-	},
-/area/shuttle/mining/station)
 "iNP" = (
 /obj/structure/closet{
 	name = "Evidence Closet"
@@ -39505,9 +39444,7 @@
 /turf/space,
 /area/shuttle/striketeam/centcom)
 "iPd" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall13"
-	},
+/turf/simulated/wall/shuttle,
 /area/shuttle/striketeam/centcom)
 "iPi" = (
 /obj/structure/grille,
@@ -39695,8 +39632,9 @@
 	},
 /area/derelict/research)
 "iRq" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black,
+/turf/unsimulated/floor{
+	name = "plating"
 	},
 /area/shuttle/administration/centcom)
 "iRv" = (
@@ -39810,13 +39748,13 @@
 /area/engineering/atmos)
 "iSS" = (
 /obj/machinery/sleeper,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
 "iTa" = (
 /obj/structure/window/full/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/administration/centcom)
 "iTc" = (
 /obj/effect/decal/warning_stripes{
@@ -39929,13 +39867,13 @@
 	})
 "iUs" = (
 /obj/machinery/dna_scannernew,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/administration/centcom)
 "iUv" = (
 /obj/machinery/computer/cloning,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/administration/centcom)
@@ -39945,13 +39883,13 @@
 /area/derelict/hallway/primary)
 "iUC" = (
 /obj/machinery/cloning/clonepod/full,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/administration/centcom)
 "iUF" = (
 /obj/machinery/computer/scan_consolenew,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/administration/centcom)
@@ -40305,7 +40243,7 @@
 	},
 /area/security/prison)
 "iZx" = (
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/administration/centcom)
@@ -40446,7 +40384,7 @@
 /area/centcom/ert)
 "jbq" = (
 /obj/machinery/optable,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/administration/centcom)
@@ -40624,7 +40562,7 @@
 	base_state = "right";
 	dir = 2
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/administration/centcom)
@@ -40638,13 +40576,13 @@
 /area/derelict/medical/chapel)
 "jcU" = (
 /obj/structure/table,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/administration/centcom)
 "jdy" = (
 /obj/structure/table,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/administration/centcom)
@@ -41154,7 +41092,7 @@
 /area/medical/morgue)
 "jjM" = (
 /obj/machinery/vending/medical,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/administration/centcom)
@@ -41185,7 +41123,7 @@
 /area/vox_trading_post/eva)
 "jkn" = (
 /obj/machinery/chem_master,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/administration/centcom)
@@ -41286,7 +41224,7 @@
 /area/storage/primary)
 "jkT" = (
 /obj/machinery/chem_dispenser/mapping,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/administration/centcom)
@@ -41481,8 +41419,15 @@
 /turf/simulated/floor,
 /area/engineering/supermatter_room)
 "jnf" = (
-/turf/space,
-/area/centcom/evac)
+/obj/machinery/camera{
+	name = "Spec. Ops. Shuttle";
+	network = list("CREED")
+	},
+/obj/structure/bed/chair/shuttle/red,
+/turf/simulated/floor/shuttle{
+	icon_state = "floor4"
+	},
+/area/shuttle/striketeam/centcom)
 "jnm" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable/orange{
@@ -44324,6 +44269,14 @@
 /area/hallway/primary/fore{
 	name = "\improper Upper Central Hallway"
 	})
+"jVd" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
+	},
+/turf/simulated/floor/shuttle{
+	icon_state = "floor3"
+	},
+/area/derelict/ship)
 "jVo" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -44419,10 +44372,10 @@
 	name = "Starboard Backrooms"
 	})
 "jVQ" = (
-/turf/simulated/shuttle/wall{
-	dir = 4;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 4
 	},
+/turf/space,
 /area/shuttle/salvage/start)
 "jVU" = (
 /obj/structure/sink{
@@ -44646,7 +44599,7 @@
 /area/science/hallway)
 "jYs" = (
 /obj/item/device/multitool,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -44954,9 +44907,10 @@
 /turf/simulated/floor,
 /area/hallway/primary/starboard)
 "kca" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s10"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
 	},
+/turf/space,
 /area/derelict/ship)
 "kcd" = (
 /obj/machinery/door/airlock/maintenance{
@@ -45065,9 +45019,8 @@
 	name = "Central Back Alley"
 	})
 "kdx" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "diagonalWall3"
-	},
+/obj/structure/shuttle/diag_wall/black,
+/turf/space,
 /area/shuttle/trade/start)
 "kdA" = (
 /obj/structure/table/woodentable,
@@ -45840,9 +45793,7 @@
 /turf/simulated/floor,
 /area/engineering/engine)
 "klP" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall3"
-	},
+/turf/simulated/wall/shuttle,
 /area/shuttle/mining/station)
 "klQ" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -46819,9 +46770,8 @@
 /obj/structure/shuttle/engine/propulsion/left{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f6"
-	},
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/space,
 /area/shuttle/escape_pod3)
 "kwg" = (
 /obj/machinery/power/apc{
@@ -47399,7 +47349,7 @@
 /area/centcom/test)
 "kDl" = (
 /obj/machinery/door/unpowered/shuttle,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area)
@@ -47472,7 +47422,7 @@
 "kEg" = (
 /obj/structure/table,
 /obj/item/device/analyzer,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -47719,15 +47669,16 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
-"kJf" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall11"
+"kJi" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
 	},
-/area/derelict/ship)
+/turf/simulated/floor/shuttle/plating,
+/area/centcom/evac)
 "kJm" = (
 /obj/machinery/light{
 	dir = 1
@@ -47747,7 +47698,7 @@
 	dir = 8;
 	id_tag = "oldship_gun"
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/derelict/ship)
 "kJA" = (
 /obj/structure/dispenser,
@@ -48970,9 +48921,8 @@
 /obj/structure/shuttle/engine/propulsion/right{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f5"
-	},
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/space,
 /area/shuttle/escape_pod3)
 "kWX" = (
 /turf/simulated/floor/airless{
@@ -49443,7 +49393,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/derelict/ship)
 "laZ" = (
 /obj/machinery/power/apc{
@@ -50320,9 +50270,7 @@
 	},
 /area/centcom/test)
 "lkW" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall12"
-	},
+/turf/simulated/wall/shuttle,
 /area/shuttle/escape_pod3)
 "llr" = (
 /obj/structure/catwalk{
@@ -50439,7 +50387,7 @@
 /area/shuttle/trade/start)
 "lmx" = (
 /obj/item/tool/surgicaldrill,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/derelict/ship)
 "lmF" = (
 /obj/machinery/computer/diseasesplicer,
@@ -50757,7 +50705,7 @@
 /area/centcom/control)
 "lqd" = (
 /obj/machinery/atmospherics/unary/cold_sink/freezer,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area)
@@ -52140,7 +52088,7 @@
 "lHu" = (
 /obj/item/weapon/shard,
 /obj/structure/bed/chair,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -52327,7 +52275,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/arrival/station)
 "lJA" = (
 /obj/structure/table/glass,
@@ -52448,14 +52396,10 @@
 /turf/simulated/floor/plating/airless,
 /area/derelict/singularity_engine)
 "lKO" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswall_f6"
+/obj/structure/shuttle/diag_wall/smooth/black{
+	dir = 8
 	},
-/area/shuttle/ert/centcom)
-"lKP" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswall12"
-	},
+/turf/space,
 /area/shuttle/ert/centcom)
 "lLa" = (
 /obj/effect/decal/cleanable/dirt,
@@ -52475,11 +52419,6 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/engineering/atmos)
-"lLA" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswall14"
-	},
-/area/shuttle/ert/centcom)
 "lLD" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -52493,7 +52432,7 @@
 	dir = 4
 	},
 /obj/structure/window/full/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/ert/centcom)
 "lLG" = (
 /obj/structure/grille,
@@ -52875,11 +52814,6 @@
 	icon_state = "white"
 	},
 /area/science/telescience)
-"lQb" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswallc4"
-	},
-/area/shuttle/ert/centcom)
 "lQh" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -52962,11 +52896,6 @@
 "lQE" = (
 /turf/simulated/floor/bluegrid,
 /area/shuttle/ert/centcom)
-"lQN" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswall1"
-	},
-/area/shuttle/ert/centcom)
 "lQP" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -52982,7 +52911,7 @@
 	})
 "lQY" = (
 /obj/structure/bed/chair/shuttle/red,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/ert/centcom)
@@ -53022,7 +52951,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/shuttle/red,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/ert/centcom)
@@ -53041,7 +52970,7 @@
 /area/derelict/atmos)
 "lRI" = (
 /obj/structure/bed/chair/shuttle,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/ert/centcom)
@@ -53050,7 +52979,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/shuttle/yellow,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor2"
 	},
 /area/shuttle/ert/centcom)
@@ -53080,7 +53009,7 @@
 /area/medical/genetics)
 "lRY" = (
 /obj/structure/bed/chair/shuttle/yellow,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor2"
 	},
 /area/shuttle/ert/centcom)
@@ -53264,16 +53193,16 @@
 /area/centcom/control)
 "lUC" = (
 /obj/machinery/computer/shuttle_control/ert,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/ert/centcom)
 "lUL" = (
 /obj/structure/bed/chair/shuttle/gamer{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/ert/centcom)
 "lUS" = (
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/ert/centcom)
 "lUT" = (
 /obj/structure/sign/electricshock,
@@ -53284,7 +53213,7 @@
 	name = "ERT Shuttle Cockpit";
 	req_access_txt = "101"
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/ert/centcom)
 "lVd" = (
 /obj/structure/window/reinforced{
@@ -53357,7 +53286,7 @@
 	opacity = 1;
 	req_access_txt = "101"
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/ert/centcom)
 "lVV" = (
 /obj/structure/table/reinforced,
@@ -53782,10 +53711,10 @@
 /turf/simulated/floor/engine,
 /area/security/armory)
 "maL" = (
-/turf/simulated/shuttle/wall{
-	dir = 1;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 1
 	},
+/turf/space,
 /area/shuttle/salvage/start)
 "mbc" = (
 /obj/machinery/atmospherics/unary/vent_pump{
@@ -53978,9 +53907,8 @@
 	},
 /area/hallway/primary/starboard)
 "mde" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswall_f5"
-	},
+/obj/structure/shuttle/diag_wall/smooth/black,
+/turf/space,
 /area/shuttle/ert/centcom)
 "mdq" = (
 /obj/structure/disposalpipe/segment,
@@ -54046,15 +53974,9 @@
 	},
 /area/derelict/research)
 "mdR" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f6"
-	},
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/space,
 /area)
-"mdT" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswallc1"
-	},
-/area/shuttle/ert/centcom)
 "mel" = (
 /obj/structure/table,
 /obj/item/weapon/pen,
@@ -54125,11 +54047,6 @@
 	icon_state = "whitepurple"
 	},
 /area/medical/genetics)
-"meM" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswall2"
-	},
-/area/shuttle/ert/centcom)
 "meN" = (
 /obj/structure/cable/orange{
 	d1 = 1;
@@ -54171,7 +54088,7 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/ert/centcom)
@@ -54280,7 +54197,7 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/ert/centcom)
@@ -54297,7 +54214,7 @@
 	pixel_y = -30
 	},
 /obj/machinery/disease2/centrifuge,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/ert/centcom)
@@ -54334,7 +54251,7 @@
 /area/maintenance/port)
 "mgz" = (
 /obj/machinery/optable,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/ert/centcom)
@@ -54363,7 +54280,7 @@
 "mgK" = (
 /obj/machinery/light,
 /obj/structure/closet/crate,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/ert/centcom)
@@ -54443,7 +54360,7 @@
 /area/research_outpost/sample)
 "mhu" = (
 /obj/structure/closet/emcloset,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/ert/centcom)
@@ -54817,9 +54734,7 @@
 /turf/unsimulated/wall,
 /area/centcom/evac)
 "mlf" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswall13"
-	},
+/turf/simulated/wall/shuttle/black,
 /area/shuttle/ert/centcom)
 "mlj" = (
 /obj/machinery/door/airlock/external,
@@ -55149,7 +55064,7 @@
 /obj/item/tool/hemostat{
 	pixel_y = 4
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -55326,7 +55241,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "mre" = (
 /obj/structure/table/reinforced,
@@ -55358,7 +55273,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/full/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "mrJ" = (
 /obj/structure/grille,
@@ -55370,7 +55285,7 @@
 	dir = 4
 	},
 /obj/structure/window/full/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "mrP" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -55395,7 +55310,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/full/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "msv" = (
 /obj/structure/grille,
@@ -55410,7 +55325,7 @@
 	dir = 8
 	},
 /obj/structure/window/full/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "msD" = (
 /obj/machinery/door/airlock/external{
@@ -55528,7 +55443,7 @@
 	},
 /area/vox_trading_post/vault)
 "mtM" = (
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/mining/station)
 "mtO" = (
 /obj/item/weapon/gun/portalgun,
@@ -55880,6 +55795,14 @@
 	icon_state = "floor"
 	},
 /area/centcom/evac)
+"mxO" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
+	},
+/turf/simulated/floor/shuttle{
+	icon_state = "floor3"
+	},
+/area)
 "mxS" = (
 /obj/machinery/disposal/compactor,
 /turf/unsimulated/floor{
@@ -56764,11 +56687,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/vox_trading_post/docking)
-"mJH" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s10"
-	},
-/area)
 "mJN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/vending/barber,
@@ -56942,6 +56860,12 @@
 	icon_state = "freezerfloor"
 	},
 /area/crew_quarters/toilet)
+"mLb" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
+	},
+/turf/simulated/floor/shuttle,
+/area/shuttle/transport1/centcom)
 "mLe" = (
 /obj/machinery/light{
 	dir = 8
@@ -57329,7 +57253,7 @@
 /area/centcom/specops)
 "mPJ" = (
 /obj/machinery/portable_atmospherics/pump,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -57480,7 +57404,7 @@
 	},
 /obj/item/tool/circular_saw,
 /obj/item/weapon/bedsheet,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -57882,11 +57806,6 @@
 	icon_state = "hallA";
 	name = "Xenoarchaeology Hallway"
 	})
-"mVS" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s6"
-	},
-/area/shuttle/escape/centcom)
 "mWh" = (
 /obj/structure/closet/emcloset/vox,
 /turf/simulated/floor/vox{
@@ -57913,7 +57832,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/escape/centcom)
 "mWT" = (
 /obj/machinery/power/apc{
@@ -57933,7 +57852,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/escape/centcom)
 "mXc" = (
 /obj/effect/decal/warning_stripes{
@@ -57950,7 +57869,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/escape/centcom)
 "mXg" = (
 /obj/machinery/computer/teleporter,
@@ -57958,11 +57877,6 @@
 	icon_state = "dark"
 	},
 /area/teleporter)
-"mXi" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall14"
-	},
-/area/shuttle/escape/centcom)
 "mXt" = (
 /obj/machinery/air_sensor{
 	frequency = 1441;
@@ -57997,11 +57911,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/crew_quarters/hop)
-"mXC" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall12"
-	},
-/area/shuttle/escape/centcom)
 "mXD" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -58033,10 +57942,10 @@
 	name = "Upper Backrooms"
 	})
 "mXN" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s10";
-	tag = "icon-swall_s10"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
 	},
+/turf/space,
 /area/shuttle/escape/centcom)
 "mXQ" = (
 /obj/structure/bed/chair{
@@ -58162,7 +58071,7 @@
 /obj/docking_port/shuttle{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
 "mZo" = (
 /obj/machinery/alarm{
@@ -58364,11 +58273,6 @@
 	name = "reinforced floor"
 	},
 /area/centcom/specops)
-"nbq" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f6"
-	},
-/area/shuttle/transport1/centcom)
 "nbr" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/light/he,
@@ -58376,11 +58280,6 @@
 	icon_state = "dark"
 	},
 /area/vox_trading_post/gardens)
-"nbD" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall12"
-	},
-/area/shuttle/transport1/centcom)
 "nbI" = (
 /obj/structure/cable/orange{
 	d1 = 2;
@@ -58390,10 +58289,10 @@
 /turf/simulated/floor/bluegrid,
 /area/turret_protected/ai)
 "nbP" = (
-/turf/simulated/shuttle/wall{
-	dir = 3;
-	icon_state = "swall_f10"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
 	},
+/turf/space,
 /area/shuttle/transport1/centcom)
 "nbX" = (
 /obj/structure/grille,
@@ -58408,7 +58307,7 @@
 	dir = 4
 	},
 /obj/structure/window/full/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/transport1/centcom)
 "ncf" = (
 /obj/structure/table,
@@ -58480,11 +58379,6 @@
 	icon_state = "whiteblue"
 	},
 /area/medical/medbay)
-"ncC" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall14"
-	},
-/area/shuttle/transport1/centcom)
 "ncG" = (
 /obj/structure/shuttle/engine/propulsion/right{
 	dir = 4
@@ -58592,11 +58486,6 @@
 	icon_state = "warnwhite"
 	},
 /area/medical/virology)
-"ndG" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall11"
-	},
-/area/shuttle/escape/centcom)
 "ndU" = (
 /obj/structure/window/reinforced/plasma{
 	dir = 8
@@ -58605,7 +58494,7 @@
 /area)
 "ndW" = (
 /obj/machinery/computer/security,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -58698,13 +58587,13 @@
 /area/research_outpost/breakroom)
 "neR" = (
 /obj/machinery/computer/crew,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
 "neW" = (
 /obj/machinery/computer/communications,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -58741,7 +58630,7 @@
 	})
 "nfs" = (
 /obj/machinery/computer/shuttle,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -58769,7 +58658,7 @@
 /area/vox_trading_post/dorms)
 "nfJ" = (
 /obj/machinery/computer/station_alert,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -58799,9 +58688,7 @@
 /area/engineering/atmos)
 "nge" = (
 /obj/machinery/status_display,
-/turf/simulated/shuttle/wall{
-	icon_state = "swall3"
-	},
+/turf/simulated/wall/shuttle,
 /area/shuttle/escape/centcom)
 "ngk" = (
 /obj/structure/extinguisher_cabinet{
@@ -58812,7 +58699,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -58831,7 +58718,7 @@
 /area/medical/medbay)
 "ngI" = (
 /obj/structure/bed/chair,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -58906,7 +58793,7 @@
 /area/security/main)
 "nhd" = (
 /obj/structure/table,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -58952,7 +58839,7 @@
 	pixel_y = 29
 	},
 /obj/structure/bed/chair,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -59043,11 +58930,6 @@
 /obj/item/weapon/shard,
 /turf/simulated/floor/plating/airless,
 /area/derelict/singularity_engine)
-"niN" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall3"
-	},
-/area/shuttle/escape/centcom)
 "niQ" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -59167,9 +59049,10 @@
 /turf/simulated/wall/r_wall,
 /area/research_outpost/harvesting)
 "nkH" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f9"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
 	},
+/turf/space,
 /area/shuttle/transport1/centcom)
 "nkJ" = (
 /obj/item/device/radio/intercom{
@@ -59204,7 +59087,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/transport1/centcom)
 "nld" = (
 /obj/structure/bed/chair/wood/wings{
@@ -59216,14 +59099,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/courtroom)
 "nlu" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f5"
-	},
-/area/shuttle/transport1/centcom)
-"nlL" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall11"
-	},
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/space,
 /area/shuttle/transport1/centcom)
 "nlQ" = (
 /obj/machinery/turret,
@@ -59267,7 +59144,7 @@
 	})
 "nmS" = (
 /obj/structure/bed/chair/shuttle,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/transport1/centcom)
 "nmW" = (
 /obj/structure/grille,
@@ -59318,14 +59195,14 @@
 /obj/effect/landmark/start{
 	name = "Prisoner"
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/transport1/centcom)
 "non" = (
 /obj/structure/bed/chair/shuttle,
 /obj/effect/landmark/start{
 	name = "Prisoner"
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/transport1/centcom)
 "noo" = (
 /obj/structure/shuttle/engine/heater{
@@ -59349,7 +59226,7 @@
 /area/medical/medbay)
 "noZ" = (
 /obj/item/tool/bonesetter,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area)
@@ -59497,7 +59374,7 @@
 /obj/effect/landmark{
 	name = "Observer-Start"
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
 "nqv" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -59770,7 +59647,7 @@
 /obj/structure/bed/chair/shuttle/blue{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape/centcom)
 "nsW" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -59784,7 +59661,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep)
 "nsX" = (
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area)
@@ -59792,14 +59669,14 @@
 /obj/structure/bed/chair/shuttle/gamer{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape/centcom)
 "nte" = (
 /obj/machinery/flasher{
 	id_tag = "cockpit_flasher";
 	pixel_x = -27
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape/centcom)
 "nth" = (
 /obj/structure/closet/coffin,
@@ -59857,7 +59734,7 @@
 /turf/space,
 /area)
 "ntH" = (
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape/centcom)
 "ntZ" = (
 /obj/machinery/door/unpowered/shuttle{
@@ -59866,7 +59743,7 @@
 /obj/docking_port/shuttle{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape/centcom)
 "nub" = (
 /obj/machinery/door/airlock/external{
@@ -60202,16 +60079,16 @@
 	})
 "nwU" = (
 /obj/machinery/computer/shuttle_control/transport,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/transport1/centcom)
 "nwX" = (
 /obj/structure/bed/chair/shuttle/gamer{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/transport1/centcom)
 "nwY" = (
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/transport1/centcom)
 "nxf" = (
 /obj/effect/decal/warning_stripes{
@@ -60250,7 +60127,7 @@
 /area/science/xenobiology)
 "nxh" = (
 /obj/machinery/door/unpowered/shuttle,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/transport1/centcom)
 "nxr" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
@@ -60278,7 +60155,7 @@
 /obj/docking_port/shuttle{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/transport1/centcom)
 "nxU" = (
 /obj/structure/grille,
@@ -60539,7 +60416,7 @@
 /obj/item/tool/crowbar,
 /obj/item/weapon/extinguisher,
 /obj/machinery/light,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape/centcom)
 "nBP" = (
 /obj/item/device/radio/intercom{
@@ -60549,14 +60426,14 @@
 /obj/machinery/media/receiver/boombox/wallmount/shuttle{
 	pixel_y = -40
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape/centcom)
 "nBS" = (
 /obj/machinery/flasher_button{
 	id_tag = "cockpit_flasher";
 	pixel_y = -26
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape/centcom)
 "nBZ" = (
 /obj/structure/cable/green{
@@ -60579,7 +60456,7 @@
 	name = "Emergency Shuttle Cockpit";
 	req_access_txt = "19"
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape/centcom)
 "nCd" = (
 /obj/structure/cable/yellow{
@@ -60617,7 +60494,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -60647,7 +60524,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -60857,9 +60734,10 @@
 	},
 /area/hallway/primary/starboard)
 "nFt" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f10"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
 	},
+/turf/space,
 /area/shuttle/transport1/centcom)
 "nFv" = (
 /obj/structure/dispenser,
@@ -60895,14 +60773,14 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/transport1/centcom)
 "nFN" = (
 /obj/machinery/light,
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/transport1/centcom)
 "nFW" = (
 /obj/structure/closet/emcloset,
@@ -60985,10 +60863,10 @@
 	name = "\improper Arrivals Terminal"
 	})
 "nGG" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f9";
-	tag = "icon-swall_f9"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
 	},
+/turf/space,
 /area/shuttle/escape/centcom)
 "nGL" = (
 /obj/structure/grille,
@@ -61173,9 +61051,7 @@
 	},
 /area/centcom/specops)
 "nJw" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall13"
-	},
+/turf/simulated/wall/shuttle,
 /area/shuttle/transport1/centcom)
 "nJx" = (
 /obj/structure/grille,
@@ -61396,7 +61272,7 @@
 /area/vox_trading_post/trading_floor)
 "nLG" = (
 /obj/structure/bed/chair/shuttle/red,
-/turf/simulated/shuttle/floor4,
+/turf/simulated/floor/shuttle/brig,
 /area/shuttle/escape/centcom)
 "nLJ" = (
 /obj/structure/table/woodentable,
@@ -61450,7 +61326,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/escape/centcom)
 "nMe" = (
 /obj/structure/grille,
@@ -61652,10 +61528,10 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor4,
+/turf/simulated/floor/shuttle/brig,
 /area/shuttle/escape/centcom)
 "nOV" = (
-/turf/simulated/shuttle/floor4,
+/turf/simulated/floor/shuttle/brig,
 /area/shuttle/escape/centcom)
 "nPa" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -61685,7 +61561,7 @@
 	id_tag = "shuttle_flasher";
 	pixel_y = -34
 	},
-/turf/simulated/shuttle/floor4,
+/turf/simulated/floor/shuttle/brig,
 /area/shuttle/escape/centcom)
 "nPn" = (
 /obj/structure/grille,
@@ -61724,12 +61600,13 @@
 	name = "Escape Shuttle Cell";
 	req_access_txt = "2"
 	},
-/turf/simulated/shuttle/floor4,
+/turf/simulated/floor/shuttle/brig,
 /area/shuttle/escape/centcom)
 "nPR" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f6"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
 	},
+/turf/space,
 /area/shuttle/mining/station)
 "nPV" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -61897,12 +61774,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/fsmaint)
-"nSn" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall14";
-	tag = "icon-swall14"
-	},
-/area/shuttle/escape/centcom)
 "nSr" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -61937,11 +61808,6 @@
 	},
 /turf/space,
 /area/shuttle/specops/centcom)
-"nTt" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswall14"
-	},
-/area/shuttle/specops/centcom)
 "nTy" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -61972,11 +61838,6 @@
 /area/maintenance/asmaint{
 	name = "Lower Backrooms"
 	})
-"nTT" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswall12"
-	},
-/area/shuttle/specops/centcom)
 "nUp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "bot"
@@ -61999,14 +61860,15 @@
 	name = "Outer Airlock";
 	opacity = 0
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/specops/centcom)
 "nUz" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswall_f10"
+/obj/structure/shuttle/diag_wall/smooth/black{
+	dir = 1
 	},
+/turf/space,
 /area/shuttle/specops/centcom)
 "nUD" = (
 /obj/structure/table,
@@ -62306,7 +62168,7 @@
 /obj/item/weapon/shard{
 	icon_state = "medium"
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -62762,7 +62624,7 @@
 /obj/machinery/sleeper{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -62781,7 +62643,7 @@
 	},
 /area/science/hallway)
 "odP" = (
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -62790,7 +62652,7 @@
 	id_tag = null;
 	name = "Escape Shuttle Infirmary"
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -62922,13 +62784,8 @@
 	icon_state = "dark-markings"
 	},
 /area/security/armory)
-"ofk" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall12"
-	},
-/area/shuttle/arrival/station)
 "ofn" = (
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/specops/centcom)
@@ -62936,7 +62793,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/specops/centcom)
@@ -62945,7 +62802,7 @@
 	name = "Spec. Ops. Shuttle";
 	network = list("CREED")
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/specops/centcom)
@@ -62968,7 +62825,7 @@
 /obj/structure/bed/chair/shuttle/red{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/specops/centcom)
@@ -62993,13 +62850,8 @@
 /area/maintenance/aft)
 "ogo" = (
 /obj/machinery/computer/shuttle_control/deathsquad,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
-	},
-/area/shuttle/specops/centcom)
-"ogw" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswallc3"
 	},
 /area/shuttle/specops/centcom)
 "ogx" = (
@@ -63236,7 +63088,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -63274,7 +63126,7 @@
 /obj/machinery/door/unpowered/shuttle{
 	name = "Emergency Shuttle Airlock"
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/escape/centcom)
 "okc" = (
 /obj/structure/window{
@@ -63300,7 +63152,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/specops/centcom)
 "okg" = (
 /obj/item/device/radio/intercom{
@@ -63328,7 +63180,7 @@
 /obj/docking_port/shuttle{
 	dir = 4
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/specops/centcom)
 "okK" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -63357,7 +63209,7 @@
 /turf/simulated/floor/carpet,
 /area/library)
 "okQ" = (
-/turf/simulated/shuttle/wall{
+/turf/simulated/wall/shuttle/unsmoothed{
 	dir = 1;
 	icon_state = "wall3"
 	},
@@ -63524,9 +63376,8 @@
 	name = "\improper AIShip Docking Moors"
 	})
 "omo" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s5"
-	},
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/space,
 /area/shuttle/escape/centcom)
 "omy" = (
 /obj/machinery/sleeper{
@@ -63536,7 +63387,7 @@
 	name = "Emergency NanoMed";
 	pixel_y = -28
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -63545,7 +63396,7 @@
 	pixel_y = -30
 	},
 /obj/machinery/iv_drip,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -63562,7 +63413,7 @@
 	pixel_x = 4;
 	pixel_y = -32
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -63615,7 +63466,7 @@
 /turf/simulated/floor,
 /area/supply/office)
 "ono" = (
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/derelict/ship)
 "onM" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
@@ -63638,7 +63489,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/escape/centcom)
 "ooe" = (
 /obj/structure/closet,
@@ -63652,7 +63503,7 @@
 "oog" = (
 /obj/structure/table,
 /obj/item/weapon/storage/toolbox/emergency,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -63703,7 +63554,7 @@
 	})
 "opl" = (
 /obj/structure/closet/emcloset,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -63715,7 +63566,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -63807,7 +63658,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -63819,7 +63670,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/escape/centcom)
@@ -63888,7 +63739,7 @@
 /obj/structure/bed/chair/shuttle/red{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/specops/centcom)
@@ -63945,7 +63796,7 @@
 /obj/structure/bed/chair/shuttle/red{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/specops/centcom)
@@ -63972,7 +63823,7 @@
 	id_tags = list("NTrasen");
 	name = "Hull Door Control"
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor4"
 	},
 /area/shuttle/specops/centcom)
@@ -63983,11 +63834,6 @@
 	icon_state = "neutral"
 	},
 /area/crew_quarters/sleep)
-"osC" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswallc2"
-	},
-/area/shuttle/specops/centcom)
 "osH" = (
 /obj/structure/closet{
 	icon_closed = "cabinet_closed";
@@ -64055,9 +63901,10 @@
 	},
 /area/vox_trading_post/trading_floor)
 "osS" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswall_f9"
+/obj/structure/shuttle/diag_wall/smooth/black{
+	dir = 4
 	},
+/turf/space,
 /area/shuttle/specops/centcom)
 "ote" = (
 /obj/structure/rack,
@@ -64161,9 +64008,7 @@
 	},
 /area/vox_trading_post/armory)
 "ouK" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall13"
-	},
+/turf/simulated/wall/shuttle,
 /area/shuttle/escape/centcom)
 "ouT" = (
 /obj/structure/shuttle/engine/propulsion/right{
@@ -64221,9 +64066,7 @@
 	},
 /area/science/hallway)
 "ovh" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "bswall13"
-	},
+/turf/simulated/wall/shuttle/black,
 /area/shuttle/specops/centcom)
 "ovj" = (
 /obj/machinery/vending/games,
@@ -64872,7 +64715,7 @@
 	name = "Worn-out APC";
 	pixel_x = -24
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -66069,11 +65912,6 @@
 	icon_state = "green"
 	},
 /area/tdome)
-"oTe" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f6"
-	},
-/area/centcom/evac)
 "oTu" = (
 /obj/structure/shuttle/engine/propulsion/right{
 	dir = 1
@@ -66120,15 +65958,9 @@
 /turf/space,
 /area)
 "oTT" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s10"
-	},
-/area/centcom/evac)
-"oUa" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall3"
-	},
-/area/centcom/evac)
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/space,
+/area/shuttle/mining/station)
 "oUz" = (
 /obj/structure/window/reinforced,
 /obj/structure/shuttle/engine/heater{
@@ -66187,11 +66019,6 @@
 /area/maintenance/ghettomorgue{
 	name = "Funeral Chapel"
 	})
-"oVf" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall7"
-	},
-/area/centcom/evac)
 "oVl" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
@@ -66211,11 +66038,6 @@
 /area/turret_protected/aisat_interior{
 	name = "\improper MiniSat Central Foyer"
 	})
-"oVy" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall12"
-	},
-/area/centcom/evac)
 "oVC" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -66273,7 +66095,7 @@
 	name = "Salvage Shuttle Dock"
 	},
 /obj/docking_port/destination/pod1/centcom,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "oWd" = (
 /obj/machinery/optable,
@@ -66290,12 +66112,7 @@
 	name = "Salvage Shuttle Dock"
 	},
 /obj/docking_port/destination/pod2/centcom,
-/turf/simulated/shuttle/plating,
-/area/centcom/evac)
-"oWk" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall11"
-	},
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "oWu" = (
 /obj/effect/landmark/start,
@@ -66372,16 +66189,11 @@
 /area/crew_quarters/captain)
 "oXD" = (
 /obj/item/weapon/bikehorn,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "oXE" = (
 /obj/item/weapon/beach_ball,
-/turf/simulated/shuttle/plating,
-/area/centcom/evac)
-"oXG" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f9"
-	},
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "oXH" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -66415,7 +66227,7 @@
 /area/research_outpost/xenobot)
 "oXL" = (
 /obj/structure/closet/emcloset,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "oXM" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -66430,7 +66242,7 @@
 	},
 /area/crew_quarters/kitchen)
 "oXO" = (
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor2"
 	},
 /area/centcom/evac)
@@ -66438,7 +66250,7 @@
 /obj/structure/bed/chair/comfy/couch/left/black{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "oYa" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
@@ -66451,7 +66263,7 @@
 /obj/structure/bed/chair/comfy/couch/mid/black{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "oYs" = (
 /obj/structure/cable/yellow{
@@ -66493,7 +66305,7 @@
 /obj/structure/bed/chair/comfy/couch/right/black{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "oYQ" = (
 /turf/simulated/floor{
@@ -66501,11 +66313,6 @@
 	icon_state = "neutralcorner"
 	},
 /area/maintenance/disposal)
-"oYY" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f5"
-	},
-/area/centcom/evac)
 "oZn" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -66547,10 +66354,10 @@
 	name = "\improper Borer Development Lab"
 	})
 "oZP" = (
-/turf/simulated/shuttle/wall{
-	dir = 3;
-	icon_state = "swall_f10"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
 	},
+/turf/space,
 /area/centcom/evac)
 "oZR" = (
 /obj/structure/table,
@@ -66583,7 +66390,7 @@
 /area/engineering/atmos)
 "pad" = (
 /obj/item/weapon/toy/xmas_cracker,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pan" = (
 /obj/machinery/light{
@@ -66604,7 +66411,7 @@
 /obj/item/weapon/gun/energy/pulse_rifle/destroyer{
 	projectile_type = "/obj/item/projectile/beam/lasertag/blue"
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "paL" = (
 /obj/machinery/light/small{
@@ -66731,11 +66538,11 @@
 	})
 "pcg" = (
 /obj/item/weapon/beach_ball/holoball,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pch" = (
 /obj/item/weapon/boomerang/toy,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pcz" = (
 /obj/structure/window/reinforced{
@@ -66773,7 +66580,7 @@
 /area/hallway/primary/aft)
 "pcI" = (
 /obj/machinery/door/airlock/maintenance_hatch,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pdi" = (
 /obj/structure/table,
@@ -66782,7 +66589,7 @@
 /area/maintenance/apmaint2)
 "pdm" = (
 /obj/item/device/instrument/guitar,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pdB" = (
 /obj/structure/grille,
@@ -66810,7 +66617,7 @@
 	},
 /area/research_outpost/sample)
 "pdO" = (
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pdP" = (
 /obj/structure/disposalpipe/segment{
@@ -66853,9 +66660,8 @@
 	},
 /area/science/podbay)
 "pen" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s5"
-	},
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/space,
 /area/centcom/evac)
 "peq" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
@@ -66905,7 +66711,7 @@
 	})
 "pfO" = (
 /obj/machinery/chem_dispenser/scp_294,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pfT" = (
 /obj/structure/closet/secure_closet/miner,
@@ -66913,13 +66719,6 @@
 /area/mine/eva{
 	name = "Outpost Mining Dock"
 	})
-"pfU" = (
-/turf/simulated/shuttle/wall{
-	dir = 3;
-	icon_state = "swall2";
-	tag = "icon-swall2"
-	},
-/area/centcom/evac)
 "pgj" = (
 /obj/structure/rack,
 /obj/item/clothing/mask/gas/ert,
@@ -66974,7 +66773,7 @@
 	pixel_y = 5
 	},
 /obj/item/weapon/reagent_containers/glass/rag,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "phf" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
@@ -67010,7 +66809,7 @@
 "phl" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/storage/box/drinkingglasses,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "phr" = (
 /obj/structure/grille,
@@ -67035,43 +66834,44 @@
 /area/research_outpost/breakroom)
 "pht" = (
 /obj/structure/table/reinforced,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "phz" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "phE" = (
 /obj/item/weapon/stool/bar,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "phU" = (
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "phV" = (
 /obj/item/weapon/stool/piano{
 	dir = 8;
 	pixel_x = -5
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "phY" = (
 /obj/structure/piano{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pih" = (
 /obj/machinery/vending/circus{
 	emagged = 1
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pik" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s9"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
 	},
+/turf/space,
 /area/centcom/evac)
 "pim" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
@@ -67092,7 +66892,7 @@
 /area/mine/unexplored)
 "piD" = (
 /obj/machinery/chem_dispenser/mapping,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/centcom/evac)
@@ -67126,7 +66926,7 @@
 /turf/simulated/floor/plating/vox,
 /area/vox_trading_post/trading_floor)
 "pjm" = (
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/centcom/evac)
@@ -67143,7 +66943,7 @@
 	})
 "pjq" = (
 /obj/structure/bed/chair/wood/wings,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pjr" = (
 /obj/structure/table,
@@ -67163,7 +66963,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pju" = (
 /obj/structure/kitchenspike,
@@ -67293,12 +67093,12 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pkD" = (
 /obj/machinery/chem_dispenser/soda_dispenser/mapping,
 /obj/structure/table/reinforced,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/centcom/evac)
@@ -67313,7 +67113,7 @@
 	pixel_x = -10;
 	pixel_y = 2
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pkL" = (
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -67362,7 +67162,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "plh" = (
 /obj/structure/grille,
@@ -67372,7 +67172,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pli" = (
 /obj/structure/closet/secure_closet/brig,
@@ -67387,7 +67187,7 @@
 "plj" = (
 /obj/machinery/chem_dispenser/brewer/mapping,
 /obj/structure/table/reinforced,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/centcom/evac)
@@ -67430,11 +67230,17 @@
 /area/science/breakroom{
 	name = "\improper Borer Development Lab"
 	})
+"plo" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
+	},
+/turf/simulated/floor/shuttle/plating,
+/area/derelict/ship)
 "plq" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "plt" = (
 /obj/effect/decal/warning_stripes/pathmarkers/yellow{
@@ -67555,7 +67361,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pmt" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -67593,7 +67399,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pmX" = (
 /obj/structure/table/reinforced,
@@ -67641,20 +67447,21 @@
 /area/security/main)
 "pnK" = (
 /obj/structure/lattice,
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f10"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
 	},
+/turf/space,
 /area/shuttle/arrival/station)
 "pnM" = (
-/turf/simulated/shuttle/wall{
-	dir = 3;
-	icon_state = "swall_f10"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
 	},
+/turf/space,
 /area/shuttle/mining/station)
 "pnQ" = (
 /obj/machinery/chem_dispenser/booze_dispenser/mapping,
 /obj/structure/table/reinforced,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/centcom/evac)
@@ -67686,7 +67493,7 @@
 	base_state = "right";
 	name = "Bar Door"
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/centcom/evac)
@@ -67714,7 +67521,7 @@
 	anchored = 1
 	},
 /obj/item/stack/cable_coil/cut,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -67725,7 +67532,7 @@
 /obj/docking_port/destination/pod3/centcom{
 	dir = 4
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pol" = (
 /turf/unsimulated/wall/splashscreen,
@@ -67810,13 +67617,13 @@
 /obj/machinery/computer/security/telescreen/entertainment{
 	pixel_x = -32
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor2"
 	},
 /area/centcom/evac)
 "ppu" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "ppx" = (
 /obj/machinery/vending/cigarette,
@@ -68030,7 +67837,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "prt" = (
 /obj/structure/disposalpipe/segment{
@@ -68138,12 +67945,12 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "psF" = (
 /obj/structure/table/woodentable/poker,
 /obj/item/toy/cards,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "psJ" = (
 /obj/machinery/alarm{
@@ -68159,7 +67966,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "ptd" = (
 /obj/structure/closet/secure_closet/freezer/meat,
@@ -68307,7 +68114,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "puU" = (
 /obj/machinery/mommi_spawner,
@@ -68449,6 +68256,14 @@
 	icon_state = "grimy"
 	},
 /area/djstation)
+"pwV" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
+	},
+/turf/simulated/floor/shuttle{
+	icon_state = "floor3"
+	},
+/area)
 "pwX" = (
 /obj/structure/closet/emcloset/vox,
 /turf/simulated/floor{
@@ -68610,7 +68425,7 @@
 	id_tag = null;
 	name = "Escape Shuttle Infirmary"
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor2"
 	},
 /area/centcom/evac)
@@ -68621,7 +68436,7 @@
 /obj/docking_port/destination/pod5/centcom{
 	dir = 4
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pzU" = (
 /obj/machinery/chem_master,
@@ -68693,14 +68508,14 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pAA" = (
 /turf/simulated/wall,
 /area/mine/living_quarters)
 "pAC" = (
 /obj/item/weapon/stool,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pAH" = (
 /obj/machinery/camera{
@@ -68759,7 +68574,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = 30
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pBp" = (
 /obj/structure/rack,
@@ -68918,7 +68733,7 @@
 /area/security/perma)
 "pCU" = (
 /obj/machinery/computer/arcade,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pDc" = (
 /obj/item/weapon/reagent_containers/food/snacks/grown/ambrosiavulgaris,
@@ -68937,7 +68752,7 @@
 	pixel_x = -4;
 	pixel_y = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pDi" = (
 /turf/simulated/floor{
@@ -68962,7 +68777,7 @@
 /area/vox_trading_post/docking)
 "pDF" = (
 /obj/machinery/vending/cigarette,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pDQ" = (
 /obj/structure/disposalpipe/segment,
@@ -69103,6 +68918,12 @@
 	icon_state = "floorgrime"
 	},
 /area/security/perma)
+"pFV" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
+	},
+/turf/simulated/floor/shuttle,
+/area/centcom/evac)
 "pGg" = (
 /obj/machinery/igniter,
 /turf/simulated/floor,
@@ -69160,9 +68981,7 @@
 	name = "\improper Laundry Room"
 	})
 "pGS" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall14"
-	},
+/turf/simulated/wall/shuttle,
 /area/centcom/evac)
 "pGV" = (
 /obj/structure/computerframe{
@@ -69183,7 +69002,7 @@
 	name = "Cockpit";
 	req_access_txt = "109"
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor2"
 	},
 /area/centcom/evac)
@@ -69260,7 +69079,7 @@
 /obj/machinery/door/airlock/glass{
 	name = "Pod Bay"
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -69398,7 +69217,7 @@
 /area/tdome)
 "pJh" = (
 /obj/machinery/computer/crew,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pJi" = (
 /obj/machinery/computer/crew,
@@ -69412,13 +69231,13 @@
 /obj/structure/bed/chair/shuttle/blue{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pJv" = (
 /obj/structure/bed/chair/shuttle/blue{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pJE" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
@@ -69457,7 +69276,7 @@
 	})
 "pKd" = (
 /obj/machinery/computer/communications,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pKf" = (
 /obj/machinery/recharger{
@@ -69506,15 +69325,15 @@
 /area/tdome/tdome1)
 "pKx" = (
 /obj/machinery/computer/secure_data,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pKF" = (
 /obj/structure/bed/chair/shuttle/gamer,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pKW" = (
 /obj/machinery/computer/card,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pLn" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
@@ -69682,7 +69501,7 @@
 /area/shuttle/salvage/start)
 "pMJ" = (
 /obj/structure/table,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pMN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -69728,7 +69547,7 @@
 "pNh" = (
 /obj/structure/table,
 /obj/item/device/radio,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pNl" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -69745,18 +69564,18 @@
 /area/science/hallway)
 "pNs" = (
 /obj/machinery/computer/shuttle,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pNz" = (
 /obj/structure/table,
 /obj/item/weapon/storage/bag/clipboard,
 /obj/item/weapon/pen,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pNM" = (
 /obj/structure/table,
 /obj/item/weapon/paper_bin,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/centcom/evac)
 "pNQ" = (
 /obj/machinery/atmospherics/unary/vent,
@@ -69779,7 +69598,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pOf" = (
 /obj/structure/grille,
@@ -69787,7 +69606,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pOr" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -69809,7 +69628,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/centcom/evac)
 "pOK" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -70064,7 +69883,7 @@
 /obj/machinery/light_switch{
 	pixel_x = 27
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -70389,7 +70208,7 @@
 /area/tdome/tdomeadmin)
 "pUJ" = (
 /obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/derelict/ship)
 "pUO" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -70693,7 +70512,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -71255,7 +71074,7 @@
 /obj/structure/computerframe{
 	anchored = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -72159,11 +71978,6 @@
 /obj/structure/window,
 /turf/simulated/floor,
 /area/derelict/bridge)
-"qCP" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall14"
-	},
-/area/shuttle/arrival/station)
 "qCR" = (
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
@@ -72339,6 +72153,12 @@
 /obj/structure/window/full/reinforced,
 /turf/simulated/floor/plating/vox,
 /area/vox_trading_post/gardens)
+"qGA" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
+	},
+/turf/simulated/floor/shuttle/plating,
+/area/centcom/evac)
 "qGG" = (
 /obj/structure/closet/emcloset,
 /obj/effect/decal/warning_stripes{
@@ -72878,7 +72698,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
 "qPl" = (
 /obj/structure/rack{
@@ -73196,14 +73016,12 @@
 	department = "Arrival shuttle";
 	pixel_y = -30
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/arrival/station)
 "qTo" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall7"
-	},
+/turf/simulated/wall/shuttle,
 /area/shuttle/arrival/station)
 "qTX" = (
 /obj/structure/grille,
@@ -73504,7 +73322,7 @@
 /obj/machinery/computer/pod{
 	id_tags = list("oldship_gun")
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -74040,7 +73858,7 @@
 /obj/structure/bed/chair/shuttle/yellow{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/mining/station)
 "rmO" = (
 /turf/simulated/floor/airless{
@@ -74218,7 +74036,7 @@
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -74734,7 +74552,7 @@
 /area/vox_trading_post/gardens)
 "rzM" = (
 /obj/structure/bed/chair,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -75170,7 +74988,7 @@
 /area/medical/virology)
 "rIE" = (
 /obj/machinery/door/unpowered/shuttle,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -75756,11 +75574,6 @@
 /obj/item/weapon/storage/fancy/cigarettes,
 /turf/simulated/floor/engine,
 /area/shuttle/salvage/start)
-"rTV" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall13"
-	},
-/area)
 "rTW" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/hidden{
 	dir = 10
@@ -75829,7 +75642,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/arrival/station)
@@ -76149,7 +75962,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -76578,7 +76391,7 @@
 "slh" = (
 /obj/structure/table,
 /obj/item/device/radio,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -77787,7 +77600,7 @@
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -78075,9 +77888,10 @@
 	},
 /area/vox_trading_post/kitchen)
 "sMM" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f10"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 1
 	},
+/turf/space,
 /area)
 "sMO" = (
 /obj/item/stack/medical/ointment,
@@ -78952,6 +78766,12 @@
 	},
 /turf/simulated/floor,
 /area/bridge)
+"thM" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
+	},
+/turf/space,
+/area/shuttle/arrival/station)
 "thS" = (
 /obj/structure/table,
 /obj/item/weapon/cell,
@@ -79080,7 +78900,7 @@
 	dir = 8
 	},
 /obj/structure/window/full/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/shuttle/arrival/station)
 "tlJ" = (
 /obj/structure/table,
@@ -79246,7 +79066,7 @@
 /obj/item/tool/cautery{
 	pixel_y = 4
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -79354,7 +79174,7 @@
 	charge = 100;
 	maxcharge = 15000
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -79393,6 +79213,14 @@
 "trQ" = (
 /turf/simulated/floor/plating/airless,
 /area/derelict/hallway/primary)
+"tsi" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
+	},
+/turf/simulated/floor/shuttle{
+	icon_state = "floor3"
+	},
+/area)
 "tsm" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
 /turf/simulated/floor/engine,
@@ -79612,7 +79440,7 @@
 	},
 /area/security/interrogation)
 "txC" = (
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -80514,9 +80342,10 @@
 	},
 /area/medical/morgue)
 "tNq" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f9"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 4
 	},
+/turf/space,
 /area)
 "tNz" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -80587,7 +80416,7 @@
 /area/engineering/atmos)
 "tOx" = (
 /obj/machinery/door/airlock/glass,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -81130,10 +80959,8 @@
 /turf/simulated/floor/engine/vacuum,
 /area/science/mixing)
 "uaD" = (
-/turf/simulated/shuttle/wall{
-	dir = 5;
-	icon_state = "wall_floor"
-	},
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/simulated/floor/shuttle,
 /area/shuttle/supply)
 "uaE" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -81313,11 +81140,6 @@
 /area/engineering/burn_chamber{
 	name = "Thermoelectric Engine"
 	})
-"ueE" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s6"
-	},
-/area/derelict/ship)
 "ueM" = (
 /obj/machinery/atmospherics/pipe/layer_adapter/scrubbers/hidden{
 	dir = 8;
@@ -81761,6 +81583,10 @@
 	},
 /turf/simulated/wall,
 /area/supply/miningdock)
+"upy" = (
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/simulated/floor/shuttle,
+/area/centcom/evac)
 "upz" = (
 /obj/machinery/light{
 	dir = 8
@@ -81816,7 +81642,7 @@
 	pixel_x = -6;
 	pixel_y = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -81842,7 +81668,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -81859,7 +81685,7 @@
 	})
 "uqF" = (
 /obj/machinery/atmospherics/unary/cryo_cell,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -81887,7 +81713,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -81976,10 +81802,10 @@
 	name = "\improper Upper Central Hallway"
 	})
 "uth" = (
-/turf/simulated/shuttle/wall{
-	dir = 8;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/diag_wall/black{
+	dir = 8
 	},
+/turf/space,
 /area/shuttle/trade/start)
 "utm" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -82074,11 +81900,6 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/maintenance/auxcharge)
-"uvG" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f5"
-	},
-/area/derelict/ship)
 "uvO" = (
 /obj/machinery/bioprinter/prosthetics,
 /turf/simulated/floor{
@@ -83134,7 +82955,7 @@
 	pixel_y = -29
 	},
 /obj/machinery/light,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/arrival/station)
@@ -83329,9 +83150,7 @@
 	},
 /area/vox_trading_post/trading_floor)
 "uXx" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/wall/shuttle/unsmoothed/black,
 /area/shuttle/salvage/start)
 "uXD" = (
 /obj/structure/rack{
@@ -83997,7 +83816,7 @@
 	dir = 8
 	},
 /obj/machinery/computer/fluff/shuttle_control,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/arrival/station)
@@ -84081,7 +83900,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
 "vqG" = (
 /obj/machinery/alarm{
@@ -84812,7 +84631,7 @@
 "vGJ" = (
 /obj/structure/table,
 /obj/item/weapon/gun/energy/laser/retro,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -85142,7 +84961,7 @@
 /area/maintenance/fsmaint)
 "vOr" = (
 /obj/machinery/door/airlock/glass,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/derelict/ship)
 "vOt" = (
 /obj/structure/rack,
@@ -85258,11 +85077,6 @@
 	icon_state = "hallA";
 	name = "Xenoarchaeology Hallway"
 	})
-"vQx" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall11"
-	},
-/area)
 "vQC" = (
 /obj/structure/grille,
 /turf/simulated/floor/airless{
@@ -85270,6 +85084,10 @@
 	icon_state = "damaged3"
 	},
 /area/derelict/singularity_engine)
+"vQK" = (
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/simulated/floor/shuttle,
+/area/shuttle/transport1/centcom)
 "vRf" = (
 /obj/structure/flora/pottedplant/random,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -85674,9 +85492,8 @@
 /turf/space,
 /area)
 "waI" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_f6"
-	},
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/space,
 /area/derelict/ship)
 "waR" = (
 /obj/structure/grille,
@@ -85833,7 +85650,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/shuttle/plating,
+/turf/simulated/floor/shuttle/plating,
 /area/derelict/ship)
 "wex" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -86059,7 +85876,7 @@
 /obj/docking_port/shuttle{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/mining/station)
 "whV" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -86353,11 +86170,6 @@
 	icon_state = "white"
 	},
 /area/science/hallway)
-"woQ" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall13"
-	},
-/area/derelict/ship)
 "woX" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -86599,6 +86411,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/supply/miningdock)
+"wuN" = (
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
+	},
+/turf/space,
+/area/shuttle/escape/centcom)
 "wvb" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/simulated/floor,
@@ -86884,7 +86702,7 @@
 	pixel_y = 24
 	},
 /obj/item/toy/gasha/cattoy,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/shuttle/arrival/station)
@@ -86967,7 +86785,7 @@
 /obj/structure/closet/walllocker/defiblocker{
 	pixel_y = 30
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -87259,7 +87077,7 @@
 /obj/item/stack/sheet/glass/glass{
 	amount = 50
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -88680,10 +88498,10 @@
 /turf/unsimulated/floor/asteroid,
 /area/mine/unexplored)
 "xmV" = (
-/turf/simulated/shuttle/wall{
-	dir = 8;
-	icon_state = "wall_floor"
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
 	},
+/turf/simulated/floor/shuttle,
 /area/shuttle/supply)
 "xne" = (
 /obj/structure/catwalk,
@@ -88838,7 +88656,7 @@
 /obj/structure/bed/chair/shuttle/yellow{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/shuttle,
 /area/shuttle/mining/station)
 "xpd" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -89199,6 +89017,10 @@
 	icon_state = "hallA";
 	name = "Xenoarchaeology Hallway"
 	})
+"xvk" = (
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/space,
+/area/shuttle/research/station)
 "xvn" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -89434,9 +89256,8 @@
 /area/science/xenobiology)
 "xCL" = (
 /obj/structure/lattice,
-/turf/simulated/shuttle/wall{
-	icon_state = "swall_s6"
-	},
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/space,
 /area/shuttle/arrival/station)
 "xDb" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
@@ -89536,11 +89357,6 @@
 	icon_state = "red"
 	},
 /area/security/lobby)
-"xGx" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall14"
-	},
-/area/derelict/ship)
 "xGz" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
@@ -89583,7 +89399,7 @@
 	})
 "xHs" = (
 /obj/machinery/portable_atmospherics/scrubber,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -90595,7 +90411,7 @@
 	dir = 1;
 	name = "Connector Port (Air Supply)"
 	},
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -90605,6 +90421,12 @@
 	},
 /turf/simulated/floor,
 /area/derelict/arrival)
+"yei" = (
+/obj/structure/shuttle/diag_wall/smooth,
+/turf/simulated/floor/shuttle{
+	icon_state = "floor3"
+	},
+/area/derelict/ship)
 "yej" = (
 /turf/simulated/floor{
 	icon_state = "L14"
@@ -90620,7 +90442,7 @@
 /area/mine/explored)
 "yeY" = (
 /obj/item/weapon/storage/box/bodybags,
-/turf/simulated/shuttle/floor{
+/turf/simulated/floor/shuttle{
 	icon_state = "floor3"
 	},
 /area/derelict/ship)
@@ -90633,9 +90455,7 @@
 	},
 /area/derelict/research)
 "yfp" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall12"
-	},
+/turf/simulated/wall/shuttle,
 /area/derelict/ship)
 "yfR" = (
 /obj/structure/rack{
@@ -90889,9 +90709,7 @@
 	},
 /area/mine/explored)
 "ylE" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "swall12"
-	},
+/turf/simulated/wall/shuttle,
 /area)
 "ylJ" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
@@ -175546,9 +175364,9 @@ cFY
 cAb
 rtG
 rtG
-xCL
+thM
 lJk
-gOE
+xCL
 rtG
 rtG
 cAb
@@ -176047,11 +175865,11 @@ cFY
 cFY
 cAb
 rtG
-xCL
+thM
 dVK
 vpz
 fRc
-gOE
+xCL
 rtG
 cAb
 cFY
@@ -176548,13 +176366,13 @@ cFY
 cFY
 cFY
 cAb
-xCL
+thM
 cpV
 enr
 bga
 biG
 aax
-gOE
+xCL
 cAb
 cFY
 cFY
@@ -177050,13 +176868,13 @@ cFY
 cFY
 cFY
 cAb
-ofk
+qTo
 eqg
 qPk
 ejy
 qPk
 vqx
-ofk
+qTo
 cAb
 cFY
 cFY
@@ -178556,13 +178374,13 @@ cFY
 cFY
 cFY
 cAn
-ofk
+qTo
 rVh
 qPk
 ejy
 qPk
 uTQ
-ofk
+qTo
 cAb
 cFY
 cFY
@@ -179058,13 +178876,13 @@ cFY
 rtG
 rtG
 czh
-ofk
+qTo
 wCc
 qPk
 ejy
 qPk
 qSw
-ofk
+qTo
 cAb
 cFY
 cFY
@@ -179560,13 +179378,13 @@ cFY
 cFY
 cFY
 czu
-qCP
+qTo
 qTo
 tlF
 mYP
 tlF
 qTo
-dmI
+qTo
 cAn
 cFY
 cFY
@@ -182032,7 +181850,7 @@ klP
 atC
 klP
 klP
-iNK
+oTT
 aBO
 qHM
 sFs
@@ -182529,7 +182347,7 @@ cFY
 cFY
 cFY
 cFY
-hKg
+klP
 bTb
 atp
 mtM
@@ -183031,7 +182849,7 @@ cFY
 cFY
 cFY
 cFY
-hKg
+klP
 cxo
 atp
 mtM
@@ -204690,7 +204508,7 @@ ela
 enA
 cmm
 ela
-eCz
+xvk
 rtG
 cFY
 cFY
@@ -205187,7 +205005,7 @@ dBr
 iEh
 lkL
 pPE
-efZ
+ela
 elh
 enM
 erq
@@ -205689,7 +205507,7 @@ dBr
 iEh
 oZU
 ahU
-efZ
+ela
 fSx
 enM
 erq
@@ -206191,7 +206009,7 @@ dBr
 iEh
 dZN
 dBr
-egf
+eCz
 ela
 enA
 ela
@@ -379966,9 +379784,9 @@ lrq
 lyf
 cFY
 lKO
-lQb
+mlf
 lUC
-mdT
+mlf
 mde
 cFY
 jbj
@@ -380467,11 +380285,11 @@ jiu
 lry
 lyt
 cFY
-lKP
+mlf
 lQB
 lUL
 meH
-lKP
+mlf
 cFY
 jbj
 mun
@@ -380969,11 +380787,11 @@ lif
 lrA
 lyt
 cFY
-lKP
+mlf
 lQE
 lUS
 lQE
-lKP
+mlf
 cFY
 jbj
 cFY
@@ -381471,10 +381289,10 @@ lif
 lrP
 lyt
 cFY
-lLA
-lQN
+mlf
+mlf
 lUV
-meM
+mlf
 mlf
 cFY
 jbj
@@ -381973,11 +381791,11 @@ jiu
 lry
 lyt
 cFY
-lKP
+mlf
 lQY
 lUS
 meX
-lKP
+mlf
 cFY
 jbj
 cFY
@@ -382475,11 +382293,11 @@ lij
 lrQ
 lyt
 cFY
-lKP
+mlf
 lRA
 lUS
 mfL
-lKP
+mlf
 cFY
 jbj
 cFY
@@ -382977,11 +382795,11 @@ lij
 lsf
 lyt
 cFY
-lKP
+mlf
 lRI
 lUS
 mgb
-lKP
+mlf
 cFY
 jbj
 cFY
@@ -383981,11 +383799,11 @@ lin
 lsh
 lyt
 cFY
-lKP
+mlf
 lRJ
 lUS
 mgK
-lKP
+mlf
 cFY
 jbj
 cFY
@@ -384483,11 +384301,11 @@ lin
 lsq
 lyt
 cFY
-lKP
+mlf
 lRY
 lUS
 mhu
-lKP
+mlf
 cFY
 jbj
 cFY
@@ -384985,7 +384803,7 @@ jiu
 lry
 lzC
 cFY
-lLA
+mlf
 lSA
 lUS
 mhT
@@ -387011,7 +386829,7 @@ mzz
 mzz
 mye
 cFY
-nTt
+ovh
 oee
 oee
 oee
@@ -387513,11 +387331,11 @@ nCN
 mun
 mun
 cFY
-nTT
+ovh
 ofn
 ofn
 ofn
-nTT
+ovh
 cFY
 nQG
 cFY
@@ -388015,11 +387833,11 @@ nCU
 nIj
 mye
 cFY
-nTT
+ovh
 ofv
 ofn
 orU
-nTT
+ovh
 cFY
 nQG
 cFY
@@ -388517,11 +388335,11 @@ nDo
 nIn
 mPz
 mye
-nTT
+ovh
 ofE
 ofn
 ose
-nTT
+ovh
 cFY
 nQG
 cFY
@@ -389023,7 +388841,7 @@ nUu
 ofn
 ofn
 ose
-nTT
+ovh
 cFY
 nQG
 cFY
@@ -389525,7 +389343,7 @@ nUu
 ofn
 ofn
 ose
-nTT
+ovh
 cFY
 nQG
 cFY
@@ -390023,11 +389841,11 @@ mzz
 nIA
 mPz
 mye
-nTT
+ovh
 ofO
 ofn
 orU
-nTT
+ovh
 cFY
 nQG
 cFY
@@ -390525,11 +390343,11 @@ nEi
 nIU
 mye
 cFY
-nTT
+ovh
 ogo
 ofn
 osn
-nTT
+ovh
 cFY
 nQG
 cFY
@@ -391028,9 +390846,9 @@ mun
 mun
 cFY
 nUz
-ogw
+ovh
 okf
-osC
+ovh
 osS
 cFY
 nQG
@@ -397547,7 +397365,7 @@ cFY
 mOM
 cFY
 cFY
-nbq
+nFt
 nbX
 nlu
 cFY
@@ -398048,10 +397866,10 @@ cFY
 cFY
 mOM
 cFY
-nbq
-nkH
-nwU
 nFt
+mLb
+nwU
+byr
 nlu
 cFY
 nRS
@@ -398550,11 +398368,11 @@ cFY
 cFY
 mOM
 cFY
-nbD
+nJw
 nlb
 nwX
 nwY
-nbD
+nJw
 cFY
 nRS
 nXm
@@ -399053,9 +398871,9 @@ cFY
 mOM
 cFY
 nbP
-nlu
+vQK
 nwY
-nbq
+bNc
 nkH
 cFY
 nRS
@@ -399554,10 +399372,10 @@ cFY
 cFY
 mOM
 cFY
-nbq
-nlL
+nFt
+nJw
 nxh
-nlL
+nJw
 nlu
 cFY
 nRS
@@ -400056,11 +399874,11 @@ cFY
 cFY
 mOM
 cFY
-nbD
+nJw
 nmS
 nwY
 nFH
-nbD
+nJw
 cFY
 nRS
 nYM
@@ -400558,11 +400376,11 @@ cFY
 cFY
 mOM
 cFY
-nbD
+nJw
 nnK
 nwY
 nFN
-nbD
+nJw
 cFY
 nRS
 nYY
@@ -401060,11 +400878,11 @@ cFY
 cFY
 mOM
 cFY
-nbD
+nJw
 non
 nwY
 nFH
-nbD
+nJw
 cFY
 nRS
 nZb
@@ -402064,11 +401882,11 @@ cFY
 cFY
 mOM
 cFY
-nbD
+nJw
 nnK
 nwY
 nFN
-nbD
+nJw
 cFY
 nRS
 nZV
@@ -402566,11 +402384,11 @@ cFY
 cFY
 mOM
 cFY
-nbD
+nJw
 nmS
 nwY
 nFH
-nbD
+nJw
 cFY
 nRS
 nYY
@@ -403068,7 +402886,7 @@ jqs
 cFY
 mOM
 cFY
-ncC
+nJw
 noo
 nwY
 nFX
@@ -409010,12 +408828,12 @@ cFY
 cFY
 gYH
 gYZ
-hbo
-hgH
+eVY
+huN
 hlx
 hnL
 hrj
-hgH
+huN
 hid
 gYZ
 gYZ
@@ -409512,13 +409330,13 @@ cFY
 cFY
 gYD
 gYZ
-hbu
+huN
 hhJ
 hhJ
 hhJ
 hhJ
 hhJ
-hbu
+huN
 gYZ
 gYZ
 gYZ
@@ -410014,7 +409832,7 @@ cFY
 cFY
 gYD
 gYZ
-hbu
+huN
 hhZ
 hhJ
 hhJ
@@ -411024,7 +410842,7 @@ hhJ
 hhJ
 hhJ
 hsW
-hbu
+huN
 gYZ
 hxg
 gYZ
@@ -412022,7 +411840,7 @@ cFY
 cFY
 gYD
 gYZ
-hbu
+huN
 hhZ
 hhJ
 hhJ
@@ -412524,7 +412342,7 @@ cFY
 cFY
 gYD
 gYZ
-hdw
+huN
 uaD
 hhJ
 hhJ
@@ -413027,11 +412845,11 @@ cFY
 gYD
 gYZ
 hdD
-hiu
+huN
 hlQ
 hlQ
 hlQ
-hiu
+huN
 hvf
 hxg
 hxg
@@ -415116,7 +414934,7 @@ mwB
 mwB
 mro
 rtG
-mVS
+wuN
 nsE
 nsE
 nsE
@@ -415617,8 +415435,8 @@ mxf
 mwB
 mwB
 mro
-mVS
-ndG
+wuN
+ouK
 nsU
 nsU
 nsU
@@ -415627,7 +415445,7 @@ nsU
 nsU
 nsU
 nsU
-ndG
+ouK
 omo
 mro
 mwB
@@ -416123,14 +415941,14 @@ mWK
 ndW
 nsV
 nBF
-mXC
+ouK
 nLG
 nOU
-mXC
+ouK
 odk
 odP
 omy
-mXC
+ouK
 mrJ
 mwB
 mwB
@@ -416625,14 +416443,14 @@ mWX
 neR
 nsV
 ntH
-mXC
+ouK
 nLG
 nOV
-mXC
+ouK
 odP
 odP
 omB
-mXC
+ouK
 mkT
 mwB
 mwB
@@ -417127,14 +416945,14 @@ mWX
 neW
 nta
 nBP
-mXC
+ouK
 nLG
 nOV
-mXC
+ouK
 odP
 ojx
 omF
-mXC
+ouK
 mkT
 mwB
 mwB
@@ -417629,10 +417447,10 @@ mWX
 nfs
 nsV
 nBS
-mXC
+ouK
 nLG
 nPb
-nSn
+ouK
 odQ
 ojJ
 onS
@@ -418131,14 +417949,14 @@ mXd
 nfJ
 nsV
 ntH
-mXC
+ouK
 nMb
 nPN
 eGl
 ntH
 ntH
 oog
-mXC
+ouK
 mro
 mwB
 mwB
@@ -418629,9 +418447,9 @@ mxI
 mwB
 mwB
 mro
-mXi
+ouK
 nge
-niN
+ouK
 nCa
 eGl
 ntH
@@ -418640,7 +418458,7 @@ ntH
 ntH
 ntH
 opl
-mXC
+ouK
 mro
 mwB
 mwB
@@ -419131,7 +418949,7 @@ mxK
 mwB
 mwB
 mrJ
-mXC
+ouK
 ngk
 nte
 ntH
@@ -419142,7 +418960,7 @@ ntH
 ntH
 ntH
 opv
-mXC
+ouK
 mrJ
 mwB
 mwB
@@ -420637,7 +420455,7 @@ mxf
 mwB
 mwB
 msv
-mXC
+ouK
 nhS
 ntH
 ntH
@@ -420648,7 +420466,7 @@ ntH
 ntH
 ntH
 orc
-mXC
+ouK
 msv
 mwB
 mwB
@@ -421139,7 +420957,7 @@ mxf
 mwB
 mwB
 mkT
-mXC
+ouK
 ngk
 ntH
 nCf
@@ -421150,7 +420968,7 @@ nCf
 nCf
 ntH
 opv
-mXC
+ouK
 mkT
 mwB
 mwB
@@ -421642,16 +421460,16 @@ mwB
 mwB
 mkT
 mXN
-niN
+ouK
 ntZ
-niN
+ouK
 nGL
 nMe
 nMe
 nSB
-niN
+ouK
 ojY
-niN
+ouK
 nGG
 mkT
 mwB
@@ -429643,23 +429461,23 @@ cFY
 cFY
 cFY
 cFY
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
 cFY
 cFY
 cFY
@@ -430145,23 +429963,23 @@ cFY
 cFY
 cFY
 cFY
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
 cFY
 cFY
 cFY
@@ -430647,23 +430465,23 @@ cFY
 cFY
 cFY
 cFY
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
 cFY
 cFY
 cFY
@@ -431149,23 +430967,23 @@ cFY
 cFY
 cFY
 cFY
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
 cFY
 cFY
 cFY
@@ -431651,23 +431469,23 @@ cFY
 cFY
 cFY
 cFY
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
-jnf
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
 cFY
 cFY
 cFY
@@ -432157,16 +431975,16 @@ cFY
 cFY
 cFY
 cFY
-jnf
-jnf
-jnf
 cFY
 cFY
-jnf
-jnf
-jnf
-jnf
-jnf
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
 cFY
 cFY
 cFY
@@ -432659,16 +432477,16 @@ cFY
 cFY
 cFY
 cFY
-jnf
-jnf
-jnf
 cFY
 cFY
-jnf
-jnf
-jnf
-jnf
-jnf
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
+cFY
 cFY
 cFY
 cFY
@@ -437663,7 +437481,7 @@ cFY
 cFY
 hXY
 cFY
-ikv
+iPd
 iqr
 iqr
 iqr
@@ -438165,11 +437983,11 @@ cFY
 cFY
 hXY
 cFY
-ikx
+iPd
 iqx
 iBH
 iqx
-ikx
+iPd
 cFY
 hXY
 cFY
@@ -438667,11 +438485,11 @@ cFY
 cFY
 hXY
 cFY
-ikx
+iPd
 iqY
 iBH
 iJT
-ikx
+iPd
 cFY
 hXY
 cFY
@@ -439170,7 +438988,7 @@ cFY
 hXY
 cFY
 ikD
-ira
+jnf
 iBH
 iKq
 ikD
@@ -439731,10 +439549,10 @@ cFY
 cFY
 cFY
 cFY
-oTe
-oUa
-oUa
-oUa
+aZA
+pGS
+pGS
+pGS
 pen
 cFY
 cFY
@@ -440237,7 +440055,7 @@ oTu
 oUz
 oXD
 pcg
-oZP
+kJi
 pen
 cFY
 cFY
@@ -440675,11 +440493,11 @@ cFY
 cFY
 hXY
 cFY
-ikx
+iPd
 irb
 iBH
 iJT
-ikx
+iPd
 cFY
 hXY
 cFY
@@ -440740,7 +440558,7 @@ oUz
 oXE
 pch
 pfO
-oVy
+pGS
 cFY
 cFY
 cFY
@@ -441177,11 +440995,11 @@ cFY
 cFY
 hXY
 cFY
-ikx
+iPd
 irc
 iBH
 iqx
-ikx
+iPd
 cFY
 hXY
 cFY
@@ -441239,18 +441057,18 @@ cFY
 cFY
 oTG
 oUz
-oTe
+qGA
 pcI
-pfU
-oWk
+pGS
+pGS
 pkA
 plh
 pmG
-oVf
+pGS
 pro
-oUa
+pGS
 pro
-oUa
+pGS
 pro
 pen
 cFY
@@ -441680,9 +441498,9 @@ hYI
 hXY
 cFY
 imi
-irf
+iPd
 iCb
-iKA
+iPd
 iMd
 cFY
 hXY
@@ -441739,16 +441557,16 @@ cFY
 cFY
 cFY
 cFY
-oTT
-oVf
-oXG
+oZP
+pGS
+pFV
 oXO
 pgH
 piD
 pkD
 plj
 pnQ
-oVy
+pGS
 prB
 puc
 pxI
@@ -442242,7 +442060,7 @@ cFY
 cFY
 cFY
 cFY
-oVy
+pGS
 oXL
 oXO
 phl
@@ -442250,16 +442068,16 @@ pjm
 pjm
 pjm
 pjm
-oVy
+pGS
 psk
 puk
 pyZ
 puk
 pCA
 pGS
-oWk
-oUa
-oUa
+pGS
+pGS
+pGS
 pen
 cFY
 cFY
@@ -442752,13 +442570,13 @@ pjm
 pjm
 pjm
 pjm
-oVy
+pGS
 psm
 puq
 pzE
 pAi
 pCN
-oVy
+pGS
 pJh
 pKx
 pMJ
@@ -443246,7 +443064,7 @@ cFY
 cFY
 cFY
 cFY
-oVy
+pGS
 oXV
 oXO
 phz
@@ -443254,13 +443072,13 @@ phz
 phz
 phz
 pob
-oWk
+pGS
 pkA
 pmG
 pzN
 pAu
 pmG
-oVy
+pGS
 pJn
 phU
 pNh
@@ -443748,7 +443566,7 @@ cFY
 cFY
 cFY
 cFY
-oVy
+pGS
 oYk
 oXO
 phE
@@ -444250,7 +444068,7 @@ cFY
 cFY
 cFY
 cFY
-oVy
+pGS
 oYP
 oXO
 oXO
@@ -444264,7 +444082,7 @@ phU
 oXO
 pAC
 pCU
-oVy
+pGS
 pJv
 phU
 pNz
@@ -444766,7 +444584,7 @@ pus
 oXO
 phU
 pDd
-oVy
+pGS
 pKd
 pKW
 pNM
@@ -445254,7 +445072,7 @@ cFY
 cFY
 cFY
 cFY
-oVy
+pGS
 oXL
 oXO
 phV
@@ -445269,9 +445087,9 @@ oXO
 phU
 pDF
 pGS
-oVf
-oUa
-oUa
+pGS
+pGS
+pGS
 pik
 cFY
 cFY
@@ -445755,9 +445573,9 @@ cFY
 cFY
 cFY
 cFY
-oTe
-oWk
-oYY
+aZA
+pGS
+upy
 oXO
 phY
 pjr
@@ -446259,19 +446077,19 @@ cFY
 cFY
 oTu
 oUz
-oZP
+kJi
 pcI
-pfU
-oVf
-oUa
-oUa
+pGS
+pGS
+pGS
+pGS
 pok
-oUa
+pGS
 pro
-oUa
+pGS
 pzR
-oUa
-oUa
+pGS
+pGS
 pik
 cFY
 cFY
@@ -446764,7 +446582,7 @@ oUz
 pad
 pdm
 pih
-oVy
+pGS
 cFY
 cFY
 cFY
@@ -447265,7 +447083,7 @@ oTG
 oUz
 paq
 pdO
-oTe
+qGA
 pik
 cFY
 cFY
@@ -447763,10 +447581,10 @@ cFY
 cFY
 cFY
 cFY
-oTT
-oUa
-oUa
-oUa
+oZP
+pGS
+pGS
+pGS
 pik
 cFY
 cFY
@@ -664479,9 +664297,9 @@ cFY
 cFY
 cFY
 cFY
-ueE
-amv
-cBX
+aci
+yfp
+yfp
 laU
 iac
 iac
@@ -664489,9 +664307,9 @@ iac
 iac
 iac
 weo
-cBX
-amv
-hSC
+yfp
+yfp
+waI
 cFY
 cFY
 cFY
@@ -664980,9 +664798,9 @@ cFY
 cFY
 cFY
 cFY
-ueE
-gst
-aDK
+aci
+yfp
+fqh
 txC
 txC
 txC
@@ -664992,8 +664810,8 @@ dYH
 txC
 txC
 nXP
-bKA
-woQ
+asF
+yfp
 cFY
 cFY
 cFY
@@ -665481,9 +665299,9 @@ cFY
 cFY
 cFY
 cFY
-ueE
-gst
-aDK
+aci
+yfp
+fqh
 txC
 txC
 txC
@@ -665495,9 +665313,9 @@ txC
 txC
 lHu
 qms
-xGx
+yfp
 hNo
-hSC
+waI
 cFY
 cFY
 cFY
@@ -665982,9 +665800,9 @@ cFY
 cFY
 cFY
 cFY
-ueE
-kJf
-woQ
+aci
+yfp
+yfp
 wIF
 kIY
 txC
@@ -666486,8 +666304,8 @@ cFY
 cFY
 yfp
 txC
-bKA
-uvG
+asF
+yei
 txC
 txC
 txC
@@ -666498,11 +666316,11 @@ txC
 txC
 txC
 txC
-waI
-gst
+jVd
+yfp
 vOr
-kJf
-hSC
+yfp
+waI
 cFY
 cFY
 cFY
@@ -666985,8 +666803,8 @@ cFY
 cFY
 cFY
 cFY
-ueE
-aDK
+aci
+bkZ
 sHy
 ydq
 yfp
@@ -666999,13 +666817,13 @@ txC
 txC
 txC
 cMd
-waI
-gst
-aDK
+jVd
+yfp
+fqh
 txC
 rcn
-xGx
-hSC
+yfp
+waI
 cFY
 cFY
 cFY
@@ -667491,23 +667309,23 @@ yfp
 uqF
 aAC
 txC
-xGx
-cBX
-cBX
-cBX
-cBX
+yfp
+yfp
+yfp
+yfp
+yfp
 bHn
 tOx
 bHn
-cBX
-amv
-gst
-aDK
+yfp
+yfp
+yfp
+fqh
 txC
 txC
 txC
-bKA
-woQ
+asF
+yfp
 cFY
 cFY
 cFY
@@ -668002,8 +667820,8 @@ txC
 txC
 txC
 txC
-bKA
-woQ
+asF
+yfp
 gUw
 txC
 txC
@@ -669000,12 +668818,12 @@ txC
 hsv
 tqW
 txC
-waI
-cBX
-cBX
-cBX
-cBX
-uvG
+jVd
+yfp
+yfp
+yfp
+yfp
+yei
 txC
 yfp
 bgp
@@ -669495,8 +669313,8 @@ cFY
 cFY
 cFY
 cFY
-xGx
-uvG
+yfp
+yei
 txC
 txC
 yfp
@@ -669509,13 +669327,13 @@ txC
 eXA
 yfp
 txC
-xGx
-uvG
+yfp
+yei
 txC
 txC
 txC
-waI
-woQ
+jVd
+yfp
 cFY
 cFY
 cFY
@@ -669998,7 +669816,7 @@ cFY
 cFY
 cFY
 kca
-woQ
+yfp
 txC
 txC
 yfp
@@ -670011,12 +669829,12 @@ txC
 mQT
 yfp
 txC
-bKA
-kJf
-cBX
+asF
+yfp
+yfp
 pIa
-amv
-gst
+yfp
+yfp
 bkZ
 cFY
 cFY
@@ -670500,8 +670318,8 @@ cFY
 cFY
 cFY
 cFY
-xGx
-uvG
+yfp
+yei
 txC
 fEb
 txC
@@ -670517,8 +670335,8 @@ txC
 oFI
 txC
 eym
-xGx
-woQ
+yfp
+yfp
 cFY
 cFY
 cFY
@@ -671003,23 +670821,23 @@ cFY
 cFY
 cFY
 kca
-gst
-amv
-woQ
+yfp
+yfp
+yfp
 txC
 txC
-bKA
-cBX
-cBX
-cBX
-cBX
-aDK
+asF
+yfp
+yfp
+yfp
+yfp
+fqh
 txC
 txC
 txC
 txC
-waI
-gst
+jVd
+yfp
 bkZ
 cFY
 cFY
@@ -671506,8 +671324,8 @@ cFY
 cFY
 cFY
 kca
-gst
-woQ
+yfp
+yfp
 txC
 txC
 txC
@@ -671519,8 +671337,8 @@ txC
 txC
 txC
 tqW
-waI
-gst
+jVd
+yfp
 bkZ
 cFY
 cFY
@@ -672009,7 +671827,7 @@ cFY
 cFY
 cFY
 kca
-woQ
+yfp
 txC
 txC
 pQJ
@@ -672021,7 +671839,7 @@ txC
 txC
 txC
 bMo
-xGx
+yfp
 bkZ
 cFY
 cFY
@@ -672510,21 +672328,21 @@ cFY
 cFY
 cFY
 cFY
-ueE
-kJf
+aci
+yfp
 hMK
-amv
-cBX
-cBX
+yfp
+yfp
+yfp
 bHn
 hdM
 bHn
-cBX
-cBX
-amv
+yfp
+yfp
+yfp
 hMK
-kJf
-hSC
+yfp
+waI
 cFY
 cFY
 cFY
@@ -673011,8 +672829,8 @@ cFY
 cFY
 cFY
 cFY
-ueE
-aDK
+aci
+hHj
 pUJ
 ono
 yfp
@@ -673026,8 +672844,8 @@ mPJ
 yfp
 ono
 ono
-bKA
-hSC
+ejn
+waI
 cFY
 cFY
 cFY
@@ -673512,25 +673330,25 @@ cFY
 cFY
 cFY
 cFY
-ueE
-aDK
+aci
+hHj
 ono
 ono
-waI
-gst
-uvG
+plo
+yfp
+yei
 txC
 txC
 txC
 txC
 txC
-waI
-gst
-uvG
+jVd
+yfp
+bqx
 ono
 lmx
-bKA
-hSC
+ejn
+waI
 cFY
 cFY
 cFY
@@ -674013,27 +673831,27 @@ cFY
 cFY
 cFY
 cFY
-ueE
-woQ
+aci
+yfp
 sDF
 sDF
 sDF
 yfp
 kca
-woQ
+yfp
 txC
 txC
 txC
 txC
 txC
-xGx
+yfp
 bkZ
 yfp
 sDF
 sDF
 sDF
-xGx
-hSC
+yfp
+waI
 cFY
 cFY
 cFY
@@ -674522,13 +674340,13 @@ gKw
 gKw
 odf
 cFY
-xGx
-uvG
+yfp
+yei
 txC
 txC
 txC
-waI
-woQ
+jVd
+yfp
 cFY
 tjq
 gKw
@@ -675025,11 +674843,11 @@ cFY
 cFY
 cFY
 kca
-gst
-uvG
+yfp
+yei
 txC
-waI
-gst
+jVd
+yfp
 bkZ
 cFY
 cFY
@@ -675528,9 +675346,9 @@ cFY
 cFY
 cFY
 kca
-gst
+yfp
 rIE
-gst
+yfp
 bkZ
 cFY
 cFY
@@ -676531,11 +676349,11 @@ cFY
 cFY
 cFY
 cFY
-ueE
-gst
+aci
+yfp
 rIE
-gst
-hSC
+yfp
+waI
 cFY
 cFY
 cFY
@@ -677033,11 +676851,11 @@ cFY
 cFY
 cFY
 cFY
-xGx
-aDK
+yfp
+fqh
 txC
-bKA
-woQ
+asF
+yfp
 cFY
 cFY
 cFY
@@ -681049,11 +680867,11 @@ cFY
 cFY
 cFY
 cFY
-xGx
-uvG
+yfp
+yei
 txC
-waI
-woQ
+jVd
+yfp
 cFY
 cFY
 cFY
@@ -681552,9 +681370,9 @@ cFY
 cFY
 cFY
 kca
-kJf
+yfp
 rIE
-kJf
+yfp
 bkZ
 cFY
 cFY
@@ -683560,11 +683378,11 @@ cFY
 cFY
 aPE
 cFY
-foE
-bmG
+amv
+ylE
 kDl
-bmG
-aci
+ylE
+mdR
 cFY
 cFY
 cFY
@@ -684062,11 +683880,11 @@ cFY
 cFY
 cFY
 cFY
-fhe
-tNq
+ylE
+tsi
 nsX
-sMM
-rTV
+mxO
+ylE
 cFY
 cFY
 cFY
@@ -688078,11 +687896,11 @@ cFY
 cFY
 cFY
 cFY
-fhe
-aMI
+ylE
+fia
 nsX
-mdR
-rTV
+pwV
+ylE
 cFY
 cFY
 cFY
@@ -688580,11 +688398,11 @@ cFY
 cFY
 cFY
 cFY
-mJH
-vQx
+sMM
+ylE
 kDl
-vQx
-bUj
+ylE
+tNq
 cFY
 cFY
 cFY
