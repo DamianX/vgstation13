@@ -122700,6 +122700,10 @@
 	icon_state = "blue"
 	},
 /area/research_outpost/entry)
+"hVr" = (
+/mob/living/simple_animal/hostile/retaliate/clown,
+/turf/space,
+/area)
 "ikQ" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -222791,7 +222795,7 @@ aaa
 aiK
 ajB
 aal
-aaa
+hVr
 aaa
 amy
 anf
