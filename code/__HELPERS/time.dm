@@ -4,7 +4,7 @@
 #define HOURS   * 36000
 
 #define TimeOfGame (get_game_time())
-#define TimeOfTick (world.tick_usage*0.01*world.tick_lag)
+//#define TimeOfTick (world.tick_usage*0.01*world.tick_lag)
 
 //#define REALTIMEOFDAY (world.timeofday + (MIDNIGHT_ROLLOVER * MIDNIGHT_ROLLOVER_CHECK))
 

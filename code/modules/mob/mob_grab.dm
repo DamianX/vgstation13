@@ -1,4 +1,3 @@
-#define UPGRADE_COOLDOWN	5
 #define UPGRADE_KILL_TIMER	100
 
 /obj/item/weapon/grab
@@ -140,12 +139,6 @@
 		return
 	if(state == GRAB_UPGRADING)
 		return
-	/* This is handled in mob/proc/ClickOn
-	if(assailant.next_move > world.time)
-		return
-	if(world.time < (last_upgrade + UPGRADE_COOLDOWN))
-		return
-	*/
 	if(!assailant.canmove || assailant.lying)
 		qdel(src)
 		return

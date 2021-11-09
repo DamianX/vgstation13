@@ -5,7 +5,7 @@
 */
 
 // What each index means:
-#define DNA_OFF_LOWERBOUND 1
+//#define DNA_OFF_LOWERBOUND 1
 #define DNA_OFF_UPPERBOUND 2
 #define DNA_ON_LOWERBOUND  3
 #define DNA_ON_UPPERBOUND  4

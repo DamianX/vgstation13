@@ -2,39 +2,6 @@
 /proc/error(msg)
 	world.log << "## ERROR: [msg]"
 
-/*
- * print a warning message to world.log
- */
-/* see setup.dm
-#define WARNING(MSG) to_chat(world, "##WARNING: [MSG] in [__FILE__] at line [__LINE__] src: [src] usr: [usr].")
-#define warning(msg) world.log << "## WARNING: [msg]"
-#define testing(msg) world.log << "## TESTING: [msg]"
-#define log_game(text) diary << html_decode("\[[time_stamp()]]GAME: [text]")
-
-#define log_vote(text) diary << html_decode("\[[time_stamp()]]VOTE: [text]")
-
-#define log_access(text) diary << html_decode("\[[time_stamp()]]ACCESS: [text]")
-
-#define log_say(text) diary << html_decode("\[[time_stamp()]]SAY: [text]")
-
-#define log_ooc(text) diary << html_decode("\[[time_stamp()]]OOC: [text]")
-
-#define log_whisper(text) diary << html_decode("\[[time_stamp()]]WHISPER: [text]")
-
-#define log_cultspeak(text) diary << html_decode("\[[time_stamp()]]CULT: [text]")
-
-#define log_narspeak(text) diary << html_decode("\[[time_stamp()]]NARSIE: [text]")
-
-#define log_emote(text) diary << html_decode("\[[time_stamp()]]EMOTE: [text]")
-
-#define log_attack(text) diaryofmeanpeople << html_decode("\[[time_stamp()]]ATTACK: [text]")
-
-#define log_adminsay(text) diary << html_decode("\[[time_stamp()]]ADMINSAY: [text]")
-
-#define log_adminwarn(text) diary << html_decode("\[[time_stamp()]]ADMINWARN: [text]")
-#define log_pda(text) diary << html_decode("\[[time_stamp()]]PDA: [text]")
-*/
-
 /proc/log_admin(raw_text)
 	var/text_to_log = "\[[time_stamp()]]ADMIN: [raw_text]"
 

@@ -1,17 +1,14 @@
-# define AREA_ERRNONE	0
 # define AREA_STATION	1
 # define AREA_SPACE		2
 # define AREA_SPECIAL	3
 # define AREA_BLUEPRINTS 4
 # define AREA_CONSTRUCT 5
 
-# define BORDER_ERROR   0
 # define BORDER_NONE    1 //add, and continue branching
 # define BORDER_BETWEEN 2 //nothing
 # define BORDER_2NDTILE 3 //add, but do not continue searching in this direction
 # define BORDER_SPACE   4 //reject room, space
 
-# define ROOM_ERR_LOLWAT    0
 # define ROOM_ERR_SPACE    -1
 # define ROOM_ERR_TOOLARGE -2
 

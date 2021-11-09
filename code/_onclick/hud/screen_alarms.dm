@@ -107,10 +107,6 @@ var/global/list/screen_alarms_locs = list(
 	return TRUE
 
 //Alarms defines
-#define FIRE_ALARM_SAFE 0
-#define FIRE_ALARM_FROSTBITE 1
-#define FIRE_ALARM_ON_FIRE 2
-
 #define TEMP_ALARM_SAFE 0
 #define TEMP_ALARM_COLD_WEAK -2
 #define TEMP_ALARM_COLD_MILD -3

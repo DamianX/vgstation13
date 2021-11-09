@@ -341,13 +341,8 @@
 			being_built.materials.addAmount(matID, get_resource_cost_w_coeff(part,matID)) //slap in what we built with - matching the cost
 		if(part.locked && research_flags &LOCKBOXES)
 			var/obj/item/weapon/storage/lockbox/L
-			//if(research_flags &TRUELOCKS)
 			L = new/obj/item/weapon/storage/lockbox/oneuse(src) //Make a lockbox
 			L.req_one_access = part.req_lock_access //we set the access from the design
-			/*
-			else
-				L = new /obj/item/weapon/storage/lockbox/unlockable(src) //Make an unlockable lockbox
-			*/
 			being_built.forceMove(L) //Put the thing in the lockbox
 			L.name += " ([being_built.name])"
 			being_built = L //Building the lockbox now, with the thing in it

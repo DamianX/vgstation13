@@ -5,4 +5,4 @@
 #define ZONE_BLOCKED 2
 #define BLOCKED 3
 
-#define ZONE_MIN_SIZE 6
+//#define ZONE_MIN_SIZE 6

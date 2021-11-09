@@ -39,7 +39,6 @@
 #define ui_monkey_back "WEST+5:[14*PIXEL_MULTIPLIER],SOUTH:[5*PIXEL_MULTIPLIER]"	//monkey
 
 //Lower right, persistant menu
-#define ui_dropbutton "EAST-4:[22*PIXEL_MULTIPLIER],SOUTH:[5*PIXEL_MULTIPLIER]"
 #define ui_drop_throw "EAST-1:[28*PIXEL_MULTIPLIER],SOUTH+1:[7*PIXEL_MULTIPLIER]"
 #define ui_pull_resist "EAST-2:[26*PIXEL_MULTIPLIER],SOUTH+1:[7*PIXEL_MULTIPLIER]"
 #define ui_kick_bite "EAST-3:[24*PIXEL_MULTIPLIER],SOUTH+1:[7*PIXEL_MULTIPLIER]"
@@ -112,25 +111,6 @@
 #define ui_ears "WEST+2:[10*PIXEL_MULTIPLIER],SOUTH+2:[9*PIXEL_MULTIPLIER]"
 
 #define ui_head "WEST+1:[8*PIXEL_MULTIPLIER],SOUTH+3:[11*PIXEL_MULTIPLIER]"
-
-//Intent small buttons
-#define ui_help_small "EAST+3:[8*PIXEL_MULTIPLIER],SOUTH:[1*PIXEL_MULTIPLIER]"
-#define ui_disarm_small "EAST+3:15,SOUTH:[18*PIXEL_MULTIPLIER]"
-#define ui_grab_small "EAST+3:[32*PIXEL_MULTIPLIER],SOUTH:[18*PIXEL_MULTIPLIER]"
-#define ui_harm_small "EAST+3:[39*PIXEL_MULTIPLIER],SOUTH:[1*PIXEL_MULTIPLIER]"
-
-//#define ui_swapbutton "6:-16,1:5" //Unused
-
-//#define ui_headset "SOUTH,8"
-#define ui_hand "CENTER-1:[14*PIXEL_MULTIPLIER],SOUTH:[5*PIXEL_MULTIPLIER]"
-#define ui_hstore1 "CENTER-2,CENTER-2"
-//#define ui_resist "EAST+1,SOUTH-1"
-#define ui_sleep "EAST+1, NORTH-13"
-#define ui_rest "EAST+1, NORTH-14"
-
-
-#define ui_iarrowleft "SOUTH-1,11"
-#define ui_iarrowright "SOUTH-1,13"
 
 // AI (Ported straight from /tg/)
 

@@ -5,6 +5,7 @@ var/datum/subsystem/component/SScomp
 	wait          = 0.5 SECONDS
 	flags         = SS_NO_INIT | SS_KEEP_TIMING
 	priority      = SS_PRIORITY_COMPONENT
+	init_order    = SS_INIT_COMPONENT
 	display_order = SS_DISPLAY_COMPONENT
 
 	var/list/currentrun

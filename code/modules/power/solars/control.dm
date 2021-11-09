@@ -249,3 +249,10 @@ Manual Tracking Direction:"}
 	track = rand(0,TRACK_AUTOMATIC)
 	trackdir = pick(TRACK_CW, TRACK_CCW)
 	set_trackrate(rand(0, 360))
+
+#undef TRACK_CW
+#undef TRACK_CCW
+
+#undef TRACK_OFF
+#undef TRACK_MANUAL
+#undef TRACK_AUTOMATIC

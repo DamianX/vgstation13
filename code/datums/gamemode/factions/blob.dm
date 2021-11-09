@@ -7,10 +7,6 @@
 #define STATION_WAS_NUKED 2
 #define BLOB_IS_DED 3
 
-#define CREW_VICTORY 0
-#define AI_VICTORY 1 // Station was nuked.
-#define BLOB_VICTORY 2
-
 // Must be between 1 and 3
 #define BLOB_DEFCON_1 1.3 // Free access for all, allow the crew to order cargo things using the arrivals shuttle.
 #define BLOB_DEFCON_2 1.2 // Borgs have a free reset, ERT can be summoned again

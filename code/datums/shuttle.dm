@@ -9,7 +9,7 @@
 
 //Whether the shuttle destroys stuff it collides with, or displaces it
 #define COLLISION_DESTROY 0
-#define COLLISION_DISPLACE 1 //this is same as COLLISION_DISPLACE as for now
+//#define COLLISION_DISPLACE 1 //this is same as COLLISION_DISPLACE as for now
 
 //One of these values is returned at initialize()
 #define INIT_SUCCESS	1 //everything is good

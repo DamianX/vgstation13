@@ -82,9 +82,6 @@ var/global/disable_vents     = 0
 #define MAX_HIGH_PRESSURE_DAMAGE 4	//This used to be 20... I got this much random rage for some retarded decision by polymorph?! Polymorph now lies in a pool of blood with a katana jammed in his spleen. ~Errorage --PS: The katana did less than 20 damage to him :(
 #define LOW_PRESSURE_DAMAGE 2 	//The amounb of damage someone takes when in a low pressure area (The pressure threshold is so low that it doesn't make sense to do any calculations, so it just applies this flat value).
 
-#define PRESSURE_SUIT_REDUCTION_COEFFICIENT 0.8 //This is how much (percentual) a suit with the flag STOPSPRESSUREDMG reduces pressure.
-#define PRESSURE_HEAD_REDUCTION_COEFFICIENT 0.4 //This is how much (percentual) a helmet/hat with the flag STOPSPRESSUREDMG reduces pressure.
-
 // Heat Conductivity - 1 is fully conductive, 0 is fully insulative.
 #define ARMOUR_HEAT_CONDUCTIVITY		0.4	//For armour
 #define INS_ARMOUR_HEAT_CONDUCTIVITY 	0.2	//For heat insulated suits like hardsuits or jumpers.
@@ -101,7 +98,6 @@ var/global/disable_vents     = 0
 #define HELMET_HEAT_CONDUCTIVITY		0.4 //For helmets
 #define INS_HELMET_HEAT_CONDUCTIVITY	0.2 //For heat insulated helmets
 
-#define GLOVES_HEAT_CONDUCTIVITY		0.4	//For normal gloves.
 #define INS_GLOVES_HEAT_CONDUCTIVITY	0.2	//For some heat insulated gloves (black and yellow.)
 
 #define SNOWGEAR_HEAT_CONDUCTIVITY 		0.2	// for now
@@ -112,13 +108,6 @@ var/global/disable_vents     = 0
 
 // Factor of how fast mob nutrition decreases
 #define HUNGER_FACTOR 0.15  // Please remember when editing this that it will also affect hypothermia.
-
-#define FIRE_MINIMUM_TEMPERATURE_TO_SPREAD	150+T0C
-#define FIRE_MINIMUM_TEMPERATURE_TO_EXIST	100+T0C
-#define FIRE_SPREAD_RADIOSITY_SCALE		0.85
-#define FIRE_CARBON_ENERGY_RELEASED	  500000 //Amount of heat released per mole of burnt carbon into the tile
-#define FIRE_PLASMA_ENERGY_RELEASED	 3000000 //Amount of heat released per mole of burnt plasma into the tile
-#define FIRE_GROWTH_RATE			40000 //For small fires
 
 //#define WATER_BOIL_TEMP 393
 
@@ -164,7 +153,7 @@ var/MAX_EXPLOSION_RANGE = 14
 #define SLOT_BACK 1024
 #define SLOT_POCKET 2048		//this is to allow items with a w_class of 3 or 4 to fit in pockets.
 #define SLOT_DENYPOCKET 4096	//this is to deny items with a w_class of 2 or 1 to fit in pockets.
-#define SLOT_TWOEARS 8192
+//#define SLOT_TWOEARS 8192
 #define SLOT_LEGS = 16384
 
 
@@ -209,7 +198,6 @@ var/MAX_EXPLOSION_RANGE = 14
 #define SILENTCONTAINER	65536 //reactions inside make no noise
 #define ATOM_INITIALIZED 131072 // initialize() was called
 
-#define ALL ~0
 #define NONE 0
 
 //These go in flow_flags but don't really have anything in particular to do with airflow. Bad name.
@@ -358,7 +346,7 @@ var/MAX_EXPLOSION_RANGE = 14
 #define MASKHEADHAIR		131072
 #define HIDEBEARDHAIR		BEARD
 #define HIDEHAIR			(HIDEHEADHAIR|HIDEBEARDHAIR)//98304
-#define	HIDESUITSTORAGE		LOWER_TORSO
+//#define	HIDESUITSTORAGE		LOWER_TORSO
 
 // bitflags for the percentual amount of protection a piece of clothing which covers the body part offers.
 // Used with human/proc/get_heat_protection() and human/proc/get_cold_protection() as well as calculate_affecting_pressure() now
@@ -383,25 +371,6 @@ var/MAX_EXPLOSION_RANGE = 14
 
 var/global/list/BODY_PARTS = list(HEAD,EYES,EARS,MOUTH,UPPER_TORSO,LOWER_TORSO,LEG_RIGHT,LEG_LEFT,FOOT_LEFT,FOOT_RIGHT,ARM_LEFT,ARM_RIGHT,HAND_LEFT,HAND_RIGHT)
 var/global/list/BODY_COVER_VALUE_LIST=list("[HEAD]" = COVER_PROTECTION_HEAD,"[EYES]" = COVER_PROTECTION_EYES,"[EARS]" = COVER_PROTECTION_EARS, "[MOUTH]" = COVER_PROTECTION_MOUTH, "[UPPER_TORSO]" = COVER_PROTECTION_UPPER_TORSO,"[LOWER_TORSO]" = COVER_PROTECTION_LOWER_TORSO,"[LEG_LEFT]" = COVER_PROTECTION_LEG_LEFT,"[LEG_RIGHT]" = COVER_PROTECTION_LEG_RIGHT,"[FOOT_LEFT]" = COVER_PROTECTION_FOOT_LEFT,"[FOOT_RIGHT]" = COVER_PROTECTION_FOOT_RIGHT,"[ARM_LEFT]" = COVER_PROTECTION_ARM_LEFT,"[ARM_RIGHT]" = COVER_PROTECTION_ARM_RIGHT,"[HAND_LEFT]" = COVER_PROTECTION_HAND_LEFT,"[HAND_RIGHT]" = COVER_PROTECTION_HAND_RIGHT)
-
-
-//bitflags for mutations
-	// Extra powers:
-#define SHADOW			(1<<10)	// shadow teleportation (create in/out portals anywhere) (25%)
-#define SCREAM			(1<<11)	// supersonic screaming (25%)
-#define EXPLOSIVE		(1<<12)	// exploding on-demand (15%)
-#define REGENERATION	(1<<13)	// superhuman regeneration (30%)
-#define REPROCESSOR		(1<<14)	// eat anything (50%)
-#define SHAPESHIFTING	(1<<15)	// take on the appearance of anything (40%)
-#define PHASING			(1<<16)	// ability to phase through walls (40%)
-#define SHIELD			(1<<17)	// shielding from all projectile attacks (30%)
-#define SHOCKWAVE		(1<<18)	// attack a nearby tile and cause a massive shockwave, knocking most people on their asses (25%)
-#define ELECTRICITY		(1<<19)	// ability to shoot electric attacks (15%)
-
-
-// String identifiers for associative list lookup
-
-// mob/var/list/mutations
 
 // Used in preferences.
 #define DISABILITY_FLAG_NEARSIGHTED 1
@@ -439,18 +408,6 @@ var/global/list/BODY_COVER_VALUE_LIST=list("[HEAD]" = COVER_PROTECTION_HEAD,"[EY
 #define M_STONE_SKIN	13  // hard skin
 #define M_THERMALS		14	//see mobs through walls
 
-//#define HEAL			12 	// (Not implemented) healing people with hands
-//#define SHADOW		13 	// (Not implemented) shadow teleportation (create in/out portals anywhere) (25%)
-//#define SCREAM		14 	// (Not implemented) supersonic screaming (25%)
-//#define EXPLOSIVE		15 	// (Not implemented) exploding on-demand (15%)
-//#define REGENERATION	16 	// (Not implemented) superhuman regeneration (30%)
-//#define REPROCESSOR	17 	// (Not implemented) eat anything (50%)
-//#define SHAPESHIFTING	18 	// (Not implemented) take on the appearance of anything (40%)
-//#define PHASING		19 	// (Not implemented) ability to phase through walls (40%)
-//#define SHIELD		20 	// (Not implemented) shielding from all projectile attacks (30%)
-//#define SHOCKWAVE		21 	// (Not implemented) attack a nearby tile and cause a massive shockwave, knocking most people on their asses (25%)
-//#define ELECTRICITY	22 	// (Not implemented) ability to shoot electric attacks (15%)
-
 //2spooky
 #define M_SKELETON 29
 
@@ -474,8 +431,6 @@ var/global/list/BODY_COVER_VALUE_LIST=list("[HEAD]" = COVER_PROTECTION_HEAD,"[EY
 #define M_SOBER         203		// Increased alcohol metabolism
 #define M_PSY_RESIST    204		// Block remoteview
 #define M_SUPER_FART    205		// Duh
-#define M_SMILE         206		// :)
-#define M_ELVIS         207		// You ain't nothin' but a hound dog.
 #define M_HORNS         208
 #define M_SWEDE			209
 #define M_CHAV			210
@@ -484,7 +439,6 @@ var/global/list/BODY_COVER_VALUE_LIST=list("[HEAD]" = COVER_PROTECTION_HEAD,"[EY
 #define M_LOUD		308		// CAUSES INTENSE YELLING
 #define M_WHISPER	309		// causes quiet whispering
 #define M_DIZZY		310		// Trippy.
-#define M_SANS		311		// IF YOU SEE THIS WHILST BROWSING CODE, YOU HAVE BEEN VISITED BY: THE FONT OF SHITPOSTING. GREAT LUCK AND WEALTH WILL COME TO YOU, BUT ONLY IF YOU SAY 'I love comic sans' IN YOUR PR.
 #define M_FARSIGHT	312		// Increases mob's view range by 2
 #define M_NOIR		313		// aww yis detective noir
 #define M_VEGAN		314
@@ -531,7 +485,6 @@ var/global/list/NOIRMATRIX = list(0.33,0.33,0.33,0,\
 // bitflags for machine stat variable
 #define BROKEN		1
 #define NOPOWER		2
-#define POWEROFF	4		// tbd
 #define MAINT		8			// under maintaince
 #define EMPED		16		// temporary broken by EMP pulse
 #define FORCEDISABLE 32 //forced to be off, such as by a random event
@@ -542,20 +495,6 @@ var/global/list/NOIRMATRIX = list(0.33,0.33,0.33,0,\
 #define BOLTS	4
 #define SHOCK	8
 #define SAFE	16
-
-#define ENGINE_EJECT_Z	3
-
-//metal, glass, rod stacks
-#define MAX_STACK_AMOUNT_METAL	50
-#define MAX_STACK_AMOUNT_GLASS	50
-#define MAX_STACK_AMOUNT_RODS	60
-
-#define GAS_O2 	(1 << 0)
-#define GAS_N2	(1 << 1)
-#define GAS_PL	(1 << 2)
-#define GAS_CO2	(1 << 3)
-#define GAS_N2O	(1 << 4)
-
 
 #define INV_SLOT_SIGHT "sight_slot"
 #define INV_SLOT_TOOL "tool_slot"
@@ -589,7 +528,6 @@ var/list/global_mutations = list() // list of hidden mutation things
 
 #define CUT 		"cut"
 #define BRUISE		"bruise"
-#define SLUR 		"slur"
 
 //intent flags yay
 #define I_HELP		"help"
@@ -720,10 +658,6 @@ SEE_PIXELS	256
 // Some mob defines below.
 #define AI_CAMERA_LUMINOSITY 5
 
-#define BORGMESON 1
-#define BORGTHERM 2
-#define BORGXRAY  4
-
 //some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 #define PROCESS_KILL 26	//Used to trigger removal from a processing list
 
@@ -816,7 +750,7 @@ SEE_PIXELS	256
 #define ORGAN_DESTROYED		64
 #define ORGAN_ROBOT			128
 #define ORGAN_SPLINTED		256
-#define SALVED				512
+//#define SALVED				512
 #define ORGAN_DEAD			1024
 #define ORGAN_MUTATED		2048
 #define ORGAN_PEG			4096 // ROB'S MAGICAL PEGLEGS v2
@@ -1004,9 +938,7 @@ var/default_colour_matrix = list(1,0,0,0,\
 //species chemical flags
 #define NO_DRINK 1
 #define NO_EAT 2
-#define NO_SPLASH 4
 #define NO_INJECT 8
-#define NO_CRYO 16
 
 
 // from bay station
@@ -1061,7 +993,7 @@ var/default_colour_matrix = list(1,0,0,0,\
 #define HAIRSTYLE_CANTRIP 1 // 5% chance of tripping your stupid ass if you're running.
 
 // equip_to_slot_if_possible flags
-#define EQUIP_FAILACTION_NOTHING 0
+//#define EQUIP_FAILACTION_NOTHING 0
 #define EQUIP_FAILACTION_DELETE 1
 #define EQUIP_FAILACTION_DROP 2
 
@@ -1085,12 +1017,6 @@ var/default_colour_matrix = list(1,0,0,0,\
 
 // canGhost(Read|Write) flags
 #define PERMIT_ALL 1
-
-// Bay fixed recursive_mob_check (so shit can hear things from inside a container)
-// Unfortunately, it created incredible amounts of lag.
-// Comment the following line if you want it anyway.
-#define USE_BROKEN_RECURSIVE_MOBCHECK
-
 
 //////////////////
 // RECYCLING SHIT
@@ -1125,7 +1051,6 @@ var/default_colour_matrix = list(1,0,0,0,\
 #define SNOWBALL_MINIMALTEMP 265	//about -10°C, the minimal temperature at which a thrown snowball can cool you down.
 #define SNOWBALL_TIMELIMIT 400	//in deciseconds, how long after being spawn does the snowball disappears if it hasn't been picked up
 
-#define SNOWSPREAD_MAXTEMP 296.15	//23°C, the maximal temperature (in Kelvin) at which cosmic snow will spread to adjacent tiles
 #define COSMICSNOW_MINIMALTEMP 233	//-40°C, the lowest temperature at which Cosmic snow will cool down its surroundings
 
 //the following defines refer to the number of cosmic snow tiles in the world.
@@ -1161,7 +1086,6 @@ var/default_colour_matrix = list(1,0,0,0,\
 //used in rdmachines, to define certain behaviours
 //bitflags are my waifu - Comic
 
-//NB TRUELOCKS should ONLY be used for machines that produce stuff that's not good in an emergency i.e. a gun fabricator. Be very careful with it
 #define CONSOLECONTROL		1	//does the console control it? can't be interacted if not linked
 #define HASOUTPUT			2	//does it have an output? - mainly for fabricators
 #define TAKESMATIN			4	//does it takes materials (sheets) - mainly for fabricators
@@ -1169,7 +1093,7 @@ var/default_colour_matrix = list(1,0,0,0,\
 #define HASMAT_OVER			16	//does it have overlays for when you load materials in? - mainly for fabricators
 #define ACCESS_EMAG			32	//does it lose all its access when smacked by an emag? incompatible with CONSOLECONTROl, for obvious reasons
 #define LOCKBOXES			64	//does it spawn a lockbox around a design which is said to be locked? - for fabricators
-#define TRUELOCKS			128 //does it make a truly locked lockbox? If not set, the lockboxes made are unlockable by any crew with an ID
+// 128 is free
 #define IGNORE_MATS			256 //does it ignore material requirements for designs? - warning, can be OP
 #define IGNORE_CHEMS		512 //does it ignore chemical requirements for designs? - also super OP
 #define FAB_RECYCLER		1024//does it recycle materials from items? used for autolathe checks
@@ -1178,12 +1102,6 @@ var/default_colour_matrix = list(1,0,0,0,\
 #define MECH_SCAN_FAIL		1 // Cannot be scanned at all.
 #define MECH_SCAN_ILLEGAL	2 // Can only be scanned by the antag scanner.
 #define MECH_SCAN_ACCESS	4 // Can only be scanned with the access required for the machine
-
-
-// EMOTES!
-#define VISIBLE 1
-#define HEARABLE 2
-
 
 // /vg/ - Pipeline processing (enables exploding pipes and whatnot)
 // COMMENT OUT TO DISABLE
@@ -1338,29 +1256,8 @@ var/default_colour_matrix = list(1,0,0,0,\
 #warn "BSQL_DEBUG_CONNECTION MUST BE SET TO 0 BEFORE COMMITING."
 #endif
 
-//#define JUSTFUCKMYSHITUP 1
-#ifdef JUSTFUCKMYSHITUP
-#define writepanic(a) if(ticker && ticker.current_state >= 3 && world.cpu > 100) write_panic(a)
-#warn IMA FUCK YOUR SHIT UP
-var/proccalls = 1
-//keep a list of last 10 proccalls maybe?
-/proc/write_panic(a)
-	set background = 1
-	panicfile["[proccalls]"] << a
-	if(++proccalls > 200)
-		proccalls = 1
-
-#else
-	#define writepanic(a) null << a
-#endif
-
 //Default frequencies of signal based RC stuff, because comic and his magic numbers.
 #define FREQ_DISPOSAL 1367
-
-
-//Ore processing types for the ore processor
-#define ORE_PROCESSING_GENERAL 1
-#define ORE_PROCESSING_ALLOY 2
 
 //SOUND CHANNELS
 #define CHANNEL_WEATHER				1018
@@ -1491,8 +1388,6 @@ var/proccalls = 1
 #define STARVATION_TOX_DAMAGE 2.5
 #define STARVATION_BRAIN_DAMAGE 2.5
 
-#define STARVATION_OXY_HEAL_RATE 1 //While starving, THIS much oxygen damage is restored per life tick (instead of the default 5)
-
 // Disposals destinations.
 
 #define DISP_DISPOSALS      "Disposals"
@@ -1546,9 +1441,6 @@ var/proccalls = 1
 #define CANCER_STAGE_LARGE_TUMOR 600 //Cancer starts to have serious effects depending on what the affected limb is, generally obvious one, up to visible tumor growth. 15 minutes
 #define CANCER_STAGE_METASTASIS 1200 //Cancer has maximal effects, growing out of control in the organ, and can start "colonizing" other organs very quickly, dooming the patient. 30 minutes
 
-#define EVENT_OBJECT_INDEX "o"
-#define EVENT_PROC_INDEX "p"
-
 #define BOMBERMAN "bomberman"
 
 // /proc/is_honorable() flags.
@@ -1563,9 +1455,6 @@ var/proccalls = 1
 //Grasp indexes
 #define GRASP_RIGHT_HAND 1
 #define GRASP_LEFT_HAND 2
-
-#define GRASP_RIGHT_HAND_STR "1"
-#define GRASP_LEFT_HAND_STR "2"
 
 #define BLOB_CORE_PROPORTION 20
 
@@ -1602,9 +1491,9 @@ var/proccalls = 1
 #define HOLOMAP_MARKER_DISK				"diskspawn"
 #define HOLOMAP_MARKER_SKIPJACK			"skipjack"
 #define HOLOMAP_MARKER_SYNDISHUTTLE		"syndishuttle"
-#define HOLOMAP_MARKER_BLOODSTONE		"bloodstone"
-#define HOLOMAP_MARKER_BLOODSTONE_BROKEN	"bloodstone-broken"
-#define HOLOMAP_MARKER_BLOODSTONE_ANCHOR	"bloodstone-narsie"
+//#define HOLOMAP_MARKER_BLOODSTONE		"bloodstone"
+//#define HOLOMAP_MARKER_BLOODSTONE_BROKEN	"bloodstone-broken"
+//#define HOLOMAP_MARKER_BLOODSTONE_ANCHOR	"bloodstone-narsie"
 #define HOLOMAP_MARKER_CULT_ALTAR		"altar"
 #define HOLOMAP_MARKER_CULT_FORGE		"forge"
 #define HOLOMAP_MARKER_CULT_SPIRE		"spire"
@@ -1617,9 +1506,6 @@ var/proccalls = 1
 #define HOLOMAP_DRAW_EMPTY	2
 #define HOLOMAP_DRAW_PATH	3
 #define HOLOMAP_DRAW_HALLWAY	4
-
-#define HUMAN_DNA	1
-#define XENO_DNA	2
 
 // Buffer datatype flags.
 #define DNA2_BUF_UI 1
@@ -1659,7 +1545,6 @@ var/proccalls = 1
 #define BEESPECIES_NORMAL	"bee"
 #define BEESPECIES_VOX		"chill bug"
 #define BEESPECIES_HORNET	"hornet"
-#define BEESPECIES_BLOOD	"hell bug"
 
 //mob/proc/is_pacified()
 #define VIOLENCE_SILENT		0
@@ -1716,18 +1601,11 @@ var/proccalls = 1
 #define MUSHROOM_SHAPED "Mushroom"
 #define INSECT_SHAPED "Insectoid"
 
-#define FIRE_DAMAGE_MODIFIER 0.0215 //Higher values result in more external fire damage to the skin (default 0.0215)
-#define AIR_DAMAGE_MODIFIER 2.025 //More means less damage from hot air scalding lungs, less = more damage. (default 2.025)
-
 	//Don't set this very much higher then 1024 unless you like inviting people in to dos your server with message spam
 #define MAX_MESSAGE_LEN 1024
 #define MAX_PAPER_MESSAGE_LEN 3072
-#define MAX_BOOK_MESSAGE_LEN 9216
 #define MAX_NAME_LEN 52
 #define MAX_BROADCAST_LEN		512
-
-#define shuttle_time_in_station 1800 // 3 minutes in the station
-#define shuttle_time_to_arrive 6000 // 10 minutes to arrive
 
 // ECONOMY
 // Account default values

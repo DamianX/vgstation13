@@ -16,7 +16,6 @@
 	var/extinguishingProb = 15
 
 //Sound stuff
-//sound_change flags are CLOTHING_SOUND_SCREAM and CLOTHING_SOUND_COUGH
 //sound_priority are CLOTHING_SOUND_[level]_PRIORITY, replace [level] with LOW/MED/HIGH
 	var/list/sound_change //Clothing can change audible emotes, this will determine what is affected
 	var/sound_priority //The priority of the clothing when it comes to playing sounds, higher priority means it will always play first otherwise it will randomly pick

@@ -162,7 +162,6 @@
 #define AMANATIN 			"amanatin"
 #define PSILOCYBIN 			"psilocybin"
 #define SPRINKLES 			"sprinkles"
-#define SYNDICREAM 			"syndicream"
 #define CORNOIL 			"cornoil"
 #define ENZYME 			"enzyme"
 #define FLOUR 			"flour"
@@ -501,7 +500,6 @@
 #define TEMPERATURE_FLAME 700
 #define TEMPERATURE_WELDER 3480
 #define TEMPERATURE_PLASMA 4500
-#define TEMPERATURE_ETHANOL (T0C+1560)
 #define HEAT_TRANSFER_MULTIPLIER 7 //Multiplies the numbers above when heating a reagent container. A truly magical number.
 
 // By defining the effect multiplier this way, it'll exactly adjust
@@ -518,24 +516,24 @@ var/list/cheartstopper = list(/*"potassium_chloride",*/ CHEESYGLOOP) //this stop
 //Preferably have the synthetic (chemist-made) versions first, and alternatives after that. This helps with electrolyzing.
 
 #define ANTI_TOXINS list(ANTI_TOXIN, ALLICIN)
-#define KELOTANES list(KELOTANE, TANNIC_ACID)
+//#define KELOTANES list(KELOTANE, TANNIC_ACID)
 #define DERMALINES list(DERMALINE, KATHALAI)
 #define BICARIDINES list(BICARIDINE, OPIUM)
 #define SPACE_DRUGGS list(SPACE_DRUGS, MESCALINE)
 #define SYNAPTIZINES list(SYNAPTIZINE, CYTISINE)
 #define HYPERZINES list(HYPERZINE, COCAINE)
-#define IMIDAZOLINES list(IMIDAZOLINE, ZEAXANTHIN)
+//#define IMIDAZOLINES list(IMIDAZOLINE, ZEAXANTHIN)
 #define STOXINS list(STOXIN, STOXIN2, VALERENIC_ACID)
 #define SACIDS list(SACID, FORMIC_ACID)
 #define PACIDS list(PACID, PHENOL)
-#define NEUROTOXINS list(NEUROTOXIN, CURARE)
+//#define NEUROTOXINS list(NEUROTOXIN, CURARE)
 #define TOXINS list(TOXIN, SOLANINE)
 #define CRYPTOBIOLINS list(CRYPTOBIOLIN, PHYSOSTIGMINE)
-#define IMPEDREZENES list(IMPEDREZENE, HYOSCYAMINE)
+//#define IMPEDREZENES list(IMPEDREZENE, HYOSCYAMINE)
 #define LEXORINS list(LEXORIN, CORIAMYRTIN)
 #define DEXALINS list(DEXALIN, THYMOL)
 #define PETRITRICINCURES list(SACID, PACID, FORMIC_ACID, PACID, PHENOL, ACIDSPIT, ACIDTEA)
-#define WATERS list(WATER, HOLYWATER)
+//#define WATERS list(WATER, HOLYWATER)
 #define CORES list(SOFTCORES, MEDCORES)
 
 #define INCENSE_HAREBELLS	"harebells"

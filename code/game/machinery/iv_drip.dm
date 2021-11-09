@@ -1,5 +1,5 @@
 #define IVDRIP_INJECTING 1
-#define IVDRIP_DRAWING 0
+//#define IVDRIP_DRAWING 0
 
 /obj/machinery/iv_drip
 	name = "\improper IV drip"

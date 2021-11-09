@@ -1,5 +1,3 @@
-#define MAX_DESIGNS 10
-
 #define SCANMODE_NONE		0
 #define SCANMODE_MEDICAL	1
 #define SCANMODE_FORENSIC	2
@@ -19,8 +17,6 @@
 #define PDA_MODE_MEDBOTS 1002
 
 #define PDA_MINIMAP_WIDTH	256
-#define PDA_MINIMAP_OFFSET_X	8
-#define PDA_MINIMAP_OFFSET_Y	233
 
 //The advanced pea-green monochrome lcd of tomorrow.
 

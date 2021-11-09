@@ -7,7 +7,7 @@
 #define SUPERMATTER_DUST   1
 
 //Alpha
-#define TRANSPARENT 0
+//#define TRANSPARENT 0
 #define SEMI_TRANSPARENT 128
 #define OPAQUE 255
 

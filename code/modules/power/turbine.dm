@@ -54,7 +54,6 @@
 
 
 #define COMPFRICTION 5e5
-#define COMPSTARTERLOAD 2800
 
 /obj/machinery/compressor/process()
 	if(!starter)
@@ -93,6 +92,8 @@
 		overlays += image('icons/obj/pipes.dmi', "comp-o1", FLY_LAYER)
 	 //TODO: DEFERRED
 
+#undef COMPFRICTION
+
 /obj/machinery/power/turbine/New()
 	..()
 
@@ -105,7 +106,6 @@
 			stat |= BROKEN
 
 
-#define TURBPRES 9000000
 #define TURBGENQ 20000
 #define TURBGENG 0.8
 

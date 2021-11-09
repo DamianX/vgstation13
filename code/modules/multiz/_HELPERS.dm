@@ -2,9 +2,7 @@ var/global/list/visible_spaces = list(/turf/simulated/open, /turf/simulated/floo
 
 #define isvisiblespace(A) is_type_in_list(A, visible_spaces)
 #define OPENSPACE_PLANE_START -23
-#define OPENSPACE_PLANE_END -8
 #define OPENSPACE_PLANE -25
-#define OVER_OPENSPACE_PLANE -7
 
 /turf/proc/is_space()
 	return 0

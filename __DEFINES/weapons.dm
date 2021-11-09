@@ -18,8 +18,6 @@
 #define ROCKETGRENADE "rpg"
 #define GUIDEDROCKET "guided rocket"
 
-
-#define PULSE "pulse"
 #define GAUGE12 "12 gauge"
 #define GAUGEFLARE "flare"
 

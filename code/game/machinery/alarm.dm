@@ -19,7 +19,7 @@
 
 #define RCON_NO		1
 #define RCON_YES	2
-#define RCON_AUTO	3 //unused
+//#define RCON_AUTO	3 //unused
 
 //10,000 joules equates to about 17,000 Btu/h, which is roughly equivalent to a moderately-sized conventional AC unit
 //it's also conveniently 10 times what this used to be.

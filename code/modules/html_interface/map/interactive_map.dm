@@ -27,57 +27,6 @@ var/const/MAX_ICON_DIMENSION = 2000
 var/const/ICON_SIZE = 4
 var/const/ALLOW_CENTCOMM = FALSE
 
-/datum/interactive_map
-	var/list/interfaces
-	var/list/data
-/datum/interactive_map/New()
-	. = ..()
-	src.interfaces = list()
-	src.data = list()
-
-/datum/interactive_map/Destroy()
-	if (src.interfaces)
-		for (var/datum/html_interface/hi in interfaces)
-			qdel(hi)
-		src.interfaces = null
-
-	return ..()
-
-//Override this to show the user the interface
-/datum/interactive_map/proc/show(mob/mob, z)
-
-
-
-/datum/interactive_map/proc/updateFor(hclient_or_mob, datum/html_interface/hi, z)
-	// This check will succeed if updateFor is called after showing to the player, but will fail
-	// on regular updates. Since we only really need this once we don't care if it fails.
-	hi.callJavaScript("clearAll", new/list(), hclient_or_mob)
-	for (var/list/L in data)
-		hi.callJavaScript("add", L, hclient_or_mob)
-
-// Override this to update an interface
-/datum/interactive_map/proc/update(z, ignore_unused = FALSE)
-
-/datum/interactive_map/proc/hiIsValidClient(datum/html_interface_client/hclient, datum/html_interface/hi)
-	return (hclient.client.mob && hclient.client.mob.stat == CONSCIOUS)
-
-/datum/interactive_map/Topic(href, href_list[], datum/html_interface_client/hclient, datum/html_interface/currui)
-	..()
-	if (istype(hclient))
-		if(hclient && hclient.client && hclient.client.mob)
-			var/mob/living/L = hclient.client.mob
-			if(!istype(L))
-				return
-			switch (href_list["action"])
-				if("changez")
-					var/newz = text2num(href_list["value"])
-					if(newz)
-						show(L,newz,currui)
-						return 1 //Tell children we handled the topic
-
-// Override this to queue an interface to be updated
-/datum/interactive_map/proc/queueUpdate(z)
-
 /proc/generateMiniMaps()
 	set category = "Debug"
 	set name = "Generate minimaps"
@@ -100,7 +49,7 @@ var/const/ALLOW_CENTCOMM = FALSE
 
 	testing(fdel(last_git_hash_path))
 	text2file(current_git_hash, last_git_hash_path)
-	
+
 	testing("MINIMAP: All minimaps have been generated.")
 	minimapinit = 1
 	// some idiot put HTML asset sending here.  In a spawn.  After a long wait for minimap generation.

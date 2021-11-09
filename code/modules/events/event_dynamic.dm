@@ -33,7 +33,6 @@ var/list/event_last_fired = list()
 	// code\modules\Economy\Economy_Events_Mundane.dm
 	//Commented out for now. Let's be honest, a string of text on PDA is not worth a meteor shower or ion storm
 	//Will be re-implemented in the near future, its chance to proc will be independant from the other random events
-	//possibleEvents[/datum/event/news_event] = 100//
 	//possibleEvents[/datum/event/trivial_news] = 150//Gibson Gazette, taken from config/trivial.txt
 	//possibleEvents[/datum/event/mundane_news] = 100//Tau Ceti Daily
 

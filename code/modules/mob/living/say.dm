@@ -3,9 +3,6 @@
 #define REDUCE_RANGE 2
 #define NOPASS 4
 
-
-#define SAY_MINIMUM_PRESSURE 10
-
 /proc/message_mode_to_name(mode)
 	switch(mode)
 		if(MODE_WHISPER)

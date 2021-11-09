@@ -1,10 +1,6 @@
 #define MAX_PATHING_ATTEMPTS 15
-#define BEACON_TIMEOUT 15 // Process calls
 
 #define SEC_BOT 1 // Secutritrons (Beepsky) and ED-209s
-#define MULE_BOT 2 // MULEbots
-#define FLOOR_BOT 3 // Floorbots
-#define CLEAN_BOT 4 // Cleanbots
 #define MED_BOT 5 // Medibots
 
 #define BOT_OLDTARGET_FORGET_DEFAULT 100 //100*WaitMachinery

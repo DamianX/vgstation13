@@ -8,7 +8,6 @@
 #define ACT_BBCODE_IMG /datum/speech_filter_action/bbcode/img
 #define ACT_BBCODE_VIDEO /datum/speech_filter_action/bbcode/video
 #define ACT_BBCODE_YOUTUBE /datum/speech_filter_action/bbcode/youtube
-#define CHECK_NANO /obj/item/weapon/pen
 // MACROS
 #define REG_NOTBB "\[^\\\[\]+"    // [^\]]+
 

@@ -2,11 +2,8 @@
 // Used to smooth out costs to try and avoid oscillation.
 #define MC_AVERAGE_FAST(average, current) (0.7 * (average) + 0.3 * (current))
 #define MC_AVERAGE(average, current) (0.8 * (average) + 0.2 * (current))
-#define MC_AVERAGE_SLOW(average, current) (0.9 * (average) + 0.1 * (current))
+//#define MC_AVERAGE_SLOW(average, current) (0.9 * (average) + 0.1 * (current))
 #define NEW_SS_GLOBAL(varname) if(varname != src){if(istype(varname)){Recover();qdel(varname);}varname = src;}
-
-#define START_PROCESSING(Processor, Datum) if (!Datum.isprocessing) {Datum.isprocessing = 1;Processor.processing += Datum}
-#define STOP_PROCESSING(Processor, Datum) Datum.isprocessing = 0;Processor.processing -= Datum
 
 #define SS_READY(SS) (SS && SS.initialized) //Checks if the given subsystem is initialized, without the possibility of runtiming if it hasn't been created yet.
 
@@ -54,6 +51,3 @@
 #define SS_SLEEPING 4 // fire() slept.
 #define SS_PAUSING 5  // in the middle of pausing
 
-//Timing subsystem
-#define TIMER_NORMAL "normal"
-#define TIMER_UNIQUE "unique"

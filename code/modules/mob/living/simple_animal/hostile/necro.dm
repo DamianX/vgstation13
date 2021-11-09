@@ -159,12 +159,6 @@
 
 	environment_smash_flags = SMASH_LIGHT_STRUCTURES | SMASH_CONTAINERS
 	meat_type = null
-/*
-#define EVOLVING 1
-#define MOVING_TO_TARGET 2
-#define EATING 3
-#define OPENING_DOOR 4
-#define SMASHING_LIGHT 5*/
 
 #define MAX_EAT_MULTIPLIER 4 //Dead for humans is -maxHealth, uncloneable is -maxHealth * 2
 

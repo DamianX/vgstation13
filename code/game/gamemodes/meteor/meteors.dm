@@ -1,5 +1,3 @@
-#define METEOR_TEMPERATURE
-
 /var/meteor_wave_delay = 300 //Default wait between waves in tenths of seconds
 /var/meteors_in_wave = 10 //Default absolute size
 /var/meteor_wave_active = 0

@@ -31,7 +31,7 @@
 	species_fit = list(VOX_SHAPED, INSECT_SHAPED)
 	blood_overlay_type = "armor"
 	clothing_flags = ONESIZEFITSALL
-	sound_change = list(CLOTHING_SOUND_SCREAM)
+	sound_change = list("scream")
 	sound_priority = CLOTHING_SOUND_MED_PRIORITY
 	sound_file = list('sound/misc/deusex_1.ogg','sound/misc/deusex_2.ogg','sound/misc/deusex_3.ogg')
 	sound_species_whitelist = list("Human")

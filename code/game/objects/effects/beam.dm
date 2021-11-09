@@ -16,7 +16,6 @@
 
 #define BEAM_MAX_STEPS 50 // Or whatever
 
-#define BEAM_DEL(x) del(x)
 #ifdef BEAM_DEBUG
 # warn SOME ASSHOLE FORGOT TO COMMENT BEAM_DEBUG BEFORE COMMITTING
 # define beam_testing(x) to_chat(world, "(Line: [__LINE__]) [x]")
@@ -186,7 +185,6 @@
 	OB.connect_to(AM)
 	OB.update_icon()
 	qdel(src)
-	//BEAM_DEL(src)
 
 
 /obj/effect/beam/proc/get_master()
@@ -259,7 +257,6 @@
 /obj/effect/beam/proc/killKids()
 	for(var/obj/effect/beam/child in children)
 		if(child)
-			//BEAM_DEL(child)
 			children -= child
 			child._re_emit = 0
 			qdel(child)
@@ -273,8 +270,6 @@
 			_master.target.unregister_event(/event/destroyed, src, .proc/target_destroyed)
 		_master.target.beam_disconnect(_master)
 		_master.target=null
-		//if(_master.next)
-		//	BEAM_DEL(_master.next)
 		if(re_emit)
 			_master.emit(sources)
 		_master.update_icon()
@@ -329,14 +324,12 @@
 		return
 
 	if(!loc)
-		//BEAM_DEL(src)
 		beam_testing("\ref[src] no loc")
 		src._re_emit = 0
 		qdel(src)
 		return
 
 	if((x == 1 || x == world.maxx || y == 1 || y == world.maxy))
-		//BEAM_DEL(src)
 		beam_testing("\ref[src] end of world")
 		src._re_emit = 0
 		qdel(src)
@@ -366,7 +359,6 @@
 		setDensity(FALSE)
 		if(bumped)
 			beam_testing("\ref[src] Bumped")
-			//BEAM_DEL(src)
 			src._re_emit = 0
 			qdel(src)
 			return
@@ -375,7 +367,6 @@
 
 		if(_range-- < 1)
 			beam_testing("\ref[src] ran out")
-			//BEAM_DEL(src)
 			src._re_emit = 0
 			qdel(src)
 			return
@@ -480,7 +471,6 @@
 
 		killKids()
 	if(next)
-		//BEAM_DEL(next)
 		next._re_emit = 0
 		qdel(next)
 		next=null

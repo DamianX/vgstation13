@@ -16,7 +16,7 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 
 // Returns y so that y/x = a/b.
 #define RULE_OF_THREE(a, b, x) ((a*x)/b)
-#define tan(x) (sin(x)/cos(x))
+//#define tan(x) (sin(x)/cos(x))
 
 /proc/Atan2(x, y)
 	if (!x && !y)

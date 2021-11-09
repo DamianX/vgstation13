@@ -1,5 +1,4 @@
 // Script -> BYOND code procs
-#define SCRIPT_MAX_REPLACEMENTS_ALLOWED 200
 // --- List operations (lists known as vectors in n_script) ---
 
 // Clone of list()

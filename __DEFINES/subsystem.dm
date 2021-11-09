@@ -2,8 +2,6 @@
 // All in one file so it's easier to see what everything is relative to.
 
 #define SS_INIT_TICKER_SPAWN       999
-#define SS_INIT_DBCORE			   900
-#define SS_INIT_SSdbcore	       800
 #define SS_INIT_RUST               26
 #define SS_INIT_PLANT              25.5
 #define SS_INIT_SUPPLY_SHUTTLE     25

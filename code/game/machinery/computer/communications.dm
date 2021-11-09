@@ -14,36 +14,9 @@
 #define ENGINEERING_SUPPLIES_DEFCON "engineering"
 #define WEAPONS_SUPPLIES_DEFCON "weapons"
 
-var/shuttle_call/shuttle_calls[0]
 var/global/ports_open = TRUE
 
-#define SHUTTLE_RECALL  -1
-#define SHUTTLE_CALL     1
-#define SHUTTLE_TRANSFER 2
-
 var/list/shuttle_log = list()
-
-/shuttle_call
-	var/direction=0
-	var/who=""
-	var/ckey=""
-	var/turf/from=null
-	var/where=""
-	var/when
-	var/eta=null
-
-/shuttle_call/New(var/mob/user,var/obj/machinery/computer/communications/computer,var/dir)
-	direction=dir
-	if(user)
-		who="[user]"
-		ckey="[user.key]"
-	if(computer)
-		where="[computer]"
-		from=get_turf(computer)
-	when=worldtime2text()
-	if(dir==SHUTTLE_RECALL)
-		var/timeleft=emergency_shuttle.timeleft()
-		eta="[timeleft / 60 % 60]:[add_zero(num2text(timeleft % 60), 2)]"
 
 // The communications computer
 /obj/machinery/computer/communications

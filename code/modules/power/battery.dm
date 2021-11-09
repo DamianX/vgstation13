@@ -1,10 +1,5 @@
 // Generic battery machine
 // stores power
-
-#define SMESLEVELCHARGE		1
-#define SMESLEVELCHARGING	2
-#define SMESLEVELONLINE		3
-
 #define BATTERY_NO_CHARGE		0
 #define BATTERY_MANUAL_CHARGE	1
 #define BATTERY_AUTO_CHARGE		2

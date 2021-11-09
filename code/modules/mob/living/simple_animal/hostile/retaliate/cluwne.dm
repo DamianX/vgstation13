@@ -1,7 +1,3 @@
-#define CLOWN_STANCE_IDLE 1
-#define CLOWN_STANCE_ATTACK 2
-#define CLOWN_STANCE_ATTACKING 3
-
 // <3 goons.  I don't love your forums pricey admittance fee, but I love you.
 /mob/living/simple_animal/hostile/retaliate/cluwne
 	name = "cluwne"

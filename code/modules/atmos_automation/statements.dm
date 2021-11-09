@@ -2,7 +2,6 @@ var/global/automation_types=typesof(/datum/automation) - /datum/automation
 
 #define AUTOM_RT_NULL    0
 #define AUTOM_RT_NUM     1
-#define AUTOM_RT_STRING  2
 
 /datum/automation
 	// Name of the Automation

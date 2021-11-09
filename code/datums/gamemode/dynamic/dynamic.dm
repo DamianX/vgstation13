@@ -13,8 +13,6 @@ var/dynamic_forced_extended = 0 // No rulesets will be drated, ever
 
 var/stacking_limit = 90
 
-#define BASE_SOLO_REFUND 10
-
 /datum/gamemode/dynamic
 	name = "Dynamic Mode"
 

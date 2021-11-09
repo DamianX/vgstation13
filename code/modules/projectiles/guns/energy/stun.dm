@@ -176,7 +176,7 @@
 	return ..()
 
 #define SPEEDMODE 0
-#define SCATTERMODE 1
+//#define SCATTERMODE 1
 /obj/item/weapon/gun/energy/shotgun
 	name = "energy shotgun"
 	desc = "An experimental energy shotgun from Alcatraz IV. It has two modes that fire experimental stun electrodes codenamed HUNTER and SWEEPER."
@@ -232,7 +232,7 @@
 			projectile_type = "/obj/item/projectile/energy/electrode/fast"
 		else
 			projectile_type = "/obj/item/projectile/energy/electrode/scatter"
-			
+
 /obj/item/weapon/gun/energy/shotgun/update_icon()
 	..()
 	if(pumped)
@@ -244,3 +244,5 @@
 			if(ol.icon_state == "eshotgun-pumped")
 				overlays -= ol
 				gun_part_overlays -= ol
+
+#undef SPEEDMODE

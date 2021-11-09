@@ -71,10 +71,10 @@
 
 //Spell aspect flags
 #define SPELL_FIRE 1 //Fire based spells
-#define SPELL_WATER 2 //Water/liquid based spells
-#define SPELL_AIR 4 //Air based spells
-#define SPELL_GROUND 8 //Earthen based spells
-#define SPELL_NECROTIC 16 //Necromantic spells
+//#define SPELL_WATER 2 //Water/liquid based spells
+//#define SPELL_AIR 4 //Air based spells
+//#define SPELL_GROUND 8 //Earthen based spells
+//#define SPELL_NECROTIC 16 //Necromantic spells
 
 //Spell specializations, used for spellbook lists
 #define SPELL_SPECIALIZATION_OFFENSIVE 1

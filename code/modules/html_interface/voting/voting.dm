@@ -1,9 +1,6 @@
 var/global/datum/controller/vote/vote = new()
 #define vote_head "<script type=\"text/javascript\" src=\"3-jquery.timers.js\"></script><script type=\"text/javascript\" src=\"libraries.min.js\"></script><link rel=\"stylesheet\" type=\"text/css\" href=\"html_interface_icons.css\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"voting.css\" /><script type=\"text/javascript\" src=\"voting.js\"></script>"
 
-#define VOTE_SCREEN_WIDTH 400
-#define VOTE_SCREEN_HEIGHT 400
-
 /datum/html_interface/nanotrasen/vote/registerResources()
 	. = ..()
 

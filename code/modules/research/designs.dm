@@ -47,7 +47,7 @@ The required techs are the following:
 #define	IMPRINTER	1	//For circuits. Uses glass/chemicals.
 #define PROTOLATHE	2	//New stuff. Uses glass/metal/chemicals
 #define	AUTOLATHE	4	//Uses glass/metal only.
-#define CRAFTLATHE	8	//Uses fuck if I know. For use eventually.
+//#define CRAFTLATHE	8	//Uses fuck if I know. For use eventually.
 #define MECHFAB		16  //Remember, objects built under fabricators need DESIGNS
 #define PODFAB		32  //Used by the spacepod part fabricator. Same idea as the mechfab
 #define FLATPACKER	64  //This design creates a machine, not an item.

@@ -1,11 +1,4 @@
 #define MINIMUM_HEAT_CAPACITY	0.0003
-#define TRANSFER_FRACTION 5 //What fraction (1/#) of the air difference to try and transfer
-
-// /vg/ SHIT
-#define TEMPERATURE_ICE_FORMATION 273.15 // 273 kelvin is the freezing point of water.
-#define MIN_PRESSURE_ICE_FORMATION 10    // 10kPa should be okay
-// END /vg/SHIT
-
 /datum/gas_mixture
 	//Associative list of gas moles.
 	//Gases with 0 moles are not tracked and are pruned by update_values()

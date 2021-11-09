@@ -94,7 +94,6 @@ Why is FLOAT_PLANE added to a bunch of these?
 	#define SIDE_LAYER					3
 
 #define TURF_PLANE				(-1 + FLOAT_PLANE)
-	#define MAPPING_TURF_LAYER			-999
 
 #define GLASSTILE_PLANE			-1						// Another one that won't behave, since it's an overlay
 
@@ -103,7 +102,6 @@ Why is FLOAT_PLANE added to a bunch of these?
 	#define HOLOMAP_LAYER				1 //Note: Holomap images are not actually on ABOVE_TURF_PLANE. They are explicitly one plane above the parent turf.
 	#define RUNE_LAYER					2
 	#define DECAL_LAYER					3
-	#define SNOWPRINT_LAYER				4
 	#define TURF_FIRE_LAYER				5
 	#define ABOVE_TILE_LAYER			6
 	#define UNARY_PIPE_LAYER			7
@@ -111,7 +109,6 @@ Why is FLOAT_PLANE added to a bunch of these?
 	#define BINARY_PIPE_LAYER			9
 	#define EXPOSED_PIPE_LAYER			10
 	#define EXPOSED_UNARY_PIPE_LAYER	11
-	#define EXPOSED_TRINARY_PIPE_LAYER	12
 	#define EXPOSED_BINARY_PIPE_LAYER	13
 	#define SNOW_LAYER					14
 	#define MOUSETRAP_LAYER 			15
@@ -173,8 +170,6 @@ Why is FLOAT_PLANE added to a bunch of these?
 	#define CHAT_LAYER					6
 
 #define BLOB_PLANE 				(10 + FLOAT_PLANE)			// For Blobs, which are above humans.
-
-	#define BLOB_ROOTS_LAYER			-1
 	#define BLOB_BASE_LAYER				0
 	#define BLOB_SHIELD_LAYER			1
 	#define BLOB_RESOURCE_LAYER			2

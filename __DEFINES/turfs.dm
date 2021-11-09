@@ -1,4 +1,4 @@
-#define TURF_DRY 0
+//#define TURF_DRY 0
 #define TURF_WET_WATER 1
 #define TURF_WET_LUBE 2
 #define TURF_WET_ICE 3
@@ -12,6 +12,5 @@
 #define MINE_DIFFICULTY_NORM 1
 #define MINE_DIFFICULTY_TOUGH 3
 #define MINE_DIFFICULTY_DENSE 5
-#define MINE_DIFFICULTY_GLHF 9
 
 #define MINE_DURATION 100

@@ -4997,27 +4997,6 @@
 			H.heal_organ_damage(1, 1)
 			H.nutrition += REM * nutriment_factor //Double nutrition
 
-/*
-//Removed because of meta bullshit. this is why we can't have nice things.
-/datum/reagent/syndicream
-	name = "Cream filling"
-	id = SYNDICREAM
-	description = "Delicious cream filling of a mysterious origin. Tastes criminally good."
-	nutriment_factor = FOOD_METABOLISM
-	color = "#AB7878" //RGB: 171, 120, 120
-	custom_metabolism = FOOD_METABOLISM
-
-/datum/reagent/syndicream/on_mob_life(var/mob/living/M)
-	if(..())
-		return 1
-	M.nutrition += REM * nutriment_factor
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.mind && H.mind.special_role)
-			H.heal_organ_damage(1, 1)
-			H.nutrition += REM * nutriment_factor
-*/
-
 /datum/reagent/cornoil
 	name = "Corn Oil"
 	id = CORNOIL

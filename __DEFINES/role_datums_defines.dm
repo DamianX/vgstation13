@@ -180,7 +180,6 @@
 
 #define	MAX_TALISMAN_PER_TOME	5
 
-#define SACRIFICE_CHANGE_COOLDOWN	30 MINUTES
 #define DEATH_SHADEOUT_TIMER	60 SECONDS
 
 #define CONVERSION_REFUSE	-1
@@ -218,11 +217,6 @@
 #define CULT_SUMMON 		2 // Summon objective
 #define CULT_FINALE			3 // Nar-Sie cometh
 
-#define BE_TRAITOR "Be_Traitor"
-#define BE_PAI "Be_PAI"
-#define BE_NINJA "Be_Ninja"
-
-
 #define FROM_GHOSTS 1
 #define FROM_PLAYERS 2
 
@@ -237,8 +231,6 @@
 
 #define PROB_PROTECTED_REGULAR 50
 #define PROB_PROTECTED_RARE    80
-
-#define FACTION_FAILURE -1
 
 // -- The paper
 

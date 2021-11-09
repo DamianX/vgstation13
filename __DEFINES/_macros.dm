@@ -30,11 +30,7 @@
 
 #define iscatbeast(A) (ishuman(A) && istype(A:species, /datum/species/tajaran))
 
-#define isunathi(A) (ishuman(A) && istype(A:species, /datum/species/unathi))
-
 #define isskrell(A) (ishuman(A) && istype(A:species, /datum/species/skrell))
-
-#define ismuton(A) (ishuman(A) && istype(A:species, /datum/species/muton))
 
 #define isgolem(A) (ishuman(A) && istype(A:species, /datum/species/golem))
 
@@ -48,10 +44,6 @@
 
 #define islich(A)  (ishuman(A) && istype(A:species, /datum/species/lich))
 
-#define istruelich(A) ((islich(A) && (iswizard(A) || iswearinglichcrown(A))
-
-#define iswearinglichcrown(A) (ishuman(A) && (istype(A:head, /obj/item/clothing/head/wizard/skelelich)) //|| istype(A:head, /obj/item/clothing
-
 #define ishologram(A) (istype(A, /mob/living/simple_animal/hologram/advanced))
 
 #define isbrain(A) istype(A, /mob/living/carbon/brain)
@@ -60,9 +52,9 @@
 
 #define isalienadult(A) istype(A, /mob/living/carbon/alien/humanoid)
 
-#define isalienqueen(A)	istype(A, /mob/living/carbon/alien/humanoid/queen)
+//#define isalienqueen(A)	istype(A, /mob/living/carbon/alien/humanoid/queen)
 
-#define isaliendrone(A)	istype(A, /mob/living/carbon/alien/humanoid/drone)
+//#define isaliendrone(A)	istype(A, /mob/living/carbon/alien/humanoid/drone)
 
 #define islarva(A) istype(A, /mob/living/carbon/alien/larva)
 
@@ -82,23 +74,13 @@
 
 #define iscorgi(A) istype(A, /mob/living/simple_animal/corgi)
 
-#define iscrab(A) istype(A, /mob/living/simple_animal/crab)
-
 #define iscat(A) istype(A, /mob/living/simple_animal/cat)
 
 #define ismouse(A) istype(A, /mob/living/simple_animal/mouse)
 
-#define isbear(A) istype(A, /mob/living/simple_animal/hostile/bear)
-
-#define iscarp(A) istype(A, /mob/living/simple_animal/hostile/carp)
-
 #define isspider(A) istype(A, /mob/living/simple_animal/hostile/giant_spider)
 
-#define isclown(A) istype(A, /mob/living/simple_animal/hostile/retaliate/clown)
-
 #define iscluwne(A) istype(A, /mob/living/simple_animal/hostile/retaliate/cluwne)
-
-#define isclowngoblin(A) istype(A, /mob/living/simple_animal/hostile/retaliate/cluwne/goblin)
 
 #define isAI(A) istype(A, /mob/living/silicon/ai)
 
@@ -172,10 +154,6 @@
 
 #define issolder(A) istype(A, /obj/item/tool/solder)
 
-#define issocketwrench(A) istype(A, /obj/item/tool/wrench/socket)
-
-#define isswitchtool(A) istype(A, /obj/item/weapon/switchtool)
-
 #define isglasssheet(A) istype(A, /obj/item/stack/sheet/glass)
 
 #define iscamera(A) istype(A, /obj/machinery/camera)
@@ -199,8 +177,6 @@
 #define isholyweapon(I) (istype(I, /obj/item/weapon/nullrod) || istype(I, /obj/item/weapon/gun/hookshot/whip/vampkiller))
 
 #define isholyprotection(I) (istype(I, /obj/item/weapon/nullrod))
-
-#define isAPC(A) istype(A, /obj/machinery/power/apc)
 
 #define isimage(A) (istype(A, /image))
 
@@ -249,8 +225,6 @@
 #define format_examine(A,B) "<span class = 'info'><a HREF='?src=\ref[user];lookitem=\ref[A]'>[B].</a></span>"
 
 //Macros for roles/antags
-#define isfaction(A) (istype(A, /datum/faction))
-
 #define isrole(type, H) (H.mind && H.mind.GetRole(type))
 
 #define isanyantag(H) (H.mind && H.mind.antag_roles.len)
@@ -262,8 +236,6 @@
 #define isthrall(H) (H.mind ? H.mind.GetRole(THRALL) : FALSE)
 
 #define iscultist(H) (H.mind ? H.mind.GetRole(CULTIST) : FALSE)
-
-#define isstreamer(H) (H.mind && H.mind.GetRole(STREAMER))
 
 #define isvoxraider(H) (H.mind && H.mind.GetRole(VOXRAIDER))
 
@@ -297,8 +269,6 @@
 
 #define isbadmonkey(H) ((/datum/disease/jungle_fever in H.viruses) || (H.mind && H.mind.GetRole(MADMONKEY)))
 
-#define isdeathsquad(H) (H.mind && H.mind.GetRole(DEATHSQUADIE))
-
 #define isbomberman(H) (H.mind && H.mind.GetRole(BOMBERMAN))
 
 #define ishighlander(H) (H.mind && H.mind.GetRole(HIGHLANDER))
@@ -318,8 +288,6 @@
 #define istimeagent(H) (H.mind && (H.mind.GetRole(TIMEAGENT) || (H.mind.GetRole(TIMEAGENTTWIN))))
 
 #define isERT(H) (H.mind && H.mind.GetRole(RESPONDER))
-
-#define isclownling(H) (H.mind && H.mind.GetRole(CLOWN_LING))
 
 #define istagmime(H) (H.mind && H.mind.GetRole(TAG_MIME))
 
@@ -370,10 +338,6 @@
 
 #define CLAMP01(x) 		(clamp(x, 0, 1))
 
-//CPU lag shit
-#define calculateticks(x)	x * world.tick_lag // Converts your ticks to proper tenths.
-#define tcheck(CPU,TOSLEEP)	if(world.cpu > CPU) sleep(calculateticks(TOSLEEP)) //Shorthand of checking and then sleeping a process based on world CPU
-
 #define FOR_DVIEW(type, range, center, invis_flags) \
 	dview_mob.loc = center;           \
 	dview_mob.see_invisible = invis_flags; \
@@ -398,18 +362,13 @@
 
 #define subtypesof(A) (typesof(A) - A)
 
-#define LIBVG(function, arguments...) call("./libvg.[world.system_type == UNIX ? "so" : "dll"]", function)(arguments)
-
-// For areas that are on the map, `x` is the coordinate of the turf with the lowest z, y, and x coordinate (in that order) that is contained by the area.
-#define is_area_in_map(A) (A.x)
-
 #define SNOW_THEME (map.snow_theme || Holiday == XMAS || Holiday == XMAS_EVE)
 
 #define get_conductivity(A) (A ? A.siemens_coefficient : 1)
 
 //Swaps the contents of the variables A and B. The if(TRUE) is there simply to restrict the scope of _.
 //Yes, _ is a shitty variable name. Hopefully so shitty it won't ever be used anywhere it could conflict with this.
-#define swap_vars(A, B) if(TRUE){var/_ = A; A = B; B = _}
+//#define swap_vars(A, B) if(TRUE){var/_ = A; A = B; B = _}
 
 // To prevent situations of trying to take funds that are factions of our lowest denomination
 #define LOWEST_DENOMINATION 1

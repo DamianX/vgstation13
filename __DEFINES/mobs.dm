@@ -16,11 +16,6 @@
 #define MOB_NO_PETRIFY 64 //can't get petrified
 #define MOB_NO_LAZ 128 //Can not be revived via lazarus injector
 
-#define BACKPACK 2
-#define SATCHEL_NORM 3
-#define SATCHEL_ALT 4
-#define MESSENGER_BAG 5
-
 #define BACKPACK_STRING "2"
 #define SATCHEL_NORM_STRING "3"
 #define SATCHEL_ALT_STRING "4"
@@ -28,19 +23,19 @@
 
 #define SHOW_HELD_ITEM_AND_POINTING_DELAY 0.7 SECONDS
 
-#define VOXGREEN 1
+//#define VOXGREEN 1
 #define VOXBROWN 2
 #define VOXGRAY 3
 #define VOXLGREEN 4
 #define VOXAZURE 5
 #define VOXEMERALD 6
 
-#define GREYGRAY 1
+//#define GREYGRAY 1
 #define GREYLIGHT 2
 #define GREYGREEN 3
 #define GREYBLUE 4
 
-#define CATBEASTBROWN 1
+//#define CATBEASTBROWN 1
 #define CATBEASTBLACK 2
 
 #define CONFUSED_MAGIC 1
