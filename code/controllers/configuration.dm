@@ -209,6 +209,16 @@
 	// Dynamic Mode
 	var/high_population_override = 1//If 1, what rulesets can or cannot be called depend on the threat level only
 
+	// begin Metrics
+
+	var/enable_metrics = FALSE
+	/// String: Endpoint to send metrics to, including protocol.
+	var/metrics_endpoint
+	/// String: Endpoint authorisation API key.
+	var/metrics_api_token
+
+	// end Metrics
+
 /datum/configuration/New()
 	. = ..()
 	var/list/L = subtypesof(/datum/gamemode)-/datum/gamemode/cult
@@ -636,9 +646,14 @@
 					discord_password = value
 				if("weighted_votes")
 					weighted_votes = TRUE
-
 				if ("kill_phrase")
 					kill_phrase = value
+				if ("enable_metrics")
+					enable_metrics = TRUE
+				if ("metrics_endpoint")
+					metrics_endpoint = value
+				if ("metrics_api_token")
+					metrics_api_token = value
 
 				else
 					diary << "Unknown setting in configuration: '[name]'"

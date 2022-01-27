@@ -52,6 +52,13 @@ List of hard deletions:"}
 		"hd_list" = ghdel_profiling))
 	..()
 
+/datum/subsystem/garbage/metrics()
+	return ..() + list(
+		"dels_count" = dels_count,
+		"hard_dels" = hard_dels,
+		"queue" = length(queue)
+	)
+
 /datum/subsystem/garbage/stat_entry()
 	var/msg = ""
 	msg += "Q:[queue.len]|TD:[dels_count]|SD:[soft_dels]|HD:[hard_dels]"

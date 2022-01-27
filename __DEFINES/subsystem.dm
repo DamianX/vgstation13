@@ -20,6 +20,8 @@
 #define SS_INIT_MORE_INIT          16
 #define SS_INIT_AIR                15
 #define SS_INIT_LIGHTING           14
+#define SS_INIT_HTTP               13
+#define SS_INIT_METRICS            12
 #define SS_INIT_UNSPECIFIED        0
 #define SS_INIT_EMERGENCY_SHUTTLE -19
 #define SS_INIT_ASSETS            -20
@@ -59,6 +61,8 @@
 #define SS_PRIORITY_SUN            3
 #define SS_PRIORITY_GARBAGE        2
 #define SS_PRIORITY_INACTIVITY     1
+#define SS_PRIORITY_HTTP           0
+#define SS_PRIORITY_METRICS        -1
 #define SS_PRIORITY_DAYNIGHT	  -200
 
 #define SS_WAIT_WEATHER         	2 SECONDS
@@ -88,6 +92,8 @@
 #define SS_DISPLAY_WEATHER         5
 #define SS_DISPLAY_ENGINES		   6
 #define SS_DISPLAY_SUN             10
+#define SS_DISPLAY_HTTP            12
+#define SS_DISPLAY_METRICS         13
 #define SS_DISPLAY_DBCORE		   15
 #define SS_DISPLAY_DAYNIGHT		   20
 

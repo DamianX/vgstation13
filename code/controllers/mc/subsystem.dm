@@ -29,12 +29,14 @@
 	var/datum/subsystem/queue_next
 	var/datum/subsystem/queue_prev
 
-
+	/// Identifies the subsystem for SSmetrics
+	var/metrics_id
 	// The object used for the clickable stat() button.
 	var/obj/effect/statclick/statclick
 
 // Used to initialize the subsystem BEFORE the map has loaded
 /datum/subsystem/New()
+	metrics_id = lowertext(replacetext(name, " ", "_"))
 
 //cleanup actions
 /datum/subsystem/proc/Shutdown()
@@ -160,6 +162,14 @@
 	to_chat(world, "<span class='danger'>[msg]</span>")
 	initialized = TRUE
 	return time
+
+/datum/subsystem/proc/metrics()
+	SHOULD_CALL_PARENT(TRUE)
+	return list(
+		"cost" = cost,
+		"tick_usage" = tick_usage,
+		"custom" = list()
+	)
 
 //hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.
 /datum/subsystem/proc/stat_entry(msg)

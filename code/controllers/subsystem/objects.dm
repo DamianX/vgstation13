@@ -37,6 +37,11 @@ var/list/processing_objects = list()
 	..()
 
 
+/datum/subsystem/obj/metrics()
+	return ..() + list(
+		"objects" = length(processing_objects)
+	)
+
 /datum/subsystem/obj/stat_entry()
 	..("P:[processing_objects.len]")
 

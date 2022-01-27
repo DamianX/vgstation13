@@ -28,6 +28,13 @@ var/list/lighting_update_overlays  = list() // List of lighting overlays queued 
 	NEW_SS_GLOBAL(SSlighting)
 
 
+/datum/subsystem/lighting/metrics()
+	return ..() + list(
+		"lights" = length(currentrun_lights),
+		"corners" = length(currentrun_corners),
+		"overlays" = length(currentrun_overlays)
+	)
+
 /datum/subsystem/lighting/stat_entry()
 	..("L:[lighting_update_lights.len]|C:[lighting_update_corners.len]|O:[lighting_update_overlays.len]")
 
