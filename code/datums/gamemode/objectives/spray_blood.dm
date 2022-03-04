@@ -15,5 +15,4 @@
 /datum/objective/spray_blood/IsFulfilled()
 	if (..())
 		return TRUE
-	var/datum/faction/cult/narsie/cult_fac = faction
-	return (cult_fac.bloody_floors.len >= floor_limit)
+	return (bloody_floors >= floor_limit)

@@ -137,12 +137,6 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 			return TRUE
 	return FALSE
 
-/datum/faction/cult/narsie/proc/has_enough_bloody_floors()
-	if (istype(current_objective, /datum/objective/spray_blood))
-		var/datum/objective/spray_blood/blood_jectie = current_objective
-		return blood_jectie.IsFulfilled()
-	return FALSE
-
 /datum/faction/cult/narsie/proc/has_enough_adepts()
 	if (istype(current_objective, /datum/objective/convert_people))
 		var/datum/objective/convert_people/conv = current_objective

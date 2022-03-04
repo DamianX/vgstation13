@@ -93,7 +93,6 @@
 		if (DNA && DNA.len > 0)
 			counts_as_blood = 1
 			last_blood_color = bloodcolor
-			bloodspill_add()
 
 	var/updated=0
 	// Shift our goingdir 4 spaces to the left so it's in the GOING bitblock.

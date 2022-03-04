@@ -28,6 +28,9 @@
 
 	var/mentor_count = 0 //so we don't loop through the member list if we already know there are no mentors in there
 
+	/// Increased whenever the cult sacrifices someone. Used to calculate points.
+	var/sacrifice_count = 0
+
 /datum/faction/bloodcult/check_win()
 	return cult_win
 
@@ -101,3 +104,15 @@
 			var/mob/M = R.antag.current
 			to_chat(M, "<span class='sinister'>This number might rise up to 9 as more people arrive aboard the station.</span>")
 	..()
+
+/datum/faction/bloodcult/CalculatePoints()
+	var/const/POINTS_PER_BLOODY_TILE = 10
+	var/bloody_tile_points = POINTS_PER_BLOODY_TILE * bloodspill_count
+
+	var/const/POINTS_PER_SACRIFICE = 1000
+	var/sacrifice_points = POINTS_PER_SACRIFICE * sacrifice_count
+
+	var/const/POINTS_PER_CULTIST = 500
+	var/cultist_points = POINTS_PER_CULTIST * members.len
+
+	return bloody_tile_points + sacrifice_points + cultist_points

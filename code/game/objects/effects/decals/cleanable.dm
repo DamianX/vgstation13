@@ -1,5 +1,9 @@
 var/list/infected_cleanables = list()
 
+// When the cult faction is created, it sets this to 0.
+// It then uses this to track how many tiles have blood on them.
+var/bloodspill_count = -1
+
 /obj/effect/decal/cleanable
 	var/list/random_icon_states = list()
 	var/targeted_by = null	//Used so cleanbots can claim a mess.
@@ -54,21 +58,15 @@ var/list/infected_cleanables = list()
 	update_icon()
 
 	if(counts_as_blood)
-		/* TODO (UPHEAVAL PART 2) : some ritual involving blood spilled over floors
-		var/datum/faction/bloodcult/cult = find_active_faction_by_type(/datum/faction/bloodcult)
-		if (cult)
-			cult.add_bloody_floor(get_turf(src))
-		*/
-		var/datum/faction/cult/narsie/legacy_cult = find_active_faction_by_type(/datum/faction/cult/narsie)
-		if(legacy_cult)
-			var/turf/T = get_turf(src)
-			if(T && (T.z == map.zMainStation))//F I V E   T I L E S
-				if(istype(T, /turf/simulated/floor) && !isspace(T.loc) && !istype(T.loc, /area/asteroid) && !istype(T.loc, /area/mine) && !istype(T.loc, /area/vault) && !istype(T.loc, /area/prison) && !istype(T.loc, /area/vox_trading_post))
-					if(!(locate("\ref[T]") in legacy_cult.bloody_floors))
-						legacy_cult.bloody_floors += T
-						legacy_cult.bloody_floors[T] = T
-						if (legacy_cult.has_enough_bloody_floors())
-							legacy_cult.getNewObjective()
+		if(bloodspill_count != -1)
+			var/turf_already_contains_blood = FALSE
+			for(var/obj/effect/decal/cleanable/spill in loc)
+				if(spill == src)
+					continue
+				turf_already_contains_blood = TRUE
+				break
+			if(!turf_already_contains_blood)
+				bloodspill_count++
 		if(src.loc && isturf(src.loc))
 			for(var/obj/effect/decal/cleanable/C in src.loc)
 				if(C.type in absorbs_types && C != src)
@@ -160,12 +158,15 @@ var/list/infected_cleanables = list()
 		D.cure(0)
 		D.holder = null
 
-	if(counts_as_blood)
-		bloodspill_remove()
-
 	if(persistence_type)
 		SSpersistence_map.forget(src, persistence_type)
+
+	var/turf/old_loc = loc
 	..()
+	// Do this after the super-call so that locate() won't find src
+	if(counts_as_blood && bloodspill_count != -1)
+		if(!(locate(/obj/effect/decal/cleanable) in old_loc))
+			bloodspill_count--
 
 /obj/effect/decal/cleanable/proc/dry(var/drying_age)
 	name = "dried [replacetext(initial(src.name), "wet ", "")]"
@@ -221,39 +222,3 @@ var/list/infected_cleanables = list()
 		perp.feet_blood_color=basecolor
 
 	amount--
-
-
-
-///////////////////CULT BLOODSPILL STUFF/////////////////////////////////////
-
-/obj/effect/decal/cleanable/proc/bloodspill_add()
-	//new cult
-	/* TODO (UPHEAVAL PART 2) : some ritual involving blood spilled over floors
-	var/datum/faction/bloodcult/cult = find_active_faction_by_type(/datum/faction/bloodcult)
-	if (cult)
-		cult.add_bloody_floor(get_turf(src))
-	*/
-	//old cult
-	var/datum/faction/cult/narsie/legacy_cult = find_active_faction_by_type(/datum/faction/cult/narsie)
-	if(legacy_cult)
-		var/turf/T = get_turf(src)
-		if(T && (T.z == map.zMainStation))//F I V E   T I L E S
-			if(!(locate("\ref[T]") in legacy_cult.bloody_floors))
-				legacy_cult.bloody_floors |= T
-				legacy_cult.bloody_floors[T] = T
-				if (legacy_cult.has_enough_bloody_floors())
-					legacy_cult.getNewObjective()
-
-/obj/effect/decal/cleanable/proc/bloodspill_remove()
-	//new cult
-	/* TODO (UPHEAVAL PART 2) : some ritual involving blood spilled over floors
-	var/datum/faction/bloodcult/cult = find_active_faction_by_type(/datum/faction/bloodcult)
-	if (cult)
-		cult.remove_bloody_floor(get_turf(src))
-	*/
-	//old cult
-	var/datum/faction/cult/narsie/legacy_cult = find_active_faction_by_type(/datum/faction/cult/narsie)
-	if(legacy_cult)
-		var/turf/T = get_turf(src)
-		if(T && (T.z == map.zMainStation))
-			legacy_cult.bloody_floors -= T
