@@ -61,7 +61,7 @@ var/list/map_dimension_cache = list()
  * A list of all atoms created
  *
  */
-/dmm_suite/load_map(var/dmm_file as file, var/z_offset as num, var/x_offset as num, var/y_offset as num, var/datum/map_element/map_element as null, var/rotate as num, var/overwrite as num)
+/dmm_suite/load_map(var/dmm_file as file, var/z_offset as num, var/x_offset as num, var/y_offset as num, var/datum/map_element/map_element as null, var/rotate = 0, var/overwrite as num, track_spawned_atoms = TRUE)
 
 	if((rotate % 90) != 0) //If not divisible by 90, make it
 		rotate += (rotate % 90)
@@ -71,7 +71,7 @@ var/list/map_dimension_cache = list()
 
 	//If this is true, the lag is reduced at the cost of slower loading speed, and tiny atmos leaks during loading
 	var/remove_lag
-	if(map_element.load_at_once)
+	if(map_element?.load_at_once)
 		remove_lag = FALSE
 	else if(ticker && ticker.current_state > GAME_STATE_PREGAME)
 		//Lag doesn't matter before the game
@@ -191,13 +191,21 @@ var/list/map_dimension_cache = list()
 				var/parse_key = copytext(grid_line,mpos,mpos+key_len)
 				switch(rotate)
 					if(0)
-						spawned_atoms |= parse_grid(grid_models[parse_key],xcrd,ycrd,zcrd+z_offset,rotate,overwrite)
+						var/created_atom = parse_grid(grid_models[parse_key],xcrd,ycrd,zcrd+z_offset,rotate,overwrite)
+						if(track_spawned_atoms)
+							spawned_atoms += created_atom
 					if(90)
-						spawned_atoms |= parse_grid(grid_models[parse_key],ycrd_rotate,xcrd_flip_rotate,zcrd+z_offset,rotate,overwrite)
+						var/created_atom = parse_grid(grid_models[parse_key],ycrd_rotate,xcrd_flip_rotate,zcrd+z_offset,rotate,overwrite)
+						if(track_spawned_atoms)
+							spawned_atoms += created_atom
 					if(180)
-						spawned_atoms |= parse_grid(grid_models[parse_key],xcrd_flip,ycrd_flip,zcrd+z_offset,rotate,overwrite)
+						var/created_atom = parse_grid(grid_models[parse_key],xcrd_flip,ycrd_flip,zcrd+z_offset,rotate,overwrite)
+						if(track_spawned_atoms)
+							spawned_atoms += created_atom
 					if(270)
-						spawned_atoms |= parse_grid(grid_models[parse_key],ycrd_flip_rotate,xcrd_rotate,zcrd+z_offset,rotate,overwrite)
+						var/created_atom = parse_grid(grid_models[parse_key],ycrd_flip_rotate,xcrd_rotate,zcrd+z_offset,rotate,overwrite)
+						if(track_spawned_atoms)
+							spawned_atoms += created_atom
 				if (remove_lag)
 					CHECK_TICK
 			if(map_element)
