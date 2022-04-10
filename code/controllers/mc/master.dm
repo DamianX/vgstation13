@@ -126,7 +126,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 	to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
-	sortTim(subsystems, /proc/cmp_subsystem_init)
+	SORT(subsystems, init_order)
 
 	// Initialize subsystems.
 	CURRENT_TICKLIMIT = TICK_LIMIT_MC_INIT
