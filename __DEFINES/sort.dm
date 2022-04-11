@@ -1,27 +1,33 @@
-#define HEAPIFY(L, Var, n, i) if(UNLINT(TRUE)) { \
-var/largest = i; \
-var/j; \
+#define SIFT_DOWN(L, comparison, n, i) do { \
+var/SIFT_DOWN_largest = i; \
+var/SIFT_DOWN_i; \
 do { \
-    j = largest; \
-    var/l = 2 * largest; \
-    var/r = 2 * largest + 1; \
-    if(l <= n) { \
-        if(L[l]:Var > L[largest]:Var) { \
-            largest = l; \
+    SIFT_DOWN_i = SIFT_DOWN_largest; \
+    var/SIFT_DOWN_l = 2 * SIFT_DOWN_largest; \
+    var/SIFT_DOWN_r = SIFT_DOWN_l + 1; \
+    if(SIFT_DOWN_l <= n) { \
+        if(comparison(L[SIFT_DOWN_l], L[SIFT_DOWN_largest])) { \
+            SIFT_DOWN_largest = SIFT_DOWN_l; \
         } \
-        if((r <= n) && (L[r]:Var > L[largest]:Var)) { \
-            largest = r; \
+        if((SIFT_DOWN_r <= n) && comparison(L[SIFT_DOWN_r], L[SIFT_DOWN_largest])) { \
+            SIFT_DOWN_largest = SIFT_DOWN_r; \
         } \
     } \
-    L.Swap(j, largest); \
-} while(largest != j);}
+    L.Swap(SIFT_DOWN_i, SIFT_DOWN_largest); \
+} while(SIFT_DOWN_largest != SIFT_DOWN_i);} while(FALSE);
 
-#define SORT(L, Var) if(UNLINT(TRUE)) { \
-var/N = L.len; \
-for(var/k in round(N / 2) to 1 step -1) { \
-    HEAPIFY(L, Var, N, k); \
+#define SORT(L, comparison) do { \
+var/SORT_N = L.len; \
+for(var/SORT_i in round(SORT_N / 2) to 1 step -1) { \
+    SIFT_DOWN(L, comparison, SORT_N, SORT_i); \
 } \
-for(var/k in N to 2 step -1) { \
-    L.Swap(1, k); \
-    HEAPIFY(L, Var, k - 1, 1); \
-}}
+for(var/SORT_i in SORT_N to 2 step -1) { \
+    L.Swap(1, SORT_i); \
+    SIFT_DOWN(L, comparison, SORT_i - 1, 1); \
+}} while(FALSE);
+
+#define GREATER(a, b) (a > b)
+#define LESS(a, b) (a < b)
+
+#define SORT_ASC(L) SORT(L, GREATER)
+#define SORT_DSC(L) SORT(L, LESS)

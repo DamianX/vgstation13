@@ -294,10 +294,6 @@
 			K += item.name
 	return K
 
-//for sorting clients or mobs by ckey
-/proc/sortKey(list/L, order=1)
-	return sortTim(L, order >= 0 ? /proc/cmp_ckey_asc : /proc/cmp_ckey_dsc)
-
 //Specifically for record datums in a list.
 /proc/sortRecord(list/L, field = "name", order = 1)
 	cmp_field = field

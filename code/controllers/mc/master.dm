@@ -28,7 +28,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 	var/last_run
 
 	// List of subsystems to process().
-	var/list/subsystems
+	var/list/datum/subsystem/subsystems
 
 	// Vars for keeping track of tick drift.
 	var/init_timeofday
@@ -126,7 +126,8 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 	to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
-	SORT(subsystems, init_order)
+	#define BY_SUBSYSTEM_INIT_ORDER(a, b) (a.init_order < b.init_order)
+	SORT(subsystems, BY_SUBSYSTEM_INIT_ORDER)
 
 	// Initialize subsystems.
 	CURRENT_TICKLIMIT = TICK_LIMIT_MC_INIT
