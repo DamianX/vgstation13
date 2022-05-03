@@ -1,0 +1,16 @@
+name: "Labeler"
+on:
+  issues:
+    types: [opened, edited]
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: superbrothers/issue-labeler@177a6925d03774d05ce832297b9cb9b0d5414140
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        configuration-path: .github/labeler_config.yml
+        enable-versioned-regex: 0
