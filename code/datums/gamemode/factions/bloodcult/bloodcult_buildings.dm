@@ -467,7 +467,7 @@
 			if(M.client)
 				spawn(5)//we give it time to fade out
 					M.client.images -= watcher_maps["\ref[M]"]
-				M.unregister_event(/event/face, src, /obj/structure/cult/altar/proc/checkPosition)
+				M.unregister_event(/event/face, src, nameof(src::checkPosition()))
 				animate(watcher_maps["\ref[M]"], alpha = 0, time = 5, easing = LINEAR_EASING)
 
 		watching_mobs = list()
@@ -477,7 +477,7 @@
 				if(!(user in watching_mobs))
 					user.client.images -= watcher_maps["\ref[user]"]
 					watcher_maps -= "\ref[user]"
-			user.unregister_event(/event/face, src, /obj/structure/cult/altar/proc/checkPosition)
+			user.unregister_event(/event/face, src, nameof(src::checkPosition()))
 			animate(watcher_maps["\ref[user]"], alpha = 0, time = 5, easing = LINEAR_EASING)
 
 			watching_mobs -= user
@@ -669,7 +669,7 @@
 					animate(watcher_maps["\ref[user]"], alpha = 255, time = 5, easing = LINEAR_EASING)
 					watching_mobs |= user
 					user.client.images |= watcher_maps["\ref[user]"]
-					user.register_event(/event/face, src, /obj/structure/cult/altar/proc/checkPosition)
+					user.register_event(/event/face, src, nameof(src::checkPosition()))
 			if ("Commune with Nar-Sie")
 				if(narsie_message_cooldown)
 					to_chat(user, "<span class='warning'>This altar has already sent a message in the past 30 seconds, wait a moment.</span>")
@@ -2069,11 +2069,11 @@ var/list/cult_spires = list()
 			continue
 		timeleft -= 1 + round(contributors.len/2)//Additional dancers will complete the ritual faster
 		update_progbar()
-		dance_step()
+		dance_step(contributors)
 		sleep(3)
-		dance_step()
+		dance_step(contributors)
 		sleep(3)
-		dance_step()
+		dance_step(contributors)
 		sleep(6)
 	for (var/mob/M in contributors)
 		if (M.client)
@@ -2085,13 +2085,13 @@ var/list/cult_spires = list()
 /obj/structure/cult/proc/ritual_reward(var/mob/M)
 	return
 
-/obj/structure/cult/proc/dance_step()
-	var/dance_move = pick("clock","counter","spin")
+/atom/proc/dance_step(list/dancers, step_kind)
+	if(!step_kind)
+		step_kind = pick("clock","counter","spin")
 
-	switch(dance_move)
+	switch(step_kind)
 		if ("clock")
-			for (var/mob/M in contributors)
-				INVOKE_EVENT(M, /event/before_move)
+			for (var/mob/M in dancers)
 				switch (get_dir(src,M))
 					if (NORTHWEST,NORTH)
 						M.forceMove(get_step(M,EAST))
@@ -2105,11 +2105,8 @@ var/list/cult_spires = list()
 					if (SOUTHWEST,WEST)
 						M.forceMove(get_step(M,NORTH))
 						M.dir = NORTH
-				INVOKE_EVENT(M, /event/after_move)
-				INVOKE_EVENT(M, /event/moved, "mover" = M)
 		if ("counter")
-			for (var/mob/M in contributors)
-				INVOKE_EVENT(M, /event/before_move)
+			for (var/mob/M in dancers)
 				switch (get_dir(src,M))
 					if (NORTHEAST,NORTH)
 						M.forceMove(get_step(M,WEST))
@@ -2123,25 +2120,18 @@ var/list/cult_spires = list()
 					if (NORTHWEST,WEST)
 						M.forceMove(get_step(M,SOUTH))
 						M.dir = SOUTH
-				INVOKE_EVENT(M, /event/after_move)
-				INVOKE_EVENT(M, /event/moved, "mover" = M)
 		if ("spin")
-			for (var/mob/M in contributors)
+			for (var/mob/M in dancers)
 				spawn()
-					M.dir = SOUTH
-					INVOKE_EVENT(M, /event/face)
+					M.change_dir(SOUTH)
 					sleep(0.75)
-					M.dir = EAST
-					INVOKE_EVENT(M, /event/face)
+					M.change_dir(EAST)
 					sleep(0.75)
-					M.dir = NORTH
-					INVOKE_EVENT(M, /event/face)
+					M.change_dir(NORTH)
 					sleep(0.75)
-					M.dir = WEST
-					INVOKE_EVENT(M, /event/face)
+					M.change_dir(WEST)
 					sleep(0.75)
-					M.dir = SOUTH
-					INVOKE_EVENT(M, /event/face)
+					M.change_dir(SOUTH)
 
 
 

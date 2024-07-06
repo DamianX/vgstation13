@@ -736,68 +736,12 @@ var/bloodstone_backup = 0
 			if (dancers.len <= 0)
 				qdel(src)
 				return
-			dance_step()
+			dance_step(dancers)
 			sleep(3)
-			dance_step()
+			dance_step(dancers)
 			sleep(3)
-			dance_step()
+			dance_step(dancers)
 			sleep(6)
-
-/obj/effect/cult_ritual/dance/proc/add_dancer(var/mob/dancer)
-	if(dancer in dancers)
-		return
-	dancers += dancer
-
-/obj/effect/cult_ritual/dance/proc/dance_step()
-	var/dance_move = pick("clock","counter","spin")
-	switch(dance_move)
-		if ("clock")
-			for (var/mob/M in dancers)
-				INVOKE_EVENT(M, /event/before_move)
-				switch (get_dir(src,M))
-					if (NORTHWEST,NORTH)
-						step_to(M, get_step(M,EAST))
-					if (NORTHEAST,EAST)
-						step_to(M, get_step(M,SOUTH))
-					if (SOUTHEAST,SOUTH)
-						step_to(M, get_step(M,WEST))
-					if (SOUTHWEST,WEST)
-						step_to(M, get_step(M,NORTH))
-				INVOKE_EVENT(M, /event/after_move)
-				INVOKE_EVENT(M, /event/moved, "mover" = M)
-		if ("counter")
-			for (var/mob/M in dancers)
-				INVOKE_EVENT(M, /event/before_move)
-				switch (get_dir(src,M))
-					if (NORTHEAST,NORTH)
-						step_to(M, get_step(M,WEST))
-					if (SOUTHEAST,EAST)
-						step_to(M, get_step(M,NORTH))
-					if (SOUTHWEST,SOUTH)
-						step_to(M, get_step(M,EAST))
-					if (NORTHWEST,WEST)
-						step_to(M, get_step(M,SOUTH))
-				INVOKE_EVENT(M, /event/after_move)
-				INVOKE_EVENT(M, /event/moved, "mover" = M)
-		if ("spin")
-			for (var/mob/M in dancers)
-				spawn()
-					M.dir = SOUTH
-					INVOKE_EVENT(M, /event/face)
-					sleep(0.75)
-					M.dir = EAST
-					INVOKE_EVENT(M, /event/face)
-					sleep(0.75)
-					M.dir = NORTH
-					INVOKE_EVENT(M, /event/face)
-					sleep(0.75)
-					M.dir = WEST
-					INVOKE_EVENT(M, /event/face)
-					sleep(0.75)
-					M.dir = SOUTH
-					INVOKE_EVENT(M, /event/face)
-
-
 
 /obj/effect/cult_ritual/dance/proc/dance_move()
 	var/dance_move = pick("clock","counter","spin")
@@ -806,22 +750,19 @@ var/bloodstone_backup = 0
 			for (var/obj/effect/cult_ritual/dance_platform/P in extras)
 				P.moving = TRUE
 			for (var/mob/M in dancers)
-				INVOKE_EVENT(M, /event/before_move)
 				switch (get_dir(src,M))
 					if (NORTHWEST,NORTH)
 						M.forceMove(get_step(M,EAST))
-						M.dir = EAST
+						M.change_dir(EAST)
 					if (NORTHEAST,EAST)
 						M.forceMove(get_step(M,SOUTH))
-						M.dir = SOUTH
+						M.change_dir(SOUTH)
 					if (SOUTHEAST,SOUTH)
 						M.forceMove(get_step(M,WEST))
-						M.dir = WEST
+						M.change_dir(WEST)
 					if (SOUTHWEST,WEST)
 						M.forceMove(get_step(M,NORTH))
-						M.dir = NORTH
-				INVOKE_EVENT(M, /event/after_move)
-				INVOKE_EVENT(M, /event/moved, "mover" = M)
+						M.change_dir(NORTH)
 			for (var/obj/effect/cult_ritual/dance_platform/P in extras)
 				switch (get_dir(src,P))
 					if (NORTHWEST,NORTH)
@@ -837,22 +778,19 @@ var/bloodstone_backup = 0
 			for (var/obj/effect/cult_ritual/dance_platform/P in extras)
 				P.moving = TRUE
 			for (var/mob/M in dancers)
-				INVOKE_EVENT(M, /event/before_move)
 				switch (get_dir(src,M))
 					if (NORTHEAST,NORTH)
 						M.forceMove(get_step(M,WEST))
-						M.dir = WEST
+						M.change_dir(WEST)
 					if (SOUTHEAST,EAST)
 						M.forceMove(get_step(M,NORTH))
-						M.dir = NORTH
+						M.change_dir(NORTH)
 					if (SOUTHWEST,SOUTH)
 						M.forceMove(get_step(M,EAST))
-						M.dir = EAST
+						M.change_dir(EAST)
 					if (NORTHWEST,WEST)
 						M.forceMove(get_step(M,SOUTH))
-						M.dir = SOUTH
-				INVOKE_EVENT(M, /event/after_move)
-				INVOKE_EVENT(M, /event/moved, "mover" = M)
+						M.change_dir(SOUTH)
 			for (var/obj/effect/cult_ritual/dance_platform/P in extras)
 				switch (get_dir(src,P))
 					if (NORTHEAST,NORTH)
@@ -867,20 +805,15 @@ var/bloodstone_backup = 0
 		if ("spin")
 			for (var/mob/M in dancers)
 				spawn()
-					M.dir = SOUTH
-					INVOKE_EVENT(M, /event/face)
+					M.change_dir(SOUTH)
 					sleep(0.75)
-					M.dir = EAST
-					INVOKE_EVENT(M, /event/face)
+					M.change_dir(EAST)
 					sleep(0.75)
-					M.dir = NORTH
-					INVOKE_EVENT(M, /event/face)
+					M.change_dir(NORTH)
 					sleep(0.75)
-					M.dir = WEST
-					INVOKE_EVENT(M, /event/face)
+					M.change_dir(WEST)
 					sleep(0.75)
-					M.dir = SOUTH
-					INVOKE_EVENT(M, /event/face)
+					M.change_dir(SOUTH)
 
 ///////////////////////////////////DANCE PLATEFORMS////////////////////////////////////
 //Tear Reality rune uses those
