@@ -403,11 +403,12 @@
 				refresh_all()
 				return 1
 
-	if(usr) //WHYYYYY
-
-		usr.u_equip(W,0)
-		W.dropped(usr) // we're skipping u_equip's forcemove to turf but we still need the item to unset itself
-		usr.update_icons()
+	//Unequip it from whoever is holding it, which isn't always usr (NPCs, procs called with no usr)
+	var/mob/holder = ismob(W.loc) ? W.loc : usr
+	if(holder)
+		holder.u_equip(W,0)
+		W.dropped(holder) // we're skipping u_equip's forcemove to turf but we still need the item to unset itself
+		holder.update_icons()
 
 	W.forceMove(src)
 	W.on_enter_storage(src)
