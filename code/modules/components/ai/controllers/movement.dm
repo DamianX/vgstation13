@@ -3,7 +3,7 @@
 
 /datum/component/controller/movement/initialize()
 	parent.register_event(/event/comp_ai_cmd_move, src, nameof(src::cmd_move()))
-	return TRUE
+	return ..()
 
 /datum/component/controller/movement/Destroy()
 	parent.unregister_event(/event/comp_ai_cmd_move, src, nameof(src::cmd_move()))
